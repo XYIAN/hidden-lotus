@@ -364,3 +364,95 @@ body {
   margin-top: 0 !important;
   text-align: left !important;
 }
+
+/* Mobile vertical steps for contact form */
+@media (max-width: 768px) {
+  .mobile-vertical-steps .p-steps {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .mobile-vertical-steps .p-steps-item {
+    width: 100% !important;
+    margin-bottom: 1rem !important;
+    margin-right: 0 !important;
+  }
+  .mobile-vertical-steps .p-steps-number {
+    margin-bottom: 0.5rem !important;
+  }
+  .mobile-vertical-steps .p-steps-title {
+    text-align: left !important;
+  }
+}
+
+/* Custom Stepper Styles */
+.custom-stepper .p-stepper-header {
+  background: transparent;
+  border: none;
+  padding: 1rem 0;
+}
+
+.custom-stepper .p-stepper-header .p-stepper-number {
+  background: var(--sage-green-600);
+  border: 2px solid var(--sage-green-600);
+  color: white;
+  font-weight: 600;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-stepper .p-stepper-header.p-highlight .p-stepper-number {
+  background: var(--pastel-pink);
+  border-color: var(--pastel-pink);
+  color: var(--secondary-brown);
+}
+
+.custom-stepper .p-stepper-header:not(.p-disabled):focus .p-stepper-number {
+  box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.2);
+}
+
+.custom-stepper .p-stepper-title {
+  color: var(--earth-brown);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.custom-stepper .p-stepper-header.p-highlight .p-stepper-title {
+  color: var(--primary-green);
+}
+
+.custom-stepper .p-stepper-content {
+  padding: 1.5rem 0;
+  border-left: 2px solid var(--sage-green-200);
+  margin-left: 1.25rem;
+  padding-left: 2rem;
+}
+
+.custom-stepper .p-stepper-panel {
+  margin-bottom: 2rem;
+}
+
+.custom-stepper .p-stepper-panel:last-child .p-stepper-content {
+  border-left: none;
+}
+
+/* Mobile adjustments for stepper */
+@media (max-width: 768px) {
+  .custom-stepper .p-stepper-content {
+    margin-left: 0.75rem;
+    padding-left: 1.5rem;
+  }
+
+  .custom-stepper .p-stepper-header .p-stepper-number {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .custom-stepper .p-stepper-title {
+    font-size: 1rem;
+  }
+}

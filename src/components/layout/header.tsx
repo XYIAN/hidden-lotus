@@ -28,7 +28,7 @@ export function Header() {
 
   return (
     <>
-      <header className="bg-light-tan/80 backdrop-blur-sm shadow-sm sage-border sticky top-0 z-50">
+      <header className="bg-light-tan/80 backdrop-blur-md shadow-sm sage-border sticky top-0 z-50">
         <div className="flex justify-content-between align-items-center p-4 max-w-7xl mx-auto">
           {/* Logo */}
           <Link href="/" className="flex align-items-center gap-3">

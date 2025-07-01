@@ -193,6 +193,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - No layout changes to Home page
 - All navigation and sidebar remain accessible and sticky
 
+## [0.9.3] - 2024-12-19
+
+### Changed
+
+- **Contact Form Stepper**: Replaced Steps component with proper Stepper and StepperPanel components
+- **Vertical Orientation**: Contact form now uses vertical stepper orientation for better mobile experience
+- **Theme Integration**: Added custom CSS styling for stepper to match Hidden Lotus theme colors
+- **Form Structure**: Improved form layout with proper panel-based navigation
+- **Button Styling**: Updated stepper navigation buttons with theme-appropriate colors
+
+### Technical
+
+- Updated contact form to use PrimeReact Stepper component instead of Steps
+- Added custom stepper CSS with sage green, pastel pink, and earth brown color scheme
+- Improved mobile responsiveness for stepper component
+- Enhanced form validation and user experience
+
 ## [1.0.0] - 2024-01-15
 
 ### Added

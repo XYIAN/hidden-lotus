@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Steps } from 'primereact/steps';
+import { Stepper } from 'primereact/stepper';
+import { StepperPanel } from 'primereact/stepperpanel';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
@@ -13,7 +14,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { Toast } from 'primereact/toast';
-import { useRef } from 'react';
+import { HeroSection } from '@/components/ui/hero-section';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -40,17 +41,11 @@ const contactMethods = [
   { label: 'Text', value: 'text' },
 ];
 
-const steps = [
-  { label: 'Personal Info' },
-  { label: 'Message Details' },
-  { label: 'Review & Submit' },
-];
-
 export default function ContactPage() {
-  const [activeStep, setActiveStep] = useState(0);
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [formData, setFormData] = useState<ContactFormData | null>(null);
   const toast = useRef<Toast>(null);
+  const stepperRef = useRef<any>(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   const {
@@ -64,18 +59,6 @@ export default function ContactPage() {
   });
 
   const watchedValues = watch();
-
-  const handleNext = () => {
-    if (activeStep < steps.length - 1) {
-      setActiveStep(activeStep + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (activeStep > 0) {
-      setActiveStep(activeStep - 1);
-    }
-  };
 
   const onSubmit = (data: ContactFormData) => {
     setFormData(data);
@@ -92,255 +75,229 @@ export default function ContactPage() {
     }
   };
 
-  const renderStepContent = () => {
-    switch (activeStep) {
-      case 0:
-        return (
-          <div className="flex flex-column gap-4">
-            <div className="flex flex-column gap-2">
-              <label htmlFor="name" className="text-sm font-medium text-earth-brown">
-                Full Name *
-              </label>
-              <Controller
-                name="name"
-                control={control}
-                render={({ field }) => (
-                  <InputText
-                    id="name"
-                    {...field}
-                    className={errors.name ? 'p-invalid' : ''}
-                    placeholder="Enter your full name"
-                  />
-                )}
-              />
-              {errors.name && <small className="p-error">{errors.name.message}</small>}
-            </div>
+  const renderPersonalInfo = () => (
+    <div className="flex flex-column gap-4">
+      <div className="flex flex-column gap-2">
+        <label htmlFor="name" className="text-sm font-medium text-earth-brown">
+          Full Name *
+        </label>
+        <Controller
+          name="name"
+          control={control}
+          render={({ field }) => (
+            <InputText
+              id="name"
+              {...field}
+              className={errors.name ? 'p-invalid' : ''}
+              placeholder="Enter your full name"
+            />
+          )}
+        />
+        {errors.name && <small className="p-error">{errors.name.message}</small>}
+      </div>
 
-            <div className="flex flex-column gap-2">
-              <label htmlFor="email" className="text-sm font-medium text-earth-brown">
-                Email Address *
-              </label>
-              <Controller
-                name="email"
-                control={control}
-                render={({ field }) => (
-                  <InputText
-                    id="email"
-                    {...field}
-                    type="email"
-                    className={errors.email ? 'p-invalid' : ''}
-                    placeholder="Enter your email address"
-                  />
-                )}
-              />
-              {errors.email && <small className="p-error">{errors.email.message}</small>}
-            </div>
+      <div className="flex flex-column gap-2">
+        <label htmlFor="email" className="text-sm font-medium text-earth-brown">
+          Email Address *
+        </label>
+        <Controller
+          name="email"
+          control={control}
+          render={({ field }) => (
+            <InputText
+              id="email"
+              {...field}
+              type="email"
+              className={errors.email ? 'p-invalid' : ''}
+              placeholder="Enter your email address"
+            />
+          )}
+        />
+        {errors.email && <small className="p-error">{errors.email.message}</small>}
+      </div>
 
-            <div className="flex flex-column gap-2">
-              <label htmlFor="phone" className="text-sm font-medium text-earth-brown">
-                Phone Number
-              </label>
-              <Controller
-                name="phone"
-                control={control}
-                render={({ field }) => (
-                  <InputText
-                    id="phone"
-                    {...field}
-                    placeholder="Enter your phone number (optional)"
-                  />
-                )}
-              />
-            </div>
+      <div className="flex flex-column gap-2">
+        <label htmlFor="phone" className="text-sm font-medium text-earth-brown">
+          Phone Number
+        </label>
+        <Controller
+          name="phone"
+          control={control}
+          render={({ field }) => (
+            <InputText id="phone" {...field} placeholder="Enter your phone number (optional)" />
+          )}
+        />
+      </div>
+    </div>
+  );
+
+  const renderMessageDetails = () => (
+    <div className="flex flex-column gap-4">
+      <div className="flex flex-column gap-2">
+        <label htmlFor="subject" className="text-sm font-medium text-earth-brown">
+          Subject *
+        </label>
+        <Controller
+          name="subject"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              id="subject"
+              {...field}
+              options={subjects}
+              placeholder="Select a subject"
+              className={errors.subject ? 'p-invalid' : ''}
+            />
+          )}
+        />
+        {errors.subject && <small className="p-error">{errors.subject.message}</small>}
+      </div>
+
+      <div className="flex flex-column gap-2">
+        <label htmlFor="message" className="text-sm font-medium text-earth-brown">
+          Message *
+        </label>
+        <Controller
+          name="message"
+          control={control}
+          render={({ field }) => (
+            <InputTextarea
+              id="message"
+              {...field}
+              rows={5}
+              className={errors.message ? 'p-invalid' : ''}
+              placeholder="Tell us how we can help you..."
+            />
+          )}
+        />
+        {errors.message && <small className="p-error">{errors.message.message}</small>}
+      </div>
+
+      <div className="flex flex-column gap-2">
+        <label htmlFor="preferredContact" className="text-sm font-medium text-earth-brown">
+          Preferred Contact Method *
+        </label>
+        <Controller
+          name="preferredContact"
+          control={control}
+          render={({ field }) => (
+            <Dropdown
+              id="preferredContact"
+              {...field}
+              options={contactMethods}
+              placeholder="Select preferred contact method"
+              className={errors.preferredContact ? 'p-invalid' : ''}
+            />
+          )}
+        />
+        {errors.preferredContact && (
+          <small className="p-error">{errors.preferredContact.message}</small>
+        )}
+      </div>
+    </div>
+  );
+
+  const renderReview = () => (
+    <div className="flex flex-column gap-4">
+      <div className="bg-light-tan/50 p-4 border-round">
+        <h3 className="text-lg font-semibold text-primary-green mb-3">Review Your Information</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <p className="text-sm font-medium text-earth-brown">Name:</p>
+            <p className="text-primary-green">{watchedValues.name || 'Not provided'}</p>
           </div>
-        );
-
-      case 1:
-        return (
-          <div className="flex flex-column gap-4">
-            <div className="flex flex-column gap-2">
-              <label htmlFor="subject" className="text-sm font-medium text-earth-brown">
-                Subject *
-              </label>
-              <Controller
-                name="subject"
-                control={control}
-                render={({ field }) => (
-                  <Dropdown
-                    id="subject"
-                    {...field}
-                    options={subjects}
-                    placeholder="Select a subject"
-                    className={errors.subject ? 'p-invalid' : ''}
-                  />
-                )}
-              />
-              {errors.subject && <small className="p-error">{errors.subject.message}</small>}
-            </div>
-
-            <div className="flex flex-column gap-2">
-              <label htmlFor="message" className="text-sm font-medium text-earth-brown">
-                Message *
-              </label>
-              <Controller
-                name="message"
-                control={control}
-                render={({ field }) => (
-                  <InputTextarea
-                    id="message"
-                    {...field}
-                    rows={5}
-                    className={errors.message ? 'p-invalid' : ''}
-                    placeholder="Tell us how we can help you..."
-                  />
-                )}
-              />
-              {errors.message && <small className="p-error">{errors.message.message}</small>}
-            </div>
-
-            <div className="flex flex-column gap-2">
-              <label htmlFor="preferredContact" className="text-sm font-medium text-earth-brown">
-                Preferred Contact Method *
-              </label>
-              <Controller
-                name="preferredContact"
-                control={control}
-                render={({ field }) => (
-                  <Dropdown
-                    id="preferredContact"
-                    {...field}
-                    options={contactMethods}
-                    placeholder="Select preferred contact method"
-                    className={errors.preferredContact ? 'p-invalid' : ''}
-                  />
-                )}
-              />
-              {errors.preferredContact && (
-                <small className="p-error">{errors.preferredContact.message}</small>
-              )}
-            </div>
+          <div>
+            <p className="text-sm font-medium text-earth-brown">Email:</p>
+            <p className="text-primary-green">{watchedValues.email || 'Not provided'}</p>
           </div>
-        );
-
-      case 2:
-        return (
-          <div className="flex flex-column gap-4">
-            <h3 className="text-xl font-semibold text-primary-green mb-3">
-              Review Your Information
-            </h3>
-            <div className="bg-light-tan p-4 border-round sage-border">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm font-medium text-earth-brown">Name:</p>
-                  <p className="text-gray-900">{watchedValues.name}</p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-earth-brown">Email:</p>
-                  <p className="text-gray-900">{watchedValues.email}</p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-earth-brown">Phone:</p>
-                  <p className="text-gray-900">{watchedValues.phone || 'Not provided'}</p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-earth-brown">Subject:</p>
-                  <p className="text-gray-900">
-                    {subjects.find(s => s.value === watchedValues.subject)?.label}
-                  </p>
-                </div>
-                <div className="md:col-span-2">
-                  <p className="text-sm font-medium text-earth-brown">Message:</p>
-                  <p className="text-gray-900">{watchedValues.message}</p>
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-earth-brown">Preferred Contact:</p>
-                  <p className="text-gray-900">
-                    {contactMethods.find(c => c.value === watchedValues.preferredContact)?.label}
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div>
+            <p className="text-sm font-medium text-earth-brown">Phone:</p>
+            <p className="text-primary-green">{watchedValues.phone || 'Not provided'}</p>
           </div>
-        );
-
-      default:
-        return null;
-    }
-  };
+          <div>
+            <p className="text-sm font-medium text-earth-brown">Subject:</p>
+            <p className="text-primary-green">{watchedValues.subject || 'Not provided'}</p>
+          </div>
+          <div className="md:col-span-2">
+            <p className="text-sm font-medium text-earth-brown">Message:</p>
+            <p className="text-primary-green">{watchedValues.message || 'Not provided'}</p>
+          </div>
+          <div>
+            <p className="text-sm font-medium text-earth-brown">Preferred Contact:</p>
+            <p className="text-primary-green">{watchedValues.preferredContact || 'Not provided'}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 
   return (
     <div className="flex flex-column gap-6 p-4">
-      <Toast ref={toast} />
-
-      {/* Page Header */}
-      <section className="text-center py-6">
-        <h1 className="text-3xl font-bold text-primary-green mb-2">Contact Us</h1>
-        <p className="text-earth-brown">Get in touch with us to start your wellness journey.</p>
-      </section>
+      <HeroSection
+        title="Contact Us"
+        description="Get in touch with us to learn more about our wellness programs and services."
+      />
 
       {/* Contact Form */}
-      <section className="max-w-2xl mx-auto w-full">
-        <Card className="yoga-card">
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-column gap-6">
-            <div className={`mb-6 ${isMobile ? 'mobile-steps' : ''}`}>
-              <Steps
-                model={steps}
-                activeIndex={activeStep}
-                readOnly={false}
-                className="custom-steps"
-              />
-            </div>
+      <section className="max-w-4xl mx-auto w-full">
+        <Card className="yoga-card p-4">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <Stepper ref={stepperRef} orientation="vertical" className="custom-stepper">
+              <StepperPanel header="Personal Information">
+                <div className="flex flex-column gap-4">{renderPersonalInfo()}</div>
+                <div className="flex py-4">
+                  <Button
+                    label="Next"
+                    icon="pi pi-arrow-right"
+                    iconPos="right"
+                    onClick={() => stepperRef.current?.nextCallback()}
+                    className="bg-sage-green-600 border-sage-green-600"
+                  />
+                </div>
+              </StepperPanel>
 
-            <div className="min-h-20rem">{renderStepContent()}</div>
+              <StepperPanel header="Message Details">
+                <div className="flex flex-column gap-4">{renderMessageDetails()}</div>
+                <div className="flex py-4 gap-2">
+                  <Button
+                    label="Back"
+                    severity="secondary"
+                    icon="pi pi-arrow-left"
+                    onClick={() => stepperRef.current?.prevCallback()}
+                    className="border-sage text-sage"
+                  />
+                  <Button
+                    label="Next"
+                    icon="pi pi-arrow-right"
+                    iconPos="right"
+                    onClick={() => stepperRef.current?.nextCallback()}
+                    className="bg-sage-green-600 border-sage-green-600"
+                  />
+                </div>
+              </StepperPanel>
 
-            <div className="flex justify-content-between">
-              <Button
-                type="button"
-                label="Previous"
-                icon="pi pi-chevron-left"
-                onClick={handlePrev}
-                disabled={activeStep === 0}
-                className="p-button-outlined border-sage text-sage"
-              />
-              {activeStep < steps.length - 1 ? (
-                <Button
-                  type="button"
-                  label="Next"
-                  icon="pi pi-chevron-right"
-                  iconPos="right"
-                  onClick={handleNext}
-                  disabled={!isValid}
-                  className="bg-soft-sage border-soft-sage"
-                />
-              ) : (
-                <Button
-                  type="submit"
-                  label="Submit"
-                  icon="pi pi-send"
-                  iconPos="right"
-                  disabled={!isValid}
-                  className="bg-pastel-pink border-pastel-pink text-secondary-brown"
-                />
-              )}
-            </div>
+              <StepperPanel header="Review & Submit">
+                <div className="flex flex-column gap-4">{renderReview()}</div>
+                <div className="flex py-4 gap-2">
+                  <Button
+                    label="Back"
+                    severity="secondary"
+                    icon="pi pi-arrow-left"
+                    onClick={() => stepperRef.current?.prevCallback()}
+                    className="border-sage text-sage"
+                  />
+                  <Button
+                    type="submit"
+                    label="Submit"
+                    icon="pi pi-check"
+                    className="bg-pastel-pink border-pastel-pink text-secondary-brown"
+                    disabled={!isValid}
+                  />
+                </div>
+              </StepperPanel>
+            </Stepper>
           </form>
         </Card>
-      </section>
-
-      {/* Calendly Section */}
-      <section className="max-w-4xl mx-auto w-full">
-        <div className="bg-light-tan/90 backdrop-blur-sm p-8 border-round text-center sage-border">
-          <h2 className="text-2xl font-semibold text-primary-green mb-4">
-            Schedule a Consultation
-          </h2>
-          <p className="text-earth-brown mb-4">
-            Ready to take the next step? Schedule a personalized consultation with our wellness
-            experts.
-          </p>
-          <div className="bg-white p-8 border-round">
-            <p className="text-earth-brown text-lg">Calendly could go here</p>
-          </div>
-        </div>
       </section>
 
       {/* Success Dialog */}
@@ -348,47 +305,37 @@ export default function ContactPage() {
         visible={showSuccessDialog}
         onHide={() => setShowSuccessDialog(false)}
         header="Message Sent Successfully!"
-        className="w-90vw md:w-40rem"
+        className="w-90vw md:w-30rem"
         footer={
           <div className="flex justify-content-end">
             <Button
               label="Close"
-              icon="pi pi-check"
               onClick={() => setShowSuccessDialog(false)}
-              className="bg-soft-sage border-soft-sage"
-              autoFocus
+              className="bg-sage-green-600 border-sage-green-600"
             />
           </div>
         }
       >
         <div className="p-4">
-          <p className="text-lg mb-4">
-            Thank you for reaching out to Hidden Lotus! We&apos;ve received your message and will
-            get back to you soon.
+          <p className="text-lg mb-3">Thank you for reaching out to Hidden Lotus!</p>
+          <p className="text-earth-brown">
+            We've received your message and will get back to you within 24-48 hours.
           </p>
           {formData && (
-            <div className="bg-light-tan p-4 border-round sage-border">
-              <h4 className="font-semibold text-primary-green mb-2">Submitted Information:</h4>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
-                <div>
-                  <strong>Name:</strong> {formData.name}
-                </div>
-                <div>
-                  <strong>Email:</strong> {formData.email}
-                </div>
-                <div>
-                  <strong>Subject:</strong>{' '}
-                  {subjects.find(s => s.value === formData.subject)?.label}
-                </div>
-                <div>
-                  <strong>Contact Method:</strong>{' '}
-                  {contactMethods.find(c => c.value === formData.preferredContact)?.label}
-                </div>
-              </div>
+            <div className="mt-4 p-3 bg-light-tan/50 border-round">
+              <h4 className="text-primary-green mb-2">Message Summary:</h4>
+              <p className="text-sm text-earth-brown">
+                <strong>Subject:</strong> {formData.subject}
+              </p>
+              <p className="text-sm text-earth-brown">
+                <strong>Contact:</strong> {formData.preferredContact}
+              </p>
             </div>
           )}
         </div>
       </Dialog>
+
+      <Toast ref={toast} />
     </div>
   );
 }
