@@ -280,7 +280,12 @@ export default function ContactPage() {
       <section className="max-w-2xl mx-auto w-full">
         <Card className="yoga-card">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-column gap-6">
-            <Steps model={steps} activeIndex={activeStep} readOnly={false} className="mb-6" />
+            <Steps
+              model={steps}
+              activeIndex={activeStep}
+              readOnly={false}
+              className="mb-6 custom-steps"
+            />
 
             <div className="min-h-20rem">{renderStepContent()}</div>
 

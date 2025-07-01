@@ -34,12 +34,12 @@ export function StoryCard({ story, onClick }: StoryCardProps) {
   return (
     <Card className="h-full yoga-card cursor-pointer" onClick={() => onClick(story)}>
       <div className="text-center">
-        <div className="relative w-4rem h-4rem mx-auto mb-3">
+        <div className="relative mx-auto mb-3">
           {!imageLoaded && !imageError && (
-            <LoadingSkeleton type="image" className="w-4rem h-4rem border-round-full" />
+            <LoadingSkeleton type="image" className="icon-large soft-rounded" />
           )}
           {imageError && (
-            <div className="w-4rem h-4rem bg-light-tan border-round-full flex align-items-center justify-content-center sage-border">
+            <div className="icon-large bg-light-tan soft-rounded flex align-items-center justify-content-center sage-border">
               <i className="pi pi-book text-2xl text-sage"></i>
             </div>
           )}
@@ -47,9 +47,9 @@ export function StoryCard({ story, onClick }: StoryCardProps) {
             <Image
               src={getStoryIcon(story.id)}
               alt={`${story.title} icon`}
-              width={64}
-              height={64}
-              className={`w-4rem h-4rem object-contain border-round-full sage-border ${
+              width={48}
+              height={48}
+              className={`icon-large object-contain soft-rounded sage-border ${
                 imageLoaded ? 'block' : 'hidden'
               }`}
               onLoad={() => setImageLoaded(true)}

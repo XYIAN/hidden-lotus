@@ -60,22 +60,22 @@ export function ClassCard({ classData, onBook }: ClassCardProps) {
 
         {/* Category Icon */}
         <div className="flex justify-content-center mb-3">
-          <div className="relative w-4rem h-4rem">
+          <div className="relative">
             {!imageLoaded && !imageError && (
-              <LoadingSkeleton type="image" className="w-4rem h-4rem border-round" />
+              <LoadingSkeleton type="image" className="icon-xl soft-rounded" />
             )}
             {imageError && (
-              <div className="w-4rem h-4rem bg-light-tan border-round flex align-items-center justify-content-center">
-                <i className="pi pi-image text-2xl text-sage"></i>
+              <div className="icon-xl bg-light-tan soft-rounded flex align-items-center justify-content-center">
+                <i className="pi pi-image text-3xl text-sage"></i>
               </div>
             )}
             {!imageError && (
               <Image
                 src={getCategoryIcon(classData.category)}
                 alt={`${classData.category} icon`}
-                width={64}
-                height={64}
-                className={`w-4rem h-4rem object-contain border-round ${
+                width={80}
+                height={80}
+                className={`icon-xl object-contain soft-rounded ${
                   imageLoaded ? 'block' : 'hidden'
                 }`}
                 onLoad={() => setImageLoaded(true)}

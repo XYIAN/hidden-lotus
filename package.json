@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "lucide-react": "^0.525.0",
     "next": "^14.0.4",
     "primeflex": "^3.3.1",
     "primeicons": "^6.0.1",
@@ -23,6 +24,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.16",
     "eslint": "^8",
     "eslint-config-next": "^14.0.4",
     "postcss": "^8",

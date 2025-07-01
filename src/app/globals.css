@@ -17,6 +17,7 @@
   --secondary-brown: #a0522d;
   --earth-brown: #8b7355;
   --soft-sage: #8baa7a;
+  --olive-green: #9caa7a;
 }
 
 @theme inline {
@@ -27,15 +28,15 @@
 }
 
 body {
-  background-image: url('/bg-main.png');
-  background-size: 800px auto;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), 'Inter', Arial, Helvetica, sans-serif;
   min-height: 100vh;
+  background-image: url('/bg-main.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: var(--background);
   position: relative;
 }
 
@@ -51,22 +52,31 @@ header {
   z-index: 10;
 }
 
+/* Ensure background covers all edges properly */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /* Responsive background sizing to prevent stretching */
+@media (min-width: 768px) {
+  body {
+    background-size: cover;
+  }
+}
+
 @media (min-width: 1200px) {
   body {
-    background-size: 1200px auto;
+    background-size: cover;
   }
 }
 
 @media (min-width: 1600px) {
   body {
-    background-size: 1400px auto;
-  }
-}
-
-@media (min-width: 2000px) {
-  body {
-    background-size: 1600px auto;
+    background-size: cover;
   }
 }
 
@@ -130,7 +140,7 @@ header {
 .yoga-card {
   background: linear-gradient(135deg, var(--light-tan) 0%, #f0ede4 100%);
   border: 1px solid var(--soft-sage);
-  border-radius: 12px;
+  border-radius: 20px;
   transition: all 0.3s ease;
 }
 
@@ -142,11 +152,66 @@ header {
 /* Sage green accent borders */
 .sage-border {
   border: 2px solid var(--sage-green);
+  border-radius: 16px;
 }
 
 /* Pink accent highlights */
 .pink-accent {
   background: linear-gradient(135deg, var(--pastel-pink) 0%, #fbb6ce 100%);
+  border-radius: 16px;
+}
+
+/* Soft rounded styling for all components */
+.soft-rounded {
+  border-radius: 16px !important;
+}
+
+.soft-rounded-sm {
+  border-radius: 12px !important;
+}
+
+.soft-rounded-lg {
+  border-radius: 24px !important;
+}
+
+/* Icon containers - remove large borders and make icons larger */
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.icon-container:hover {
+  transform: scale(1.05);
+}
+
+/* Remove large icon wrappers and make icons more prominent */
+.icon-large {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 16px !important;
+}
+
+.icon-medium {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 12px !important;
+}
+
+.icon-small {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+}
+
+/* Extra large icons for classes and team */
+.icon-xl {
+  width: 80px !important;
+  height: 80px !important;
+  border-radius: 20px !important;
 }
 
 /* Loading skeleton styles */
@@ -163,4 +228,58 @@ header {
   100% {
     background-position: -200% 0;
   }
+}
+
+/* Custom Steps component styling */
+.custom-steps .p-steps .p-steps-item .p-menuitem-link {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.custom-steps .p-steps .p-steps-item .p-menuitem-link .p-steps-number {
+  background: var(--sage-green) !important;
+  color: white !important;
+  border: 2px solid var(--sage-green) !important;
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  border-radius: 50% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-steps .p-steps .p-steps-item.p-highlight .p-menuitem-link .p-steps-number {
+  background: var(--primary-green) !important;
+  border-color: var(--primary-green) !important;
+  transform: scale(1.1) !important;
+}
+
+.custom-steps .p-steps .p-steps-item.p-disabled .p-menuitem-link .p-steps-number {
+  background: var(--light-tan) !important;
+  border-color: var(--earth-brown) !important;
+  color: var(--earth-brown) !important;
+}
+
+.custom-steps .p-steps .p-steps-item .p-menuitem-link .p-steps-title {
+  color: var(--earth-brown) !important;
+  font-weight: 500 !important;
+  margin-top: 0.5rem !important;
+}
+
+.custom-steps .p-steps .p-steps-item.p-highlight .p-menuitem-link .p-steps-title {
+  color: var(--primary-green) !important;
+  font-weight: 600 !important;
+}
+
+.custom-steps .p-steps .p-steps-item.p-disabled .p-menuitem-link .p-steps-title {
+  color: var(--earth-brown) !important;
+  opacity: 0.6 !important;
+}
+
+.custom-steps .p-steps .p-steps-item .p-menuitem-link:focus {
+  box-shadow: 0 0 0 2px var(--pastel-pink) !important;
+  outline: none !important;
 }

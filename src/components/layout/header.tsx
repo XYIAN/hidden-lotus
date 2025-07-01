@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
 import Link from 'next/link';
+import Image from 'next/image';
+import { Flower2 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 const navigationItems = [
@@ -31,7 +33,13 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex align-items-center gap-2">
             <div className="bg-sage p-2 border-round">
-              <i className="pi pi-heart text-white text-xl"></i>
+              <Image
+                src="/icon-hl-3.png"
+                alt="Hidden Lotus"
+                width={24}
+                height={24}
+                className="object-contain"
+              />
             </div>
             <span className="text-xl font-bold text-primary-green">Hidden Lotus</span>
           </Link>
@@ -44,7 +52,7 @@ export function Header() {
                 href={item.href}
                 className={`text-decoration-none px-3 py-2 border-round transition-colors ${
                   isActive(item.href)
-                    ? 'bg-soft-sage text-sage font-medium'
+                    ? 'bg-olive-green text-white font-medium'
                     : 'text-earth-brown hover:bg-pastel-pink hover:text-secondary-brown'
                 }`}
               >
@@ -55,11 +63,12 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <Button
-            icon="pi pi-bars"
             onClick={() => setSidebarVisible(true)}
-            className="p-button-text p-button-rounded md:hidden bg-sage border-sage"
+            className="p-button-text p-button-rounded md:hidden bg-pastel-pink border-pastel-pink text-secondary-brown"
             aria-label="Open menu"
-          />
+          >
+            <Flower2 size={28} className="text-secondary-brown" />
+          </Button>
         </div>
       </header>
 
@@ -83,7 +92,7 @@ export function Header() {
               onClick={() => setSidebarVisible(false)}
               className={`text-decoration-none p-3 border-round transition-colors ${
                 isActive(item.href)
-                  ? 'bg-soft-sage text-sage font-medium'
+                  ? 'bg-olive-green text-white font-medium'
                   : 'text-earth-brown hover:bg-pastel-pink hover:text-secondary-brown'
               }`}
             >

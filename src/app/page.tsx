@@ -35,20 +35,20 @@ export default function HomePage() {
     <div className="flex flex-column gap-6 p-4">
       {/* Hero Section */}
       <section className="text-center py-8">
-        <div className="mb-6 flex flex-col items-center justify-content-center">
+        <div className="flex flex-column align-items-center justify-content-center gap-4">
           <Image
             src="/icon-hl-1.png"
             alt="Hidden Lotus Logo"
             width={160}
             height={160}
-            className="mx-auto rounded-full object-contain sage-border"
+            className="object-contain soft-rounded-lg"
             priority
             style={{ maxWidth: '160px', height: 'auto' }}
           />
-          <h1 className="text-4xl font-bold text-primary-green mb-4 mt-4">
+          <h1 className="text-3xl md:text-4xl font-bold text-primary-green mb-2">
             Welcome to Hidden Lotus
           </h1>
-          <p className="text-lg text-earth-brown max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-earth-brown max-w-2xl">
             Discover authentic wellness experiences in a peaceful environment. From yoga and
             meditation to reiki healing, we provide holistic approaches to your well-being journey.
           </p>
@@ -61,15 +61,13 @@ export default function HomePage() {
           {actionCards.map((card, index) => (
             <Card key={index} className="h-full yoga-card">
               <div className="text-center">
-                <div
-                  className={`${card.color} ${card.accent} p-3 border-round-full w-4rem h-4rem mx-auto mb-3 flex align-items-center justify-content-center`}
-                >
+                <div className="mx-auto mb-3 flex align-items-center justify-content-center">
                   <Image
                     src={card.icon}
                     alt={`${card.title} icon`}
-                    width={32}
-                    height={32}
-                    className="object-contain"
+                    width={48}
+                    height={48}
+                    className="object-contain icon-large"
                   />
                 </div>
                 <h3 className="text-xl font-semibold text-primary-green mb-2">{card.title}</h3>
@@ -90,7 +88,7 @@ export default function HomePage() {
 
       {/* Contact Section */}
       <section className="text-center py-8">
-        <div className="bg-light-tan/90 backdrop-blur-sm p-6 border-round sage-border">
+        <div className="bg-light-tan/90 backdrop-blur-sm p-6 soft-rounded sage-border">
           <h2 className="text-2xl font-semibold text-primary-green mb-3">
             Ready to Begin Your Journey?
           </h2>
