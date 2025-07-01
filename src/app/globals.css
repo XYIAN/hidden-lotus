@@ -1,0 +1,111 @@
+@import 'tailwindcss';
+@import 'primereact/resources/themes/lara-light-green/theme.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+
+:root {
+  --background: #f5f1e8;
+  --foreground: #2d3748;
+  --sage-green: #87a96b;
+  --brown-gold: #d69e2e;
+  --pastel-pink: #fbb6ce;
+  --light-tan: #f7f3e9;
+  --primary-green: #68d391;
+  --secondary-brown: #a0522d;
+  --earth-brown: #8b7355;
+  --soft-sage: #a8c090;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Custom utility classes for the earthy theme */
+.bg-sage {
+  background-color: var(--sage-green);
+}
+
+.bg-soft-sage {
+  background-color: var(--soft-sage);
+}
+
+.bg-brown-gold {
+  background-color: var(--brown-gold);
+}
+
+.bg-pastel-pink {
+  background-color: var(--pastel-pink);
+}
+
+.bg-light-tan {
+  background-color: var(--light-tan);
+}
+
+.bg-earth-brown {
+  background-color: var(--earth-brown);
+}
+
+.text-sage {
+  color: var(--sage-green);
+}
+
+.text-soft-sage {
+  color: var(--soft-sage);
+}
+
+.text-brown-gold {
+  color: var(--brown-gold);
+}
+
+.text-primary-green {
+  color: var(--primary-green);
+}
+
+.text-secondary-brown {
+  color: var(--secondary-brown);
+}
+
+.text-earth-brown {
+  color: var(--earth-brown);
+}
+
+/* Center all card grids */
+.card-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Enhanced yoga vibe styling */
+.yoga-card {
+  background: linear-gradient(135deg, var(--light-tan) 0%, #f0ede4 100%);
+  border: 1px solid var(--soft-sage);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.yoga-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(135, 169, 107, 0.15);
+}
+
+/* Sage green accent borders */
+.sage-border {
+  border: 2px solid var(--sage-green);
+}
+
+/* Pink accent highlights */
+.pink-accent {
+  background: linear-gradient(135deg, var(--pastel-pink) 0%, #fbb6ce 100%);
+}

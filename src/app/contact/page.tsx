@@ -1,0 +1,391 @@
+'use client';
+
+import { useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Steps } from 'primereact/steps';
+import { Card } from 'primereact/card';
+import { InputText } from 'primereact/inputtext';
+import { InputTextarea } from 'primereact/inputtextarea';
+import { Dropdown } from 'primereact/dropdown';
+import { Button } from 'primereact/button';
+import { Dialog } from 'primereact/dialog';
+import { Toast } from 'primereact/toast';
+import { useRef } from 'react';
+
+const contactSchema = z.object({
+	name: z.string().min(2, 'Name must be at least 2 characters'),
+	email: z.string().email('Please enter a valid email'),
+	phone: z.string().optional(),
+	subject: z.string().min(1, 'Please select a subject'),
+	message: z.string().min(10, 'Message must be at least 10 characters'),
+	preferredContact: z.string().min(1, 'Please select preferred contact method'),
+});
+
+type ContactFormData = z.infer<typeof contactSchema>;
+
+const subjects = [
+	{ label: 'General Inquiry', value: 'general' },
+	{ label: 'Class Booking', value: 'booking' },
+	{ label: 'Wellness Consultation', value: 'consultation' },
+	{ label: 'Partnership', value: 'partnership' },
+	{ label: 'Other', value: 'other' },
+];
+
+const contactMethods = [
+	{ label: 'Email', value: 'email' },
+	{ label: 'Phone', value: 'phone' },
+	{ label: 'Text', value: 'text' },
+];
+
+const steps = [
+	{ label: 'Personal Info' },
+	{ label: 'Message Details' },
+	{ label: 'Review & Submit' },
+];
+
+export default function ContactPage() {
+	const [activeStep, setActiveStep] = useState(0);
+	const [showSuccessDialog, setShowSuccessDialog] = useState(false);
+	const [formData, setFormData] = useState<ContactFormData | null>(null);
+	const toast = useRef<Toast>(null);
+
+	const {
+		control,
+		handleSubmit,
+		watch,
+		formState: { errors, isValid },
+	} = useForm<ContactFormData>({
+		resolver: zodResolver(contactSchema),
+		mode: 'onChange',
+	});
+
+	const watchedValues = watch();
+
+	const handleNext = () => {
+		if (activeStep < steps.length - 1) {
+			setActiveStep(activeStep + 1);
+		}
+	};
+
+	const handlePrev = () => {
+		if (activeStep > 0) {
+			setActiveStep(activeStep - 1);
+		}
+	};
+
+	const onSubmit = (data: ContactFormData) => {
+		setFormData(data);
+		setShowSuccessDialog(true);
+		
+		// Simulate confetti effect
+		if (toast.current) {
+			toast.current.show({
+				severity: 'success',
+				summary: 'Success!',
+				detail: 'Your message has been sent successfully!',
+				life: 3000,
+			});
+		}
+	};
+
+	const renderStepContent = () => {
+		switch (activeStep) {
+			case 0:
+				return (
+					<div className="flex flex-column gap-4">
+						<div className="flex flex-column gap-2">
+							<label htmlFor="name" className="text-sm font-medium text-gray-700">
+								Full Name *
+							</label>
+							<Controller
+								name="name"
+								control={control}
+								render={({ field }) => (
+									<InputText
+										id="name"
+										{...field}
+										className={errors.name ? 'p-invalid' : ''}
+										placeholder="Enter your full name"
+									/>
+								)}
+							/>
+							{errors.name && (
+								<small className="p-error">{errors.name.message}</small>
+							)}
+						</div>
+
+						<div className="flex flex-column gap-2">
+							<label htmlFor="email" className="text-sm font-medium text-gray-700">
+								Email Address *
+							</label>
+							<Controller
+								name="email"
+								control={control}
+								render={({ field }) => (
+									<InputText
+										id="email"
+										{...field}
+										type="email"
+										className={errors.email ? 'p-invalid' : ''}
+										placeholder="Enter your email address"
+									/>
+								)}
+							/>
+							{errors.email && (
+								<small className="p-error">{errors.email.message}</small>
+							)}
+						</div>
+
+						<div className="flex flex-column gap-2">
+							<label htmlFor="phone" className="text-sm font-medium text-gray-700">
+								Phone Number
+							</label>
+							<Controller
+								name="phone"
+								control={control}
+								render={({ field }) => (
+									<InputText
+										id="phone"
+										{...field}
+										placeholder="Enter your phone number (optional)"
+									/>
+								)}
+							/>
+						</div>
+					</div>
+				);
+
+			case 1:
+				return (
+					<div className="flex flex-column gap-4">
+						<div className="flex flex-column gap-2">
+							<label htmlFor="subject" className="text-sm font-medium text-gray-700">
+								Subject *
+							</label>
+							<Controller
+								name="subject"
+								control={control}
+								render={({ field }) => (
+									<Dropdown
+										id="subject"
+										{...field}
+										options={subjects}
+										placeholder="Select a subject"
+										className={errors.subject ? 'p-invalid' : ''}
+									/>
+								)}
+							/>
+							{errors.subject && (
+								<small className="p-error">{errors.subject.message}</small>
+							)}
+						</div>
+
+						<div className="flex flex-column gap-2">
+							<label htmlFor="message" className="text-sm font-medium text-gray-700">
+								Message *
+							</label>
+							<Controller
+								name="message"
+								control={control}
+								render={({ field }) => (
+									<InputTextarea
+										id="message"
+										{...field}
+										rows={5}
+										className={errors.message ? 'p-invalid' : ''}
+										placeholder="Tell us how we can help you..."
+									/>
+								)}
+							/>
+							{errors.message && (
+								<small className="p-error">{errors.message.message}</small>
+							)}
+						</div>
+
+						<div className="flex flex-column gap-2">
+							<label htmlFor="preferredContact" className="text-sm font-medium text-gray-700">
+								Preferred Contact Method *
+							</label>
+							<Controller
+								name="preferredContact"
+								control={control}
+								render={({ field }) => (
+									<Dropdown
+										id="preferredContact"
+										{...field}
+										options={contactMethods}
+										placeholder="Select preferred contact method"
+										className={errors.preferredContact ? 'p-invalid' : ''}
+									/>
+								)}
+							/>
+							{errors.preferredContact && (
+								<small className="p-error">{errors.preferredContact.message}</small>
+							)}
+						</div>
+					</div>
+				);
+
+			case 2:
+				return (
+					<div className="flex flex-column gap-4">
+						<h3 className="text-xl font-semibold text-primary-green mb-3">
+							Review Your Information
+						</h3>
+						<div className="bg-light-tan p-4 border-round">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+								<div>
+									<p className="text-sm font-medium text-gray-700">Name:</p>
+									<p className="text-gray-900">{watchedValues.name}</p>
+								</div>
+								<div>
+									<p className="text-sm font-medium text-gray-700">Email:</p>
+									<p className="text-gray-900">{watchedValues.email}</p>
+								</div>
+								<div>
+									<p className="text-sm font-medium text-gray-700">Phone:</p>
+									<p className="text-gray-900">{watchedValues.phone || 'Not provided'}</p>
+								</div>
+								<div>
+									<p className="text-sm font-medium text-gray-700">Subject:</p>
+									<p className="text-gray-900">
+										{subjects.find(s => s.value === watchedValues.subject)?.label}
+									</p>
+								</div>
+								<div className="md:col-span-2">
+									<p className="text-sm font-medium text-gray-700">Message:</p>
+									<p className="text-gray-900">{watchedValues.message}</p>
+								</div>
+								<div>
+									<p className="text-sm font-medium text-gray-700">Preferred Contact:</p>
+									<p className="text-gray-900">
+										{contactMethods.find(c => c.value === watchedValues.preferredContact)?.label}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				);
+
+			default:
+				return null;
+		}
+	};
+
+	return (
+		<div className="flex flex-column gap-6 p-4">
+			<Toast ref={toast} />
+
+			{/* Page Header */}
+			<section className="text-center py-6">
+				<h1 className="text-3xl font-bold text-primary-green mb-2">
+					Contact Us
+				</h1>
+				<p className="text-gray-600">
+					Get in touch with us to start your wellness journey.
+				</p>
+			</section>
+
+			{/* Contact Form */}
+			<section className="max-w-2xl mx-auto w-full">
+				<Card>
+					<form onSubmit={handleSubmit(onSubmit)} className="flex flex-column gap-6">
+						<Steps
+							model={steps}
+							activeIndex={activeStep}
+							readOnly={false}
+							className="mb-6"
+						/>
+
+						<div className="min-h-20rem">
+							{renderStepContent()}
+						</div>
+
+						<div className="flex justify-content-between">
+							<Button
+								type="button"
+								label="Previous"
+								icon="pi pi-chevron-left"
+								onClick={handlePrev}
+								disabled={activeStep === 0}
+								className="p-button-outlined"
+							/>
+							{activeStep < steps.length - 1 ? (
+								<Button
+									type="button"
+									label="Next"
+									icon="pi pi-chevron-right"
+									iconPos="right"
+									onClick={handleNext}
+									disabled={!isValid}
+								/>
+							) : (
+								<Button
+									type="submit"
+									label="Submit"
+									icon="pi pi-send"
+									iconPos="right"
+									disabled={!isValid}
+								/>
+							)}
+						</div>
+					</form>
+				</Card>
+			</section>
+
+			{/* Calendly Section */}
+			<section className="max-w-4xl mx-auto w-full">
+				<div className="bg-light-tan p-8 border-round text-center">
+					<h2 className="text-2xl font-semibold text-primary-green mb-4">
+						Schedule a Consultation
+					</h2>
+					<p className="text-gray-600 mb-4">
+						Ready to take the next step? Schedule a personalized consultation with our wellness experts.
+					</p>
+					<div className="bg-white p-8 border-round">
+						<p className="text-gray-500 text-lg">
+							Calendly could go here
+						</p>
+					</div>
+				</div>
+			</section>
+
+			{/* Success Dialog */}
+			<Dialog
+				visible={showSuccessDialog}
+				onHide={() => setShowSuccessDialog(false)}
+				header="Message Sent Successfully!"
+				className="w-90vw md:w-40rem"
+				footer={
+					<div className="flex justify-content-end">
+						<Button
+							label="Close"
+							icon="pi pi-check"
+							onClick={() => setShowSuccessDialog(false)}
+							autoFocus
+						/>
+					</div>
+				}
+			>
+				<div className="p-4">
+					<p className="text-lg mb-4">
+						Thank you for reaching out to Hidden Lotus! We&apos;ve received your message and will get back to you soon.
+					</p>
+					{formData && (
+						<div className="bg-light-tan p-4 border-round">
+							<h4 className="font-semibold text-primary-green mb-2">Submitted Information:</h4>
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+								<div><strong>Name:</strong> {formData.name}</div>
+								<div><strong>Email:</strong> {formData.email}</div>
+								<div><strong>Subject:</strong> {subjects.find(s => s.value === formData.subject)?.label}</div>
+								<div><strong>Contact Method:</strong> {contactMethods.find(c => c.value === formData.preferredContact)?.label}</div>
+							</div>
+						</div>
+					)}
+				</div>
+			</Dialog>
+		</div>
+	);
+} 
