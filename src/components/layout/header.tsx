@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation'
 import '@/styles/header.css'
 import { LotusMenuBar } from './lotus-menu-bar'
 import { SidebarHeader } from './sidebar-header'
+import { FaSpa } from 'react-icons/fa'
 
 const navigationItems = [
 	{ label: 'Home', href: '/' },
@@ -96,12 +97,17 @@ export function Header() {
 						</span>
 					</Link>
 					<Button
-						icon="pi pi-heart"
 						onClick={() => setSidebarVisible(true)}
-						className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white ml-auto"
-						style={{ zIndex: 60, visibility: 'visible', opacity: 1 }}
+						outlined
+						className=" border-primary-green text-primary-green hover:bg-primary-green hover:text-pink ml-auto p-0 m-0"
+						style={{
+							padding: '0',
+							margin: '0',
+						}}
 						aria-label="Open menu"
-					/>
+					>
+						<FaSpa className="text-primary-green" size={25} />
+					</Button>
 				</div>
 			</header>
 

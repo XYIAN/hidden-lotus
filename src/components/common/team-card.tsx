@@ -46,6 +46,7 @@ export function TeamCard({ member }: TeamCardProps) {
 		<Button
 			label="Learn More"
 			icon="pi pi-info-circle"
+			iconPos="right"
 			onClick={() =>
 				(window.location.href = `/team/${encodeURIComponent(member.name)}`)
 			}

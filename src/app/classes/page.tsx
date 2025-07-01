@@ -13,7 +13,7 @@ import { ClassCard } from '@/components/common/class-card'
 import { classesData, Class } from '@/constants/classes'
 import { useRef } from 'react'
 import '@/styles/animations.css'
-import { CardGrid, DisplayCard } from '@/components/common'
+import { CardGrid, DisplayCard, FilterPanel } from '@/components/common'
 
 interface FilterForm {
 	searchTerm: string
@@ -121,8 +121,14 @@ export default function ClassesPage() {
 
 			{/* Filters Section */}
 			<section className="max-w-6xl mx-auto w-full">
-				<Card className="yoga-card p-6 mb-6">
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+				<FilterPanel
+					title="Filter Classes"
+					collapsed={true}
+					onClear={clearFilters}
+					clearDisabled={!searchTerm && !selectedCategory && !selectedLevel}
+					className="mb-6"
+				>
+					<div className="flex flex-column gap-4">
 						<div className="flex flex-column gap-2">
 							<label
 								htmlFor="search"
@@ -192,18 +198,7 @@ export default function ClassesPage() {
 							/>
 						</div>
 					</div>
-
-					{/* Clear Filters Button - Always at bottom */}
-					<div className="flex justify-content-center mt-6">
-						<Button
-							label="Clear All Filters"
-							icon="pi pi-refresh"
-							onClick={clearFilters}
-							className="bg-sage-green-600 border-sage-green-600"
-							disabled={!searchTerm && !selectedCategory && !selectedLevel}
-						/>
-					</div>
-				</Card>
+				</FilterPanel>
 
 				{/* Results Count */}
 				<div className="flex justify-content-between align-items-center mb-4">
@@ -290,6 +285,7 @@ export default function ClassesPage() {
 						<Button
 							label="Clear All Filters"
 							icon="pi pi-refresh"
+							iconPos="right"
 							onClick={clearFilters}
 							className="bg-sage-green-600 border-sage-green-600"
 						/>

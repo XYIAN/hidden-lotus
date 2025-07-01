@@ -150,6 +150,7 @@ export function ClassCard({ classData, className = '' }: ClassCardProps) {
 							<Button
 								label="Book Now"
 								icon="pi pi-calendar-plus"
+								iconPos="right"
 								className="bg-pastel-pink border-pastel-pink text-secondary-brown button-pulse"
 								style={{ minWidth: '120px' }}
 							/>

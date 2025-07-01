@@ -1,0 +1,20 @@
+/* Override PrimeReact Panel content background */
+.filter-panel .p-panel-content {
+	background: transparent !important;
+	padding: 0.5rem !important;
+}
+
+/* Remove background from header and footer */
+.filter-panel .p-panel-header {
+	background: transparent !important;
+}
+
+.filter-panel .p-panel-footer {
+	background: transparent !important;
+	padding: 0.25rem !important;
+}
+
+/* Optional: Change to tan color globally for all panels */
+.p-panel-content {
+	background: var(--light-tan) !important;
+}

@@ -45,7 +45,7 @@ interface DisplayCardProps
 	showDescription?: boolean
 	showLearnMore?: boolean
 	learnMoreText?: string
-	aspectRatio?: string
+	cardSize?: 'small' | 'medium' | 'large'
 	className?: string
 }
 
@@ -65,12 +65,25 @@ export function DisplayCard({
 	showDescription = true,
 	showLearnMore = true,
 	learnMoreText = 'Learn More',
-	aspectRatio = 'aspect-[4/5] md:aspect-[3/4] sm:aspect-[1/1]',
+	cardSize = 'medium',
 	className = '',
 	...cardProps
 }: DisplayCardProps) {
 	const [imageLoaded, setImageLoaded] = useState(false)
 	const [imageError, setImageError] = useState(false)
+
+	// Fixed card dimensions based on size
+	const getCardDimensions = () => {
+		switch (cardSize) {
+			case 'small':
+				return 'w-64 h-80' // 256px x 320px
+			case 'large':
+				return 'w-80 h-96' // 320px x 384px
+			case 'medium':
+			default:
+				return 'w-72 h-88' // 288px x 352px
+		}
+	}
 
 	const getTypeColor = (type: string) => {
 		switch (type?.toLowerCase()) {
@@ -119,6 +132,7 @@ export function DisplayCard({
 		<Button
 			label={learnMoreText}
 			icon="pi pi-info-circle"
+			iconPos="right"
 			onClick={handleCardClick}
 			className="p-button-sm bg-soft-sage border-soft-sage"
 		/>
@@ -128,15 +142,13 @@ export function DisplayCard({
 	const subtitle = data.profession || data.credentials
 
 	return (
-		<div
-			className={`${aspectRatio} w-full max-w-xs md:max-w-sm lg:max-w-md mx-auto flex ${className}`}
-		>
+		<div className={`${getCardDimensions()} mx-auto ${className}`}>
 			<Card
 				className="yoga-card w-full h-full flex flex-col"
 				footer={footer}
 				{...cardProps}
 			>
-				<div className="text-center">
+				<div className="text-center h-full flex flex-col justify-center">
 					{/* Image Section */}
 					{showImage && (data.image || data.fallbackIcon) && (
 						<div className="flex justify-content-center mb-2">

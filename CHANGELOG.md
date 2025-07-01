@@ -5,6 +5,24 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.4] - 2024-12-19
+
+### Changed
+
+- **Card Sizing**: Replaced aspect ratio-based sizing with fixed dimensions for consistent card appearance
+- **DisplayCard Component**: Updated to use fixed width and height instead of responsive aspect ratios
+- **Card Dimensions**: Implemented three size options: small (256×320px), medium (288×352px), large (320×384px)
+- **Grid Layout**: All cards now have consistent sizing across team, class, story, and MOR pages
+- **CSS Updates**: Enhanced yoga-card styling with proper width/height constraints and flex behavior
+
+### Technical
+
+- Replaced `aspectRatio` prop with `cardSize` prop in DisplayCard component
+- Added `getCardDimensions()` function for consistent sizing logic
+- Updated card container to use fixed Tailwind classes instead of aspect ratios
+- Enhanced card content layout with proper flex centering
+- Improved CSS for consistent card behavior across all screen sizes
+
 ## [0.9.3] - 2024-12-19
 
 ### Changed

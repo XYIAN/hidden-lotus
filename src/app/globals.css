@@ -164,9 +164,11 @@ body {
 	border-radius: 20px;
 	transition: all 0.3s ease;
 	height: 100%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	text-align: center;
+	min-height: 0;
 }
 
 .yoga-card:hover {
@@ -180,9 +182,6 @@ body {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
 }
 
 .yoga-card .p-card-content {
@@ -190,9 +189,6 @@ body {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	text-align: center;
 }
 
 .yoga-card p {
