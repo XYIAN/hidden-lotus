@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /privacy
 Disallow: /terms
 Allow: /
-Sitemap: https://hiddenlotus.com/sitemap.xml 
+Sitemap: https://hidden-lotus.netlify.app/sitemap.xml 

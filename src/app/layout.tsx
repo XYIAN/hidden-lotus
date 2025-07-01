@@ -21,11 +21,12 @@ export const metadata: Metadata = {
   description:
     'Discover authentic wellness experiences with Hidden Lotus. Yoga, Reiki, and holistic healing in a peaceful environment.',
   keywords: 'wellness, yoga, reiki, healing, meditation, mindfulness',
+  metadataBase: new URL('https://hidden-lotus.netlify.app'),
   openGraph: {
     title: 'Hidden Lotus - Wellness & Healing',
     description:
       'Discover authentic wellness experiences with Hidden Lotus. Yoga, Reiki, and holistic healing in a peaceful environment.',
-    url: 'https://hiddenlotus.com',
+    url: 'https://hidden-lotus.netlify.app',
     images: [
       {
         url: '/og-image.png',
