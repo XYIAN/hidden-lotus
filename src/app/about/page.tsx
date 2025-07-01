@@ -3,7 +3,6 @@
 import { Carousel } from 'primereact/carousel';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
-import type { Metadata } from 'next';
 
 const carouselItems = [
   {
@@ -39,32 +38,6 @@ interface CarouselItem {
   content: string;
   videoUrl?: string;
 }
-
-export const metadata: Metadata = {
-  title: 'About Hidden Lotus | Our Mission & Community',
-  description:
-    'Learn about the mission, values, and community of Hidden Lotus. Discover our holistic approach to wellness and healing in Irvine, CA.',
-  openGraph: {
-    title: 'About Hidden Lotus | Our Mission & Community',
-    description:
-      'Learn about the mission, values, and community of Hidden Lotus. Discover our holistic approach to wellness and healing in Irvine, CA.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Hidden Lotus Logo',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'About Hidden Lotus | Our Mission & Community',
-    description:
-      'Learn about the mission, values, and community of Hidden Lotus. Discover our holistic approach to wellness and healing in Irvine, CA.',
-    images: ['/og-image.png'],
-  },
-};
 
 export default function AboutPage() {
   const carouselTemplate = (item: CarouselItem) => (

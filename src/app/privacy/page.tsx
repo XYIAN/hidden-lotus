@@ -96,7 +96,7 @@ export default function PrivacyPage() {
 
       {/* Additional Information */}
       <section className="max-w-4xl mx-auto w-full">
-        <div className="bg-light-tan p-6 border-round sage-border">
+        <div className="bg-light-tan/90 backdrop-blur-sm p-6 border-round sage-border">
           <h2 className="text-2xl font-semibold text-primary-green mb-4 text-center">
             Additional Information
           </h2>

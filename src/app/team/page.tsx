@@ -5,7 +5,6 @@ import { ButtonGroup } from 'primereact/buttongroup';
 import { Button } from 'primereact/button';
 import { TeamCard } from '@/components/ui/team-card';
 import { teamData } from '@/lib/data';
-import type { Metadata } from 'next';
 
 const filterOptions = [
   { label: 'All', value: '' },
@@ -13,32 +12,6 @@ const filterOptions = [
   { label: 'Admin', value: 'admin' },
   { label: 'Board', value: 'board' },
 ];
-
-export const metadata: Metadata = {
-  title: 'Our Team | Instructors & Wellness Experts | Hidden Lotus',
-  description:
-    'Meet the dedicated team of instructors and wellness professionals at Hidden Lotus. Learn about their backgrounds and expertise.',
-  openGraph: {
-    title: 'Our Team | Instructors & Wellness Experts | Hidden Lotus',
-    description:
-      'Meet the dedicated team of instructors and wellness professionals at Hidden Lotus. Learn about their backgrounds and expertise.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Hidden Lotus Logo',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Our Team | Instructors & Wellness Experts | Hidden Lotus',
-    description:
-      'Meet the dedicated team of instructors and wellness professionals at Hidden Lotus. Learn about their backgrounds and expertise.',
-    images: ['/og-image.png'],
-  },
-};
 
 export default function TeamPage() {
   const [selectedFilter, setSelectedFilter] = useState('');

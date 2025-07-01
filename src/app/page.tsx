@@ -90,7 +90,7 @@ export default function HomePage() {
 
       {/* Contact Section */}
       <section className="text-center py-8">
-        <div className="bg-light-tan p-6 border-round sage-border">
+        <div className="bg-light-tan/90 backdrop-blur-sm p-6 border-round sage-border">
           <h2 className="text-2xl font-semibold text-primary-green mb-3">
             Ready to Begin Your Journey?
           </h2>

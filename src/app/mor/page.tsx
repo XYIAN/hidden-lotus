@@ -87,7 +87,7 @@ export default function MorPage() {
 
       {/* Mission Statement */}
       <section className="max-w-4xl mx-auto w-full">
-        <div className="bg-light-tan p-6 border-round text-center sage-border">
+        <div className="bg-light-tan/90 backdrop-blur-sm p-6 border-round text-center sage-border">
           <h2 className="text-2xl font-semibold text-primary-green mb-4">Our Mission</h2>
           <p className="text-lg text-earth-brown leading-relaxed">
             At Hidden Lotus, we believe that true wellness comes from the harmonious integration of

@@ -26,7 +26,7 @@ export function Header() {
 
   return (
     <>
-      <header className="bg-light-tan shadow-sm sage-border">
+      <header className="bg-light-tan/80 backdrop-blur-sm shadow-sm sage-border">
         <div className="flex justify-content-between align-items-center p-4 max-w-7xl mx-auto">
           {/* Logo */}
           <Link href="/" className="flex align-items-center gap-2">

@@ -31,9 +31,23 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: var(--font-sans), 'Inter', Arial, Helvetica, sans-serif;
   min-height: 100vh;
+  position: relative;
+}
+
+/* Ensure the main content doesn't override the background */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure header stays above background but allows it to show through */
+header {
+  position: relative;
+  z-index: 10;
 }
 
 /* Custom utility classes for the earthy theme */
