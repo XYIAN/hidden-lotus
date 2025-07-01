@@ -5,7 +5,45 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.9.1] - 2024-01-15
+## [0.9.3] - 2024-12-19
+
+### Changed
+
+- **Contact Form Stepper**: Replaced Steps component with proper Stepper and StepperPanel components
+- **Vertical Orientation**: Contact form now uses vertical stepper orientation for better mobile experience
+- **Theme Integration**: Added custom CSS styling for stepper to match Hidden Lotus theme colors
+- **Form Structure**: Improved form layout with proper panel-based navigation
+- **Button Styling**: Updated stepper navigation buttons with theme-appropriate colors
+
+### Technical
+
+- Updated contact form to use PrimeReact Stepper component instead of Steps
+- Added custom stepper CSS with sage green, pastel pink, and earth brown color scheme
+- Improved mobile responsiveness for stepper component
+- Enhanced form validation and user experience
+
+## [0.9.2] - 2024-12-19
+
+### Added
+
+- Sticky/fixed header: header and hamburger menu are always visible at the top
+- Custom 404/Not Found page with logo, helpful links, and navigation
+- Story cards: single column, fixed larger size, always centered
+- SEO: Improved global metadata, OpenGraph, Twitter, robots, and 404 page SEO
+
+### Changed
+
+- Team card image is now perfectly centered
+- Learn More button is always at the bottom of the team card
+- All team cards and story cards have consistent sizing and spacing
+- Story data moved to `src/constants/stories.ts`
+
+### Fixed
+
+- No layout changes to Home page
+- All navigation and sidebar remain accessible and sticky
+
+## [0.9.1] - 2024-12-19
 
 ### Added
 
@@ -31,7 +69,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Component imports updated to use new constants structure
 - Type safety improvements across all components
 
-## [0.9.0] - 2024-01-15
+## [0.9.0] - 2024-12-19
 
 ### Added
 
@@ -171,44 +209,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **React Hook Form**: Form handling with Zod validation
 - **Responsive Design**: Mobile-first approach with breakpoint optimization
 - **SEO Ready**: Proper meta tags, sitemap, and semantic HTML structure
-
-## [0.9.2] - 2024-01-15
-
-### Added
-
-- Sticky/fixed header: header and hamburger menu are always visible at the top
-- Custom 404/Not Found page with logo, helpful links, and navigation
-- Story cards: single column, fixed larger size, always centered
-- SEO: Improved global metadata, OpenGraph, Twitter, robots, and 404 page SEO
-
-### Changed
-
-- Team card image is now perfectly centered
-- Learn More button is always at the bottom of the team card
-- All team cards and story cards have consistent sizing and spacing
-- Story data moved to `src/constants/stories.ts`
-
-### Fixed
-
-- No layout changes to Home page
-- All navigation and sidebar remain accessible and sticky
-
-## [0.9.3] - 2024-12-19
-
-### Changed
-
-- **Contact Form Stepper**: Replaced Steps component with proper Stepper and StepperPanel components
-- **Vertical Orientation**: Contact form now uses vertical stepper orientation for better mobile experience
-- **Theme Integration**: Added custom CSS styling for stepper to match Hidden Lotus theme colors
-- **Form Structure**: Improved form layout with proper panel-based navigation
-- **Button Styling**: Updated stepper navigation buttons with theme-appropriate colors
-
-### Technical
-
-- Updated contact form to use PrimeReact Stepper component instead of Steps
-- Added custom stepper CSS with sage green, pastel pink, and earth brown color scheme
-- Improved mobile responsiveness for stepper component
-- Enhanced form validation and user experience
 
 ## [1.0.0] - 2024-01-15
 

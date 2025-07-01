@@ -33,11 +33,12 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex align-items-center gap-3">
             <Image
-              src="/icon-hl-3.png"
+              src="/icon-hl-1.png"
               alt="Hidden Lotus"
-              width={40}
-              height={40}
-              className="object-contain soft-rounded"
+              width={200}
+              height={60}
+              className="max-w-[200px] h-auto object-contain rounded-lg"
+              priority
             />
             <span className="text-xl font-bold text-primary-green">Hidden Lotus</span>
           </Link>
@@ -61,12 +62,11 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <Button
+            icon={<Flower2 size={20} />}
             onClick={() => setSidebarVisible(true)}
-            className="p-button-text p-button-rounded md:hidden bg-pastel-pink border-pastel-pink text-secondary-brown"
-            aria-label="Open menu"
-          >
-            <Flower2 size={28} className="text-secondary-brown" />
-          </Button>
+            className="p-button-text p-button-rounded p-button-sm border-none bg-transparent text-primary-green hover:bg-sage-green-200/50"
+            aria-label="Menu"
+          />
         </div>
       </header>
 
@@ -74,8 +74,8 @@ export function Header() {
       <Sidebar
         visible={sidebarVisible}
         onHide={() => setSidebarVisible(false)}
-        position="right"
-        className="w-20rem"
+        className="w-80 bg-light-tan/90 backdrop-blur-md border-r border-sage-green-200"
+        showCloseIcon={false}
       >
         <div className="flex flex-column gap-2">
           <div className="text-center mb-4">

@@ -239,66 +239,64 @@ export default function ContactPage() {
       />
 
       {/* Contact Form */}
-      <section className="max-w-4xl mx-auto w-full">
-        <Card className="yoga-card p-4">
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <Stepper ref={stepperRef} orientation="vertical" className="custom-stepper">
-              <StepperPanel header="Personal Information">
-                <div className="flex flex-column gap-4">{renderPersonalInfo()}</div>
-                <div className="flex py-4">
-                  <Button
-                    label="Next"
-                    icon="pi pi-arrow-right"
-                    iconPos="right"
-                    onClick={() => stepperRef.current?.nextCallback()}
-                    className="bg-sage-green-600 border-sage-green-600"
-                  />
-                </div>
-              </StepperPanel>
+      <>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Stepper ref={stepperRef} orientation="vertical" className="custom-stepper">
+            <StepperPanel header="Personal Information">
+              <div className="flex flex-column gap-4">{renderPersonalInfo()}</div>
+              <div className="flex py-4">
+                <Button
+                  label="Next"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                  onClick={() => stepperRef.current?.nextCallback()}
+                  className="bg-sage-green-600 border-sage-green-600"
+                />
+              </div>
+            </StepperPanel>
 
-              <StepperPanel header="Message Details">
-                <div className="flex flex-column gap-4">{renderMessageDetails()}</div>
-                <div className="flex py-4 gap-2">
-                  <Button
-                    label="Back"
-                    severity="secondary"
-                    icon="pi pi-arrow-left"
-                    onClick={() => stepperRef.current?.prevCallback()}
-                    className="border-sage text-sage"
-                  />
-                  <Button
-                    label="Next"
-                    icon="pi pi-arrow-right"
-                    iconPos="right"
-                    onClick={() => stepperRef.current?.nextCallback()}
-                    className="bg-sage-green-600 border-sage-green-600"
-                  />
-                </div>
-              </StepperPanel>
+            <StepperPanel header="Message Details">
+              <div className="flex flex-column gap-4">{renderMessageDetails()}</div>
+              <div className="flex py-4 gap-2">
+                <Button
+                  label="Back"
+                  severity="secondary"
+                  icon="pi pi-arrow-left"
+                  onClick={() => stepperRef.current?.prevCallback()}
+                  className="border-sage text-sage"
+                />
+                <Button
+                  label="Next"
+                  icon="pi pi-arrow-right"
+                  iconPos="right"
+                  onClick={() => stepperRef.current?.nextCallback()}
+                  className="bg-sage-green-600 border-sage-green-600"
+                />
+              </div>
+            </StepperPanel>
 
-              <StepperPanel header="Review & Submit">
-                <div className="flex flex-column gap-4">{renderReview()}</div>
-                <div className="flex py-4 gap-2">
-                  <Button
-                    label="Back"
-                    severity="secondary"
-                    icon="pi pi-arrow-left"
-                    onClick={() => stepperRef.current?.prevCallback()}
-                    className="border-sage text-sage"
-                  />
-                  <Button
-                    type="submit"
-                    label="Submit"
-                    icon="pi pi-check"
-                    className="bg-pastel-pink border-pastel-pink text-secondary-brown"
-                    disabled={!isValid}
-                  />
-                </div>
-              </StepperPanel>
-            </Stepper>
-          </form>
-        </Card>
-      </section>
+            <StepperPanel header="Review & Submit">
+              <div className="flex flex-column gap-4">{renderReview()}</div>
+              <div className="flex py-4 gap-2">
+                <Button
+                  label="Back"
+                  severity="secondary"
+                  icon="pi pi-arrow-left"
+                  onClick={() => stepperRef.current?.prevCallback()}
+                  className="border-sage text-sage"
+                />
+                <Button
+                  type="submit"
+                  label="Submit"
+                  icon="pi pi-check"
+                  className="bg-pastel-pink border-pastel-pink text-secondary-brown"
+                  disabled={!isValid}
+                />
+              </div>
+            </StepperPanel>
+          </Stepper>
+        </form>
+      </>
 
       {/* Success Dialog */}
       <Dialog

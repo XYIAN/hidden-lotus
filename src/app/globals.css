@@ -388,7 +388,7 @@ body {
 .custom-stepper .p-stepper-header {
   background: transparent;
   border: none;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
 }
 
 .custom-stepper .p-stepper-header .p-stepper-number {
@@ -425,25 +425,31 @@ body {
 }
 
 .custom-stepper .p-stepper-content {
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   border-left: 2px solid var(--sage-green-200);
   margin-left: 1.25rem;
-  padding-left: 2rem;
+  padding-left: 1.5rem;
 }
 
 .custom-stepper .p-stepper-panel {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .custom-stepper .p-stepper-panel:last-child .p-stepper-content {
   border-left: none;
 }
 
+/* Override p-stepper-toggleable-content */
+.custom-stepper .p-stepper-toggleable-content {
+  padding: 0.75rem !important;
+  margin: 0.5rem 0 !important;
+}
+
 /* Mobile adjustments for stepper */
 @media (max-width: 768px) {
   .custom-stepper .p-stepper-content {
     margin-left: 0.75rem;
-    padding-left: 1.5rem;
+    padding-left: 1rem;
   }
 
   .custom-stepper .p-stepper-header .p-stepper-number {
@@ -454,5 +460,10 @@ body {
 
   .custom-stepper .p-stepper-title {
     font-size: 1rem;
+  }
+
+  .custom-stepper .p-stepper-toggleable-content {
+    padding: 0.5rem !important;
+    margin: 0.25rem 0 !important;
   }
 }
