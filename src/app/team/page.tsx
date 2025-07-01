@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { ButtonGroup } from 'primereact/buttongroup';
 import { Button } from 'primereact/button';
 import { TeamCard } from '@/components/ui/team-card';
-import { teamData } from '@/lib/data';
+import { teamData } from '@/constants/team';
 
 const filterOptions = [
   { label: 'All', value: '' },

@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { StoryCard } from '@/components/ui/story-card';
-import { storiesData, Story } from '@/lib/data';
+import { HeroSection } from '@/components/ui/hero-section';
+import { storiesData, Story } from '@/constants/stories';
 
 export default function StoryPage() {
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);
@@ -23,16 +24,14 @@ export default function StoryPage() {
   return (
     <div className="flex flex-column gap-6 p-4">
       {/* Page Header */}
-      <section className="text-center py-6">
-        <h1 className="text-3xl font-bold text-primary-green mb-2">Our Story</h1>
-        <p className="text-earth-brown">
-          Discover the journey and transformation stories of Hidden Lotus.
-        </p>
-      </section>
+      <HeroSection
+        title="Our Story"
+        description="Discover the journey and transformation stories of Hidden Lotus."
+      />
 
       {/* Stories Grid */}
-      <section className="max-w-4xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-content-center">
+      <section className="max-w-2xl mx-auto w-full">
+        <div className="flex flex-column gap-6">
           {storiesData.map(story => (
             <StoryCard key={story.id} story={story} onClick={handleStoryClick} />
           ))}

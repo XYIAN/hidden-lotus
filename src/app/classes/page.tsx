@@ -5,7 +5,8 @@ import { Carousel } from 'primereact/carousel';
 import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { ClassCard } from '@/components/ui/class-card';
-import { classesData, Class } from '@/lib/data';
+import { HeroSection } from '@/components/ui/hero-section';
+import { classesData, Class } from '@/constants/classes';
 
 const categories = [
   { label: 'All Categories', value: '' },
@@ -50,12 +51,10 @@ export default function ClassesPage() {
   return (
     <div className="flex flex-column gap-6 p-4">
       {/* Page Header */}
-      <section className="text-center py-6">
-        <h1 className="text-3xl font-bold text-primary-green mb-2">Our Classes</h1>
-        <p className="text-earth-brown">
-          Discover our diverse range of wellness classes and healing sessions.
-        </p>
-      </section>
+      <HeroSection
+        title="Our Classes"
+        description="Discover our diverse range of wellness classes and healing sessions."
+      />
 
       {/* Featured Classes Carousel */}
       <section className="max-w-6xl mx-auto w-full">

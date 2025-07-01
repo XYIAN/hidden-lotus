@@ -1,32 +1,7 @@
 import { Card } from 'primereact/card';
 import type { Metadata } from 'next';
-
-const morSections = [
-  {
-    title: 'Motion',
-    icon: 'pi pi-heart',
-    description:
-      'Movement is life. Through mindful motion, we connect with our bodies, release tension, and create space for healing. Our yoga and movement practices help you find your natural rhythm and flow.',
-    color: 'bg-soft-sage',
-    textColor: 'text-sage',
-  },
-  {
-    title: 'Open Heart',
-    icon: 'pi pi-heart-fill',
-    description:
-      'An open heart is the foundation of true wellness. We cultivate compassion, empathy, and love through meditation, reiki healing, and community practices that nurture the soul.',
-    color: 'bg-pastel-pink',
-    textColor: 'text-secondary-brown',
-  },
-  {
-    title: 'Revival',
-    icon: 'pi pi-refresh',
-    description:
-      'Revival is the process of renewal and transformation. Through our holistic approach, we help you rediscover your authentic self and create lasting positive change in your life.',
-    color: 'bg-sage',
-    textColor: 'text-white',
-  },
-];
+import { HeroSection } from '@/components/ui/hero-section';
+import { morSections } from '@/constants/mor';
 
 export const metadata: Metadata = {
   title: 'MOR Philosophy | Motion, Open Heart, Revival | Hidden Lotus',
@@ -58,13 +33,10 @@ export default function MorPage() {
   return (
     <div className="flex flex-column gap-6 p-4">
       {/* Page Header */}
-      <section className="text-center py-6">
-        <h1 className="text-3xl font-bold text-primary-green mb-2">MOR Philosophy</h1>
-        <p className="text-earth-brown max-w-2xl mx-auto">
-          Our mission is guided by three core principles: Motion, Open Heart, and Revival. These
-          pillars form the foundation of our approach to wellness and healing.
-        </p>
-      </section>
+      <HeroSection
+        title="MOR Philosophy"
+        description="Our mission is guided by three core principles: Motion, Open Heart, and Revival. These pillars form the foundation of our approach to wellness and healing."
+      />
 
       {/* MOR Sections */}
       <section className="max-w-4xl mx-auto w-full">

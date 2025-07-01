@@ -169,6 +169,40 @@ body {
   margin-bottom: 0.5rem !important;
 }
 
+/* Team card fixed size and footer */
+.team-card {
+  height: 500px !important;
+  width: 320px !important;
+  min-width: 320px !important;
+  max-width: 100%;
+}
+
+.team-card .p-card-body {
+  height: 100% !important;
+  padding: 1.25rem 1rem 0.5rem 1rem !important;
+}
+
+.team-card .p-card-footer {
+  padding: 0.75rem 1rem !important;
+  border-top: 1px solid var(--sage-green-200) !important;
+  background: var(--light-tan) !important;
+  min-height: 64px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Story card fixed size */
+.story-card {
+  height: 600px !important;
+  width: 100% !important;
+}
+
+.story-card .p-card-body {
+  height: 100% !important;
+  padding: 1.5rem !important;
+}
+
 /* Sage green accent borders */
 .sage-border {
   border: 2px solid var(--sage-green);

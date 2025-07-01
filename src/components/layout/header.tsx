@@ -28,19 +28,17 @@ export function Header() {
 
   return (
     <>
-      <header className="bg-light-tan/80 backdrop-blur-sm shadow-sm sage-border">
+      <header className="bg-light-tan/80 backdrop-blur-sm shadow-sm sage-border sticky top-0 z-50">
         <div className="flex justify-content-between align-items-center p-4 max-w-7xl mx-auto">
           {/* Logo */}
-          <Link href="/" className="flex align-items-center gap-2">
-            <div className="bg-sage p-2 border-round">
-              <Image
-                src="/icon-hl-3.png"
-                alt="Hidden Lotus"
-                width={24}
-                height={24}
-                className="object-contain"
-              />
-            </div>
+          <Link href="/" className="flex align-items-center gap-3">
+            <Image
+              src="/icon-hl-3.png"
+              alt="Hidden Lotus"
+              width={40}
+              height={40}
+              className="object-contain soft-rounded"
+            />
             <span className="text-xl font-bold text-primary-green">Hidden Lotus</span>
           </Link>
 

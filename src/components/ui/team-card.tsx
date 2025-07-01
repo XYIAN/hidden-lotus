@@ -6,7 +6,7 @@ import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
 import Image from 'next/image';
 import { LoadingSkeleton } from './loading-skeleton';
-import { TeamMember } from '@/lib/data';
+import { TeamMember } from '@/constants/team';
 
 interface TeamCardProps {
   member: TeamMember;
@@ -21,9 +21,9 @@ export function TeamCard({ member }: TeamCardProps) {
       case 'instructor':
         return 'success';
       case 'admin':
-        return 'warning';
-      case 'board':
         return 'info';
+      case 'board':
+        return 'warning';
       default:
         return 'info';
     }
@@ -42,10 +42,19 @@ export function TeamCard({ member }: TeamCardProps) {
     }
   };
 
+  const footer = (
+    <Button
+      label="Learn More"
+      icon="pi pi-info-circle"
+      onClick={() => (window.location.href = `/team/${encodeURIComponent(member.name)}`)}
+      className="p-button-sm bg-soft-sage border-soft-sage"
+    />
+  );
+
   return (
-    <Card className="yoga-card team-card">
-      <div className="text-center h-full flex flex-column">
-        <div className="flex justify-content-center mb-3">
+    <Card className="yoga-card team-card" footer={footer}>
+      <div className="text-center">
+        <div className="flex justify-content-center mb-2">
           <div className="relative">
             {!imageLoaded && !imageError && (
               <LoadingSkeleton type="image" className="icon-xl soft-rounded" />
@@ -71,22 +80,17 @@ export function TeamCard({ member }: TeamCardProps) {
           </div>
         </div>
 
-        <h3 className="text-xl font-semibold text-primary-green mb-2">{member.name}</h3>
+        <h3 className="text-xl font-semibold text-primary-green mb-1">{member.name}</h3>
 
-        <Tag value={member.type} severity={getTypeColor(member.type)} className="capitalize mb-3" />
+        <div className="flex justify-center mb-1">
+          <Tag value={member.type} severity={getTypeColor(member.type)} className="capitalize" />
+        </div>
 
-        <p className="text-sm font-medium text-secondary-brown mb-2">{member.profession}</p>
+        <p className="text-sm font-medium text-secondary-brown mb-1">{member.profession}</p>
 
-        <p className="text-xs text-earth-brown mb-3">{member.credentials}</p>
+        <p className="text-xs text-earth-brown mb-1">{member.credentials}</p>
 
-        <p className="text-sm text-earth-brown leading-relaxed mb-3 flex-grow-1">{member.bio}</p>
-
-        <Button
-          label="Learn More"
-          icon="pi pi-info-circle"
-          onClick={() => (window.location.href = `/team/${encodeURIComponent(member.name)}`)}
-          className="p-button-sm bg-soft-sage border-soft-sage mt-auto"
-        />
+        <p className="text-sm text-earth-brown leading-relaxed">{member.bio}</p>
       </div>
     </Card>
   );

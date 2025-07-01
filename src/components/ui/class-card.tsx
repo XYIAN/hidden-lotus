@@ -6,7 +6,7 @@ import { Button } from 'primereact/button';
 import { Tag } from 'primereact/tag';
 import Image from 'next/image';
 import { LoadingSkeleton } from './loading-skeleton';
-import { Class } from '@/lib/data';
+import { Class } from '@/constants/classes';
 
 interface ClassCardProps {
   classData: Class;
@@ -29,6 +29,12 @@ export function ClassCard({ classData, onBook }: ClassCardProps) {
         return 'danger';
       case 'podcast':
         return 'secondary';
+      case 'meditation':
+        return 'contrast';
+      case 'fitness':
+        return 'success';
+      case 'healing':
+        return 'info';
       default:
         return 'info';
     }

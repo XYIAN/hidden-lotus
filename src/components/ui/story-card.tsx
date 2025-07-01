@@ -5,7 +5,7 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import Image from 'next/image';
 import { LoadingSkeleton } from './loading-skeleton';
-import { Story } from '@/lib/data';
+import { Story } from '@/constants/stories';
 
 interface StoryCardProps {
   story: Story;
@@ -32,8 +32,8 @@ export function StoryCard({ story, onClick }: StoryCardProps) {
   };
 
   return (
-    <Card className="h-full yoga-card cursor-pointer" onClick={() => onClick(story)}>
-      <div className="text-center">
+    <Card className="story-card yoga-card cursor-pointer" onClick={() => onClick(story)}>
+      <div className="text-center flex flex-column justify-content-center">
         <div className="relative mx-auto mb-3">
           {!imageLoaded && !imageError && (
             <LoadingSkeleton type="image" className="icon-large soft-rounded" />
