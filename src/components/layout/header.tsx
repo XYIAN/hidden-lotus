@@ -1,75 +1,97 @@
 'use client';
 
 import { useState } from 'react';
-import { Button } from 'primereact/button';
 import { Sidebar } from 'primereact/sidebar';
+import { Button } from 'primereact/button';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const navigationItems = [
-	{ label: 'Home', href: '/' },
-	{ label: 'Classes', href: '/classes' },
-	{ label: 'Team', href: '/team' },
-	{ label: 'About', href: '/about' },
-	{ label: 'Story', href: '/story' },
-	{ label: 'Contact', href: '/contact' },
-	{ label: 'MOR', href: '/mor' },
-	{ label: 'Privacy', href: '/privacy' },
-	{ label: 'Terms', href: '/terms' },
+  { label: 'Home', href: '/' },
+  { label: 'Classes', href: '/classes' },
+  { label: 'Team', href: '/team' },
+  { label: 'About', href: '/about' },
+  { label: 'Story', href: '/story' },
+  { label: 'Contact', href: '/contact' },
+  { label: 'MOR', href: '/mor' },
 ];
 
 export function Header() {
-	const [sidebarVisible, setSidebarVisible] = useState(false);
-	const pathname = usePathname();
+  const [sidebarVisible, setSidebarVisible] = useState(false);
+  const pathname = usePathname();
 
-	const handleNavClick = () => {
-		setSidebarVisible(false);
-	};
+  const isActive = (href: string) => {
+    return pathname === href;
+  };
 
-	return (
-		<>
-			<header className="bg-white shadow-sm border-b border-gray-200 px-4 py-3">
-				<div className="flex justify-content-between align-items-center">
-					<Link href="/" className="text-decoration-none">
-						<h1 className="text-2xl font-bold text-primary-green m-0">
-							🧘‍♀️ Hidden Lotus
-						</h1>
-					</Link>
-					<Button
-						icon="pi pi-bars"
-						className="p-button-text p-button-rounded"
-						onClick={() => setSidebarVisible(true)}
-						aria-label="Menu"
-					/>
-				</div>
-			</header>
+  return (
+    <>
+      <header className="bg-light-tan shadow-sm sage-border">
+        <div className="flex justify-content-between align-items-center p-4 max-w-7xl mx-auto">
+          {/* Logo */}
+          <Link href="/" className="flex align-items-center gap-2">
+            <div className="bg-sage p-2 border-round">
+              <i className="pi pi-heart text-white text-xl"></i>
+            </div>
+            <span className="text-xl font-bold text-primary-green">Hidden Lotus</span>
+          </Link>
 
-			<Sidebar
-				visible={sidebarVisible}
-				position="right"
-				onHide={() => setSidebarVisible(false)}
-				className="w-20rem"
-			>
-				<div className="flex flex-column gap-2">
-					<h2 className="text-xl font-semibold text-primary-green mb-3">
-						Navigation
-					</h2>
-					{navigationItems.map((item) => (
-						<Link
-							key={item.href}
-							href={item.href}
-							className={`text-decoration-none p-3 border-round transition-colors ${
-								pathname === item.href
-									? 'bg-primary-green text-white'
-									: 'text-gray-700 hover:bg-light-tan'
-							}`}
-							onClick={handleNavClick}
-						>
-							{item.label}
-						</Link>
-					))}
-				</div>
-			</Sidebar>
-		</>
-	);
-} 
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex align-items-center gap-4">
+            {navigationItems.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`text-decoration-none px-3 py-2 border-round transition-colors ${
+                  isActive(item.href)
+                    ? 'bg-soft-sage text-sage font-medium'
+                    : 'text-earth-brown hover:bg-pastel-pink hover:text-secondary-brown'
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Mobile Menu Button */}
+          <Button
+            icon="pi pi-bars"
+            onClick={() => setSidebarVisible(true)}
+            className="p-button-text p-button-rounded md:hidden bg-sage border-sage"
+            aria-label="Open menu"
+          />
+        </div>
+      </header>
+
+      {/* Mobile Sidebar */}
+      <Sidebar
+        visible={sidebarVisible}
+        onHide={() => setSidebarVisible(false)}
+        position="right"
+        className="w-20rem"
+      >
+        <div className="flex flex-column gap-2">
+          <div className="text-center mb-4">
+            <h2 className="text-xl font-bold text-primary-green mb-2">Hidden Lotus</h2>
+            <p className="text-sm text-earth-brown">Wellness & Healing</p>
+          </div>
+
+          {navigationItems.map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setSidebarVisible(false)}
+              className={`text-decoration-none p-3 border-round transition-colors ${
+                isActive(item.href)
+                  ? 'bg-soft-sage text-sage font-medium'
+                  : 'text-earth-brown hover:bg-pastel-pink hover:text-secondary-brown'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </Sidebar>
+    </>
+  );
+}

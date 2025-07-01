@@ -5,22 +5,82 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.8.1] - 2024-06-30
+## [0.8.2] - 2024-12-19
+
+### Enhanced
+
+- **Theme & Styling**: Completely updated the app with a more tan background and enhanced earthy yoga vibe
+- **Color Palette**: Refined sage green, pastel pink, and earth brown color scheme throughout the app
+- **Card Design**: All cards now feature the new `yoga-card` styling with soft gradients and sage green borders
+- **Centered Layouts**: All card grids are now properly centered using PrimeFlex utilities
+- **PrimeReact Providers**: Enhanced provider configuration with custom theme options and better component styling
+- **Component Updates**: Updated all UI components (ClassCard, TeamCard, StoryCard) with new color schemes and styling
+- **Header Enhancement**: Improved header with better navigation styling and active state indicators
+- **Form Styling**: Enhanced contact form with new color scheme and better visual hierarchy
 
 ### Changed
 
-- Home page hero now uses `icon-hl-1.png` from public as the logo, styled responsively (max-width 160px, rounded, centered).
+- Background color updated to a warmer tan tone (`#f5f1e8`)
+- Sage green color refined to a more natural tone (`#87a96b`)
+- Pastel pink updated to a softer, more complementary shade (`#fbb6ce`)
+- All text colors updated to use the new `earth-brown` color for better readability
+- Button styling updated with new color combinations and hover effects
 
-## [0.8.0] - 2024-01-15
+### Technical
+
+- Added new CSS custom properties for enhanced theming
+- Implemented `yoga-card` class with gradient backgrounds and hover effects
+- Added `sage-border` utility class for consistent border styling
+- Enhanced PrimeReact provider configuration with custom component styling
+
+## [0.8.1] - 2024-12-19
+
+### Added
+
+- **Logo Integration**: Added the `icon-hl-1.png` image as the main logo placeholder
+- **Responsive Logo**: Logo displays with max width 160px, rounded corners, and centered alignment
+- **Logo Styling**: Applied proper responsive styling with object-contain for aspect ratio preservation
 
 ### Changed
 
-- Moved all project files to the root directory for proper repo structure
-- Updated README and CHANGELOG for version 0.8.0
-- Added Netlify deployment instructions
-- Ensured all image placeholders use new public images and are styled responsively
-- Updated Prettier config and ensured it is present in the root
-- Updated sitemap.xml for new structure
+- Updated hero section to prominently feature the Hidden Lotus logo
+- Enhanced visual hierarchy with the logo as the primary brand element
+
+## [0.8.0] - 2024-12-19
+
+### Added
+
+- **Initial Release**: Complete wellness web app with Next.js 15+ and TypeScript
+- **PrimeReact Integration**: Full integration with PrimeReact components, PrimeFlex, and PrimeIcons
+- **Earthy Theme**: Global theme with sage green, brown/gold, pastel pink, and light tan colors
+- **Responsive Layout**: Mobile-first design with hamburger menu using PrimeReact Sidebar
+- **Page Structure**: Complete page setup including Home, Classes, Team, About, Story, Contact, MOR, Privacy, and Terms
+- **Component Library**: Reusable components (ClassCard, TeamCard, StoryCard) with consistent styling
+- **Form Handling**: Multi-step contact form with React Hook Form and Zod validation
+- **Data Management**: Centralized data structure for classes, team members, and stories
+- **Navigation**: Header with responsive navigation and active state management
+- **Build Configuration**: Optimized for Netlify deployment with proper configuration files
+
+### Features
+
+- **Home Page**: Hero section with logo, action cards, and call-to-action
+- **Classes Page**: Carousel of featured classes, search/filter functionality, and grid layout
+- **Team Page**: Filterable team member grid with role-based filtering
+- **About Page**: Carousel content and location information
+- **Story Page**: Interactive story cards with dialog functionality
+- **Contact Page**: Multi-step form with validation and success feedback
+- **MOR Page**: Philosophy explanation with Motion, Open Heart, Revival sections
+- **Privacy & Terms**: Comprehensive legal pages with proper content structure
+
+### Technical
+
+- **Next.js 15.3.4**: Latest version with App Router
+- **TypeScript**: Full type safety throughout the application
+- **TailwindCSS**: Utility-first styling with custom theme integration
+- **PrimeReact**: Component library with custom theming
+- **React Hook Form**: Form handling with Zod validation
+- **Responsive Design**: Mobile-first approach with breakpoint optimization
+- **SEO Ready**: Proper meta tags, sitemap, and semantic HTML structure
 
 ## [1.0.0] - 2024-01-15
 
@@ -73,6 +133,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History
 
+- **0.8.2** - Theme and styling updates
 - **0.8.1** - Home hero uses icon-hl-1.png as logo
 - **0.8.0** - Project root restructuring, Netlify prep, image updates
 - **1.0.0** - Initial release with complete website functionality

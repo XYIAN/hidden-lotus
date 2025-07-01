@@ -1,38 +1,44 @@
 'use client';
 
 import { Card } from 'primereact/card';
-import { Avatar } from 'primereact/avatar';
+import { Tag } from 'primereact/tag';
 import { TeamMember } from '@/lib/data';
 
 interface TeamCardProps {
-	member: TeamMember;
+  member: TeamMember;
 }
 
 export function TeamCard({ member }: TeamCardProps) {
-	return (
-		<Card className="h-full">
-			<div className="flex flex-column gap-3">
-				<div className="flex align-items-center gap-3">
-					<Avatar
-						label={member.name.split(' ').map(n => n[0]).join('')}
-						size="large"
-						className="bg-primary-green text-white"
-					/>
-					<div>
-						<h3 className="text-xl font-semibold text-primary-green mb-1">
-							{member.name}
-						</h3>
-						<p className="text-sm font-medium text-secondary-brown mb-1">
-							{member.profession}
-						</p>
-						<p className="text-xs text-gray-500">{member.credentials}</p>
-					</div>
-				</div>
-				<p className="text-sm text-gray-600">{member.bio}</p>
-				<span className="px-3 py-1 text-xs font-medium bg-light-tan text-secondary-brown rounded-full self-start">
-					{member.type}
-				</span>
-			</div>
-		</Card>
-	);
-} 
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'instructor':
+        return 'bg-soft-sage text-sage';
+      case 'admin':
+        return 'bg-pastel-pink text-secondary-brown';
+      case 'board':
+        return 'bg-sage text-white';
+      default:
+        return 'bg-gray-500 text-white';
+    }
+  };
+
+  return (
+    <Card className="h-full yoga-card">
+      <div className="text-center">
+        <div className="bg-light-tan p-4 border-round-full w-5rem h-5rem mx-auto mb-3 flex align-items-center justify-content-center sage-border">
+          <i className="pi pi-user text-3xl text-sage"></i>
+        </div>
+
+        <h3 className="text-xl font-semibold text-primary-green mb-2">{member.name}</h3>
+
+        <Tag value={member.type} className={`capitalize mb-3 ${getTypeColor(member.type)}`} />
+
+        <p className="text-sm font-medium text-secondary-brown mb-2">{member.profession}</p>
+
+        <p className="text-xs text-earth-brown mb-3">{member.credentials}</p>
+
+        <p className="text-sm text-earth-brown leading-relaxed">{member.bio}</p>
+      </div>
+    </Card>
+  );
+}

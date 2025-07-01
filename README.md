@@ -1,45 +1,47 @@
-# Hidden Lotus - Wellness & Healing
+# Hidden Lotus - Wellness & Healing Center
 
-**Version: 0.8.1**
+A modern, responsive wellness web application built with Next.js 15+, TypeScript, and PrimeReact. Features a calming earthy theme with sage green, pastel pink, and warm tan colors perfect for a yoga and wellness center.
 
-A modern, mobile-first wellness website for Hidden Lotus, featuring yoga, reiki, and holistic healing services.
+## 🌿 Features
 
----
+- **Earthy Yoga Theme**: Calming color palette with sage green, pastel pink, and warm tan backgrounds
+- **Responsive Design**: Mobile-first approach with seamless desktop experience
+- **Interactive Components**: Carousels, filters, multi-step forms, and dialogs
+- **PrimeReact Integration**: Professional UI components with custom theming
+- **Type Safety**: Full TypeScript implementation
+- **Form Validation**: React Hook Form with Zod schema validation
+- **SEO Optimized**: Proper meta tags, sitemap, and semantic HTML
 
-**Update 0.8.1:** Home page hero now uses `icon-hl-1.png` from public as the logo, styled responsively (max-width 160px, rounded, centered).
+## 🎨 Design Philosophy
 
----
+The app embodies a **chill yoga earthy vibe** with:
 
-## 🧘‍♀️ Features
-
-- **Mobile-first responsive design** with Tailwind CSS
-- **Modern UI components** using PrimeReact with Lara Green theme
-- **Interactive forms** with React Hook Form and Zod validation
-- **Dynamic content** with reusable components
-- **SEO optimized** with sitemap and proper metadata
-- **Accessible design** following best practices
-
-## 🛠️ Tech Stack
-
-- **Framework**: Next.js 15+ with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + PrimeFlex
-- **UI Components**: PrimeReact
-- **Icons**: PrimeIcons
-- **Forms**: React Hook Form + Zod validation
-- **Theme**: Custom earthy theme (sage green, brown/gold, pastel pink)
+- **Sage Green** (`#87a96b`) for primary accents and borders
+- **Pastel Pink** (`#fbb6ce`) for highlights and secondary elements
+- **Warm Tan** (`#f5f1e8`) background for a grounding feel
+- **Earth Brown** (`#8b7355`) for text and subtle accents
+- **Soft gradients** and **hover effects** for enhanced user experience
 
 ## 📱 Pages
 
-- **Home** (`/`) - Hero section with action cards
-- **Classes** (`/classes`) - Class listings with carousel and filters
-- **Team** (`/team`) - Team member profiles with filtering
-- **About** (`/about`) - Company information with carousel
-- **Story** (`/story`) - Company stories with interactive dialogs
-- **Contact** (`/contact`) - Multi-step contact form
-- **MOR** (`/mor`) - Mission, Open Heart, Revival philosophy
-- **Privacy** (`/privacy`) - Privacy policy
-- **Terms** (`/terms`) - Terms of service
+- **Home**: Hero section with logo, action cards, and call-to-action
+- **Classes**: Featured carousel, search/filter, and class grid
+- **Team**: Filterable team member showcase
+- **About**: Mission carousel and location information
+- **Story**: Interactive story cards with dialogs
+- **Contact**: Multi-step form with validation
+- **MOR**: Philosophy explanation (Motion, Open Heart, Revival)
+- **Privacy & Terms**: Legal pages with proper structure
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 15.3.4 with App Router
+- **Language**: TypeScript
+- **Styling**: TailwindCSS + PrimeFlex
+- **UI Components**: PrimeReact 10.5.1
+- **Icons**: PrimeIcons
+- **Forms**: React Hook Form + Zod validation
+- **Deployment**: Netlify ready
 
 ## 🚀 Getting Started
 
@@ -78,85 +80,96 @@ npm run build
 npm start
 ```
 
-## 🌐 Deploying to Netlify
+## 🎯 Key Components
 
-1. Push your code to your Git repository (GitHub, GitLab, etc).
-2. Go to [Netlify](https://app.netlify.com/) and create a new site from Git.
-3. Set the build command to `npm run build` and the publish directory to `.next`.
-4. Set the environment variable `NEXT_PUBLIC_BASE_URL` if needed.
-5. Click "Deploy Site".
+### Theme System
 
-Netlify will automatically detect Next.js and handle SSR/ISR routes. For best results, use the [Netlify Next.js Runtime](https://docs.netlify.com/integrations/frameworks/next-js/overview/).
+- Custom CSS variables for consistent theming
+- `yoga-card` class for enhanced card styling
+- `sage-border` utility for consistent borders
+- Responsive color palette with hover effects
 
-## 🎨 Design System
+### PrimeReact Integration
 
-### Colors
+- Enhanced provider configuration
+- Custom component styling
+- Ripple effects and smooth transitions
+- Proper z-index management
 
-- **Primary Green**: `#48bb78` - Main brand color
-- **Secondary Brown**: `#a0522d` - Accent color
-- **Sage Green**: `#9ca3af` - Subtle accents
-- **Brown Gold**: `#d69e2e` - Warm highlights
-- **Pastel Pink**: `#fed7d7` - Soft accents
-- **Light Tan**: `#f7fafc` - Background variations
+### Form Handling
 
-### Typography
-
-- **Font**: Inter (Google Fonts)
-- **Headings**: Bold weights with primary green color
-- **Body**: Regular weight with gray tones
+- Multi-step contact form
+- Real-time validation
+- Success feedback with confetti effect
+- Accessible form controls
 
 ## 📁 Project Structure
 
 ```
-src/
-├── app/                 # Next.js App Router pages
-│   ├── globals.css     # Global styles and theme
-│   ├── layout.tsx      # Root layout with providers
-│   └── page.tsx        # Home page
-├── components/         # Reusable components
-│   ├── layout/         # Layout components
-│   └── ui/            # UI components
-└── lib/               # Utilities and data
-    ├── data.ts        # Mock data
-    └── providers.tsx  # PrimeReact providers
+hidden-lotus/
+├── src/
+│   ├── app/                 # Next.js App Router pages
+│   ├── components/          # Reusable UI components
+│   │   ├── layout/         # Header and navigation
+│   │   └── ui/             # Card and form components
+│   └── lib/                # Data and utilities
+├── public/                 # Static assets and images
+├── globals.css             # Global styles and theme
+└── package.json            # Dependencies and scripts
 ```
 
-## 🔧 Configuration
+## 🎨 Customization
 
-### Prettier
+### Colors
 
-The project uses Prettier for code formatting with the following settings:
+The app uses a carefully curated color palette defined in `globals.css`:
 
-- Semi-colons: enabled
-- Single quotes: enabled
-- Tab width: 2 spaces
-- Print width: 100 characters
+```css
+:root {
+  --background: #f5f1e8; /* Warm tan background */
+  --sage-green: #87a96b; /* Natural sage green */
+  --pastel-pink: #fbb6ce; /* Soft pink accents */
+  --earth-brown: #8b7355; /* Earthy brown text */
+  --soft-sage: #a8c090; /* Light sage for backgrounds */
+}
+```
 
-### ESLint
+### Components
 
-Configured with Next.js recommended rules and TypeScript support.
+All components use the `yoga-card` class for consistent styling:
 
-## 📝 Development Guidelines
+- Soft gradient backgrounds
+- Sage green borders
+- Hover animations
+- Rounded corners
 
-- Use functional components with TypeScript
-- Follow mobile-first responsive design
-- Implement proper error handling
-- Use semantic HTML and accessibility best practices
-- Keep components modular and reusable
-- Use PrimeReact components where possible
+## 🌐 Deployment
 
-## 🚀 Deployment
+The app is configured for Netlify deployment with:
 
-The project is ready for deployment on Vercel, Netlify, or any other Next.js-compatible platform.
+- `netlify.toml` configuration
+- Optimized build settings
+- Static site generation
+- Proper redirects
 
 ## 📄 License
 
-This project is proprietary to Hidden Lotus.
+This project is licensed under the MIT License.
 
 ## 🤝 Contributing
 
-Please follow the established coding standards and ensure all tests pass before submitting changes.
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📞 Support
+
+For questions or support, please contact us at [contact@hiddenlotus.com](mailto:contact@hiddenlotus.com)
 
 ---
 
-**Hidden Lotus** - Discover authentic wellness experiences in a peaceful environment.
+**Version**: 0.8.2  
+**Last Updated**: December 19, 2024  
+**Status**: Production Ready ✨
