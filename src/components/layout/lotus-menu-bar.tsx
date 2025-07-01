@@ -9,125 +9,60 @@ import './lotus-menu-bar.css'
 import type { MenuItem as PrimeMenuItem } from 'primereact/menuitem'
 
 const infoItems = [
-	{ label: 'Story', href: '/story' },
-	{ label: 'About', href: '/about' },
-	{ label: 'MOR', href: '/mor' },
-	{ label: 'Team', href: '/team' },
-	{ label: 'Contact', href: '/contact' },
-	{ label: 'Privacy', href: '/privacy' },
-	{ label: 'Terms', href: '/terms' },
+	{ label: 'Story', href: '/story', icon: 'pi pi-book' },
+	{ label: 'About', href: '/about', icon: 'pi pi-info-circle' },
+	{ label: 'MOR', href: '/mor', icon: 'pi pi-heart' },
+	{ label: 'Team', href: '/team', icon: 'pi pi-users' },
+	{ label: 'Contact', href: '/contact', icon: 'pi pi-envelope' },
+	{ label: 'Privacy', href: '/privacy', icon: 'pi pi-lock' },
+	{ label: 'Terms', href: '/terms', icon: 'pi pi-file' },
 ]
 
 const navigationGroups = [
-	{ label: 'Home', href: '/' },
-	{ label: 'Classes', href: '/classes' },
+	{ label: 'Home', href: '/', icon: 'pi pi-home' },
+	{ label: 'Classes', href: '/classes', icon: 'pi pi-calendar-plus' },
 ]
 
 export function LotusMenuBar() {
 	const pathname = usePathname()
 
-	const getIcon = (href: string) => {
-		switch (href) {
-			case '/':
-				return 'pi pi-home'
-			case '/classes':
-				return 'pi pi-calendar-plus'
-			case '/team':
-				return 'pi pi-users'
-			case '/about':
-				return 'pi pi-info-circle'
-			case '/story':
-				return 'pi pi-book'
-			case '/contact':
-				return 'pi pi-envelope'
-			case '/mor':
-				return 'pi pi-heart'
-			case '/privacy':
-				return 'pi pi-lock'
-			case '/terms':
-				return 'pi pi-file'
-			default:
-				return 'pi pi-home'
-		}
-	}
-
 	const items: MenuItem[] = [
+		...navigationGroups.map((item) => ({
+			label: item.label,
+			icon: item.icon,
+			command: () => {
+				window.location.href = item.href
+			},
+			className: pathname === item.href ? 'active-menu-item' : '',
+		})),
 		{
 			label: 'Info',
 			icon: 'pi pi-info-circle',
 			items: infoItems.map((item) => ({
 				label: item.label,
-				icon: getIcon(item.href),
+				icon: item.icon,
 				command: () => {
 					window.location.href = item.href
 				},
 				className: pathname === item.href ? 'active-menu-item' : '',
-				template: (menuItem: PrimeMenuItem, options: any) => (
-					<a
-						href="#"
-						data-href={item.href}
-						onClick={(e) => {
-							e.preventDefault()
-							window.location.href = item.href
-						}}
-						className={`p-menuitem-link ${
-							pathname === item.href ? 'active-menu-item' : ''
-						}`}
-						style={{
-							display: 'flex',
-							alignItems: 'center',
-							textDecoration: 'none',
-						}}
-					>
-						<span className={getIcon(item.href)} />
-						<span className="p-menuitem-text">{item.label}</span>
-					</a>
-				),
 			})),
 		},
-		...navigationGroups.map((item) => ({
-			label: item.label,
-			icon: getIcon(item.href),
-			command: () => {
-				window.location.href = item.href
-			},
-			className: pathname === item.href ? 'active-menu-item' : '',
-			template: (menuItem: PrimeMenuItem, options: any) => (
-				<a
-					href="#"
-					data-href={item.href}
-					onClick={(e) => {
-						e.preventDefault()
-						window.location.href = item.href
-					}}
-					className={`p-menuitem-link ${
-						pathname === item.href ? 'active-menu-item' : ''
-					}`}
-					style={{
-						display: 'flex',
-						alignItems: 'center',
-						textDecoration: 'none',
-					}}
-				>
-					<span className={getIcon(item.href)} />
-					<span className="p-menuitem-text">{item.label}</span>
-				</a>
-			),
-		})),
 	]
 
 	const start = (
-		<Link href="/" className="flex align-items-center gap-3">
+		<Link href="/" className="flex items-center gap-3 no-underline">
 			<Image
 				src="/icon-hl-1.png"
 				alt="Hidden Lotus"
-				width={50}
-				height={50}
+				width={56}
+				height={56}
 				className="rounded-lg object-contain"
 				style={{ borderRadius: '12px' }}
 				priority
 			/>
-			<span className="text-xl font-bold text-primary-green">Hidden Lotus</span>
+			<span className="text-3xl font-extrabold text-primary-green lotus-title-fancy">
+				Hidden Lotus
+			</span>
 		</Link>
 	)
 
@@ -137,8 +72,14 @@ export function LotusMenuBar() {
 			start={start}
 			className="lotus-menu-bar lotus-menu-bar-no-bg"
 			pt={{
-				root: { className: 'justify-end w-full' },
-				menu: { className: 'justify-end w-full' },
+				root: {
+					className: 'justify-end w-full items-center py-2',
+					style: { minHeight: '60px' },
+				},
+				menu: {
+					className: 'justify-end w-full items-center',
+					style: { minHeight: '60px' },
+				},
 			}}
 		/>
 	)

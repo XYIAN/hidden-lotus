@@ -84,16 +84,37 @@
 
 .custom-stepper .p-steps {
 	display: flex;
-	gap: 1.5rem;
+	gap: 2.5rem;
 	background: none !important;
 	padding: 0.5rem 0;
 }
 
 .custom-stepper .p-steps .p-steps-item {
 	margin: 0;
-	gap: 0.5rem;
+	gap: 1rem;
 }
 
 .custom-stepper .p-steps .p-steps-number {
 	margin-right: 0.5rem;
+}
+
+.mini-stepper-circle {
+	width: 1.75rem;
+	height: 1.75rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	background: rgba(107, 142, 90, 0.18);
+	color: var(--primary-green);
+	font-weight: 600;
+	font-size: 1rem;
+	transition: background 0.2s, color 0.2s;
+	border: 2px solid var(--sage-green-200);
+}
+
+.mini-stepper-active {
+	background: var(--sage-green-600);
+	color: #fff;
+	border-color: var(--sage-green-600);
 }

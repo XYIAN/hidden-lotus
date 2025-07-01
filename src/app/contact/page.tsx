@@ -19,6 +19,29 @@ interface FormData {
 	message: string
 }
 
+function MiniStepper({
+	activeStep,
+	totalSteps,
+}: {
+	activeStep: number
+	totalSteps: number
+}) {
+	return (
+		<div className="flex justify-center gap-2 mt-6 mb-2">
+			{Array.from({ length: totalSteps }).map((_, idx) => (
+				<div
+					key={idx}
+					className={`mini-stepper-circle ${
+						activeStep === idx ? 'mini-stepper-active' : ''
+					}`}
+				>
+					{idx + 1}
+				</div>
+			))}
+		</div>
+	)
+}
+
 export default function ContactPage() {
 	const [activeStep, setActiveStep] = useState(0)
 	const [formData, setFormData] = useState<FormData>({
@@ -132,25 +155,15 @@ export default function ContactPage() {
 			/>
 
 			<section className="max-w-4xl mx-auto w-full">
-				<Card
-					className="p-4 mb-6"
-					style={{ background: 'rgba(139, 115, 85, 0.12)' }}
-				>
-					<Steps
-						model={steps}
-						activeIndex={activeStep}
-						className="mb-6 custom-stepper"
-					/>
-				</Card>
 				<Card className="yoga-card p-6">
 					{/* Step 1: Personal Information */}
 					{activeStep === 0 && (
-						<div className="flex flex-column gap-4">
-							<h2 className="text-2xl font-semibold text-primary-green mb-3">
+						<div className="flex flex-col items-center gap-4 w-full">
+							<h2 className="text-2xl font-semibold text-primary-green mb-3 text-center">
 								Personal Information
 							</h2>
-							<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-								<div className="flex flex-column gap-2">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
+								<div className="flex flex-col gap-2 w-full">
 									<label
 										htmlFor="name"
 										className="text-sm font-semibold text-primary-green"
@@ -161,13 +174,13 @@ export default function ContactPage() {
 										id="name"
 										value={formData.name}
 										onChange={(e) => updateFormData('name', e.target.value)}
-										className={errors.name ? 'p-invalid' : ''}
+										className={errors.name ? 'p-invalid w-full' : 'w-full'}
 									/>
 									{errors.name && (
 										<small className="p-error">{errors.name}</small>
 									)}
 								</div>
-								<div className="flex flex-column gap-2">
+								<div className="flex flex-col gap-2 w-full">
 									<label
 										htmlFor="email"
 										className="text-sm font-semibold text-primary-green"
@@ -179,14 +192,14 @@ export default function ContactPage() {
 										type="email"
 										value={formData.email}
 										onChange={(e) => updateFormData('email', e.target.value)}
-										className={errors.email ? 'p-invalid' : ''}
+										className={errors.email ? 'p-invalid w-full' : 'w-full'}
 									/>
 									{errors.email && (
 										<small className="p-error">{errors.email}</small>
 									)}
 								</div>
 							</div>
-							<div className="flex flex-column gap-2">
+							<div className="flex flex-col gap-2 w-full">
 								<label
 									htmlFor="phone"
 									className="text-sm font-semibold text-primary-green"
@@ -197,7 +210,7 @@ export default function ContactPage() {
 									id="phone"
 									value={formData.phone}
 									onChange={(e) => updateFormData('phone', e.target.value)}
-									className={errors.phone ? 'p-invalid' : ''}
+									className={errors.phone ? 'p-invalid w-full' : 'w-full'}
 								/>
 								{errors.phone && (
 									<small className="p-error">{errors.phone}</small>
@@ -208,11 +221,11 @@ export default function ContactPage() {
 
 					{/* Step 2: Service Selection */}
 					{activeStep === 1 && (
-						<div className="flex flex-column gap-4">
-							<h2 className="text-2xl font-semibold text-primary-green mb-3">
+						<div className="flex flex-col items-center gap-4 w-full">
+							<h2 className="text-2xl font-semibold text-primary-green mb-3 text-center">
 								Service Selection
 							</h2>
-							<div className="flex flex-column gap-2">
+							<div className="flex flex-col gap-2 w-full">
 								<label
 									htmlFor="service"
 									className="text-sm font-semibold text-primary-green"
@@ -227,7 +240,7 @@ export default function ContactPage() {
 									optionLabel="label"
 									optionValue="value"
 									placeholder="Select a service"
-									className={errors.service ? 'p-invalid' : ''}
+									className={errors.service ? 'p-invalid w-full' : 'w-full'}
 								/>
 								{errors.service && (
 									<small className="p-error">{errors.service}</small>
@@ -238,11 +251,11 @@ export default function ContactPage() {
 
 					{/* Step 3: Message */}
 					{activeStep === 2 && (
-						<div className="flex flex-column gap-4">
-							<h2 className="text-2xl font-semibold text-primary-green mb-3">
-								Your Message
+						<div className="flex flex-col items-center gap-4 w-full">
+							<h2 className="text-2xl font-semibold text-primary-green mb-3 text-center">
+								Message
 							</h2>
-							<div className="flex flex-column gap-2">
+							<div className="flex flex-col gap-2 w-full">
 								<label
 									htmlFor="message"
 									className="text-sm font-semibold text-primary-green"
@@ -254,8 +267,7 @@ export default function ContactPage() {
 									value={formData.message}
 									onChange={(e) => updateFormData('message', e.target.value)}
 									rows={5}
-									placeholder="Please share details about your wellness goals, any specific concerns, or questions you have..."
-									className={errors.message ? 'p-invalid' : ''}
+									className={errors.message ? 'p-invalid w-full' : 'w-full'}
 								/>
 								{errors.message && (
 									<small className="p-error">{errors.message}</small>
@@ -266,9 +278,9 @@ export default function ContactPage() {
 
 					{/* Step 4: Review */}
 					{activeStep === 3 && (
-						<div className="flex flex-column gap-4">
-							<h2 className="text-2xl font-semibold text-primary-green mb-3">
-								Review Your Information
+						<div className="flex flex-col items-center gap-4 w-full">
+							<h2 className="text-2xl font-semibold text-primary-green mb-3 text-center">
+								Review & Submit
 							</h2>
 							<Card className="bg-light-tan/50 p-4">
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -310,18 +322,18 @@ export default function ContactPage() {
 					)}
 
 					{/* Navigation Buttons */}
-					<div className="flex justify-content-between mt-6">
+					<div className="flex justify-between mt-6">
 						<Button
 							label="Previous"
-							icon="pi pi-chevron-left"
+							icon="pi pi-arrow-left"
 							onClick={handlePrev}
-							disabled={activeStep === 0}
 							className="p-button-outlined border-sage-green-600 text-sage-green-600"
+							disabled={activeStep === 0}
 						/>
 						{activeStep < steps.length - 1 ? (
 							<Button
 								label="Next"
-								icon="pi pi-chevron-right"
+								icon="pi pi-arrow-right"
 								iconPos="right"
 								onClick={handleNext}
 								className="bg-sage-green-600 border-sage-green-600"
@@ -329,12 +341,13 @@ export default function ContactPage() {
 						) : (
 							<Button
 								label="Submit"
-								icon="pi pi-send"
+								icon="pi pi-check"
 								onClick={handleSubmit}
 								className="bg-sage-green-600 border-sage-green-600"
 							/>
 						)}
 					</div>
+					<MiniStepper activeStep={activeStep} totalSteps={steps.length} />
 				</Card>
 			</section>
 		</div>

@@ -56,3 +56,16 @@
 	font-weight: 500;
 	letter-spacing: 0.01em;
 }
+
+.no-underline {
+	text-decoration: none !important;
+}
+
+.lotus-title-fancy {
+	text-shadow: 0 2px 8px rgba(255, 255, 200, 0.18), 0 0 2px #fffbe9;
+	letter-spacing: 0.01em;
+	line-height: 1.1;
+	vertical-align: middle;
+	display: flex;
+	align-items: center;
+}
