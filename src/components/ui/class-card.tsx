@@ -10,7 +10,7 @@ import { Class } from '@/lib/data';
 
 interface ClassCardProps {
   classData: Class;
-  onBook: (classId: string) => void;
+  onBook?: (classId: string) => void;
 }
 
 export function ClassCard({ classData, onBook }: ClassCardProps) {
@@ -20,15 +20,17 @@ export function ClassCard({ classData, onBook }: ClassCardProps) {
   const getCategoryColor = (category: string) => {
     switch (category) {
       case 'yoga':
-        return 'bg-soft-sage text-sage';
+        return 'success';
       case 'reiki':
-        return 'bg-pastel-pink text-secondary-brown';
+        return 'info';
       case 'seminar':
-        return 'bg-sage text-white';
+        return 'warning';
       case 'cupping':
-        return 'bg-earth-brown text-white';
+        return 'danger';
+      case 'podcast':
+        return 'secondary';
       default:
-        return 'bg-gray-500 text-white';
+        return 'info';
     }
   };
 
@@ -54,7 +56,8 @@ export function ClassCard({ classData, onBook }: ClassCardProps) {
           <h3 className="text-xl font-semibold text-primary-green m-0">{classData.name}</h3>
           <Tag
             value={classData.category}
-            className={`capitalize ${getCategoryColor(classData.category)}`}
+            severity={getCategoryColor(classData.category)}
+            className="capitalize"
           />
         </div>
 
@@ -73,8 +76,8 @@ export function ClassCard({ classData, onBook }: ClassCardProps) {
               <Image
                 src={getCategoryIcon(classData.category)}
                 alt={`${classData.category} icon`}
-                width={80}
-                height={80}
+                width={88}
+                height={88}
                 className={`icon-xl object-contain soft-rounded ${
                   imageLoaded ? 'block' : 'hidden'
                 }`}
@@ -95,7 +98,10 @@ export function ClassCard({ classData, onBook }: ClassCardProps) {
           <div className="flex align-items-center gap-2">
             <i className="pi pi-calendar text-sage"></i>
             <span className="text-sm text-earth-brown">
-              {new Date(classData.date).toLocaleDateString()} at {classData.time}
+              {classData.dates.length > 0
+                ? new Date(classData.dates[0]).toLocaleDateString()
+                : 'TBD'}{' '}
+              at {classData.time}
             </span>
           </div>
         </div>
@@ -104,7 +110,7 @@ export function ClassCard({ classData, onBook }: ClassCardProps) {
           <Button
             label="Book Now"
             icon="pi pi-calendar-plus"
-            onClick={() => onBook(classData.id)}
+            onClick={() => (window.location.href = `/classes/${classData.id}`)}
             className="p-button-sm bg-soft-sage border-soft-sage"
           />
         </div>

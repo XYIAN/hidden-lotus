@@ -5,6 +5,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Steps } from 'primereact/steps';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { Card } from 'primereact/card';
 import { InputText } from 'primereact/inputtext';
 import { InputTextarea } from 'primereact/inputtextarea';
@@ -50,6 +51,7 @@ export default function ContactPage() {
   const [showSuccessDialog, setShowSuccessDialog] = useState(false);
   const [formData, setFormData] = useState<ContactFormData | null>(null);
   const toast = useRef<Toast>(null);
+  const isMobile = useMediaQuery('(max-width: 768px)');
 
   const {
     control,
@@ -280,12 +282,14 @@ export default function ContactPage() {
       <section className="max-w-2xl mx-auto w-full">
         <Card className="yoga-card">
           <form onSubmit={handleSubmit(onSubmit)} className="flex flex-column gap-6">
-            <Steps
-              model={steps}
-              activeIndex={activeStep}
-              readOnly={false}
-              className="mb-6 custom-steps"
-            />
+            <div className={`mb-6 ${isMobile ? 'mobile-steps' : ''}`}>
+              <Steps
+                model={steps}
+                activeIndex={activeStep}
+                readOnly={false}
+                className="custom-steps"
+              />
+            </div>
 
             <div className="min-h-20rem">{renderStepContent()}</div>
 

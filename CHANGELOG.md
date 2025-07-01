@@ -5,6 +5,36 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.9.0] - 2024-01-15
+
+### Added
+
+- Dynamic routes for classes (`/classes/[id]`) with detailed booking system
+- Dynamic routes for team members (`/team/[name]`) with comprehensive profiles
+- Enhanced data structure with detailed class and team member information
+- Booking system with calendar selection, form validation, and confirmation dialogs
+- Class carousels on team member pages showing their taught classes
+- Podcast category and session for Jaideep Pa
+- Comprehensive contact information for all team members
+- Responsive mobile stepper for contact form
+- Custom useMediaQuery hook for responsive design
+
+### Changed
+
+- Updated Jaideep Singh to Jaideep Pa throughout the application
+- Fixed tag colors for better contrast and visibility
+- Replaced custom tag styling with PrimeReact Tag components
+- Updated class cards to link directly to dynamic class pages
+- Added "Learn More" buttons to team cards linking to member profiles
+- Enhanced card styling with consistent heights and improved spacing
+- Improved navigation with direct links to detailed pages
+- Increased icon sizes for better visibility (88px for class/team icons)
+- Fixed team card image centering issues
+- Reduced padding and line height for better card layout
+- Added mobile-responsive stepper styling for contact form
+- Updated Next.js config to support images from both localhost and Netlify
+- Enhanced active menu item styling with proper background contrast
+
 ## [0.8.3] - 2024-12-19
 
 ### Fixed

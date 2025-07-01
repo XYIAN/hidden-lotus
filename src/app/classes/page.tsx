@@ -13,6 +13,7 @@ const categories = [
   { label: 'Reiki', value: 'reiki' },
   { label: 'Seminar', value: 'seminar' },
   { label: 'Cupping', value: 'cupping' },
+  { label: 'Podcast', value: 'podcast' },
 ];
 
 const instructors = [
@@ -40,14 +41,9 @@ export default function ClassesPage() {
 
   const topClasses = classesData.slice(0, 5);
 
-  const handleBookClass = (classId: string) => {
-    // Handle booking logic here
-    console.log('Booking class:', classId);
-  };
-
   const carouselTemplate = (classItem: Class) => (
     <div className="p-2">
-      <ClassCard classData={classItem} onBook={handleBookClass} />
+      <ClassCard classData={classItem} onBook={() => {}} />
     </div>
   );
 
@@ -132,7 +128,7 @@ export default function ClassesPage() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-content-center">
           {filteredClasses.map(classItem => (
-            <ClassCard key={classItem.id} classData={classItem} onBook={handleBookClass} />
+            <ClassCard key={classItem.id} classData={classItem} onBook={() => {}} />
           ))}
         </div>
         {filteredClasses.length === 0 && (

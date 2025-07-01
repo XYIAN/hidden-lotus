@@ -142,11 +142,31 @@ body {
   border: 1px solid var(--soft-sage);
   border-radius: 20px;
   transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .yoga-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(107, 142, 90, 0.15);
+}
+
+/* Card content styling improvements */
+.yoga-card .p-card-body {
+  padding: 1.25rem !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.yoga-card p {
+  line-height: 1.4 !important;
+  margin-bottom: 0.75rem !important;
+}
+
+.yoga-card .p-tag {
+  margin-bottom: 0.5rem !important;
 }
 
 /* Sage green accent borders */
@@ -190,14 +210,14 @@ body {
 
 /* Remove large icon wrappers and make icons more prominent */
 .icon-large {
-  width: 64px !important;
-  height: 64px !important;
+  width: 72px !important;
+  height: 72px !important;
   border-radius: 16px !important;
 }
 
 .icon-medium {
-  width: 48px !important;
-  height: 48px !important;
+  width: 56px !important;
+  height: 56px !important;
   border-radius: 12px !important;
 }
 
@@ -209,8 +229,8 @@ body {
 
 /* Extra large icons for classes and team */
 .icon-xl {
-  width: 80px !important;
-  height: 80px !important;
+  width: 88px !important;
+  height: 88px !important;
   border-radius: 20px !important;
 }
 
@@ -282,4 +302,31 @@ body {
 .custom-steps .p-steps .p-steps-item .p-menuitem-link:focus {
   box-shadow: 0 0 0 2px var(--pastel-pink) !important;
   outline: none !important;
+}
+
+/* Mobile stepper styling */
+.mobile-steps .custom-steps .p-steps {
+  flex-direction: column !important;
+  gap: 1rem !important;
+}
+
+.mobile-steps .custom-steps .p-steps .p-steps-item {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.mobile-steps .custom-steps .p-steps .p-steps-item .p-menuitem-link {
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  padding: 1rem !important;
+  gap: 1rem !important;
+}
+
+.mobile-steps .custom-steps .p-steps .p-steps-item .p-menuitem-link .p-steps-number {
+  flex-shrink: 0 !important;
+}
+
+.mobile-steps .custom-steps .p-steps .p-steps-item .p-menuitem-link .p-steps-title {
+  margin-top: 0 !important;
+  text-align: left !important;
 }
