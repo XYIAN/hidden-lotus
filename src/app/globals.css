@@ -18,6 +18,13 @@
   --earth-brown: #8b7355;
   --soft-sage: #8baa7a;
   --olive-green: #9caa7a;
+  --sage-green-200: #c8d5b9;
+  --sage-green-300: #a8c095;
+  --sage-green-400: #8baa7a;
+  --sage-green-600: #6b8e5a;
+  --tan: #d2b48c;
+  --brown: #8b4513;
+  --yellow-gold: #ffd700;
 }
 
 @theme inline {
@@ -192,83 +199,76 @@ body {
   justify-content: center;
 }
 
-/* Story card fixed size */
+/* Story card styling */
 .story-card {
-  height: 600px !important;
+  height: 400px !important;
   width: 100% !important;
 }
 
 .story-card .p-card-body {
   height: 100% !important;
-  padding: 1.5rem !important;
+  padding: 1.25rem 1rem 0.5rem 1rem !important;
 }
 
-/* Sage green accent borders */
+/* Utility classes */
 .sage-border {
-  border: 2px solid var(--sage-green);
-  border-radius: 16px;
+  border-color: var(--sage-green-200);
 }
 
-/* Pink accent highlights */
 .pink-accent {
-  background: linear-gradient(135deg, var(--pastel-pink) 0%, #fbb6ce 100%);
-  border-radius: 16px;
+  color: var(--pastel-pink);
 }
 
-/* Soft rounded styling for all components */
 .soft-rounded {
-  border-radius: 16px !important;
+  border-radius: 12px;
 }
 
 .soft-rounded-sm {
-  border-radius: 12px !important;
+  border-radius: 8px;
 }
 
 .soft-rounded-lg {
-  border-radius: 24px !important;
+  border-radius: 16px;
 }
 
-/* Icon containers - remove large borders and make icons larger */
+/* Icon container styling */
 .icon-container {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  border-radius: 16px;
+  background: var(--sage-green-200);
   transition: all 0.3s ease;
 }
 
 .icon-container:hover {
+  background: var(--sage-green-300);
   transform: scale(1.05);
 }
 
-/* Remove large icon wrappers and make icons more prominent */
 .icon-large {
-  width: 72px !important;
-  height: 72px !important;
-  border-radius: 16px !important;
+  width: 88px;
+  height: 88px;
 }
 
 .icon-medium {
-  width: 56px !important;
-  height: 56px !important;
-  border-radius: 12px !important;
+  width: 64px;
+  height: 64px;
 }
 
 .icon-small {
-  width: 32px !important;
-  height: 32px !important;
-  border-radius: 8px !important;
+  width: 48px;
+  height: 48px;
 }
 
-/* Extra large icons for classes and team */
 .icon-xl {
-  width: 88px !important;
-  height: 88px !important;
-  border-radius: 20px !important;
+  width: 120px;
+  height: 120px;
 }
 
-/* Loading skeleton styles */
+/* Loading skeleton */
 .skeleton {
   background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
   background-size: 200% 100%;
@@ -284,43 +284,42 @@ body {
   }
 }
 
-/* Custom Steps component styling */
+/* Custom steps styling */
 .custom-steps .p-steps .p-steps-item .p-menuitem-link {
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0;
 }
 
 .custom-steps .p-steps .p-steps-item .p-menuitem-link .p-steps-number {
-  background: var(--sage-green) !important;
-  color: white !important;
-  border: 2px solid var(--sage-green) !important;
-  width: 2.5rem !important;
-  height: 2.5rem !important;
-  border-radius: 50% !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-weight: 600 !important;
-  transition: all 0.3s ease !important;
+  background: var(--sage-green-600);
+  border: 2px solid var(--sage-green-600);
+  color: white;
+  font-weight: 600;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .custom-steps .p-steps .p-steps-item.p-highlight .p-menuitem-link .p-steps-number {
-  background: var(--primary-green) !important;
-  border-color: var(--primary-green) !important;
-  transform: scale(1.1) !important;
+  background: var(--pastel-pink);
+  border-color: var(--pastel-pink);
+  color: var(--secondary-brown);
 }
 
 .custom-steps .p-steps .p-steps-item.p-disabled .p-menuitem-link .p-steps-number {
-  background: var(--light-tan) !important;
-  border-color: var(--earth-brown) !important;
-  color: var(--earth-brown) !important;
+  background: var(--sage-green-200);
+  border-color: var(--sage-green-200);
+  color: var(--sage-green-400);
 }
 
 .custom-steps .p-steps .p-steps-item .p-menuitem-link .p-steps-title {
-  color: var(--earth-brown) !important;
-  font-weight: 500 !important;
-  margin-top: 0.5rem !important;
+  color: var(--earth-brown);
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .custom-steps .p-steps .p-steps-item.p-highlight .p-menuitem-link .p-steps-title {
@@ -480,4 +479,160 @@ body {
 
 .custom-scrollbar .p-scrollpanel-bar:hover {
   background: var(--sage-green-400);
+}
+
+/* Custom Back to Top Styles */
+.custom-back-to-top {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  background: linear-gradient(135deg, var(--sage-green-600), var(--primary-green)) !important;
+  border: 2px solid var(--sage-green-400) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3) !important;
+  transition: all 0.3s ease !important;
+  z-index: 1000 !important;
+}
+
+.custom-back-to-top:hover {
+  background: linear-gradient(135deg, var(--pastel-pink), var(--sage-green-600)) !important;
+  border-color: var(--pastel-pink) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4) !important;
+}
+
+.custom-back-to-top:active {
+  transform: translateY(0) !important;
+}
+
+.custom-back-to-top .p-scrolltop-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Custom Card Styles */
+.yoga-card {
+  background: rgba(255, 255, 255, 0.9) !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--sage-green-200) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.yoga-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 24px rgba(139, 69, 19, 0.15) !important;
+}
+
+/* Icon Styles */
+.icon-large {
+  width: 88px;
+  height: 88px;
+}
+
+.soft-rounded {
+  border-radius: 12px;
+}
+
+.sage-border {
+  border-color: var(--sage-green-200);
+}
+
+/* Utility Classes */
+.bg-sage-green-200 {
+  background-color: var(--sage-green-200);
+}
+
+.bg-sage-green-300 {
+  background-color: var(--sage-green-300);
+}
+
+.bg-sage-green-400 {
+  background-color: var(--sage-green-400);
+}
+
+.bg-sage-green-600 {
+  background-color: var(--sage-green-600);
+}
+
+.bg-olive-green {
+  background-color: var(--olive-green);
+}
+
+.bg-pastel-pink {
+  background-color: var(--pastel-pink);
+}
+
+.bg-light-tan {
+  background-color: var(--light-tan);
+}
+
+.bg-tan {
+  background-color: var(--tan);
+}
+
+.bg-brown {
+  background-color: var(--brown);
+}
+
+.bg-yellow-gold {
+  background-color: var(--yellow-gold);
+}
+
+.text-primary-green {
+  color: var(--primary-green);
+}
+
+.text-sage-green-600 {
+  color: var(--sage-green-600);
+}
+
+.text-sage-green-800 {
+  color: #4a5d3a;
+}
+
+.text-earth-brown {
+  color: var(--earth-brown);
+}
+
+.text-secondary-brown {
+  color: var(--secondary-brown);
+}
+
+.text-sage {
+  color: var(--sage-green-600);
+}
+
+.border-sage-green-200 {
+  border-color: var(--sage-green-200);
+}
+
+.border-sage-green-400 {
+  border-color: var(--sage-green-400);
+}
+
+.border-sage-green-600 {
+  border-color: var(--sage-green-600);
+}
+
+.border-pastel-pink {
+  border-color: var(--pastel-pink);
+}
+
+.border-primary-green {
+  border-color: var(--primary-green);
+}
+
+.border-sage {
+  border-color: var(--sage-green-600);
+}
+
+.border-olive-green {
+  border-color: var(--olive-green);
 }

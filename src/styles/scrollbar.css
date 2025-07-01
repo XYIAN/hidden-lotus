@@ -1,0 +1,13 @@
+/* Custom Scrollbar Styles */
+.custom-scrollbar .p-scrollpanel-wrapper {
+  border-radius: 0.5rem;
+}
+
+.custom-scrollbar .p-scrollpanel-bar {
+  background: var(--sage-green-300);
+  border-radius: 0.25rem;
+}
+
+.custom-scrollbar .p-scrollpanel-bar:hover {
+  background: var(--sage-green-400);
+}

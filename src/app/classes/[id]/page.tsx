@@ -10,8 +10,9 @@ import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { Tag } from 'primereact/tag';
 import { Divider } from 'primereact/divider';
-import { classesData } from '@/lib/data';
+import { classesData } from '@/constants/classes';
 import { useRef } from 'react';
+import Link from 'next/link';
 
 export default function ClassDetailPage() {
   const params = useParams();
@@ -29,12 +30,32 @@ export default function ClassDetailPage() {
 
   if (!classData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-sage-green-50 to-tan-100 p-4">
+      <div className="min-h-screen bg-gradient-to-br from-light-tan to-sage-green-50 p-4">
         <div className="max-w-4xl mx-auto">
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+          <Card className="yoga-card p-8">
             <div className="text-center py-8">
-              <h1 className="text-2xl font-bold text-sage-green-800 mb-4">Class Not Found</h1>
-              <p className="text-sage-green-600">The class you're looking for doesn't exist.</p>
+              <div className="text-6xl mb-4">😔</div>
+              <h1 className="text-3xl font-bold text-primary-green mb-4">Uh oh! Class Not Found</h1>
+              <p className="text-earth-brown text-lg mb-6">
+                We couldn't find the class you're looking for. Please try again later or pick a
+                different class.
+              </p>
+              <div className="flex flex-column md:flex-row gap-4 justify-content-center">
+                <Link href="/classes">
+                  <Button
+                    label="Back to Classes"
+                    icon="pi pi-arrow-left"
+                    className="bg-sage-green-600 border-sage-green-600"
+                  />
+                </Link>
+                <Link href="/contact">
+                  <Button
+                    label="Contact Support"
+                    icon="pi pi-envelope"
+                    className="bg-pastel-pink border-pastel-pink text-secondary-brown"
+                  />
+                </Link>
+              </div>
             </div>
           </Card>
         </div>

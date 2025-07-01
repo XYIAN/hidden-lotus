@@ -229,6 +229,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed hamburger menu visibility and style
 - Sidebar and header now visually consistent with theme
 
+## [0.9.7] - 2024-12-19
+
+### Added
+
+- **Back to Top Component**: Custom component using PrimeReact ScrollTop with theme styling
+- **Global Navigation**: Back to Top button available on all pages when scrolling down
+- **Theme Integration**: Styled with sage green gradient, pastel pink hover effects, and lotus flower icon
+
+### Features
+
+- Appears when scrolling down 100px from top
+- Positioned bottom-right with smooth animations
+- Uses lotus flower icon from lucide-react
+- Hover effects with color transitions and elevation
+- Fully responsive and accessible
+
+## [0.9.6] - 2024-12-19
+
 ## [1.0.0] - 2024-01-15
 
 ### Added

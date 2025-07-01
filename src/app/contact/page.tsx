@@ -15,6 +15,7 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { Toast } from 'primereact/toast';
 import { HeroSection } from '@/components/ui/hero-section';
+import '@/styles/stepper.css';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),

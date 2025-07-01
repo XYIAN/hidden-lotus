@@ -9,6 +9,7 @@ import { Dialog } from 'primereact/dialog';
 import { HeroSection } from '@/components/ui/hero-section';
 import { storiesData, Story } from '@/constants/stories';
 import Link from 'next/link';
+import '@/styles/scrollbar.css';
 
 export default function StoryPage() {
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);

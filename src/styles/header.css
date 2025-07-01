@@ -1,0 +1,8 @@
+/* Header Styles with Blur Effect */
+.header-blur {
+  background: rgba(237, 232, 224, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(107, 142, 90, 0.4) !important;
+  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1) !important;
+}

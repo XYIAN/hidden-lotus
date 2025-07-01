@@ -27,7 +27,7 @@ export function ButtonGroup({ buttons, className = '' }: ButtonGroupProps) {
             <p className="text-sage-green-600 mb-4">{button.description}</p>
             <a
               href={button.href}
-              className="inline-flex items-center px-4 py-2 bg-sage-green-600 hover:bg-sage-green-700 text-white font-medium rounded-lg transition-colors duration-200"
+              className="inline-flex items-center px-4 py-2 bg-sage-green-600 hover:bg-sage-green-700 text-white font-medium rounded-lg transition-colors duration-200 home-card-button"
             >
               {button.buttonText}
               <i className="pi pi-arrow-right ml-2"></i>

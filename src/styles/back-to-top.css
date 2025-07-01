@@ -1,0 +1,33 @@
+/* Back to Top Component Styles */
+.custom-back-to-top {
+  position: fixed !important;
+  bottom: 2rem !important;
+  right: 2rem !important;
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  background: linear-gradient(135deg, var(--sage-green-600), var(--primary-green)) !important;
+  border: 2px solid var(--sage-green-400) !important;
+  border-radius: 50% !important;
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3) !important;
+  transition: all 0.3s ease !important;
+  z-index: 1000 !important;
+}
+
+.custom-back-to-top:hover {
+  background: linear-gradient(135deg, var(--pastel-pink), var(--sage-green-600)) !important;
+  border-color: var(--pastel-pink) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4) !important;
+}
+
+.custom-back-to-top:active {
+  transform: translateY(0) !important;
+}
+
+.custom-back-to-top .p-scrolltop-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+}

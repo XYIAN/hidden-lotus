@@ -4,6 +4,7 @@ import './globals.css';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import { BackToTop } from '@/components/ui/back-to-top';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -94,6 +95,7 @@ export default function RootLayout({
             <Header />
             <main className="flex-1">{children}</main>
             <Footer />
+            <BackToTop />
           </div>
         </Providers>
       </body>

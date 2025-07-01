@@ -2,89 +2,43 @@ import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
 import Link from 'next/link';
 import Image from 'next/image';
+import { ButtonGroup } from '@/components/ui/button-group';
+import { HeroSection } from '@/components/ui/hero-section';
+import '@/styles/home-buttons.css';
 
-const actionCards = [
+const actionButtons = [
   {
-    title: 'Next Class',
-    description: 'Join our upcoming wellness session',
-    icon: '/icon-hl-1.png',
+    title: 'Explore Classes',
+    description: 'Discover our yoga, meditation, and wellness classes',
+    icon: 'pi pi-heart',
     href: '/classes',
-    color: 'bg-soft-sage',
-    accent: 'text-sage',
+    buttonText: 'View Classes',
   },
   {
-    title: 'Book',
-    description: 'Reserve your spot in our classes',
-    icon: '/icon-hl-2.png',
-    href: '/classes',
-    color: 'bg-pastel-pink',
-    accent: 'text-secondary-brown',
-  },
-  {
-    title: 'Teachers',
-    description: 'Meet our experienced instructors',
-    icon: '/icon-hl-3.png',
+    title: 'Meet Our Team',
+    description: 'Connect with our experienced wellness practitioners',
+    icon: 'pi pi-users',
     href: '/team',
-    color: 'bg-sage',
-    accent: 'text-white',
+    buttonText: 'Meet Team',
+  },
+  {
+    title: 'Book Consultation',
+    description: 'Schedule a personalized wellness consultation',
+    icon: 'pi pi-calendar',
+    href: '/contact',
+    buttonText: 'Book Now',
   },
 ];
 
 export default function HomePage() {
   return (
     <div className="flex flex-column gap-6 p-4">
-      {/* Hero Section */}
-      <section className="text-center py-8">
-        <div className="flex flex-column align-items-center justify-content-center gap-4">
-          <Image
-            src="/icon-hl-1.png"
-            alt="Hidden Lotus Logo"
-            width={160}
-            height={160}
-            className="object-contain soft-rounded-lg"
-            priority
-            style={{ maxWidth: '160px', height: 'auto' }}
-          />
-          <h1 className="text-3xl md:text-4xl font-bold text-primary-green mb-2">
-            Welcome to Hidden Lotus
-          </h1>
-          <p className="text-base md:text-lg text-earth-brown max-w-2xl">
-            Discover authentic wellness experiences in a peaceful environment. From yoga and
-            meditation to reiki healing, we provide holistic approaches to your well-being journey.
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        title="Welcome to Hidden Lotus"
+        description="Discover your path to wellness and inner peace through our holistic approach to healing and mindfulness."
+      />
 
-      {/* Action Cards */}
-      <section className="max-w-4xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-content-center">
-          {actionCards.map((card, index) => (
-            <Card key={index} className="h-full yoga-card">
-              <div className="text-center">
-                <div className="mx-auto mb-3 flex align-items-center justify-content-center">
-                  <Image
-                    src={card.icon}
-                    alt={`${card.title} icon`}
-                    width={48}
-                    height={48}
-                    className="object-contain icon-large"
-                  />
-                </div>
-                <h3 className="text-xl font-semibold text-primary-green mb-2">{card.title}</h3>
-                <p className="text-sm text-earth-brown mb-4">{card.description}</p>
-                <Link href={card.href}>
-                  <Button
-                    label="Learn More"
-                    className="p-button-sm bg-soft-sage border-soft-sage"
-                    icon="pi pi-arrow-right"
-                    iconPos="right"
-                  />
-                </Link>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </section>
+      <ButtonGroup buttons={actionButtons} />
 
       {/* Contact Section */}
       <section className="text-center py-8">

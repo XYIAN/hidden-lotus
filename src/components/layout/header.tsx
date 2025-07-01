@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Flower2 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
+import '@/styles/header.css';
 
 const navigationItems = [
   { label: 'Home', href: '/' },
@@ -28,31 +29,30 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-50 w-full bg-light-tan/80 backdrop-blur-md border-b border-sage-green-200/40 shadow-sm">
+      <header className="sticky top-0 z-50 w-full header-blur">
         <div className="flex justify-content-between align-items-center p-4 max-w-7xl mx-auto">
           {/* Logo */}
           <Link href="/" className="flex align-items-center gap-3">
             <Image
               src="/icon-hl-1.png"
               alt="Hidden Lotus"
-              width={45}
-              height={45}
+              width={50}
+              height={50}
               className="rounded-lg object-contain"
+              style={{ borderRadius: '12px' }}
               priority
             />
             <span className="text-xl font-bold text-primary-green">Hidden Lotus</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex align-items-center gap-4">
+          <nav className="hidden md:flex gap-6">
             {navigationItems.map(item => (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
-                className={`text-decoration-none px-3 py-2 border-round transition-colors ${
-                  isActive(item.href)
-                    ? 'bg-olive-green text-white font-medium'
-                    : 'text-earth-brown hover:bg-pastel-pink hover:text-secondary-brown'
+                className={`text-earth-brown hover:text-primary-green transition-colors duration-200 px-2 py-1 rounded-md ${
+                  pathname === item.href ? 'bg-sage-green-600 text-white' : ''
                 }`}
               >
                 {item.label}
@@ -83,6 +83,7 @@ export function Header() {
               width={50}
               height={50}
               className="rounded-lg object-contain"
+              style={{ borderRadius: '12px' }}
             />
             <span className="text-2xl font-bold text-primary-green tracking-wide">
               Hidden Lotus
