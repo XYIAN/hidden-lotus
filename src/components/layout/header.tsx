@@ -8,9 +8,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Flower2 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
-import { SidebarHeader } from './sidebar-header'
 import '@/styles/header.css'
 import { LotusMenuBar } from './lotus-menu-bar'
+import { SidebarHeader } from './sidebar-header'
 
 const navigationItems = [
 	{ label: 'Home', href: '/' },
@@ -67,15 +67,15 @@ export function Header() {
 	return (
 		<>
 			<header className="sticky top-0 z-50 w-full header-blur">
-				{/* Desktop Navigation: Show LotusMenuBar on md+ screens */}
-				<div className="hidden md:block w-full">
+				{/* Desktop Navigation: Show LotusMenuBar on tablet+ screens */}
+				<div className="hidden tablet:block w-full">
 					<LotusMenuBar />
 				</div>
-				{/* Logo and Hamburger for Mobile (show on sm and below) */}
-				<div className="flex justify-between items-center md:hidden w-full px-4 py-3">
+				{/* Logo and Hamburger for Mobile (show below tablet breakpoint) */}
+				<div className="flex justify-between items-center tablet:hidden w-full px-4 py-3">
 					<Link
 						href="/"
-						className="flex items-center gap-3 flex-1 justify-center"
+						className="flex items-center gap-3 justify-content-center align-items-center"
 					>
 						<Image
 							src="/icon-hl-1.png"
@@ -86,14 +86,19 @@ export function Header() {
 							style={{ borderRadius: '12px' }}
 							priority
 						/>
-						<span className="text-xl font-bold text-primary-green whitespace-nowrap">
+						<span
+							className="text-xl font-bold text-primary-green"
+							style={{
+								width: '16rem !important',
+							}}
+						>
 							Hidden Lotus
 						</span>
 					</Link>
 					<Button
 						icon="pi pi-heart"
 						onClick={() => setSidebarVisible(true)}
-						className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
+						className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white ml-auto"
 						style={{ zIndex: 60, visibility: 'visible', opacity: 1 }}
 						aria-label="Open menu"
 					/>

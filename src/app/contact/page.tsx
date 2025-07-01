@@ -162,7 +162,7 @@ export default function ContactPage() {
 							<h2 className="text-2xl font-semibold text-primary-green mb-3 text-center">
 								Personal Information
 							</h2>
-							<div className="flex flex-col gap-4 w-full max-w-md">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
 								<div className="flex flex-col gap-2 w-full">
 									<label
 										htmlFor="name"
