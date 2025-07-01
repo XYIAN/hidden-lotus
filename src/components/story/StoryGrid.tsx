@@ -1,6 +1,6 @@
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
-import { StoryCard } from '@/components/common/story-card'
+import { CardGrid, DisplayCard } from '@/components/common'
 import { Story } from '@/constants/stories'
 
 interface StoryGridProps {
@@ -37,12 +37,37 @@ export function StoryGrid({
 		)
 	}
 	return (
-		<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-7xl mx-auto">
+		<CardGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3 }} gap={6}>
 			{stories.map((story, index) => (
 				<div key={story.id} className={`stagger-${(index % 6) + 1}`}>
-					<StoryCard story={story} onClick={onStoryClick || (() => {})} />
+					<DisplayCard
+						data={{
+							id: story.id,
+							title: story.title,
+							name: story.title,
+							description: story.excerpt,
+							image: story.image,
+							category: story.category,
+							profession: story.author,
+							href: `/story/${encodeURIComponent(story.id)}`,
+						}}
+						showImage={!!story.image}
+						showType={false}
+						showSpecialties={false}
+						showCertifications={false}
+						showCredentials={false}
+						showProfession={true}
+						showBio={false}
+						showDescription={true}
+						showPrice={false}
+						showDuration={false}
+						showLevel={false}
+						showCategory={true}
+						showLearnMore={true}
+						learnMoreText="Read Story"
+					/>
 				</div>
 			))}
-		</div>
+		</CardGrid>
 	)
 }

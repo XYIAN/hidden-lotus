@@ -7,7 +7,7 @@ import { InputText } from 'primereact/inputtext'
 import { Dropdown } from 'primereact/dropdown'
 import { Tag } from 'primereact/tag'
 import { HeroSection } from '@/components/common/hero-section'
-import { TeamCard } from '@/components/common/team-card'
+import { CardGrid, DisplayCard } from '@/components/common'
 import { teamData, TeamMember } from '@/constants/team'
 import '@/styles/animations.css'
 
@@ -67,43 +67,45 @@ export default function TeamPage() {
 			{/* Filters Section */}
 			<section className="max-w-6xl mx-auto w-full">
 				<Card className="yoga-card p-4 mb-6">
-					<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-						<div className="flex flex-column gap-2">
-							<label
-								htmlFor="search"
-								className="text-sm font-semibold text-primary-green"
-							>
-								Search Team
-							</label>
-							<InputText
-								id="search"
-								value={searchTerm}
-								onChange={(e) => setSearchTerm(e.target.value)}
-								placeholder="Search by name, bio, or specialty..."
-								className="w-full"
-							/>
+					<div className="flex flex-column gap-4">
+						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+							<div className="flex flex-column gap-2">
+								<label
+									htmlFor="search"
+									className="text-sm font-semibold text-primary-green"
+								>
+									Search Team
+								</label>
+								<InputText
+									id="search"
+									value={searchTerm}
+									onChange={(e) => setSearchTerm(e.target.value)}
+									placeholder="Search by name, bio, or specialty..."
+									className="w-full"
+								/>
+							</div>
+
+							<div className="flex flex-column gap-2">
+								<label
+									htmlFor="specialty"
+									className="text-sm font-semibold text-primary-green"
+								>
+									Specialty
+								</label>
+								<Dropdown
+									id="specialty"
+									value={selectedSpecialty}
+									onChange={(e) => setSelectedSpecialty(e.value)}
+									options={specialties}
+									optionLabel="label"
+									optionValue="value"
+									placeholder="Select Specialty"
+									className="w-full"
+								/>
+							</div>
 						</div>
 
-						<div className="flex flex-column gap-2">
-							<label
-								htmlFor="specialty"
-								className="text-sm font-semibold text-primary-green"
-							>
-								Specialty
-							</label>
-							<Dropdown
-								id="specialty"
-								value={selectedSpecialty}
-								onChange={(e) => setSelectedSpecialty(e.value)}
-								options={specialties}
-								optionLabel="label"
-								optionValue="value"
-								placeholder="Select Specialty"
-								className="w-full"
-							/>
-						</div>
-
-						<div className="flex flex-column gap-2 justify-content-end">
+						<div className="flex justify-content-center">
 							<Button
 								label="Clear Filters"
 								icon="pi pi-refresh"
@@ -144,13 +146,36 @@ export default function TeamPage() {
 
 				{/* Team Grid */}
 				{filteredTeam.length > 0 ? (
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-7xl mx-auto">
+					<CardGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3 }} gap={6}>
 						{filteredTeam.map((member, index) => (
 							<div key={member.id} className={`stagger-${(index % 6) + 1}`}>
-								<TeamCard member={member} />
+								<DisplayCard
+									data={{
+										id: member.id,
+										name: member.name,
+										profession: member.profession,
+										credentials: member.credentials,
+										bio: member.bio,
+										type: member.type,
+										specialties: member.specialties,
+										certifications: member.certifications,
+										image: member.image,
+										fallbackIcon: 'pi pi-user',
+										href: `/team/${encodeURIComponent(member.name)}`,
+									}}
+									showImage={true}
+									showType={true}
+									showSpecialties={true}
+									showCertifications={true}
+									showCredentials={true}
+									showProfession={true}
+									showBio={true}
+									showLearnMore={true}
+									learnMoreText="Learn More"
+								/>
 							</div>
 						))}
-					</div>
+					</CardGrid>
 				) : (
 					<Card className="yoga-card p-8 text-center">
 						<div className="text-6xl mb-4">😔</div>

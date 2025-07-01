@@ -16,6 +16,10 @@
 .active-nav-item {
 	animation: activeNavPulse 2s infinite;
 	box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+	border-radius: 12px !important;
+	background: var(--sage-green-600) !important;
+	color: white !important;
+	box-shadow: 0 2px 8px rgba(107, 142, 90, 0.3) !important;
 }
 
 @keyframes activeNavPulse {
@@ -135,34 +139,39 @@
 
 /* Bouncing Glow for Sidebar Header */
 .bouncing-glow {
-	animation: bounceGlow 5s ease-in-out infinite;
+	animation: bounceGlow 6s ease-in-out infinite;
 }
 
 @keyframes bounceGlow {
 	0% {
-		text-shadow: -20px 0 3px rgba(255, 255, 200, 0.3),
-			-40px 0 6px rgba(255, 255, 200, 0.2);
-		filter: drop-shadow(-20px 0 2px rgba(255, 255, 200, 0.25));
+		text-shadow: -8px 0 2px rgba(255, 255, 200, 0.25),
+			-16px 0 4px rgba(255, 255, 200, 0.15);
+		filter: drop-shadow(-8px 0 1px rgba(255, 255, 200, 0.2));
 	}
-	25% {
-		text-shadow: -10px 0 4px rgba(255, 255, 200, 0.4),
-			-20px 0 8px rgba(255, 255, 200, 0.3);
-		filter: drop-shadow(-10px 0 3px rgba(255, 255, 200, 0.35));
+	20% {
+		text-shadow: -4px 0 3px rgba(255, 255, 200, 0.35),
+			-8px 0 6px rgba(255, 255, 200, 0.25);
+		filter: drop-shadow(-4px 0 2px rgba(255, 255, 200, 0.3));
 	}
-	50% {
-		text-shadow: 0px 0 5px rgba(255, 255, 200, 0.5),
-			0px 0 10px rgba(255, 255, 200, 0.4);
-		filter: drop-shadow(0px 0 4px rgba(255, 255, 200, 0.45));
+	40% {
+		text-shadow: 0px 0 4px rgba(255, 255, 200, 0.45),
+			0px 0 8px rgba(255, 255, 200, 0.35);
+		filter: drop-shadow(0px 0 3px rgba(255, 255, 200, 0.4));
 	}
-	75% {
-		text-shadow: 10px 0 4px rgba(255, 255, 200, 0.4),
-			20px 0 8px rgba(255, 255, 200, 0.3);
-		filter: drop-shadow(10px 0 3px rgba(255, 255, 200, 0.35));
+	60% {
+		text-shadow: 4px 0 3px rgba(255, 255, 200, 0.35),
+			8px 0 6px rgba(255, 255, 200, 0.25);
+		filter: drop-shadow(4px 0 2px rgba(255, 255, 200, 0.3));
+	}
+	80% {
+		text-shadow: 8px 0 2px rgba(255, 255, 200, 0.25),
+			16px 0 4px rgba(255, 255, 200, 0.15);
+		filter: drop-shadow(8px 0 1px rgba(255, 255, 200, 0.2));
 	}
 	100% {
-		text-shadow: 20px 0 3px rgba(255, 255, 200, 0.3),
-			40px 0 6px rgba(255, 255, 200, 0.2);
-		filter: drop-shadow(20px 0 2px rgba(255, 255, 200, 0.25));
+		text-shadow: -8px 0 2px rgba(255, 255, 200, 0.25),
+			-16px 0 4px rgba(255, 255, 200, 0.15);
+		filter: drop-shadow(-8px 0 1px rgba(255, 255, 200, 0.2));
 	}
 }
 

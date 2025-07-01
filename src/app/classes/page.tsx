@@ -13,6 +13,7 @@ import { ClassCard } from '@/components/common/class-card'
 import { classesData, Class } from '@/constants/classes'
 import { useRef } from 'react'
 import '@/styles/animations.css'
+import { CardGrid, DisplayCard } from '@/components/common'
 
 interface FilterForm {
 	searchTerm: string
@@ -240,15 +241,42 @@ export default function ClassesPage() {
 
 				{/* Classes Grid */}
 				{filteredClasses.length > 0 ? (
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-7xl mx-auto">
-						{filteredClasses.map((classData, index) => (
-							<ClassCard
-								key={classData.id}
-								classData={classData}
-								className={`stagger-${(index % 6) + 1}`}
-							/>
+					<CardGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3 }} gap={6}>
+						{filteredClasses.map((cls, index) => (
+							<div key={cls.id} className={`stagger-${(index % 6) + 1}`}>
+								<DisplayCard
+									data={{
+										id: cls.id,
+										name: cls.name,
+										description: cls.description,
+										image: cls.image,
+										price: cls.price,
+										duration: cls.duration,
+										level: cls.level,
+										category: cls.categories?.[0],
+										bio: undefined,
+										credentials: undefined,
+										profession: cls.instructor,
+										href: `/classes/${encodeURIComponent(cls.id)}`,
+									}}
+									showImage={!!cls.image}
+									showType={false}
+									showSpecialties={false}
+									showCertifications={false}
+									showCredentials={false}
+									showProfession={true}
+									showBio={false}
+									showDescription={true}
+									showPrice={true}
+									showDuration={true}
+									showLevel={true}
+									showCategory={true}
+									showLearnMore={true}
+									learnMoreText="View Details"
+								/>
+							</div>
 						))}
-					</div>
+					</CardGrid>
 				) : (
 					<Card className="yoga-card p-8 text-center">
 						<div className="text-6xl mb-4">😔</div>
