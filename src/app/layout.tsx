@@ -4,7 +4,7 @@ import './globals.css';
 import { Providers } from '@/lib/providers';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { BackToTop } from '@/components/ui/back-to-top';
+import { BackToTop } from '@/components/layout/back-to-top';
 
 const inter = Inter({
   subsets: ['latin'],

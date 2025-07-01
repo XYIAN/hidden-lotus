@@ -1,8 +1,36 @@
 /* Header Styles with Blur Effect */
 .header-blur {
-  background: rgba(237, 232, 224, 0.8) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border-bottom: 1px solid rgba(107, 142, 90, 0.4) !important;
-  box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1) !important;
+	background: rgba(237, 232, 224, 0.8) !important;
+	backdrop-filter: blur(12px) !important;
+	-webkit-backdrop-filter: blur(12px) !important;
+	border-bottom: 1px solid rgba(107, 142, 90, 0.4) !important;
+	box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1) !important;
+	z-index: 50 !important;
+	position: relative !important;
+}
+
+/* Active navigation item with yellow pulsing glow */
+.active-nav-item {
+	animation: activeNavPulse 2s infinite;
+	box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes activeNavPulse {
+	0% {
+		box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+	}
+	50% {
+		box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.6);
+	}
+	100% {
+		box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.3);
+	}
+}
+
+/* Ensure mobile menu button is always visible */
+.header-blur .p-button {
+	visibility: visible !important;
+	opacity: 1 !important;
+	position: relative !important;
+	z-index: 60 !important;
 }

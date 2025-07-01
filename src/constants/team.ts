@@ -22,22 +22,30 @@ export const teamData: TeamMember[] = [
   {
     id: '1',
     name: 'Jaideep Pa',
-    profession: 'Yoga Instructor & Wellness Coach',
-    credentials: 'RYT-500, Ayurvedic Wellness Counselor, Mindfulness Teacher',
-    bio: 'Jaideep brings over 15 years of experience in yoga and meditation, specializing in vinyasa flow and mindfulness practices.',
+    profession: 'Yoga Instructor & Strength Training Coach',
+    credentials: 'RYT-500, Personal Trainer, Ayurvedic Wellness Counselor, Mindfulness Teacher',
+    bio: 'Jaideep brings over 15 years of experience in yoga, strength training, and meditation, specializing in vinyasa flow and functional fitness.',
     longBio:
-      'Jaideep Pa is a dedicated yoga instructor and wellness coach with over 15 years of experience in the field of holistic health. His journey began in India, where he studied under renowned yoga masters and learned the ancient wisdom of Ayurveda. Jaideep specializes in vinyasa flow, mindfulness meditation, and stress management techniques. He believes in making yoga accessible to everyone, regardless of their experience level or physical limitations. Through his classes and coaching sessions, Jaideep helps students develop a deeper connection with their bodies, minds, and spirits, guiding them toward greater self-awareness and inner peace.',
+      'Jaideep Pa is a dedicated yoga instructor and strength training coach with over 15 years of experience in the field of holistic health and fitness. His journey began in India, where he studied under renowned yoga masters and learned the ancient wisdom of Ayurveda. Jaideep specializes in vinyasa flow, strength training, mindfulness meditation, and stress management techniques. He believes in making both yoga and fitness accessible to everyone, regardless of their experience level or physical limitations. Through his classes and coaching sessions, Jaideep helps students develop a deeper connection with their bodies, minds, and spirits, guiding them toward greater self-awareness, strength, and inner peace.',
     type: 'instructor',
-    classes: ['Morning Vinyasa Flow', 'Evening Restorative Yoga', 'Wellness Podcast Session'],
+    classes: [
+      'Morning Vinyasa Flow',
+      'Evening Restorative Yoga',
+      'Power Yoga & Strength Training',
+      'Weight Training Fundamentals',
+      'Wellness Podcast Session',
+    ],
     specialties: [
       'Vinyasa Flow',
+      'Strength Training',
+      'Weight Training',
       'Mindfulness Meditation',
       'Stress Management',
       'Ayurvedic Wellness',
     ],
-    experience: '15+ years in yoga instruction and wellness coaching',
+    experience: '15+ years in yoga instruction, strength training, and wellness coaching',
     education:
-      'RYT-500 Certification, Ayurvedic Wellness Counselor Certification, Mindfulness Teacher Training',
+      'RYT-500 Certification, Personal Trainer Certification, Ayurvedic Wellness Counselor Certification, Mindfulness Teacher Training',
     contact: {
       email: 'jaideep@hiddenlotus.com',
       phone: '(555) 123-4567',
@@ -53,7 +61,11 @@ export const teamData: TeamMember[] = [
     longBio:
       'Sarah Chen is a gifted energy healer and Reiki master with a deep understanding of the subtle energy systems of the body. Her journey into energy healing began after experiencing the profound healing effects of Reiki during a difficult period in her life. Since then, she has dedicated herself to helping others find balance and healing through various energy medicine modalities. Sarah combines traditional Reiki techniques with crystal healing, chakra balancing, and intuitive energy work to create personalized healing sessions for each client. Her gentle, compassionate approach helps clients feel safe and supported as they work through emotional blockages and physical imbalances.',
     type: 'instructor',
-    classes: ['Reiki Healing Session', 'Energy Clearing Session'],
+    classes: [
+      'Reiki Healing Session',
+      'Energy Clearing Session',
+      'Crystal Healing & Chakra Balancing',
+    ],
     specialties: ['Reiki Healing', 'Crystal Therapy', 'Chakra Balancing', 'Energy Clearing'],
     experience: '8+ years in energy healing and spiritual wellness',
     education:
@@ -73,12 +85,17 @@ export const teamData: TeamMember[] = [
     longBio:
       'Dr. Michael Rodriguez is a licensed clinical psychologist and wellness director with over 20 years of experience in mental health and wellness. He holds a PhD in Psychology and has specialized training in cognitive behavioral therapy, mindfulness-based stress reduction, and positive psychology. Dr. Rodriguez believes in a holistic approach to mental health that addresses the mind, body, and spirit. He has helped countless individuals overcome anxiety, depression, and stress-related issues through evidence-based therapeutic techniques combined with mindfulness and wellness practices. As our Wellness Director, he oversees all wellness programs and ensures that our services meet the highest standards of care and effectiveness.',
     type: 'admin',
-    classes: ['Mindfulness Workshop', 'Stress Management Seminar'],
+    classes: [
+      'Mindfulness Workshop',
+      'Stress Management Seminar',
+      'Breathwork & Energy Activation',
+    ],
     specialties: [
       'Cognitive Behavioral Therapy',
       'Mindfulness-Based Stress Reduction',
       'Positive Psychology',
       'Wellness Coaching',
+      'Breathwork',
     ],
     experience: '20+ years in clinical psychology and wellness',
     education: 'PhD in Psychology, Licensed Clinical Psychologist, Certified Wellness Coach',
@@ -133,21 +150,17 @@ export const teamData: TeamMember[] = [
   {
     id: '6',
     name: 'Maria Garcia',
-    profession: 'Operations Manager & Wellness Industry Expert',
-    credentials: 'MBA in Healthcare Management, Certified Wellness Program Manager',
-    bio: 'Maria manages day-to-day operations and ensures smooth delivery of all wellness services.',
+    profession: 'Pilates Instructor & Core Strength Specialist',
+    credentials: 'Certified Pilates Instructor, Core Strength Specialist, Movement Therapist',
+    bio: 'Maria specializes in Pilates and core strength training, helping clients build strong foundations and improve posture.',
     longBio:
-      'Maria Garcia is an experienced operations manager with a passion for creating exceptional wellness experiences. With an MBA in Healthcare Management and over 15 years of experience in the wellness industry, Maria brings a unique blend of business acumen and wellness expertise to her role. She oversees all day-to-day operations, ensuring that every aspect of our wellness center runs smoothly and efficiently. Maria is committed to creating a welcoming, supportive environment where clients feel valued and cared for. Her attention to detail and commitment to excellence ensures that our services meet the highest standards of quality and effectiveness.',
-    type: 'admin',
-    classes: [],
-    specialties: [
-      'Operations Management',
-      'Wellness Program Development',
-      'Customer Experience',
-      'Healthcare Administration',
-    ],
-    experience: '15+ years in healthcare and wellness management',
-    education: 'MBA in Healthcare Management, Certified Wellness Program Manager',
+      'Maria Garcia is a certified Pilates instructor and core strength specialist with a passion for helping clients build strong, resilient bodies. With over 10 years of experience in movement therapy and fitness instruction, Maria has developed a unique approach that combines traditional Pilates principles with modern movement science. She specializes in core strength training, posture improvement, and movement rehabilitation. Maria believes that a strong core is the foundation for all movement and helps clients develop the strength, stability, and body awareness needed for optimal health and performance.',
+    type: 'instructor',
+    classes: ['Pilates & Core Strength'],
+    specialties: ['Pilates', 'Core Strength Training', 'Posture Improvement', 'Movement Therapy'],
+    experience: '10+ years in Pilates instruction and movement therapy',
+    education:
+      'Certified Pilates Instructor, Core Strength Specialist Certification, Movement Therapy Training',
     contact: {
       email: 'maria@hiddenlotus.com',
       phone: '(555) 678-9012',
@@ -156,16 +169,24 @@ export const teamData: TeamMember[] = [
   {
     id: '7',
     name: 'Emma Wilson',
-    profession: 'Meditation Instructor & Mindfulness Coach',
-    credentials: 'Certified Meditation Teacher, Mindfulness-Based Stress Reduction Instructor',
-    bio: 'Emma guides students through meditation practices and mindfulness techniques for inner peace.',
+    profession: 'Meditation Instructor & Sound Healing Practitioner',
+    credentials:
+      'Certified Meditation Teacher, Mindfulness-Based Stress Reduction Instructor, Sound Healing Practitioner',
+    bio: 'Emma guides students through meditation practices, sound healing, and mindfulness techniques for inner peace.',
     longBio:
-      "Emma Wilson is a passionate meditation instructor and mindfulness coach who believes in the transformative power of present-moment awareness. With over 8 years of experience in meditation and mindfulness practices, Emma has helped hundreds of students develop sustainable meditation habits and integrate mindfulness into their daily lives. She specializes in guided meditation, breathwork, and mindfulness-based stress reduction techniques. Emma's gentle, encouraging approach makes meditation accessible to beginners while providing depth for experienced practitioners.",
+      "Emma Wilson is a passionate meditation instructor and sound healing practitioner who believes in the transformative power of present-moment awareness and vibrational healing. With over 8 years of experience in meditation and mindfulness practices, Emma has helped hundreds of students develop sustainable meditation habits and integrate mindfulness into their daily lives. She specializes in guided meditation, sound healing with crystal bowls and gongs, breathwork, and mindfulness-based stress reduction techniques. Emma's gentle, encouraging approach makes meditation and sound healing accessible to beginners while providing depth for experienced practitioners.",
     type: 'instructor',
-    classes: ['Guided Meditation', 'Mindfulness for Beginners', 'Breathwork Workshop'],
-    specialties: ['Guided Meditation', 'Mindfulness Training', 'Breathwork', 'Stress Reduction'],
-    experience: '8+ years in meditation instruction and mindfulness coaching',
-    education: 'Certified Meditation Teacher, Mindfulness-Based Stress Reduction Certification',
+    classes: ['Guided Meditation', 'Sound Healing & Meditation', 'Mindful Movement & Flow'],
+    specialties: [
+      'Guided Meditation',
+      'Sound Healing',
+      'Mindfulness Training',
+      'Breathwork',
+      'Stress Reduction',
+    ],
+    experience: '8+ years in meditation instruction and sound healing',
+    education:
+      'Certified Meditation Teacher, Mindfulness-Based Stress Reduction Certification, Sound Healing Practitioner',
     contact: {
       email: 'emma@hiddenlotus.com',
       phone: '(555) 789-0123',

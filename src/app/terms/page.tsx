@@ -1,4 +1,5 @@
 import { Card } from 'primereact/card';
+import { HeroSection } from '@/components/common/hero-section';
 import type { Metadata } from 'next';
 
 const termsSections = [
@@ -65,80 +66,113 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <div className="flex flex-column gap-6 p-4">
-      {/* Page Header */}
-      <section className="text-center py-6">
-        <h1 className="text-3xl font-bold text-primary-green mb-2">Terms of Service</h1>
-        <p className="text-earth-brown max-w-2xl mx-auto">
-          Please read these terms carefully before using our services. By using our website and
-          services, you agree to these terms.
-        </p>
-      </section>
+    <div className="flex flex-column gap-6 p-4 page-transition">
+      <HeroSection
+        title="Terms of Service"
+        description="Read our terms of service to understand the rules and guidelines for using Hidden Lotus services."
+      />
 
-      {/* Terms Sections */}
       <section className="max-w-4xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 justify-content-center">
-          {termsSections.map((section, index) => (
-            <Card key={index} className="h-full yoga-card">
-              <div className="text-center">
-                <div
-                  className={`${section.color} ${section.textColor} p-3 border-round-full w-4rem h-4rem mx-auto mb-3 flex align-items-center justify-content-center`}
-                >
-                  <i className={`${section.icon} text-2xl`}></i>
-                </div>
-                <h3 className="text-xl font-semibold text-primary-green mb-3">{section.title}</h3>
-                <p className="text-earth-brown leading-relaxed">{section.content}</p>
-              </div>
-            </Card>
-          ))}
-        </div>
-      </section>
+        <Card className="yoga-card p-6">
+          <h2 className="text-2xl font-semibold text-primary-green mb-4">Terms of Service</h2>
+          <p className="text-earth-brown mb-4">Last updated: December 15, 2024</p>
 
-      {/* Additional Terms */}
-      <section className="max-w-4xl mx-auto w-full">
-        <div className="bg-light-tan/90 backdrop-blur-sm p-6 border-round sage-border">
-          <h2 className="text-2xl font-semibold text-primary-green mb-4 text-center">
-            Additional Terms
-          </h2>
-          <div className="space-y-4">
+          <div className="flex flex-column gap-6">
             <div>
-              <h3 className="text-lg font-semibold text-secondary-brown mb-2">
-                Class Bookings and Cancellations
+              <h3 className="text-xl font-semibold text-sage-green-600 mb-3">
+                Acceptance of Terms
               </h3>
               <p className="text-earth-brown">
-                Class bookings must be made at least 24 hours in advance. Cancellations require 12
-                hours notice. No-shows may result in charges for the full class fee.
+                By accessing and using Hidden Lotus services, you accept and agree to be bound by
+                the terms and provision of this agreement.
               </p>
             </div>
+
             <div>
-              <h3 className="text-lg font-semibold text-secondary-brown mb-2">Health and Safety</h3>
+              <h3 className="text-xl font-semibold text-sage-green-600 mb-3">Use License</h3>
+              <p className="text-earth-brown mb-2">
+                Permission is granted to temporarily access Hidden Lotus services for personal,
+                non-commercial transitory viewing only. This is the grant of a license, not a
+                transfer of title, and under this license you may not:
+              </p>
+              <ul className="text-earth-brown ml-4 mb-4">
+                <li>• Modify or copy the materials</li>
+                <li>• Use the materials for any commercial purpose</li>
+                <li>• Attempt to reverse engineer any software</li>
+                <li>• Remove any copyright or other proprietary notations</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-sage-green-600 mb-3">Health and Safety</h3>
+              <p className="text-earth-brown mb-2">
+                By participating in our classes and services, you acknowledge that:
+              </p>
+              <ul className="text-earth-brown ml-4 mb-4">
+                <li>• You are responsible for your own health and safety</li>
+                <li>
+                  • You should consult with a healthcare provider before starting any new exercise
+                  program
+                </li>
+                <li>• You will inform instructors of any health conditions or injuries</li>
+                <li>• You will listen to your body and modify activities as needed</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-sage-green-600 mb-3">
+                Booking and Cancellation
+              </h3>
+              <p className="text-earth-brown mb-2">Our booking and cancellation policies:</p>
+              <ul className="text-earth-brown ml-4 mb-4">
+                <li>• Classes must be booked in advance</li>
+                <li>• Cancellations must be made at least 24 hours before class</li>
+                <li>• Late cancellations may result in charges</li>
+                <li>• No-shows will be charged the full class fee</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-sage-green-600 mb-3">Code of Conduct</h3>
+              <p className="text-earth-brown mb-2">We expect all members and visitors to:</p>
+              <ul className="text-earth-brown ml-4 mb-4">
+                <li>• Treat others with respect and kindness</li>
+                <li>• Maintain a peaceful and supportive environment</li>
+                <li>• Follow instructor guidance and safety instructions</li>
+                <li>• Keep the facility clean and tidy</li>
+                <li>• Respect quiet hours and meditation spaces</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold text-sage-green-600 mb-3">Liability</h3>
               <p className="text-earth-brown">
-                Participants are responsible for their own health and safety during classes. Please
-                inform instructors of any medical conditions or injuries before participating.
+                Hidden Lotus is not liable for any injuries, damages, or losses that may occur
+                during your participation in our services. You participate at your own risk and are
+                responsible for your own safety.
               </p>
             </div>
+
             <div>
-              <h3 className="text-lg font-semibold text-secondary-brown mb-2">Code of Conduct</h3>
+              <h3 className="text-xl font-semibold text-sage-green-600 mb-3">Changes to Terms</h3>
               <p className="text-earth-brown">
-                We maintain a respectful and inclusive environment. Harassment, discrimination, or
-                disruptive behavior will not be tolerated and may result in removal from classes.
+                We reserve the right to modify these terms at any time. Changes will be effective
+                immediately upon posting. Your continued use of our services constitutes acceptance
+                of the modified terms.
               </p>
             </div>
+
             <div>
-              <h3 className="text-lg font-semibold text-secondary-brown mb-2">
+              <h3 className="text-xl font-semibold text-sage-green-600 mb-3">
                 Contact Information
               </h3>
               <p className="text-earth-brown">
-                For questions about these terms, please contact us at legal@hiddenlotus.com.
+                If you have any questions about these Terms of Service, please contact us at
+                legal@hiddenlotus.com or through our contact form.
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Last Updated */}
-      <section className="max-w-4xl mx-auto w-full text-center">
-        <p className="text-sm text-earth-brown">Last updated: {new Date().toLocaleDateString()}</p>
+        </Card>
       </section>
     </div>
   );

@@ -10,14 +10,16 @@
   border-radius: 50% !important;
   box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3) !important;
   transition: all 0.3s ease !important;
-  z-index: 1000 !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 }
 
 .custom-back-to-top:hover {
-  background: linear-gradient(135deg, var(--pastel-pink), var(--sage-green-600)) !important;
-  border-color: var(--pastel-pink) !important;
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4) !important;
+  box-shadow: 0 6px 16px rgba(139, 69, 19, 0.4) !important;
+  background: linear-gradient(135deg, var(--primary-green), var(--sage-green-600)) !important;
 }
 
 .custom-back-to-top:active {
@@ -25,9 +27,24 @@
 }
 
 .custom-back-to-top .p-scrolltop-icon {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  width: 100% !important;
-  height: 100% !important;
+  color: white !important;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+}
+
+/* Animation for the button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.5), 0 0 0 4px rgba(139, 69, 19, 0.1);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(139, 69, 19, 0.3);
+  }
+}
+
+.custom-back-to-top {
+  animation: pulse 2s infinite;
 }

@@ -1,75 +1,133 @@
-import { Card } from 'primereact/card';
-import type { Metadata } from 'next';
-import { HeroSection } from '@/components/ui/hero-section';
-import { morSections } from '@/constants/mor';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'MOR Philosophy | Motion, Open Heart, Revival | Hidden Lotus',
-  description:
-    'Learn about the MOR philosophy at Hidden Lotus: Motion, Open Heart, and Revival. Discover our holistic approach to wellness and transformation.',
-  openGraph: {
-    title: 'MOR Philosophy | Motion, Open Heart, Revival | Hidden Lotus',
-    description:
-      'Learn about the MOR philosophy at Hidden Lotus: Motion, Open Heart, and Revival. Discover our holistic approach to wellness and transformation.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Hidden Lotus Logo',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'MOR Philosophy | Motion, Open Heart, Revival | Hidden Lotus',
-    description:
-      'Learn about the MOR philosophy at Hidden Lotus: Motion, Open Heart, and Revival. Discover our holistic approach to wellness and transformation.',
-    images: ['/og-image.png'],
-  },
-};
+import { useState } from 'react';
+import { Card } from 'primereact/card';
+import { Button } from 'primereact/button';
+import { Carousel } from 'primereact/carousel';
+import { HeroSection } from '@/components/common/hero-section';
+import { morSections, MORSection } from '@/constants/mor';
 
 export default function MorPage() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const carouselItems = [
+    {
+      title: 'Mindfulness',
+      description:
+        'Cultivate present-moment awareness and inner peace through guided meditation and mindfulness practices.',
+      icon: '🧘‍♀️',
+      features: [
+        'Daily meditation sessions',
+        'Breathwork techniques',
+        'Mindful movement',
+        'Stress reduction tools',
+      ],
+    },
+    {
+      title: 'Optimization',
+      description:
+        'Optimize your physical and mental performance through evidence-based wellness strategies.',
+      icon: '⚡',
+      features: [
+        'Performance coaching',
+        'Energy optimization',
+        'Sleep improvement',
+        'Nutrition guidance',
+      ],
+    },
+    {
+      title: 'Recovery',
+      description:
+        "Support your body's natural healing processes and promote sustainable wellness practices.",
+      icon: '🌿',
+      features: [
+        'Recovery protocols',
+        'Healing modalities',
+        'Restorative practices',
+        'Wellness maintenance',
+      ],
+    },
+  ];
+
+  const itemTemplate = (item: any) => (
+    <div className="text-center p-4">
+      <div className="text-6xl mb-4">{item.icon}</div>
+      <h3 className="text-2xl font-bold text-primary-green mb-3">{item.title}</h3>
+      <p className="text-earth-brown text-lg mb-4">{item.description}</p>
+      <ul className="text-left max-w-md mx-auto">
+        {item.features.map((feature: string, index: number) => (
+          <li key={index} className="text-earth-brown mb-2 flex align-items-center">
+            <i className="pi pi-check-circle text-sage-green-600 mr-2"></i>
+            {feature}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+
   return (
-    <div className="flex flex-column gap-6 p-4">
-      {/* Page Header */}
+    <div className="flex flex-column gap-6 p-4 page-transition">
       <HeroSection
-        title="MOR Philosophy"
-        description="Our mission is guided by three core principles: Motion, Open Heart, and Revival. These pillars form the foundation of our approach to wellness and healing."
+        title="MOR - Mindfulness, Optimization, Recovery"
+        description="Discover our comprehensive approach to wellness through mindfulness, optimization, and recovery."
       />
 
-      {/* MOR Sections */}
-      <section className="max-w-4xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-content-center">
-          {morSections.map((section, index) => (
-            <Card key={index} className="h-full yoga-card">
-              <div className="text-center">
-                <div
-                  className={`${section.color} ${section.textColor} p-4 border-round-full w-5rem h-5rem mx-auto mb-4 flex align-items-center justify-content-center`}
-                >
-                  <i className={`${section.icon} text-3xl`}></i>
-                </div>
-                <h3 className="text-2xl font-semibold text-primary-green mb-3">{section.title}</h3>
-                <p className="text-earth-brown leading-relaxed">{section.description}</p>
-              </div>
+      {/* MOR Overview */}
+      <section className="max-w-6xl mx-auto w-full">
+        <Card className="yoga-card p-6 mb-6">
+          <h2 className="text-3xl font-bold text-primary-green mb-4 text-center">
+            Our MOR Framework
+          </h2>
+          <p className="text-earth-brown text-lg leading-relaxed text-center mb-6">
+            At Hidden Lotus, we believe in a holistic approach to wellness that addresses the three
+            essential pillars: Mindfulness, Optimization, and Recovery. This framework guides all
+            our programs and services.
+          </p>
+
+          {/* Carousel */}
+          <Carousel
+            value={carouselItems}
+            numVisible={1}
+            numScroll={1}
+            className="custom-carousel"
+            itemTemplate={itemTemplate}
+            autoplayInterval={5000}
+            circular
+          />
+        </Card>
+
+        {/* MOR Programs */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {morSections.map((program: MORSection, index: number) => (
+            <Card key={program.id} className="yoga-card p-4 text-center">
+              <div className="text-4xl mb-3">{program.icon}</div>
+              <h3 className="text-xl font-semibold text-primary-green mb-2">{program.title}</h3>
+              <p className="text-earth-brown mb-4">{program.description}</p>
+              <Button
+                label="Learn More"
+                icon="pi pi-arrow-right"
+                iconPos="right"
+                className="p-button-outlined border-sage-green-600 text-sage-green-600"
+              />
             </Card>
           ))}
         </div>
-      </section>
 
-      {/* Mission Statement */}
-      <section className="max-w-4xl mx-auto w-full">
-        <div className="bg-light-tan/90 backdrop-blur-sm p-6 border-round text-center sage-border">
-          <h2 className="text-2xl font-semibold text-primary-green mb-4">Our Mission</h2>
-          <p className="text-lg text-earth-brown leading-relaxed">
-            At Hidden Lotus, we believe that true wellness comes from the harmonious integration of
-            body, mind, and spirit. Through Motion, we honor the body&apos;s need for movement and
-            expression. With an Open Heart, we create space for healing and connection. And through
-            Revival, we support your journey of transformation and renewal. Together, these
-            principles guide us in creating a sanctuary where every individual can discover their
-            path to authentic well-being and lasting peace.
+        {/* Call to Action */}
+        <Card className="yoga-card p-6 text-center mt-6">
+          <h2 className="text-2xl font-semibold text-primary-green mb-3">
+            Ready to Experience MOR?
+          </h2>
+          <p className="text-earth-brown mb-4">
+            Join us in exploring the transformative power of mindfulness, optimization, and
+            recovery.
           </p>
-        </div>
+          <Button
+            label="Get Started"
+            icon="pi pi-heart"
+            className="bg-sage-green-600 border-sage-green-600"
+          />
+        </Card>
       </section>
     </div>
   );

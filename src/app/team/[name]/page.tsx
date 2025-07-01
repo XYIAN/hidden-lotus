@@ -6,7 +6,8 @@ import { Button } from 'primereact/button';
 import { Tag } from 'primereact/tag';
 import { Divider } from 'primereact/divider';
 import { Carousel, CarouselResponsiveOption } from 'primereact/carousel';
-import { teamData, classesData } from '@/lib/data';
+import { teamData } from '@/constants/team';
+import { classesData } from '@/constants/classes';
 import { useState } from 'react';
 
 export default function TeamMemberPage() {
@@ -72,7 +73,7 @@ export default function TeamMemberPage() {
         <Card className="bg-white/90 backdrop-blur-sm border-0 shadow-md h-full">
           <div className="p-4">
             <div className="flex flex-wrap gap-2 mb-3">
-              <Tag value={classItem.category} severity="info" className="text-xs" />
+              <Tag value={classItem.categories[0]} severity="info" className="text-xs" />
               <Tag value={classItem.level} severity="warning" className="text-xs" />
             </div>
             <h3 className="text-lg font-bold text-sage-green-800 mb-2">{classItem.name}</h3>
@@ -199,12 +200,11 @@ export default function TeamMemberPage() {
                 value={memberClasses}
                 numVisible={3}
                 numScroll={1}
-                className="custom-carousel"
                 responsiveOptions={carouselResponsiveOptions}
-                circular
-                autoplayInterval={5000}
                 itemTemplate={classTemplate}
-                onPageChange={e => setActiveIndex(e.page)}
+                className="custom-carousel"
+                autoplayInterval={5000}
+                circular
               />
             </div>
           </Card>

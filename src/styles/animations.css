@@ -1,0 +1,193 @@
+/* Animations and Transitions */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideInRight {
+	from {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+/* Fade in animation classes */
+.fade-in {
+	animation: fadeIn 0.6s ease-out;
+}
+
+.fade-in-up {
+	animation: fadeInUp 0.8s ease-out;
+}
+
+.slide-in-left {
+	animation: slideInLeft 0.6s ease-out;
+}
+
+.slide-in-right {
+	animation: slideInRight 0.6s ease-out;
+}
+
+.scale-in {
+	animation: scaleIn 0.5s ease-out;
+}
+
+/* Staggered animations for cards */
+.stagger-1 {
+	animation-delay: 0.1s;
+}
+
+.stagger-2 {
+	animation-delay: 0.2s;
+}
+
+.stagger-3 {
+	animation-delay: 0.3s;
+}
+
+.stagger-4 {
+	animation-delay: 0.4s;
+}
+
+.stagger-5 {
+	animation-delay: 0.5s;
+}
+
+.stagger-6 {
+	animation-delay: 0.6s;
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+	transition: all 0.3s ease;
+}
+
+/* Hover effects */
+.hover-lift {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+	transform: translateY(-4px);
+	box-shadow: 0 12px 30px rgba(107, 142, 90, 0.2);
+}
+
+.hover-scale:hover {
+	transform: scale(1.02);
+}
+
+.hover-glow:hover {
+	box-shadow: 0 0 20px rgba(251, 182, 206, 0.3);
+}
+
+/* Button pulsing effect */
+.button-pulse {
+	animation: buttonPulse 2s infinite;
+}
+
+@keyframes buttonPulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(251, 182, 206, 0.4);
+	}
+	70% {
+		box-shadow: 0 0 0 8px rgba(251, 182, 206, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(251, 182, 206, 0);
+	}
+}
+
+/* Loading animations */
+.loading-spinner {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Page transitions */
+.page-transition {
+	animation: fadeInUp 0.8s ease-out;
+}
+
+/* Card entrance animations */
+.card-entrance {
+	opacity: 0;
+	transform: translateY(30px);
+	animation: cardEntrance 0.6s ease-out forwards;
+}
+
+@keyframes cardEntrance {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+/* Intersection Observer animations */
+.animate-on-scroll {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.animate {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Responsive animations */
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { Card } from 'primereact/card';
 import { Tag } from 'primereact/tag';
 import { Button } from 'primereact/button';
-import { HeroSection } from '@/components/ui/hero-section';
+import { HeroSection } from '@/components/common/hero-section';
 import { storiesData } from '@/constants/stories';
 import Link from 'next/link';
 
@@ -20,7 +20,7 @@ export default function StoryDetailPage({ params }: StoryPageProps) {
   }
 
   return (
-    <div className="flex flex-column gap-6 p-4">
+    <div className="flex flex-column gap-6 p-4 page-transition">
       <HeroSection title={story.title} description={`By ${story.author} • ${story.date}`} />
 
       <section className="max-w-4xl mx-auto w-full">

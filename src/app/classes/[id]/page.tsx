@@ -13,6 +13,7 @@ import { Divider } from 'primereact/divider';
 import { classesData } from '@/constants/classes';
 import { useRef } from 'react';
 import Link from 'next/link';
+import '@/styles/animations.css';
 
 export default function ClassDetailPage() {
   const params = useParams();
@@ -30,7 +31,7 @@ export default function ClassDetailPage() {
 
   if (!classData) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-light-tan to-sage-green-50 p-4">
+      <div className="min-h-screen bg-gradient-to-br from-light-tan to-sage-green-50 p-4 page-transition">
         <div className="max-w-4xl mx-auto">
           <Card className="yoga-card p-8">
             <div className="text-center py-8">
@@ -64,11 +65,21 @@ export default function ClassDetailPage() {
   }
 
   const handleBooking = () => {
-    if (!selectedDate || !bookingForm.name || !bookingForm.email || !bookingForm.phone) {
+    if (!selectedDate) {
       toast.current?.show({
-        severity: 'error',
-        summary: 'Booking Error',
-        detail: 'Please fill in all fields and select a date.',
+        severity: 'warn',
+        summary: 'Date Required',
+        detail: 'Please select a date for your booking.',
+        life: 3000,
+      });
+      return;
+    }
+
+    if (!bookingForm.name || !bookingForm.email || !bookingForm.phone) {
+      toast.current?.show({
+        severity: 'warn',
+        summary: 'Information Required',
+        detail: 'Please fill in all required fields.',
         life: 3000,
       });
       return;
@@ -76,157 +87,187 @@ export default function ClassDetailPage() {
 
     setShowBookingDialog(false);
     setShowSuccessDialog(true);
-  };
-
-  const formatDate = (date: Date) => {
-    return date.toLocaleDateString('en-US', {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
+    setBookingForm({ name: '', email: '', phone: '' });
+    setSelectedDate(null);
   };
 
   const getCategoryColor = (category: string) => {
-    switch (category) {
-      case 'yoga':
-        return 'success';
-      case 'reiki':
-        return 'info';
-      case 'seminar':
-        return 'warning';
-      case 'cupping':
-        return 'danger';
-      case 'podcast':
-        return 'secondary';
-      default:
-        return 'info';
-    }
+    const colors: Record<string, string> = {
+      yoga: 'bg-sage-green-600',
+      reiki: 'bg-pastel-pink',
+      seminar: 'bg-yellow-gold',
+      cupping: 'bg-brown',
+      podcast: 'bg-sage-green-400',
+      meditation: 'bg-olive-green',
+      fitness: 'bg-sage-green-600',
+      healing: 'bg-pastel-pink',
+      'weight-training': 'bg-brown',
+      pilates: 'bg-sage-green-400',
+      breathwork: 'bg-olive-green',
+      'sound-healing': 'bg-pastel-pink',
+    };
+    return colors[category] || 'bg-sage-green-600';
   };
 
   const getLevelColor = (level: string) => {
-    switch (level) {
-      case 'beginner':
-        return 'success';
-      case 'intermediate':
-        return 'warning';
-      case 'advanced':
-        return 'danger';
-      default:
-        return 'info';
-    }
+    const colors: Record<string, string> = {
+      beginner: 'bg-green-500',
+      intermediate: 'bg-yellow-500',
+      advanced: 'bg-red-500',
+    };
+    return colors[level] || 'bg-green-500';
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sage-green-50 to-tan-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-light-tan to-sage-green-50 p-4 page-transition">
       <Toast ref={toast} />
-
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
-        <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg mb-6">
-          <div className="p-6">
-            <div className="flex flex-col lg:flex-row gap-6">
-              <div className="flex-1">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <Tag
-                    value={classData.category}
-                    severity={getCategoryColor(classData.category)}
-                    className="text-sm"
-                  />
-                  <Tag
-                    value={classData.level}
-                    severity={getLevelColor(classData.level)}
-                    className="text-sm"
-                  />
-                  <Tag value={classData.price} severity="info" className="text-sm" />
-                </div>
-                <h1 className="text-3xl lg:text-4xl font-bold text-sage-green-800 mb-4">
-                  {classData.name}
-                </h1>
-                <p className="text-lg text-sage-green-600 mb-4">with {classData.instructor}</p>
-                <p className="text-sage-green-700 leading-relaxed">{classData.longDescription}</p>
+        {/* Back Button */}
+        <div className="mb-4">
+          <Link href="/classes">
+            <Button
+              label="Back to Classes"
+              icon="pi pi-arrow-left"
+              className="bg-sage-green-600 border-sage-green-600"
+            />
+          </Link>
+        </div>
+
+        {/* Class Details */}
+        <Card className="yoga-card p-6 mb-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* Left Column */}
+            <div className="flex flex-column gap-4">
+              <div>
+                <h1 className="text-3xl font-bold text-primary-green mb-3">{classData.name}</h1>
+                <p className="text-earth-brown text-lg mb-4">{classData.longDescription}</p>
               </div>
-            </div>
-          </div>
-        </Card>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Class Details */}
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-sage-green-800 mb-4">Class Details</h2>
-
-              <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold text-sage-green-700">Duration:</span>
-                  <span className="text-sage-green-600">{classData.duration}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold text-sage-green-700">Time:</span>
-                  <span className="text-sage-green-600">{classData.time}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold text-sage-green-700">Max Participants:</span>
-                  <span className="text-sage-green-600">{classData.maxParticipants}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="font-semibold text-sage-green-700">Price:</span>
-                  <span className="text-sage-green-600 font-bold">{classData.price}</span>
+              {/* Categories */}
+              <div>
+                <h3 className="text-lg font-semibold text-primary-green mb-2">Categories</h3>
+                <div className="flex flex-wrap gap-2">
+                  {classData.categories.map((category, index) => (
+                    <Tag
+                      key={index}
+                      value={category.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}
+                      className={`${getCategoryColor(category)} border-0`}
+                    />
+                  ))}
                 </div>
               </div>
 
-              <Divider />
+              {/* Level */}
+              <div>
+                <h3 className="text-lg font-semibold text-primary-green mb-2">Level</h3>
+                <Tag
+                  value={classData.level.charAt(0).toUpperCase() + classData.level.slice(1)}
+                  className={`${getLevelColor(classData.level)} border-0`}
+                />
+              </div>
 
               {/* Equipment */}
               {classData.equipment && classData.equipment.length > 0 && (
                 <div>
-                  <h3 className="text-lg font-semibold text-sage-green-800 mb-3">What to Bring</h3>
+                  <h3 className="text-lg font-semibold text-primary-green mb-2">
+                    Equipment Needed
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {classData.equipment.map((item, index) => (
-                      <Tag key={index} value={item} severity="info" className="text-sm" />
+                      <Tag
+                        key={index}
+                        value={item}
+                        className="bg-light-tan border-sage-green-200 text-earth-brown"
+                      />
                     ))}
                   </div>
                 </div>
               )}
             </div>
-          </Card>
 
-          {/* Calendar and Booking */}
-          <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-sage-green-800 mb-4">Available Dates</h2>
+            {/* Right Column */}
+            <div className="flex flex-column gap-4">
+              {/* Class Info */}
+              <Card
+                className="bg-light-tan/50 p-4"
+                style={{ border: '1px solid var(--sage-green-200)' }}
+              >
+                <h3 className="text-lg font-semibold text-primary-green mb-3">Class Information</h3>
+                <div className="flex flex-column gap-3">
+                  <div className="flex align-items-center gap-3">
+                    <i className="pi pi-user text-sage-green-600 text-xl"></i>
+                    <div>
+                      <span className="text-sm text-earth-brown">Instructor</span>
+                      <p className="font-semibold text-primary-green m-0">{classData.instructor}</p>
+                    </div>
+                  </div>
+                  <div className="flex align-items-center gap-3">
+                    <i className="pi pi-clock text-sage-green-600 text-xl"></i>
+                    <div>
+                      <span className="text-sm text-earth-brown">Time</span>
+                      <p className="font-semibold text-primary-green m-0">{classData.time}</p>
+                    </div>
+                  </div>
+                  <div className="flex align-items-center gap-3">
+                    <i className="pi pi-calendar text-sage-green-600 text-xl"></i>
+                    <div>
+                      <span className="text-sm text-earth-brown">Duration</span>
+                      <p className="font-semibold text-primary-green m-0">{classData.duration}</p>
+                    </div>
+                  </div>
+                  <div className="flex align-items-center gap-3">
+                    <i className="pi pi-dollar text-sage-green-600 text-xl"></i>
+                    <div>
+                      <span className="text-sm text-earth-brown">Price</span>
+                      <p className="font-semibold text-primary-green m-0">{classData.price}</p>
+                    </div>
+                  </div>
+                  <div className="flex align-items-center gap-3">
+                    <i className="pi pi-users text-sage-green-600 text-xl"></i>
+                    <div>
+                      <span className="text-sm text-earth-brown">Max Participants</span>
+                      <p className="font-semibold text-primary-green m-0">
+                        {classData.maxParticipants}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Card>
 
-              <div className="mb-6">
-                <Calendar
-                  value={selectedDate}
-                  onChange={e => setSelectedDate(e.value || null)}
-                  inline
-                  showWeek={false}
-                  dateFormat="dd/mm/yy"
-                  className="w-full"
-                  minDate={new Date()}
-                  disabledDates={classData.dates.map(date => new Date(date))}
+              {/* Available Dates */}
+              <Card
+                className="bg-light-tan/50 p-4"
+                style={{ border: '1px solid var(--sage-green-200)' }}
+              >
+                <h3 className="text-lg font-semibold text-primary-green mb-3">Available Dates</h3>
+                <div className="flex flex-wrap gap-2">
+                  {classData.dates.map((date, index) => (
+                    <Tag
+                      key={index}
+                      value={new Date(date).toLocaleDateString('en-US', {
+                        weekday: 'short',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
+                      className="bg-white border-sage-green-200 text-earth-brown"
+                    />
+                  ))}
+                </div>
+              </Card>
+
+              {/* Book Now Button */}
+              <div className="flex justify-content-center">
+                <Button
+                  label="Book This Class"
+                  icon="pi pi-calendar-plus"
+                  onClick={() => setShowBookingDialog(true)}
+                  className="bg-pastel-pink border-pastel-pink text-secondary-brown button-pulse p-button-lg"
+                  style={{ minWidth: '200px' }}
                 />
               </div>
-
-              {selectedDate && (
-                <div className="mb-6 p-4 bg-sage-green-50 rounded-lg">
-                  <h3 className="font-semibold text-sage-green-800 mb-2">Selected Date:</h3>
-                  <p className="text-sage-green-600">{formatDate(selectedDate)}</p>
-                  <p className="text-sage-green-600">{classData.time}</p>
-                </div>
-              )}
-
-              <Button
-                label="Book Now"
-                icon="pi pi-calendar-plus"
-                className="w-full p-button-lg bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600"
-                onClick={() => setShowBookingDialog(true)}
-                disabled={!selectedDate}
-              />
             </div>
-          </Card>
-        </div>
+          </div>
+        </Card>
       </div>
 
       {/* Booking Dialog */}
@@ -234,52 +275,70 @@ export default function ClassDetailPage() {
         header="Book Your Class"
         visible={showBookingDialog}
         onHide={() => setShowBookingDialog(false)}
-        className="w-full max-w-md"
+        className="w-11 md:w-6 lg:w-4"
         modal
       >
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-sage-green-700 mb-2">
+        <div className="flex flex-column gap-4">
+          <div className="flex flex-column gap-2">
+            <label htmlFor="date" className="text-sm font-semibold text-primary-green">
+              Select Date
+            </label>
+            <Calendar
+              id="date"
+              value={selectedDate}
+              onChange={e => setSelectedDate(e.value as Date)}
+              minDate={new Date()}
+              className="w-full"
+            />
+          </div>
+
+          <div className="flex flex-column gap-2">
+            <label htmlFor="name" className="text-sm font-semibold text-primary-green">
               Full Name *
             </label>
             <InputText
+              id="name"
               value={bookingForm.name}
               onChange={e => setBookingForm({ ...bookingForm, name: e.target.value })}
               className="w-full"
-              placeholder="Enter your full name"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-sage-green-700 mb-2">Email *</label>
+
+          <div className="flex flex-column gap-2">
+            <label htmlFor="email" className="text-sm font-semibold text-primary-green">
+              Email *
+            </label>
             <InputText
+              id="email"
+              type="email"
               value={bookingForm.email}
               onChange={e => setBookingForm({ ...bookingForm, email: e.target.value })}
               className="w-full"
-              placeholder="Enter your email"
-              type="email"
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-sage-green-700 mb-2">
+
+          <div className="flex flex-column gap-2">
+            <label htmlFor="phone" className="text-sm font-semibold text-primary-green">
               Phone Number *
             </label>
             <InputText
+              id="phone"
               value={bookingForm.phone}
               onChange={e => setBookingForm({ ...bookingForm, phone: e.target.value })}
               className="w-full"
-              placeholder="Enter your phone number"
             />
           </div>
-          <div className="flex gap-2">
+
+          <div className="flex gap-3 justify-content-end">
             <Button
               label="Cancel"
-              className="flex-1 p-button-outlined"
               onClick={() => setShowBookingDialog(false)}
+              className="p-button-text"
             />
             <Button
-              label="Book Class"
-              className="flex-1 bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600"
+              label="Confirm Booking"
               onClick={handleBooking}
+              className="bg-sage-green-600 border-sage-green-600"
             />
           </div>
         </div>
@@ -290,26 +349,30 @@ export default function ClassDetailPage() {
         header="Booking Confirmed!"
         visible={showSuccessDialog}
         onHide={() => setShowSuccessDialog(false)}
-        className="w-full max-w-md"
+        className="w-11 md:w-6 lg:w-4"
         modal
       >
-        <div className="text-center">
-          <i className="pi pi-check-circle text-6xl text-green-500 mb-4"></i>
-          <h3 className="text-xl font-bold text-sage-green-800 mb-2">
-            Thank you, {bookingForm.name}!
-          </h3>
-          <p className="text-sage-green-600 mb-4">
-            Your booking for <strong>{classData.name}</strong> on{' '}
-            <strong>{selectedDate ? formatDate(selectedDate) : ''}</strong> has been confirmed.
+        <div className="text-center py-4">
+          <div className="text-6xl mb-4">🎉</div>
+          <h3 className="text-xl font-semibold text-primary-green mb-2">Booking Successful!</h3>
+          <p className="text-earth-brown mb-4">
+            Your class has been booked successfully. You will receive a confirmation email shortly.
           </p>
-          <p className="text-sage-green-600 mb-4">We will send confirmation details to:</p>
-          <p className="text-sage-green-700 font-medium">{bookingForm.email}</p>
-          <p className="text-sage-green-700 font-medium">{bookingForm.phone}</p>
-          <Button
-            label="Close"
-            className="mt-4 bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600"
-            onClick={() => setShowSuccessDialog(false)}
-          />
+          <div className="flex gap-3 justify-content-center">
+            <Button
+              label="Book Another Class"
+              onClick={() => {
+                setShowSuccessDialog(false);
+                window.location.href = '/classes';
+              }}
+              className="bg-sage-green-600 border-sage-green-600"
+            />
+            <Button
+              label="Close"
+              onClick={() => setShowSuccessDialog(false)}
+              className="p-button-text"
+            />
+          </div>
         </div>
       </Dialog>
     </div>
