@@ -5,6 +5,40 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.8.3] - 2024-12-19
+
+### Fixed
+
+- **Netlify Deployment**: Fixed deployment issues by downgrading to stable Next.js 14.0.4 and compatible dependencies
+- **Build Compatibility**: Resolved lightningcss module errors that were causing Netlify build failures
+- **Image Optimization**: Replaced all `<img>` tags with Next.js `<Image>` components for better performance
+
+### Enhanced
+
+- **Color Scheme**: Made green text and buttons darker for better contrast and readability
+- **Background**: Darkened the background to a more grounding tan tone (`#ede8e0`)
+- **Icon Integration**: Added comprehensive icon usage throughout all card components using the new icon set
+- **Loading States**: Implemented loading skeletons for all images with smooth transitions
+- **Carousel Behavior**: Added auto-advance with circular navigation (wraps to beginning when reaching end)
+- **Performance**: Improved image loading with proper error handling and fallback states
+
+### Changed
+
+- **Primary Green**: Updated to darker shade (`#4a7c59`) for better text contrast
+- **Sage Green**: Refined to darker tone (`#6b8e5a`) for enhanced visibility
+- **Soft Sage**: Adjusted to complementary darker shade (`#8baa7a`)
+- **Background**: Updated to darker tan (`#ede8e0`) for more grounding feel
+- **Dependencies**: Downgraded Next.js to 14.0.4 for Netlify compatibility
+- **Image Loading**: All images now use Next.js Image component with loading states
+
+### Technical
+
+- **LoadingSkeleton Component**: Created reusable skeleton component for consistent loading states
+- **Icon Mapping**: Implemented category-based icon mapping for classes, team members, and stories
+- **Error Handling**: Added proper error states for image loading failures
+- **Netlify Config**: Updated configuration for stable deployment environment
+- **Build Optimization**: Resolved all ESLint warnings and improved build performance
+
 ## [0.8.2] - 2024-12-19
 
 ### Enhanced
@@ -133,6 +167,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Version History
 
+- **0.8.3** - Netlify fixes, darker colors, new icons, carousel improvements
 - **0.8.2** - Theme and styling updates
 - **0.8.1** - Home hero uses icon-hl-1.png as logo
 - **0.8.0** - Project root restructuring, Netlify prep, image updates

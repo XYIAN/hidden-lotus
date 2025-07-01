@@ -73,6 +73,9 @@ export default function ClassesPage() {
           className="custom-carousel"
           itemTemplate={carouselTemplate}
           autoplayInterval={5000}
+          circular={true}
+          showNavigators={true}
+          showIndicators={true}
         />
       </section>
 

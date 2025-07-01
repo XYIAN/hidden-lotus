@@ -1,7 +1,10 @@
 'use client';
 
+import { useState } from 'react';
 import { Card } from 'primereact/card';
 import { Button } from 'primereact/button';
+import Image from 'next/image';
+import { LoadingSkeleton } from './loading-skeleton';
 import { Story } from '@/lib/data';
 
 interface StoryCardProps {
@@ -10,11 +13,49 @@ interface StoryCardProps {
 }
 
 export function StoryCard({ story, onClick }: StoryCardProps) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+
+  const getStoryIcon = (id: string) => {
+    switch (id) {
+      case '1':
+        return '/icon-hl-1.png';
+      case '2':
+        return '/icon-hl-2.png';
+      case '3':
+        return '/icon-hl-3.png';
+      case '4':
+        return '/icon-mor-1.png';
+      default:
+        return '/icon-hl-1.png';
+    }
+  };
+
   return (
     <Card className="h-full yoga-card cursor-pointer" onClick={() => onClick(story)}>
       <div className="text-center">
-        <div className="bg-light-tan p-4 border-round-full w-4rem h-4rem mx-auto mb-3 flex align-items-center justify-content-center sage-border">
-          <i className="pi pi-book text-2xl text-sage"></i>
+        <div className="relative w-4rem h-4rem mx-auto mb-3">
+          {!imageLoaded && !imageError && (
+            <LoadingSkeleton type="image" className="w-4rem h-4rem border-round-full" />
+          )}
+          {imageError && (
+            <div className="w-4rem h-4rem bg-light-tan border-round-full flex align-items-center justify-content-center sage-border">
+              <i className="pi pi-book text-2xl text-sage"></i>
+            </div>
+          )}
+          {!imageError && (
+            <Image
+              src={getStoryIcon(story.id)}
+              alt={`${story.title} icon`}
+              width={64}
+              height={64}
+              className={`w-4rem h-4rem object-contain border-round-full sage-border ${
+                imageLoaded ? 'block' : 'hidden'
+              }`}
+              onLoad={() => setImageLoaded(true)}
+              onError={() => setImageError(true)}
+            />
+          )}
         </div>
 
         <h3 className="text-xl font-semibold text-primary-green mb-3">{story.title}</h3>

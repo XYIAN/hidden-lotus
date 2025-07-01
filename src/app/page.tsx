@@ -7,7 +7,7 @@ const actionCards = [
   {
     title: 'Next Class',
     description: 'Join our upcoming wellness session',
-    icon: 'pi pi-calendar',
+    icon: '/icon-hl-1.png',
     href: '/classes',
     color: 'bg-soft-sage',
     accent: 'text-sage',
@@ -15,7 +15,7 @@ const actionCards = [
   {
     title: 'Book',
     description: 'Reserve your spot in our classes',
-    icon: 'pi pi-bookmark',
+    icon: '/icon-hl-2.png',
     href: '/classes',
     color: 'bg-pastel-pink',
     accent: 'text-secondary-brown',
@@ -23,7 +23,7 @@ const actionCards = [
   {
     title: 'Teachers',
     description: 'Meet our experienced instructors',
-    icon: 'pi pi-users',
+    icon: '/icon-hl-3.png',
     href: '/team',
     color: 'bg-sage',
     accent: 'text-white',
@@ -64,7 +64,13 @@ export default function HomePage() {
                 <div
                   className={`${card.color} ${card.accent} p-3 border-round-full w-4rem h-4rem mx-auto mb-3 flex align-items-center justify-content-center`}
                 >
-                  <i className={`${card.icon} text-2xl`}></i>
+                  <Image
+                    src={card.icon}
+                    alt={`${card.title} icon`}
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                  />
                 </div>
                 <h3 className="text-xl font-semibold text-primary-green mb-2">{card.title}</h3>
                 <p className="text-sm text-earth-brown mb-4">{card.description}</p>

@@ -84,6 +84,9 @@ export default function AboutPage() {
           className="custom-carousel"
           itemTemplate={carouselTemplate}
           autoplayInterval={8000}
+          circular={true}
+          showNavigators={true}
+          showIndicators={true}
         />
       </section>
 
