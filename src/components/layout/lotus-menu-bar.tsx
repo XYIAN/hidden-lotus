@@ -5,15 +5,22 @@ import { MenuItem } from 'primereact/menuitem'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
+import './lotus-menu-bar.css'
+import type { MenuItem as PrimeMenuItem } from 'primereact/menuitem'
 
-const navigationItems = [
+const infoItems = [
+	{ label: 'Story', href: '/story' },
+	{ label: 'About', href: '/about' },
+	{ label: 'MOR', href: '/mor' },
+	{ label: 'Team', href: '/team' },
+	{ label: 'Contact', href: '/contact' },
+	{ label: 'Privacy', href: '/privacy' },
+	{ label: 'Terms', href: '/terms' },
+]
+
+const navigationGroups = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Classes', href: '/classes' },
-	{ label: 'Team', href: '/team' },
-	{ label: 'About', href: '/about' },
-	{ label: 'Story', href: '/story' },
-	{ label: 'Contact', href: '/contact' },
-	{ label: 'MOR', href: '/mor' },
 ]
 
 export function LotusMenuBar() {
@@ -35,19 +42,79 @@ export function LotusMenuBar() {
 				return 'pi pi-envelope'
 			case '/mor':
 				return 'pi pi-heart'
+			case '/privacy':
+				return 'pi pi-lock'
+			case '/terms':
+				return 'pi pi-file'
 			default:
 				return 'pi pi-home'
 		}
 	}
 
-	const items: MenuItem[] = navigationItems.map((item) => ({
-		label: item.label,
-		icon: getIcon(item.href),
-		command: () => {
-			window.location.href = item.href
+	const items: MenuItem[] = [
+		{
+			label: 'Info',
+			icon: 'pi pi-info-circle',
+			items: infoItems.map((item) => ({
+				label: item.label,
+				icon: getIcon(item.href),
+				command: () => {
+					window.location.href = item.href
+				},
+				className: pathname === item.href ? 'active-menu-item' : '',
+				template: (menuItem: PrimeMenuItem, options: any) => (
+					<a
+						href="#"
+						data-href={item.href}
+						onClick={(e) => {
+							e.preventDefault()
+							window.location.href = item.href
+						}}
+						className={`p-menuitem-link ${
+							pathname === item.href ? 'active-menu-item' : ''
+						}`}
+						style={{
+							display: 'flex',
+							alignItems: 'center',
+							textDecoration: 'none',
+						}}
+					>
+						<span className={getIcon(item.href)} />
+						<span className="p-menuitem-text">{item.label}</span>
+					</a>
+				),
+			})),
 		},
-		className: pathname === item.href ? 'active-menu-item' : '',
-	}))
+		...navigationGroups.map((item) => ({
+			label: item.label,
+			icon: getIcon(item.href),
+			command: () => {
+				window.location.href = item.href
+			},
+			className: pathname === item.href ? 'active-menu-item' : '',
+			template: (menuItem: PrimeMenuItem, options: any) => (
+				<a
+					href="#"
+					data-href={item.href}
+					onClick={(e) => {
+						e.preventDefault()
+						window.location.href = item.href
+					}}
+					className={`p-menuitem-link ${
+						pathname === item.href ? 'active-menu-item' : ''
+					}`}
+					style={{
+						display: 'flex',
+						alignItems: 'center',
+						textDecoration: 'none',
+					}}
+				>
+					<span className={getIcon(item.href)} />
+					<span className="p-menuitem-text">{item.label}</span>
+				</a>
+			),
+		})),
+	]
 
 	const start = (
 		<Link href="/" className="flex align-items-center gap-3">
@@ -68,13 +135,10 @@ export function LotusMenuBar() {
 		<Menubar
 			model={items}
 			start={start}
-			className="lotus-menu-bar"
-			style={{
-				background: 'rgba(237, 232, 224, 0.9)',
-				backdropFilter: 'blur(10px)',
-				border: '1px solid rgba(107, 142, 90, 0.2)',
-				borderRadius: '16px',
-				margin: '0.5rem',
+			className="lotus-menu-bar lotus-menu-bar-no-bg"
+			pt={{
+				root: { className: 'justify-end w-full' },
+				menu: { className: 'justify-end w-full' },
 			}}
 		/>
 	)

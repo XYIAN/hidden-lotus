@@ -10,6 +10,7 @@ import { Flower2 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
 import { SidebarHeader } from './sidebar-header'
 import '@/styles/header.css'
+import { LotusMenuBar } from './lotus-menu-bar'
 
 const navigationItems = [
 	{ label: 'Home', href: '/' },
@@ -66,9 +67,13 @@ export function Header() {
 	return (
 		<>
 			<header className="sticky top-0 z-50 w-full header-blur">
-				<div className="flex justify-content-between align-items-center px-6 py-4 max-w-7xl mx-auto">
-					{/* Logo */}
-					<Link href="/" className="flex align-items-center gap-3">
+				{/* Desktop Navigation: Show LotusMenuBar on md+ screens */}
+				<div className="hidden md:block w-full">
+					<LotusMenuBar />
+				</div>
+				{/* Logo and Hamburger for Mobile (show on sm and below) */}
+				<div className="flex justify-between items-center md:hidden w-full px-4 py-3">
+					<Link href="/" className="flex items-center gap-3">
 						<Image
 							src="/icon-hl-1.png"
 							alt="Hidden Lotus"
@@ -82,34 +87,11 @@ export function Header() {
 							Hidden Lotus
 						</span>
 					</Link>
-
-					{/* Desktop Navigation */}
-					<nav className="hidden md:flex gap-6">
-						{navigationItems.map((item) => (
-							<Link
-								key={item.label}
-								href={item.href}
-								className={`text-earth-brown hover:text-primary-green transition-colors duration-200 px-3 py-2 rounded-lg ${
-									pathname === item.href
-										? 'bg-sage-green-600 text-white active-nav-item'
-										: ''
-								}`}
-							>
-								{item.label}
-							</Link>
-						))}
-					</nav>
-
-					{/* Mobile Menu Button */}
 					<Button
 						icon="pi pi-heart"
 						onClick={() => setSidebarVisible(true)}
-						className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white md:hidden"
-						style={{
-							zIndex: 60,
-							visibility: 'visible',
-							opacity: 1,
-						}}
+						className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white ml-auto"
+						style={{ zIndex: 60, visibility: 'visible', opacity: 1 }}
 						aria-label="Open menu"
 					/>
 				</div>

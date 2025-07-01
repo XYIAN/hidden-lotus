@@ -1,0 +1,58 @@
+.lotus-menu-bar {
+	background: none !important;
+	border: none !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+.lotus-menu-bar .p-menubar-root-list {
+	justify-content: flex-end !important;
+	gap: 0.25rem !important;
+}
+
+.lotus-menu-bar .p-menubar-root-list > .p-menuitem > .p-menuitem-content {
+	margin: 0 0.15rem;
+	border-radius: 12px;
+	transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+	padding: 0.25rem 0.85rem;
+	box-shadow: none;
+}
+
+.lotus-menu-bar .p-menubar-root-list > .p-menuitem > .p-menuitem-content:hover {
+	background: var(--sage-green-200);
+	color: var(--primary-green);
+	box-shadow: 0 2px 8px rgba(107, 142, 90, 0.08);
+}
+
+.lotus-menu-bar
+	.p-menubar-root-list
+	> .p-menuitem.active-menu-item
+	> .p-menuitem-content,
+.lotus-menu-bar
+	.p-menubar-root-list
+	> .p-menuitem
+	> .p-menuitem-content.active-menu-item {
+	background: var(--sage-green-600) !important;
+	color: #fff !important;
+	box-shadow: 0 4px 16px rgba(107, 142, 90, 0.15) !important;
+}
+
+.lotus-menu-bar
+	.p-menubar-root-list
+	> .p-menuitem
+	> .p-menuitem-content
+	.p-menuitem-icon {
+	margin-right: 0.5rem;
+	font-size: 1.2rem;
+}
+
+.lotus-menu-bar
+	.p-menubar-root-list
+	> .p-menuitem
+	> .p-menuitem-content
+	.p-menuitem-text {
+	font-size: 1.1rem;
+	font-weight: 500;
+	letter-spacing: 0.01em;
+}
