@@ -28,16 +28,16 @@ export function Header() {
 
   return (
     <>
-      <header className="bg-light-tan/80 backdrop-blur-md shadow-sm sage-border sticky top-0 z-50">
+      <header className="sticky top-0 z-50 w-full bg-light-tan/80 backdrop-blur-md border-b border-sage-green-200/40 shadow-sm">
         <div className="flex justify-content-between align-items-center p-4 max-w-7xl mx-auto">
           {/* Logo */}
           <Link href="/" className="flex align-items-center gap-3">
             <Image
               src="/icon-hl-1.png"
               alt="Hidden Lotus"
-              width={200}
-              height={60}
-              className="max-w-[200px] h-auto object-contain rounded-lg"
+              width={45}
+              height={45}
+              className="rounded-lg object-contain"
               priority
             />
             <span className="text-xl font-bold text-primary-green">Hidden Lotus</span>
@@ -62,10 +62,10 @@ export function Header() {
 
           {/* Mobile Menu Button */}
           <Button
-            icon={<Flower2 size={20} />}
+            icon={<Flower2 className="text-primary-green" />}
             onClick={() => setSidebarVisible(true)}
-            className="p-button-text p-button-rounded p-button-sm border-none bg-transparent text-primary-green hover:bg-sage-green-200/50"
-            aria-label="Menu"
+            className="p-button-text p-button-rounded md:hidden bg-transparent border-none"
+            aria-label="Open menu"
           />
         </div>
       </header>
@@ -74,25 +74,34 @@ export function Header() {
       <Sidebar
         visible={sidebarVisible}
         onHide={() => setSidebarVisible(false)}
-        className="w-80 bg-light-tan/90 backdrop-blur-md border-r border-sage-green-200"
-        showCloseIcon={false}
-      >
-        <div className="flex flex-column gap-2">
-          <div className="text-center mb-4">
-            <h2 className="text-xl font-bold text-primary-green mb-2">Hidden Lotus</h2>
-            <p className="text-sm text-earth-brown">Wellness & Healing</p>
+        position="right"
+        header={
+          <div className="flex align-items-center gap-3">
+            <Image
+              src="/icon-hl-1.png"
+              alt="Hidden Lotus Logo"
+              width={50}
+              height={50}
+              className="rounded-lg object-contain"
+            />
+            <span className="text-2xl font-bold text-primary-green tracking-wide">
+              Hidden Lotus
+            </span>
           </div>
-
+        }
+        className="w-80 bg-[#ede8e0] bg-gradient-to-br from-[#ede8e0] via-[#e2d3c0] to-[#c7b299] backdrop-blur-lg border-l border-sage-green-200/60 shadow-xl"
+      >
+        <div className="flex flex-column gap-4 p-6 mt-4">
           {navigationItems.map(item => (
             <Link
-              key={item.href}
+              key={item.label}
               href={item.href}
-              onClick={() => setSidebarVisible(false)}
-              className={`text-decoration-none p-3 border-round transition-colors ${
-                isActive(item.href)
-                  ? 'bg-olive-green text-white font-medium'
-                  : 'text-earth-brown hover:bg-pastel-pink hover:text-secondary-brown'
+              className={`text-earth-brown text-lg font-medium px-4 py-3 rounded-lg transition-colors duration-200 ${
+                pathname === item.href
+                  ? 'bg-sage-green-600 text-white shadow-md ring-2 ring-primary-green'
+                  : 'hover:bg-pastel-pink/30 hover:text-primary-green'
               }`}
+              onClick={() => setSidebarVisible(false)}
             >
               {item.label}
             </Link>

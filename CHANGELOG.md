@@ -210,6 +210,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Responsive Design**: Mobile-first approach with breakpoint optimization
 - **SEO Ready**: Proper meta tags, sitemap, and semantic HTML structure
 
+## [0.9.5] - 2024-12-19
+
+### Changed
+
+- Header logo resized to 45x45px, rounded corners, less hardcoded styling
+- Hamburger menu restored to previous size and style, only color/location/icon set
+- Header and sidebar backgrounds now use earthy light brown with subtle blur, no white
+- Top nav menu bar items use earthy theme colors, not white
+- Sidebar moved to right, uses light brown/green/pink, no white
+- Sidebar highlighted menu item is green/glowing, not white
+- Sidebar text/links use earthy theme colors
+- Sidebar title improved, logo (50x50px) added in header prop
+
+### Fixed
+
+- Removed invalid Sidebar contentClassName prop
+- Fixed hamburger menu visibility and style
+- Sidebar and header now visually consistent with theme
+
 ## [1.0.0] - 2024-01-15
 
 ### Added

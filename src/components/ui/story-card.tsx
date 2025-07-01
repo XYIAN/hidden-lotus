@@ -60,7 +60,7 @@ export function StoryCard({ story, onClick }: StoryCardProps) {
 
         <h3 className="text-xl font-semibold text-primary-green mb-3">{story.title}</h3>
 
-        <p className="text-earth-brown leading-relaxed mb-4">{story.description}</p>
+        <p className="text-earth-brown leading-relaxed mb-4">{story.excerpt}</p>
 
         <Button
           label="Read More"
