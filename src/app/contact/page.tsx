@@ -13,6 +13,7 @@ import { Button } from 'primereact/button';
 import { Dialog } from 'primereact/dialog';
 import { Toast } from 'primereact/toast';
 import { useRef } from 'react';
+import type { Metadata } from 'next';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -44,6 +45,32 @@ const steps = [
   { label: 'Message Details' },
   { label: 'Review & Submit' },
 ];
+
+export const metadata: Metadata = {
+  title: 'Contact Us | Hidden Lotus Wellness Center',
+  description:
+    'Get in touch with Hidden Lotus for class bookings, consultations, and wellness inquiries. Start your journey to well-being today.',
+  openGraph: {
+    title: 'Contact Us | Hidden Lotus Wellness Center',
+    description:
+      'Get in touch with Hidden Lotus for class bookings, consultations, and wellness inquiries. Start your journey to well-being today.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hidden Lotus Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Contact Us | Hidden Lotus Wellness Center',
+    description:
+      'Get in touch with Hidden Lotus for class bookings, consultations, and wellness inquiries. Start your journey to well-being today.',
+    images: ['/og-image.png'],
+  },
+};
 
 export default function ContactPage() {
   const [activeStep, setActiveStep] = useState(0);

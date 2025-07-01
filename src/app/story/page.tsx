@@ -5,6 +5,33 @@ import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
 import { StoryCard } from '@/components/ui/story-card';
 import { storiesData, Story } from '@/lib/data';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Our Story | Hidden Lotus Wellness Journey',
+  description:
+    'Discover the journey and transformation stories of Hidden Lotus. Real stories from our community and instructors.',
+  openGraph: {
+    title: 'Our Story | Hidden Lotus Wellness Journey',
+    description:
+      'Discover the journey and transformation stories of Hidden Lotus. Real stories from our community and instructors.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hidden Lotus Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Our Story | Hidden Lotus Wellness Journey',
+    description:
+      'Discover the journey and transformation stories of Hidden Lotus. Real stories from our community and instructors.',
+    images: ['/og-image.png'],
+  },
+};
 
 export default function StoryPage() {
   const [selectedStory, setSelectedStory] = useState<Story | null>(null);

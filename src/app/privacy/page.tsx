@@ -1,4 +1,5 @@
 import { Card } from 'primereact/card';
+import type { Metadata } from 'next';
 
 const privacySections = [
   {
@@ -34,6 +35,33 @@ const privacySections = [
     textColor: 'text-white',
   },
 ];
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Hidden Lotus',
+  description:
+    'Read the privacy policy for Hidden Lotus. Learn how we collect, use, and protect your personal information.',
+  robots: 'noindex, nofollow',
+  openGraph: {
+    title: 'Privacy Policy | Hidden Lotus',
+    description:
+      'Read the privacy policy for Hidden Lotus. Learn how we collect, use, and protect your personal information.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hidden Lotus Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Privacy Policy | Hidden Lotus',
+    description:
+      'Read the privacy policy for Hidden Lotus. Learn how we collect, use, and protect your personal information.',
+    images: ['/og-image.png'],
+  },
+};
 
 export default function PrivacyPage() {
   return (

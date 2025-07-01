@@ -6,6 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import { Dropdown } from 'primereact/dropdown';
 import { ClassCard } from '@/components/ui/class-card';
 import { classesData, Class } from '@/lib/data';
+import type { Metadata } from 'next';
 
 const categories = [
   { label: 'All Categories', value: '' },
@@ -22,6 +23,32 @@ const instructors = [
     value: name,
   })),
 ];
+
+export const metadata: Metadata = {
+  title: 'Classes | Yoga, Reiki & Wellness | Hidden Lotus',
+  description:
+    'Explore our schedule of yoga, reiki, and wellness classes at Hidden Lotus. Find the perfect class for your journey to well-being.',
+  openGraph: {
+    title: 'Classes | Yoga, Reiki & Wellness | Hidden Lotus',
+    description:
+      'Explore our schedule of yoga, reiki, and wellness classes at Hidden Lotus. Find the perfect class for your journey to well-being.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hidden Lotus Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Classes | Yoga, Reiki & Wellness | Hidden Lotus',
+    description:
+      'Explore our schedule of yoga, reiki, and wellness classes at Hidden Lotus. Find the perfect class for your journey to well-being.',
+    images: ['/og-image.png'],
+  },
+};
 
 export default function ClassesPage() {
   const [searchTerm, setSearchTerm] = useState('');

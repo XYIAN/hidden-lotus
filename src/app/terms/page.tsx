@@ -1,4 +1,5 @@
 import { Card } from 'primereact/card';
+import type { Metadata } from 'next';
 
 const termsSections = [
   {
@@ -34,6 +35,33 @@ const termsSections = [
     textColor: 'text-white',
   },
 ];
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | Hidden Lotus',
+  description:
+    'Read the terms of service for Hidden Lotus. Understand your rights and responsibilities when using our website and services.',
+  robots: 'noindex, nofollow',
+  openGraph: {
+    title: 'Terms of Service | Hidden Lotus',
+    description:
+      'Read the terms of service for Hidden Lotus. Understand your rights and responsibilities when using our website and services.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hidden Lotus Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Terms of Service | Hidden Lotus',
+    description:
+      'Read the terms of service for Hidden Lotus. Understand your rights and responsibilities when using our website and services.',
+    images: ['/og-image.png'],
+  },
+};
 
 export default function TermsPage() {
   return (

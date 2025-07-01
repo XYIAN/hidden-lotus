@@ -1,4 +1,5 @@
 import { Card } from 'primereact/card';
+import type { Metadata } from 'next';
 
 const morSections = [
   {
@@ -26,6 +27,32 @@ const morSections = [
     textColor: 'text-white',
   },
 ];
+
+export const metadata: Metadata = {
+  title: 'MOR Philosophy | Motion, Open Heart, Revival | Hidden Lotus',
+  description:
+    'Learn about the MOR philosophy at Hidden Lotus: Motion, Open Heart, and Revival. Discover our holistic approach to wellness and transformation.',
+  openGraph: {
+    title: 'MOR Philosophy | Motion, Open Heart, Revival | Hidden Lotus',
+    description:
+      'Learn about the MOR philosophy at Hidden Lotus: Motion, Open Heart, and Revival. Discover our holistic approach to wellness and transformation.',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'Hidden Lotus Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'MOR Philosophy | Motion, Open Heart, Revival | Hidden Lotus',
+    description:
+      'Learn about the MOR philosophy at Hidden Lotus: Motion, Open Heart, and Revival. Discover our holistic approach to wellness and transformation.',
+    images: ['/og-image.png'],
+  },
+};
 
 export default function MorPage() {
   return (
