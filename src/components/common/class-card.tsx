@@ -49,9 +49,12 @@ export function ClassCard({ classData, className = '' }: ClassCardProps) {
 			ref={ref}
 			className={`${className} ${
 				isIntersecting ? 'animate-on-scroll animate' : 'animate-on-scroll'
-			}`}
+			} aspect-[4/5] md:aspect-[3/4] sm:aspect-[1/1] w-full max-w-xs md:max-w-sm lg:max-w-md mx-auto flex`}
 		>
-			<Card className="yoga-card hover-lift" style={{ minHeight: '400px' }}>
+			<Card
+				className="yoga-card hover-lift w-full h-full flex flex-col"
+				style={{ minHeight: '320px' }}
+			>
 				<div className="flex flex-column h-full">
 					{/* Header */}
 					<div className="mb-3">
@@ -88,34 +91,38 @@ export function ClassCard({ classData, className = '' }: ClassCardProps) {
 					</div>
 
 					{/* Details */}
-					<div className="flex flex-column gap-2 mb-4 flex-grow-1">
-						<div className="flex align-items-center gap-2">
-							<i className="pi pi-user text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">
-								{classData.instructor}
-							</span>
-						</div>
-						<div className="flex align-items-center gap-2">
-							<i className="pi pi-clock text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">{classData.time}</span>
-						</div>
-						<div className="flex align-items-center gap-2">
-							<i className="pi pi-calendar text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">
-								{classData.duration}
-							</span>
-						</div>
-						<div className="flex align-items-center gap-2">
-							<i className="pi pi-dollar text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">
-								{classData.price}
-							</span>
-						</div>
-						<div className="flex align-items-center gap-2">
-							<i className="pi pi-users text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">
-								Max {classData.maxParticipants} participants
-							</span>
+					<div className="flex justify-content-center mb-4 flex-grow-1">
+						<div className="flex flex-column gap-2">
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-user text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">
+									{classData.instructor}
+								</span>
+							</div>
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-clock text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">
+									{classData.time}
+								</span>
+							</div>
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-calendar text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">
+									{classData.duration}
+								</span>
+							</div>
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-dollar text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">
+									{classData.price}
+								</span>
+							</div>
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-users text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">
+									Max {classData.maxParticipants} participants
+								</span>
+							</div>
 						</div>
 					</div>
 

@@ -3,10 +3,12 @@
 import { useState } from 'react'
 import { Sidebar } from 'primereact/sidebar'
 import { Button } from 'primereact/button'
+import { Menu } from 'primereact/menu'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Flower2 } from 'lucide-react'
 import { usePathname } from 'next/navigation'
+import { SidebarHeader } from './sidebar-header'
 import '@/styles/header.css'
 
 const navigationItems = [
@@ -26,6 +28,40 @@ export function Header() {
 	const isActive = (href: string) => {
 		return pathname === href
 	}
+
+	const menuItems = navigationItems.map((item) => {
+		// Define unique icons for each page
+		const getIcon = (href: string) => {
+			switch (href) {
+				case '/':
+					return 'pi pi-home'
+				case '/classes':
+					return 'pi pi-calendar-plus'
+				case '/team':
+					return 'pi pi-users'
+				case '/about':
+					return 'pi pi-info-circle'
+				case '/story':
+					return 'pi pi-book'
+				case '/contact':
+					return 'pi pi-envelope'
+				case '/mor':
+					return 'pi pi-heart'
+				default:
+					return 'pi pi-home'
+			}
+		}
+
+		return {
+			label: item.label,
+			icon: getIcon(item.href),
+			command: () => {
+				window.location.href = item.href
+				setSidebarVisible(false)
+			},
+			className: pathname === item.href ? 'active-menu-item' : '',
+		}
+	})
 
 	return (
 		<>
@@ -65,23 +101,17 @@ export function Header() {
 					</nav>
 
 					{/* Mobile Menu Button */}
-					<div
-						className="md:hidden"
-						style={{ zIndex: 60, position: 'relative' }}
-					>
-						<Button
-							icon={<Flower2 className="text-primary-green" size={24} />}
-							onClick={() => setSidebarVisible(true)}
-							className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
-							style={{
-								visibility: 'visible',
-								opacity: 1,
-								position: 'relative',
-								zIndex: 60,
-							}}
-							aria-label="Open menu"
-						/>
-					</div>
+					<Button
+						icon="pi pi-heart"
+						onClick={() => setSidebarVisible(true)}
+						className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white md:hidden"
+						style={{
+							zIndex: 60,
+							visibility: 'visible',
+							opacity: 1,
+						}}
+						aria-label="Open menu"
+					/>
 				</div>
 			</header>
 
@@ -90,39 +120,25 @@ export function Header() {
 				visible={sidebarVisible}
 				onHide={() => setSidebarVisible(false)}
 				position="right"
-				header={
-					<div className="flex align-items-center gap-3">
-						<Image
-							src="/icon-hl-1.png"
-							alt="Hidden Lotus Logo"
-							width={50}
-							height={50}
-							className="rounded-lg object-contain"
-							style={{ borderRadius: '12px' }}
-						/>
-						<span className="text-2xl font-bold text-primary-green tracking-wide">
-							Hidden Lotus
-						</span>
-					</div>
-				}
-				className="w-80 bg-[#2d1b0e] bg-gradient-to-br from-[#2d1b0e] via-[#3d2b1e] to-[#4a3a2e] backdrop-blur-lg border-l border-sage-green-200/20 shadow-xl"
+				header={<SidebarHeader />}
+				className="custom-sidebar"
 				style={{ zIndex: 1000 }}
+				closeIcon="pi pi-arrow-right"
 			>
-				<div className="flex flex-column gap-4 p-6 mt-4">
-					{navigationItems.map((item) => (
-						<Link
-							key={item.label}
-							href={item.href}
-							className={`text-light-tan text-lg font-medium px-4 py-3 rounded-xl transition-colors duration-200 ${
-								pathname === item.href
-									? 'bg-sage-green-600 text-white shadow-md ring-2 ring-primary-green active-nav-item'
-									: 'hover:bg-sage-green-600/30 hover:text-white'
-							}`}
-							onClick={() => setSidebarVisible(false)}
+				<div className="flex flex-column h-full">
+					<div className="flex-grow-1">
+						<Menu model={menuItems} className="custom-sidebar-menu" />
+					</div>
+					<div className="p-4 text-center border-top-1 border-gray-600">
+						<a
+							href="https://www.linkedin.com/company/xyian"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="sidebar-footer-link"
 						>
-							{item.label}
-						</Link>
-					))}
+							Powered By XYIAN Software
+						</a>
+					</div>
 				</div>
 			</Sidebar>
 		</>

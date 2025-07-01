@@ -5,8 +5,11 @@
 	-webkit-backdrop-filter: blur(12px) !important;
 	border-bottom: 1px solid rgba(107, 142, 90, 0.4) !important;
 	box-shadow: 0 2px 8px rgba(139, 69, 19, 0.1) !important;
-	z-index: 50 !important;
-	position: relative !important;
+	z-index: 1000 !important;
+	position: sticky !important;
+	top: 0 !important;
+	left: 0 !important;
+	right: 0 !important;
 }
 
 /* Active navigation item with yellow pulsing glow */
@@ -33,4 +36,155 @@
 	opacity: 1 !important;
 	position: relative !important;
 	z-index: 60 !important;
+}
+
+/* Custom Sidebar Styling */
+.custom-sidebar {
+	background: rgba(90, 60, 30, 0.88) !important;
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+	border-left: 1px solid rgba(107, 142, 90, 0.18) !important;
+	box-shadow: -4px 0 20px rgba(0, 0, 0, 0.18) !important;
+	width: 320px !important;
+}
+
+.custom-sidebar .p-sidebar-header {
+	background: rgba(90, 60, 30, 0.7) !important;
+	border-bottom: 1px solid rgba(107, 142, 90, 0.12) !important;
+}
+
+.custom-sidebar .p-sidebar-content {
+	background: transparent !important;
+	padding: 0 !important;
+}
+
+/* Custom Sidebar Menu Styling */
+.custom-sidebar-menu {
+	background: transparent !important;
+	border: none !important;
+	width: 100% !important;
+}
+
+.custom-sidebar-menu .p-menu-list {
+	padding: 0 !important;
+}
+
+.custom-sidebar-menu .p-menuitem {
+	margin: 0 !important;
+}
+
+.custom-sidebar-menu .p-menuitem-link {
+	background: transparent !important;
+	border: none !important;
+	color: #ffffff !important;
+	padding: 1rem 1.5rem !important;
+	border-radius: 0 !important;
+	transition: all 0.3s ease !important;
+	font-size: 1.08rem !important;
+	font-weight: 500 !important;
+	letter-spacing: 0.01em;
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+	text-align: center !important;
+}
+
+.custom-sidebar-menu .p-menuitem-link:hover {
+	background: rgba(107, 142, 90, 0.13) !important;
+	color: #ffffff !important;
+}
+
+.custom-sidebar-menu .p-menuitem-link.active-menu-item {
+	background: rgba(107, 142, 90, 0.22) !important;
+	color: #ffffff !important;
+	border-left: 4px solid #4a7c59 !important;
+}
+
+.custom-sidebar-menu .p-menuitem-icon {
+	color: #ffffff !important;
+	margin-right: 0.75rem !important;
+}
+
+.custom-sidebar-menu .p-menuitem-text {
+	font-weight: 500 !important;
+	font-size: 1.08rem !important;
+	color: #ffffff !important;
+	text-align: center !important;
+}
+
+/* Sidebar Footer XYIAN */
+.custom-sidebar .sidebar-footer-link {
+	font-size: 0.75rem !important;
+	color: #e0dbd1 !important;
+	text-decoration: none !important;
+	font-weight: 400 !important;
+	letter-spacing: 0.02em;
+	transition: color 0.2s;
+}
+.custom-sidebar .sidebar-footer-link:hover {
+	color: #fffbe9 !important;
+	text-decoration: none !important;
+}
+
+/* Logo Glow Border */
+.logo-glow-border {
+	box-shadow: 0 0 8px rgba(255, 255, 200, 0.3),
+		0 0 16px rgba(255, 255, 200, 0.2);
+	filter: drop-shadow(0 0 4px rgba(255, 255, 200, 0.25));
+}
+
+/* Bouncing Glow for Sidebar Header */
+.bouncing-glow {
+	animation: bounceGlow 5s ease-in-out infinite;
+}
+
+@keyframes bounceGlow {
+	0% {
+		text-shadow: -20px 0 3px rgba(255, 255, 200, 0.3),
+			-40px 0 6px rgba(255, 255, 200, 0.2);
+		filter: drop-shadow(-20px 0 2px rgba(255, 255, 200, 0.25));
+	}
+	25% {
+		text-shadow: -10px 0 4px rgba(255, 255, 200, 0.4),
+			-20px 0 8px rgba(255, 255, 200, 0.3);
+		filter: drop-shadow(-10px 0 3px rgba(255, 255, 200, 0.35));
+	}
+	50% {
+		text-shadow: 0px 0 5px rgba(255, 255, 200, 0.5),
+			0px 0 10px rgba(255, 255, 200, 0.4);
+		filter: drop-shadow(0px 0 4px rgba(255, 255, 200, 0.45));
+	}
+	75% {
+		text-shadow: 10px 0 4px rgba(255, 255, 200, 0.4),
+			20px 0 8px rgba(255, 255, 200, 0.3);
+		filter: drop-shadow(10px 0 3px rgba(255, 255, 200, 0.35));
+	}
+	100% {
+		text-shadow: 20px 0 3px rgba(255, 255, 200, 0.3),
+			40px 0 6px rgba(255, 255, 200, 0.2);
+		filter: drop-shadow(20px 0 2px rgba(255, 255, 200, 0.25));
+	}
+}
+
+/* Custom Close Icon for Sidebar */
+.custom-sidebar .p-sidebar-close {
+	color: #ffd700 !important;
+	background: transparent !important;
+	border: none !important;
+	width: 2.5rem !important;
+	height: 2.5rem !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	transition: all 0.2s ease !important;
+}
+
+.custom-sidebar .p-sidebar-close:hover {
+	background: rgba(255, 215, 0, 0.1) !important;
+	color: #fff200 !important;
+	transform: scale(1.1) !important;
+}
+
+.custom-sidebar .p-sidebar-close .p-sidebar-close-icon {
+	font-size: 1.2rem !important;
 }

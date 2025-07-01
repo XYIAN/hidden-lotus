@@ -6,10 +6,12 @@ import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
 import { Dropdown } from 'primereact/dropdown'
 import { Tag } from 'primereact/tag'
+import { Toast } from 'primereact/toast'
 import { useForm, Controller } from 'react-hook-form'
 import { HeroSection } from '@/components/common/hero-section'
 import { ClassCard } from '@/components/common/class-card'
 import { classesData, Class } from '@/constants/classes'
+import { useRef } from 'react'
 import '@/styles/animations.css'
 
 interface FilterForm {
@@ -20,6 +22,7 @@ interface FilterForm {
 
 export default function ClassesPage() {
 	const [filteredClasses, setFilteredClasses] = useState<Class[]>(classesData)
+	const toast = useRef<Toast>(null)
 
 	const { control, watch, reset } = useForm<FilterForm>({
 		defaultValues: {
@@ -82,14 +85,34 @@ export default function ClassesPage() {
 		}
 
 		setFilteredClasses(filtered)
+
+		// Show toast for search results
+		if (searchTerm || selectedCategory || selectedLevel) {
+			toast.current?.show({
+				severity: 'info',
+				summary: 'Search Results',
+				detail: `Found ${filtered.length} class${
+					filtered.length !== 1 ? 'es' : ''
+				}`,
+				life: 3000,
+			})
+		}
 	}, [searchTerm, selectedCategory, selectedLevel])
 
 	const clearFilters = () => {
 		reset()
+		toast.current?.show({
+			severity: 'success',
+			summary: 'Filters Cleared',
+			detail: 'All filters have been reset',
+			life: 2000,
+		})
 	}
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
+			<Toast ref={toast} />
+
 			<HeroSection
 				title="Our Classes"
 				description="Discover our diverse range of wellness classes designed to support your mind, body, and spirit."
@@ -97,8 +120,8 @@ export default function ClassesPage() {
 
 			{/* Filters Section */}
 			<section className="max-w-6xl mx-auto w-full">
-				<Card className="yoga-card p-4 mb-6">
-					<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+				<Card className="yoga-card p-6 mb-6">
+					<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 						<div className="flex flex-column gap-2">
 							<label
 								htmlFor="search"
@@ -167,16 +190,17 @@ export default function ClassesPage() {
 								)}
 							/>
 						</div>
+					</div>
 
-						<div className="flex flex-column gap-2 justify-content-end">
-							<Button
-								label="Clear Filters"
-								icon="pi pi-refresh"
-								onClick={clearFilters}
-								className="bg-sage-green-600 border-sage-green-600"
-								disabled={!searchTerm && !selectedCategory && !selectedLevel}
-							/>
-						</div>
+					{/* Clear Filters Button - Always at bottom */}
+					<div className="flex justify-content-center mt-6">
+						<Button
+							label="Clear All Filters"
+							icon="pi pi-refresh"
+							onClick={clearFilters}
+							className="bg-sage-green-600 border-sage-green-600"
+							disabled={!searchTerm && !selectedCategory && !selectedLevel}
+						/>
 					</div>
 				</Card>
 
@@ -216,7 +240,7 @@ export default function ClassesPage() {
 
 				{/* Classes Grid */}
 				{filteredClasses.length > 0 ? (
-					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+					<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center max-w-7xl mx-auto">
 						{filteredClasses.map((classData, index) => (
 							<ClassCard
 								key={classData.id}
