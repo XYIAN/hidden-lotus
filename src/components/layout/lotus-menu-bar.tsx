@@ -60,7 +60,7 @@ export function LotusMenuBar() {
 				style={{ borderRadius: '12px' }}
 				priority
 			/>
-			<span className="text-3xl font-extrabold text-primary-green lotus-title-fancy">
+			<span className="text-3xl font-extrabold text-primary-green lotus-title-fancy whitespace-nowrap">
 				Hidden Lotus
 			</span>
 		</Link>

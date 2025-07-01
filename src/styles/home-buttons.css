@@ -1,16 +1,123 @@
-/* Home Page Button Pulsing Effect */
+/* Pulsing effect for home page card buttons */
 .home-card-button {
-  animation: pulse-sage 2s infinite;
+	animation: pulse-glow 2s ease-in-out infinite alternate;
 }
 
-@keyframes pulse-sage {
-  0% {
-    box-shadow: 0 0 0 0 rgba(107, 142, 90, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(107, 142, 90, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(107, 142, 90, 0);
-  }
+@keyframes pulse-glow {
+	0% {
+		box-shadow: 0 0 5px rgba(134, 197, 94, 0.3);
+	}
+	100% {
+		box-shadow: 0 0 20px rgba(134, 197, 94, 0.6),
+			0 0 30px rgba(134, 197, 94, 0.4);
+	}
+}
+
+/* Custom Carousel Styles */
+.custom-carousel-root {
+	background: transparent !important;
+}
+
+.custom-carousel-content {
+	background: transparent !important;
+}
+
+.custom-carousel-container {
+	background: transparent !important;
+}
+
+.custom-carousel-items-content {
+	background: transparent !important;
+}
+
+.custom-carousel-items-container {
+	background: transparent !important;
+}
+
+.custom-carousel-item {
+	background: transparent !important;
+}
+
+/* Navigation buttons */
+.custom-carousel-nav-btn {
+	background: rgba(134, 197, 94, 0.8) !important;
+	border: 2px solid rgba(134, 197, 94, 0.9) !important;
+	border-radius: 50% !important;
+	width: 48px !important;
+	height: 48px !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	transition: all 0.3s ease !important;
+	backdrop-filter: blur(10px) !important;
+}
+
+.custom-carousel-nav-btn:hover {
+	background: rgba(134, 197, 94, 1) !important;
+	transform: scale(1.1) !important;
+	box-shadow: 0 4px 12px rgba(134, 197, 94, 0.4) !important;
+}
+
+.custom-carousel-nav-icon {
+	color: white !important;
+	font-size: 1.2rem !important;
+	font-weight: bold !important;
+}
+
+/* Indicators */
+.custom-carousel-indicators {
+	display: flex !important;
+	justify-content: center !important;
+	gap: 8px !important;
+	margin-top: 20px !important;
+}
+
+.custom-carousel-indicator {
+	background: transparent !important;
+}
+
+.custom-carousel-indicator-btn {
+	width: 12px !important;
+	height: 12px !important;
+	border-radius: 50% !important;
+	background: rgba(134, 197, 94, 0.3) !important;
+	border: none !important;
+	transition: all 0.3s ease !important;
+}
+
+.custom-carousel-indicator-btn:hover {
+	background: rgba(134, 197, 94, 0.6) !important;
+	transform: scale(1.2) !important;
+}
+
+.custom-carousel-indicator-btn.p-highlight {
+	background: rgba(134, 197, 94, 0.9) !important;
+	transform: scale(1.1) !important;
+}
+
+/* Fade transition effect */
+.custom-carousel .p-carousel-items-content {
+	transition: all 0.5s ease-in-out !important;
+}
+
+.custom-carousel .p-carousel-item {
+	opacity: 1 !important;
+	transition: opacity 0.5s ease-in-out !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.custom-carousel-nav-btn {
+		width: 40px !important;
+		height: 40px !important;
+	}
+
+	.custom-carousel-nav-icon {
+		font-size: 1rem !important;
+	}
+
+	.custom-carousel-indicator-btn {
+		width: 10px !important;
+		height: 10px !important;
+	}
 }

@@ -932,12 +932,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.1] - 2024-12-15
 
-### Changed
+### Fixed
 
-- Updated versioning to 1.0.1 (reset minor/patch to 1 after 0.9.x as per versioning rules)
-- Added/updated .prettierrc to ensure Prettier handles CSS, SCSS, and SASS files
-- Prettier config now enforces formatting for all style files
+- **Prettier Configuration**: Added support for CSS, SCSS, and SASS files in Prettier config
+- **Component Extraction**: Refactored story page by extracting StoryFilters, StoryGrid, and StorySection components
+- **Version Update**: Updated versioning to 1.0.1 following proper versioning rules
 
-### Upcoming
+### Added
 
-- Refactor story page and other feature pages to extract sections and grids into components for cleaner, more maintainable code structure
+- **Component Architecture**: Improved story page structure with better separation of concerns
+- **Code Organization**: Minimized HTML in root page.tsx files, keeping them as wrappers with logic and imported components
+
+## [1.0.2] - 2024-12-19
+
+### Fixed
+
+- **Contact Form Layout**: Changed from grid to column layout for better mobile experience and maximum room for inputs
+- **Header Text Alignment**: Fixed header text alignment to be properly centered and prevent wrapping on all screen sizes
+- **Netlify Image Loading**: Updated Next.js config with unoptimized images to fix image loading issues on Netlify deployment
+- **Home Page Cards**: Converted static grid to auto-rotating PrimeReact Carousel with fade transitions and responsive breakpoints
+- **Carousel Features**: Added circular rotation, 4-second autoplay interval, custom navigation buttons, and indicator dots
+- **Responsive Design**: Improved carousel responsiveness with proper breakpoints for different screen sizes
+
+### Added
+
+- **Carousel Styling**: Custom CSS for carousel navigation buttons, indicators, and fade transitions
+- **Enhanced Animations**: Improved pulsing glow effect for home page buttons with better color transitions
+- **Better UX**: Auto-advancing carousel with manual navigation options and visual feedback
+
+### Technical
+
+- **Component Updates**: ButtonGroup component now uses PrimeReact Carousel with custom templates
+- **CSS Enhancements**: Added comprehensive carousel styling with hover effects and transitions
+- **Performance**: Optimized carousel rendering with proper item templates and responsive options
