@@ -1,3 +1,6 @@
+'use client'
+
+import { useParams } from 'next/navigation'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
@@ -9,12 +12,9 @@ import { Class, TeamMember } from '@/types'
 import { notFound } from 'next/navigation'
 import '@/styles/animations.css'
 
-export default async function TeamMemberPage({
-	params,
-}: {
-	params: Promise<{ name: string }>
-}) {
-	const { name } = await params
+export default function TeamMemberPage() {
+	const params = useParams()
+	const name = params.name as string
 	const member = teamData.find(
 		(m: TeamMember) => m.name.toLowerCase().replace(/\s+/g, '-') === name
 	)
