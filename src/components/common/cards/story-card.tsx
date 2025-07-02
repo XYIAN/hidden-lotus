@@ -19,7 +19,7 @@ export function StoryCard({ story, onClick }: StoryCardProps) {
 	const getStoryIcon = (id: string) => {
 		switch (id) {
 			case '1':
-				return '/icon-hl-1.png'
+				return '/hl-f-icon2.png'
 			case '2':
 				return '/icon-hl-2.png'
 			case '3':
@@ -27,7 +27,7 @@ export function StoryCard({ story, onClick }: StoryCardProps) {
 			case '4':
 				return '/icon-mor-1.png'
 			default:
-				return '/icon-hl-1.png'
+				return '/hl-f-icon2.png'
 		}
 	}
 

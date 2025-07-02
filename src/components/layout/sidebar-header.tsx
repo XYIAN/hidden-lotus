@@ -4,7 +4,7 @@ export function SidebarHeader() {
 	return (
 		<div className="flex align-items-center gap-3 p-4">
 			<Image
-				src="/icon-hl-1.png"
+				src="/hl-f-icon2.png"
 				alt="Hidden Lotus Logo"
 				width={50}
 				height={50}

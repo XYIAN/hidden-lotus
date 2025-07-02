@@ -18,7 +18,7 @@ export const classesData: Class[] = [
 		level: 'beginner',
 		maxParticipants: 20,
 		equipment: ['Yoga mat', 'Blocks', 'Strap'],
-		image: '/icon-hl-1.png',
+		image: '/hl-f-icon2.png',
 	},
 	{
 		id: '2',

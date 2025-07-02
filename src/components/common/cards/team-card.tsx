@@ -32,13 +32,13 @@ export function TeamCard({ member }: TeamCardProps) {
 	const getMemberIcon = (type: string) => {
 		switch (type) {
 			case 'instructor':
-				return '/icon-hl-1.png'
+				return '/hl-f-icon2.png'
 			case 'admin':
 				return '/icon-hl-2.png'
 			case 'board':
 				return '/icon-hl-3.png'
 			default:
-				return '/icon-hl-1.png'
+				return '/hl-f-icon2.png'
 		}
 	}
 

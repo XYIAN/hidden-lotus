@@ -20,7 +20,7 @@ export default function NotFound() {
 				{/* Logo with animation */}
 				<div className="mb-8 animate-bounce">
 					<Image
-						src="/icon-hl-1.png"
+						src="/hl-f-icon2.png"
 						alt="Hidden Lotus"
 						width={140}
 						height={140}

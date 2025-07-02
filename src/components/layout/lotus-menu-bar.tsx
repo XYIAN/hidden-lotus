@@ -59,7 +59,7 @@ export function LotusMenuBar() {
 	const start = (
 		<Link href="/" className="flex items-center gap-3 no-underline">
 			<Image
-				src="/icon-hl-1.png"
+				src="/hl-f-icon2.png"
 				alt="Hidden Lotus"
 				width={56}
 				height={56}

@@ -82,14 +82,15 @@ export function Header() {
 						className="flex items-center gap-3 justify-content-center align-items-center"
 					>
 						<Image
-							src="/icon-hl-1.png"
+							src="/hl-f-icon2.png"
 							alt="Hidden Lotus"
-							width={50}
-							height={50}
+							width={100}
+							height={100}
 							className="rounded-lg object-contain"
 							style={{ borderRadius: '12px' }}
 							priority
 						/>
+						{/*
 						<span
 							className="text-xl font-bold text-primary-green"
 							style={{
@@ -98,6 +99,7 @@ export function Header() {
 						>
 							Hidden Lotus
 						</span>
+						*/}
 					</Link>
 					<Button
 						onClick={() => setSidebarVisible(true)}

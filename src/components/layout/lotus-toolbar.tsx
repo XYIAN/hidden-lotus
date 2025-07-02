@@ -30,7 +30,7 @@ export function LotusToolbar() {
 	const startContent = (
 		<Link href="/" className="flex align-items-center gap-3">
 			<Image
-				src="/icon-hl-1.png"
+				src="/hl-f-icon2.png"
 				alt="Hidden Lotus"
 				width={50}
 				height={50}

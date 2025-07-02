@@ -9,7 +9,7 @@ export const teamData: TeamMember[] = [
 		profession: 'Yoga Instructor & Wellness Coach',
 		credentials: 'RYT-500, Ayurvedic Wellness Counselor, Mindfulness Teacher',
 		bio: 'Jaideep brings over 15 years of experience in yoga and meditation, specializing in vinyasa flow and mindfulness practices.',
-		image: '/icon-hl-1.png',
+		image: '/hl-f-icon2.png',
 		longBio:
 			'Jaideep Pa is a dedicated yoga instructor and wellness coach with over 15 years of experience in the field of holistic health. His journey began in India, where he studied under renowned yoga masters and learned the ancient wisdom of Ayurveda. Jaideep specializes in vinyasa flow, mindfulness meditation, and stress management techniques. He believes in making yoga accessible to everyone, regardless of their experience level or physical limitations. Through his classes and coaching sessions, Jaideep helps students develop a deeper connection with their bodies, minds, and spirits, guiding them toward greater self-awareness and inner peace.',
 		type: 'instructor',
