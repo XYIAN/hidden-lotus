@@ -1,22 +1,13 @@
 'use client'
 
-import { Dropdown, DropdownProps } from 'primereact/dropdown'
-import { ReactNode } from 'react'
-
-interface DropdownHLProps extends Omit<DropdownProps, 'id'> {
-	label: string
-	id: string
-	error?: string
-	labelWidth?: number // in rem
-	required?: boolean
-	className?: string
-}
+import { Dropdown } from 'primereact/dropdown'
+import { DropdownHLProps } from '@/types'
 
 export function DropdownHL({
-	label,
 	id,
+	label,
+	labelWidth = '6',
 	error,
-	labelWidth,
 	required = false,
 	className = '',
 	...dropdownProps
@@ -36,7 +27,7 @@ export function DropdownHL({
 				className={`w-full ${error ? 'p-invalid' : ''}`}
 				{...dropdownProps}
 			/>
-			{error && <small className="p-error">{error}</small>}
+			{error && <small className="text-red-500">{error}</small>}
 		</div>
 	)
 }

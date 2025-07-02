@@ -75,6 +75,23 @@ export interface FilterState {
 	[key: string]: string | number | string[] | number[]
 }
 
+// Specific filter states for different pages
+export interface ClassFilterState {
+	category: string
+	level: string
+	instructor: string
+}
+
+export interface TeamFilterState {
+	type: string
+	profession: string
+}
+
+export interface StoryFilterState {
+	category: string
+	author: string
+}
+
 // Sort types
 export interface SortOption {
 	field: string

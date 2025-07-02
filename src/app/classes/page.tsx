@@ -1,8 +1,6 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { Card } from 'primereact/card'
-import { Button } from 'primereact/button'
 import { HeroSection } from '@/components/common/hero-section'
 import {
 	CardGrid,
@@ -11,10 +9,10 @@ import {
 	ResultsCount,
 } from '@/components/common'
 import { classesData } from '@/constants/classes'
-import { Class, FilterState } from '@/types'
+import { Class, ClassFilterState, ClassCategory } from '@/types'
 
 export default function ClassesPage() {
-	const [filters, setFilters] = useState<FilterState>({
+	const [filters, setFilters] = useState<ClassFilterState>({
 		category: '',
 		level: '',
 		instructor: '',
@@ -24,7 +22,7 @@ export default function ClassesPage() {
 		return classesData.filter((classItem: Class) => {
 			if (
 				filters.category &&
-				!classItem.categories.includes(filters.category as string)
+				!classItem.categories.includes(filters.category as ClassCategory)
 			) {
 				return false
 			}
@@ -38,7 +36,7 @@ export default function ClassesPage() {
 		})
 	}, [filters])
 
-	const handleFilterChange = (newFilters: FilterState) => {
+	const handleFilterChange = (newFilters: ClassFilterState) => {
 		setFilters(newFilters)
 	}
 

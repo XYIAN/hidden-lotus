@@ -16,7 +16,7 @@ export type Pick<T, K extends keyof T> = {
 }
 
 // Omit specific properties
-export type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
 // Extract specific properties
 export type Extract<T, U> = T extends U ? T : never
@@ -28,27 +28,28 @@ export type Exclude<T, U> = T extends U ? never : T
 export type NonNullable<T> = T extends null | undefined ? never : T
 
 // Return type of a function
-export type ReturnType<T extends (...args: any) => any> = T extends (
-	...args: any
+export type ReturnType<T extends (...args: unknown[]) => unknown> = T extends (
+	...args: unknown[]
 ) => infer R
 	? R
-	: any
+	: never
 
 // Parameters of a function
-export type Parameters<T extends (...args: any) => any> = T extends (
+export type Parameters<T extends (...args: unknown[]) => unknown> = T extends (
 	...args: infer P
-) => any
+) => unknown
 	? P
 	: never
 
 // Instance type of a constructor
-export type InstanceType<T extends abstract new (...args: any) => any> =
-	T extends abstract new (...args: any) => infer R ? R : any
+export type InstanceType<
+	T extends abstract new (...args: unknown[]) => unknown
+> = T extends abstract new (...args: unknown[]) => infer R ? R : never
 
 // Constructor parameters
 export type ConstructorParameters<
-	T extends abstract new (...args: any) => any
-> = T extends abstract new (...args: infer P) => any ? P : never
+	T extends abstract new (...args: unknown[]) => unknown
+> = T extends abstract new (...args: infer P) => unknown ? P : never
 
 // Deep partial - makes nested objects optional too
 export type DeepPartial<T> = {
@@ -71,19 +72,19 @@ export type DeepReadonly<T> = {
 }
 
 // Record type with specific keys and values
-export type Record<K extends keyof any, T> = {
+export type Record<K extends keyof T, T> = {
 	[P in K]: T
 }
 
 // Union to intersection
 export type UnionToIntersection<U> = (
-	U extends any ? (k: U) => void : never
+	U extends unknown ? (k: U) => void : never
 ) extends (k: infer I) => void
 	? I
 	: never
 
 // Tuple to union
-export type TupleToUnion<T extends readonly any[]> = T[number]
+export type TupleToUnion<T extends readonly unknown[]> = T[number]
 
 // Array element type
 export type ArrayElement<T> = T extends readonly (infer U)[] ? U : never
@@ -92,11 +93,12 @@ export type ArrayElement<T> = T extends readonly (infer U)[] ? U : never
 export type PromiseType<T> = T extends Promise<infer U> ? U : T
 
 // Async function return type
-export type AsyncReturnType<T extends (...args: any) => Promise<any>> =
-	T extends (...args: any) => Promise<infer R> ? R : any
+export type AsyncReturnType<
+	T extends (...args: unknown[]) => Promise<unknown>
+> = T extends (...args: unknown[]) => Promise<infer R> ? R : never
 
 // Function type
-export type FunctionType<T = any, R = any> = (...args: T[]) => R
+export type FunctionType<T = unknown, R = unknown> = (...args: T[]) => R
 
 // Event handler type
 export type EventHandler<T = Event> = (event: T) => void

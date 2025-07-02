@@ -1,16 +1,14 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import { Card } from 'primereact/card'
-import { Button } from 'primereact/button'
 import { HeroSection } from '@/components/common/hero-section'
 import { CardGrid, DisplayCard, FilterPanel } from '@/components/common'
 import { teamData } from '@/constants/team'
-import { TeamMember, FilterState } from '@/types'
+import { TeamMember, TeamFilterState } from '@/types'
 import '@/styles/animations.css'
 
 export default function TeamPage() {
-	const [filters, setFilters] = useState<FilterState>({
+	const [filters, setFilters] = useState<TeamFilterState>({
 		type: '',
 		profession: '',
 	})
@@ -22,6 +20,7 @@ export default function TeamPage() {
 			}
 			if (
 				filters.profession &&
+				typeof filters.profession === 'string' &&
 				!member.profession
 					.toLowerCase()
 					.includes(filters.profession.toLowerCase())
@@ -32,7 +31,7 @@ export default function TeamPage() {
 		})
 	}, [filters])
 
-	const handleFilterChange = (newFilters: FilterState) => {
+	const handleFilterChange = (newFilters: TeamFilterState) => {
 		setFilters(newFilters)
 	}
 

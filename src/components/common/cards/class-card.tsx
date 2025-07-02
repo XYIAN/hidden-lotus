@@ -3,10 +3,8 @@
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
-import { Calendar } from 'primereact/calendar'
 import { Class } from '@/constants/classes'
 import Link from 'next/link'
-import { useIntersectionObserver } from '@/hooks/useIntersectionObserver'
 import '@/styles/animations.css'
 
 interface ClassCardProps {
@@ -14,9 +12,7 @@ interface ClassCardProps {
 	className?: string
 }
 
-export function ClassCard({ classData, className = '' }: ClassCardProps) {
-	const { ref, isIntersecting } = useIntersectionObserver()
-
+export function ClassCard({ classData }: ClassCardProps) {
 	const getCategoryColor = (category: string) => {
 		const colors: Record<string, string> = {
 			yoga: 'bg-sage-green-600',
@@ -65,12 +61,13 @@ export function ClassCard({ classData, className = '' }: ClassCardProps) {
 
 				{/* Categories */}
 				<div className="flex flex-wrap gap-2 mb-3 justify-content-center">
-					{classData.categories.map((category, index) => (
+					{classData.categories.map((category: string, index: number) => (
 						<Tag
 							key={index}
 							value={category
-								.replace('-', ' ')
-								.replace(/\b\w/g, (l) => l.toUpperCase())}
+								.split('-')
+								.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+								.join(' ')}
 							className={`text-xs ${getCategoryColor(category)} border-0`}
 						/>
 					))}
@@ -127,7 +124,7 @@ export function ClassCard({ classData, className = '' }: ClassCardProps) {
 							Equipment Needed:
 						</h4>
 						<div className="flex flex-wrap gap-1 justify-content-center">
-							{classData.equipment.map((item, index) => (
+							{classData.equipment.map((item: string, index: number) => (
 								<Tag
 									key={index}
 									value={item}

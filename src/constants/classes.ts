@@ -1,5 +1,7 @@
 import { Class } from '@/types'
 
+export type { Class }
+
 export const classesData: Class[] = [
 	{
 		id: '1',

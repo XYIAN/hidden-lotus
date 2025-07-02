@@ -1,264 +1,219 @@
 'use client'
 
-import { useState } from 'react'
-import { Card, CardProps } from 'primereact/card'
-import { Tag } from 'primereact/tag'
+import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
+import { Tag } from 'primereact/tag'
 import Image from 'next/image'
-import { LoadingSkeleton } from './loading-skeleton'
-import { Certifications } from './display-card/certifications'
-import { Specialties } from './display-card/specialties'
-
-interface CardData {
-	id?: string
-	name?: string
-	title?: string
-	description?: string
-	bio?: string
-	image?: string
-	fallbackIcon?: string
-	type?: string
-	profession?: string
-	credentials?: string
-	specialties?: string[]
-	certifications?: string[]
-	price?: string
-	duration?: string
-	level?: string
-	category?: string
-	href?: string
-	onClick?: () => void
-}
-
-interface DisplayCardProps
-	extends Omit<CardProps, 'title' | 'subtitle' | 'content'> {
-	data: CardData
-	showImage?: boolean
-	showType?: boolean
-	showSpecialties?: boolean
-	showCertifications?: boolean
-	showPrice?: boolean
-	showDuration?: boolean
-	showLevel?: boolean
-	showCategory?: boolean
-	showCredentials?: boolean
-	showProfession?: boolean
-	showBio?: boolean
-	showDescription?: boolean
-	showLearnMore?: boolean
-	learnMoreText?: string
-	cardSize?: 'small' | 'medium' | 'large'
-	className?: string
-}
+import { DisplayCardProps } from '@/types'
 
 export function DisplayCard({
 	data,
 	showImage = true,
-	showType = true,
-	showSpecialties = true,
+	showType = false,
+	showSpecialties = false,
 	showCertifications = false,
 	showPrice = false,
 	showDuration = false,
 	showLevel = false,
 	showCategory = false,
-	showCredentials = true,
-	showProfession = true,
-	showBio = true,
+	showCredentials = false,
+	showProfession = false,
+	showBio = false,
 	showDescription = true,
-	showLearnMore = true,
+	showLearnMore = false,
 	learnMoreText = 'Learn More',
 	cardSize = 'medium',
-	className = '',
-	...cardProps
 }: DisplayCardProps) {
-	const [imageLoaded, setImageLoaded] = useState(false)
-	const [imageError, setImageError] = useState(false)
+	const {
+		name,
+		title,
+		description,
+		bio,
+		image,
+		type,
+		profession,
+		credentials,
+		specialties,
+		certifications,
+		price,
+		duration,
+		level,
+		category,
+		href,
+		onClick,
+	} = data
 
-	// Fixed card dimensions based on size
-	const getCardDimensions = () => {
+	const getCardSizeClasses = () => {
 		switch (cardSize) {
 			case 'small':
-				return 'w-64 h-80' // 256px x 320px
+				return 'max-w-sm'
 			case 'large':
-				return 'w-80 h-96' // 320px x 384px
-			case 'medium':
+				return 'max-w-lg'
 			default:
-				return 'w-72 h-88' // 288px x 352px
-		}
-	}
-
-	const getTypeColor = (type: string) => {
-		switch (type?.toLowerCase()) {
-			case 'instructor':
-			case 'yoga':
-				return 'success'
-			case 'admin':
-			case 'reiki':
-				return 'info'
-			case 'board':
-			case 'meditation':
-				return 'warning'
-			case 'healing':
-				return 'danger'
-			default:
-				return 'info'
+				return 'max-w-md'
 		}
 	}
 
 	const getTypeIcon = (type: string) => {
-		switch (type?.toLowerCase()) {
-			case 'instructor':
-				return 'pi pi-user'
-			case 'yoga':
-				return 'pi pi-heart'
-			case 'reiki':
-				return 'pi pi-star'
-			case 'meditation':
-				return 'pi pi-moon'
-			case 'healing':
-				return 'pi pi-plus-circle'
-			default:
-				return 'pi pi-user'
+		const icons: Record<string, string> = {
+			class: 'pi pi-calendar',
+			team: 'pi pi-users',
+			story: 'pi pi-book',
+			default: 'pi pi-star',
 		}
+		return icons[type] || icons.default
 	}
 
-	const handleCardClick = () => {
-		if (data.onClick) {
-			data.onClick()
-		} else if (data.href) {
-			window.location.href = data.href
+	const getTypeColor = (type: string) => {
+		const colors: Record<string, string> = {
+			class: 'bg-sage-green-600',
+			team: 'bg-pastel-pink',
+			story: 'bg-yellow-gold',
+			default: 'bg-sage-green-600',
 		}
+		return colors[type] || colors.default
 	}
 
-	const footer = showLearnMore ? (
-		<Button
-			label={learnMoreText}
-			icon="pi pi-info-circle"
-			iconPos="right"
-			onClick={handleCardClick}
-			size="small"
-			className="bg-soft-sage border-soft-sage"
-		/>
-	) : undefined
-
-	const title = data.name || data.title
-	const subtitle = data.profession || data.credentials
+	const handleClick = () => {
+		if (onClick) {
+			onClick()
+		} else if (href) {
+			window.location.href = href
+		}
+	}
 
 	return (
 		<Card
-			className={`yoga-card w-full h-full flex flex-col ${getCardDimensions()} mx-auto`}
-			footer={footer}
-			{...cardProps}
+			className={`yoga-card hover-lift ${getCardSizeClasses()} h-full flex flex-column cursor-pointer`}
+			onClick={handleClick}
 		>
-			<div className="text-center h-full flex flex-col justify-center items-center">
-				{/* Image Section */}
-				{showImage && (data.image || data.fallbackIcon) && (
-					<div className="flex justify-content-center mb-2">
-						<div className="relative">
-							{!imageLoaded && !imageError && (
-								<LoadingSkeleton
-									type="image"
-									className="icon-xl soft-rounded"
-								/>
-							)}
-							{imageError && (
-								<div className="icon-xl bg-light-tan soft-rounded flex align-items-center justify-content-center sage-border">
-									<i
-										className={`${
-											data.fallbackIcon || 'pi pi-user'
-										} text-4xl text-sage`}
-									></i>
-								</div>
-							)}
-							{!imageError && data.image && (
-								<Image
-									src={data.image}
-									alt={`${title} image`}
-									width={88}
-									height={88}
-									className={`icon-xl object-contain soft-rounded sage-border ${
-										imageLoaded ? 'block' : 'hidden'
-									}`}
-									onLoad={() => setImageLoaded(true)}
-									onError={() => setImageError(true)}
-								/>
-							)}
-						</div>
-					</div>
-				)}
-
-				{/* Title */}
-				{title && (
-					<h3 className="text-xl font-semibold text-primary-green mb-1">
-						{title}
+			<div className="flex flex-column h-full">
+				{/* Header */}
+				<div className="mb-3">
+					<h3 className="text-xl font-semibold text-primary-green mb-2">
+						{name || title}
 					</h3>
-				)}
+					{showDescription && description && (
+						<p className="text-earth-brown text-sm mb-3">{description}</p>
+					)}
+					{showBio && bio && (
+						<p className="text-earth-brown text-sm mb-3">{bio}</p>
+					)}
+				</div>
 
-				{/* Type Tag */}
-				{showType && data.type && (
-					<div className="flex justify-center mb-1">
-						<Tag
-							value={data.type}
-							severity={getTypeColor(data.type)}
-							className="capitalize"
+				{/* Image */}
+				{showImage && image && (
+					<div className="mb-3">
+						<Image
+							src={image}
+							alt={name || title || 'Card image'}
+							width={400}
+							height={300}
+							className="w-full h-48 object-cover rounded-lg"
 						/>
 					</div>
 				)}
 
+				{/* Type Badge */}
+				{showType && type && (
+					<div className="mb-3 flex justify-content-center">
+						<Tag
+							value={type.charAt(0).toUpperCase() + type.slice(1)}
+							icon={getTypeIcon(type)}
+							className={`text-xs ${getTypeColor(type)} border-0`}
+						/>
+					</div>
+				)}
+
+				{/* Details */}
+				<div className="flex justify-content-center mb-4 flex-grow-1">
+					<div className="flex flex-column gap-2">
+						{showProfession && profession && (
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-briefcase text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">{profession}</span>
+							</div>
+						)}
+						{showCredentials && credentials && (
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-certificate text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">{credentials}</span>
+							</div>
+						)}
+						{showPrice && price && (
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-dollar text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">{price}</span>
+							</div>
+						)}
+						{showDuration && duration && (
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-clock text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">{duration}</span>
+							</div>
+						)}
+						{showLevel && level && (
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-star text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">{level}</span>
+							</div>
+						)}
+						{showCategory && category && (
+							<div className="flex align-items-center gap-2">
+								<i className="pi pi-tag text-sage-green-600"></i>
+								<span className="text-sm text-earth-brown">{category}</span>
+							</div>
+						)}
+					</div>
+				</div>
+
 				{/* Specialties */}
-				{showSpecialties && <Specialties specialties={data.specialties} />}
+				{showSpecialties && specialties && specialties.length > 0 && (
+					<div className="mb-4">
+						<h4 className="text-sm font-semibold text-primary-green mb-2">
+							Specialties:
+						</h4>
+						<div className="flex flex-wrap gap-1 justify-content-center">
+							{specialties.map((specialty, index) => (
+								<Tag
+									key={index}
+									value={specialty}
+									className="text-xs bg-light-tan border-sage-green-200 text-earth-brown"
+								/>
+							))}
+						</div>
+					</div>
+				)}
 
 				{/* Certifications */}
-				{showCertifications && (
-					<Certifications certifications={data.certifications} />
+				{showCertifications && certifications && certifications.length > 0 && (
+					<div className="mb-4">
+						<h4 className="text-sm font-semibold text-primary-green mb-2">
+							Certifications:
+						</h4>
+						<div className="flex flex-wrap gap-1 justify-content-center">
+							{certifications.map((cert, index) => (
+								<Tag
+									key={index}
+									value={cert}
+									className="text-xs bg-light-tan border-sage-green-200 text-earth-brown"
+								/>
+							))}
+						</div>
+					</div>
 				)}
 
-				{/* Profession */}
-				{showProfession && data.profession && (
-					<p className="text-sm font-medium text-secondary-brown mb-1">
-						{data.profession}
-					</p>
-				)}
-
-				{/* Credentials */}
-				{showCredentials && data.credentials && (
-					<p className="text-xs text-earth-brown mb-1">{data.credentials}</p>
-				)}
-
-				{/* Description */}
-				{showDescription && data.description && (
-					<p className="text-sm text-earth-brown leading-relaxed">
-						{data.description}
-					</p>
-				)}
-
-				{/* Bio */}
-				{showBio && data.bio && (
-					<p className="text-sm text-earth-brown leading-relaxed">{data.bio}</p>
-				)}
-
-				{/* Price */}
-				{showPrice && data.price && (
-					<p className="text-sm font-semibold text-brown-gold mb-1">
-						{data.price}
-					</p>
-				)}
-
-				{/* Duration */}
-				{showDuration && data.duration && (
-					<p className="text-xs text-earth-brown mb-1">
-						Duration: {data.duration}
-					</p>
-				)}
-
-				{/* Level */}
-				{showLevel && data.level && (
-					<p className="text-xs text-earth-brown mb-1">Level: {data.level}</p>
-				)}
-
-				{/* Category */}
-				{showCategory && data.category && (
-					<p className="text-xs text-earth-brown mb-1">{data.category}</p>
+				{/* Learn More Button */}
+				{showLearnMore && (href || onClick) && (
+					<div className="flex justify-content-center mt-auto">
+						<Button
+							label={learnMoreText}
+							icon="pi pi-arrow-right"
+							iconPos="right"
+							className="bg-pastel-pink border-pastel-pink text-secondary-brown"
+							style={{ minWidth: '120px' }}
+						/>
+					</div>
 				)}
 			</div>
 		</Card>

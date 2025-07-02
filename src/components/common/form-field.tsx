@@ -1,11 +1,13 @@
 'use client'
 
-import { Control, Controller, FieldValues, Path } from 'react-hook-form'
-import { InputText, InputTextProps } from 'primereact/inputtext'
-import { Dropdown, DropdownProps } from 'primereact/dropdown'
+import { Controller, FieldValues, Path } from 'react-hook-form'
+import { InputText } from 'primereact/inputtext'
+import { Dropdown } from 'primereact/dropdown'
 import { FormFieldProps } from '@/types'
 
-export function FormField(props: FormFieldProps) {
+export function FormField<T extends FieldValues = FieldValues>(
+	props: FormFieldProps<T>
+) {
 	const { label, name, control, className = '' } = props
 
 	return (
@@ -17,7 +19,7 @@ export function FormField(props: FormFieldProps) {
 				{label}
 			</label>
 			<Controller
-				name={name as Path<FieldValues>}
+				name={name as Path<T>}
 				control={control}
 				render={({ field }) => {
 					if (props.type === 'input') {

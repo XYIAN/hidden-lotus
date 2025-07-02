@@ -3,8 +3,6 @@
 import { useState } from 'react'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
-import { Steps } from 'primereact/steps'
-import { Message } from 'primereact/message'
 import { HeroSection } from '@/components/common/hero-section'
 import {
 	InputTextHL,
@@ -135,7 +133,7 @@ export default function ContactPage() {
 						Message Sent Successfully
 					</h2>
 					<p className="text-earth-brown mb-4">
-						Thank you for reaching out to Hidden Lotus. We've received your
+						Thank you for reaching out to Hidden Lotus. We&apos;ve received your
 						inquiry and will respond within 24-48 hours.
 					</p>
 					<Button
@@ -172,7 +170,7 @@ export default function ContactPage() {
 									onChange={(e) => updateFormData('name', e.target.value)}
 									error={errors.name}
 									required={true}
-									labelWidth={6}
+									labelWidth="6"
 								/>
 								<InputTextHL
 									id="email"
@@ -182,7 +180,7 @@ export default function ContactPage() {
 									onChange={(e) => updateFormData('email', e.target.value)}
 									error={errors.email}
 									required={true}
-									labelWidth={6}
+									labelWidth="6"
 								/>
 							</div>
 							<InputTextHL
@@ -192,7 +190,7 @@ export default function ContactPage() {
 								onChange={(e) => updateFormData('phone', e.target.value)}
 								error={errors.phone}
 								required={true}
-								labelWidth={6}
+								labelWidth="6"
 							/>
 						</div>
 					)}
@@ -214,7 +212,7 @@ export default function ContactPage() {
 								placeholder="Select a service"
 								error={errors.service}
 								required={true}
-								labelWidth={6}
+								labelWidth="6"
 							/>
 						</div>
 					)}
@@ -233,7 +231,7 @@ export default function ContactPage() {
 								rows={5}
 								error={errors.message}
 								required={true}
-								labelWidth={6}
+								labelWidth="6"
 							/>
 						</div>
 					)}

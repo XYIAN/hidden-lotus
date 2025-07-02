@@ -1,6 +1,3 @@
-'use client'
-
-import { useParams } from 'next/navigation'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
@@ -8,38 +5,26 @@ import { Divider } from 'primereact/divider'
 import { Carousel, CarouselResponsiveOption } from 'primereact/carousel'
 import { teamData } from '@/constants/team'
 import { classesData } from '@/constants/classes'
-import { useState } from 'react'
-import { Class } from '@/types'
+import { Class, TeamMember } from '@/types'
+import { notFound } from 'next/navigation'
+import '@/styles/animations.css'
 
-export default function TeamMemberPage() {
-	const params = useParams()
-	const memberName = decodeURIComponent(params.name as string)
-	const memberData = teamData.find((m) => m.name === memberName)
-	const [activeIndex, setActiveIndex] = useState(0)
+export default async function TeamMemberPage({
+	params,
+}: {
+	params: Promise<{ name: string }>
+}) {
+	const { name } = await params
+	const member = teamData.find(
+		(m: TeamMember) => m.name.toLowerCase().replace(/\s+/g, '-') === name
+	)
 
-	if (!memberData) {
-		return (
-			<div className="min-h-screen bg-gradient-to-br from-sage-green-50 to-tan-100 p-4">
-				<div className="max-w-4xl mx-auto">
-					<Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
-						<div className="text-center py-8">
-							<h1 className="text-2xl font-bold text-sage-green-800 mb-4">
-								Team Member Not Found
-							</h1>
-							<p className="text-sage-green-600">
-								The team member you're looking for doesn't exist.
-							</p>
-						</div>
-					</Card>
-				</div>
-			</div>
-		)
+	if (!member) {
+		notFound()
 	}
 
 	// Get member's classes
-	const memberClasses = classesData.filter(
-		(c) => c.instructor === memberData.name
-	)
+	const memberClasses = classesData.filter((c) => c.instructor === member.name)
 
 	const getTypeColor = (type: string) => {
 		switch (type) {
@@ -123,27 +108,27 @@ export default function TeamMemberPage() {
 							<div className="flex-1">
 								<div className="flex flex-wrap gap-2 mb-4">
 									<Tag
-										value={memberData.type}
-										severity={getTypeColor(memberData.type)}
+										value={member.type}
+										severity={getTypeColor(member.type)}
 										className="text-sm"
 									/>
 									<Tag
-										value={memberData.profession}
+										value={member.profession}
 										severity="info"
 										className="text-sm"
 									/>
 								</div>
 								<h1 className="text-3xl lg:text-4xl font-bold text-sage-green-800 mb-4">
-									{memberData.name}
+									{member.name}
 								</h1>
 								<p className="text-lg text-sage-green-600 mb-4">
-									{memberData.credentials}
+									{member.credentials}
 								</p>
 								<p className="text-sage-green-700 leading-relaxed mb-4">
-									{memberData.bio}
+									{member.bio}
 								</p>
 								<p className="text-sage-green-700 leading-relaxed">
-									{memberData.longBio}
+									{member.longBio}
 								</p>
 							</div>
 						</div>
@@ -163,14 +148,14 @@ export default function TeamMemberPage() {
 									<h3 className="font-semibold text-sage-green-700 mb-2">
 										Experience
 									</h3>
-									<p className="text-sage-green-600">{memberData.experience}</p>
+									<p className="text-sage-green-600">{member.experience}</p>
 								</div>
 								<Divider />
 								<div>
 									<h3 className="font-semibold text-sage-green-700 mb-2">
 										Education
 									</h3>
-									<p className="text-sage-green-600">{memberData.education}</p>
+									<p className="text-sage-green-600">{member.education}</p>
 								</div>
 							</div>
 						</div>
@@ -184,7 +169,7 @@ export default function TeamMemberPage() {
 							</h2>
 
 							<div className="flex flex-wrap gap-2">
-								{memberData.specialties.map((specialty, index) => (
+								{member.specialties.map((specialty, index) => (
 									<Tag
 										key={index}
 										value={specialty}
@@ -208,25 +193,21 @@ export default function TeamMemberPage() {
 									<h3 className="font-semibold text-sage-green-700 mb-1">
 										Email
 									</h3>
-									<p className="text-sage-green-600">
-										{memberData.contact.email}
-									</p>
+									<p className="text-sage-green-600">{member.contact.email}</p>
 								</div>
 								<div>
 									<h3 className="font-semibold text-sage-green-700 mb-1">
 										Phone
 									</h3>
-									<p className="text-sage-green-600">
-										{memberData.contact.phone}
-									</p>
+									<p className="text-sage-green-600">{member.contact.phone}</p>
 								</div>
-								{memberData.contact.website && (
+								{member.contact.website && (
 									<div>
 										<h3 className="font-semibold text-sage-green-700 mb-1">
 											Website
 										</h3>
 										<p className="text-sage-green-600">
-											{memberData.contact.website}
+											{member.contact.website}
 										</p>
 									</div>
 								)}
@@ -240,7 +221,7 @@ export default function TeamMemberPage() {
 					<Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg mt-6">
 						<div className="p-6">
 							<h2 className="text-2xl font-bold text-sage-green-800 mb-4">
-								Classes by {memberData.name}
+								Classes by {member.name}
 							</h2>
 							<Carousel
 								value={memberClasses}

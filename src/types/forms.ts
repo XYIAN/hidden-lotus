@@ -22,11 +22,10 @@ export interface FormSubmission<T> {
 }
 
 // Contact form validation
-export interface ContactFormValidation
-	extends FormValidationSchema<ContactForm> {}
+export type ContactFormValidation = FormValidationSchema<ContactForm>
 
 // Booking form validation
-export interface BookingFormValidation extends FormValidationSchema<Booking> {}
+export type BookingFormValidation = FormValidationSchema<Booking>
 
 // Form field validation
 export interface FieldValidation {

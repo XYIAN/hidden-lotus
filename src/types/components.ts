@@ -3,8 +3,13 @@ import { CardProps } from 'primereact/card'
 import { InputTextProps } from 'primereact/inputtext'
 import { DropdownProps } from 'primereact/dropdown'
 import { InputTextareaProps } from 'primereact/inputtextarea'
-import { Control, FieldValues, Path } from 'react-hook-form'
-import { CardSize, SeverityLevel, GridConfig, FilterState } from './core'
+import { Control, FieldValues } from 'react-hook-form'
+import {
+	CardSize,
+	GridConfig,
+	ClassFilterState,
+	StoryFilterState,
+} from './core'
 import { TeamMember, Class, Story } from './data'
 
 // DisplayCard types
@@ -108,38 +113,42 @@ export interface ButtonConfig {
 }
 
 // Form field types
-export interface BaseFormFieldProps {
+export interface BaseFormFieldProps<T extends FieldValues = FieldValues> {
 	label: string
 	name: string
-	control: Control<FieldValues>
+	control: Control<T>
 	className?: string
 	labelWidth?: string
 	required?: boolean
 	error?: string
 }
 
-export interface InputFormFieldProps extends BaseFormFieldProps {
+export interface InputFormFieldProps<T extends FieldValues = FieldValues>
+	extends BaseFormFieldProps<T> {
 	type: 'input'
 	inputProps?: Omit<InputTextProps, 'id' | 'className'>
 }
 
-export interface DropdownFormFieldProps extends BaseFormFieldProps {
+export interface DropdownFormFieldProps<T extends FieldValues = FieldValues>
+	extends BaseFormFieldProps<T> {
 	type: 'dropdown'
 	dropdownProps: Omit<DropdownProps, 'id' | 'className'>
 }
 
-export interface TextareaFormFieldProps extends BaseFormFieldProps {
+export interface TextareaFormFieldProps<T extends FieldValues = FieldValues>
+	extends BaseFormFieldProps<T> {
 	type: 'textarea'
 	textareaProps?: Omit<InputTextareaProps, 'id' | 'className'>
 }
 
-export type FormFieldProps =
-	| InputFormFieldProps
-	| DropdownFormFieldProps
-	| TextareaFormFieldProps
+export type FormFieldProps<T extends FieldValues = FieldValues> =
+	| InputFormFieldProps<T>
+	| DropdownFormFieldProps<T>
+	| TextareaFormFieldProps<T>
 
 // Input component types
 export interface InputTextHLProps extends Omit<InputTextProps, 'id'> {
+	id: string
 	label?: string
 	labelWidth?: string
 	error?: string
@@ -148,6 +157,7 @@ export interface InputTextHLProps extends Omit<InputTextProps, 'id'> {
 }
 
 export interface DropdownHLProps extends Omit<DropdownProps, 'id'> {
+	id: string
 	label?: string
 	labelWidth?: string
 	error?: string
@@ -156,6 +166,7 @@ export interface DropdownHLProps extends Omit<DropdownProps, 'id'> {
 }
 
 export interface InputTextareaHLProps extends Omit<InputTextareaProps, 'id'> {
+	id: string
 	label?: string
 	labelWidth?: string
 	error?: string
@@ -213,15 +224,15 @@ export interface ResultsCountProps {
 
 // Classes filter types
 export interface ClassesFilterProps {
-	filters: FilterState
-	onFilterChange: (filters: FilterState) => void
+	filters: ClassFilterState
+	onFilterChange: (filters: ClassFilterState) => void
 	className?: string
 }
 
 // Story filter types
 export interface StoryFiltersProps {
-	filters: FilterState
-	onFilterChange: (filters: FilterState) => void
+	filters: StoryFilterState
+	onFilterChange: (filters: StoryFilterState) => void
 	className?: string
 }
 

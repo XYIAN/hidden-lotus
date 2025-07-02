@@ -56,7 +56,7 @@ export function StorySection({
 				)}
 			</div>
 
-			<StoryGrid stories={stories} clearFilters={onClear} />
+			<StoryGrid stories={stories} />
 		</section>
 	)
 }

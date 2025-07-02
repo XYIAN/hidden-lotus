@@ -1,22 +1,13 @@
 'use client'
 
-import { InputText, InputTextProps } from 'primereact/inputtext'
-import { ReactNode } from 'react'
-
-interface InputTextHLProps extends Omit<InputTextProps, 'id'> {
-	label: string
-	id: string
-	error?: string
-	labelWidth?: number // in rem
-	required?: boolean
-	className?: string
-}
+import { InputText } from 'primereact/inputtext'
+import { InputTextHLProps } from '@/types'
 
 export function InputTextHL({
-	label,
 	id,
+	label,
+	labelWidth = '6',
 	error,
-	labelWidth,
 	required = false,
 	className = '',
 	...inputProps

@@ -6,7 +6,6 @@ import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import './lotus-menu-bar.css'
-import type { MenuItem as PrimeMenuItem } from 'primereact/menuitem'
 
 const infoItems = [
 	{ label: 'Story', href: '/story', icon: 'pi pi-book' },

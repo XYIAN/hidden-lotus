@@ -1,4 +1,4 @@
-import { BaseEntity, BaseContact, BaseCredentials } from './core'
+import { BaseEntity, BaseContact } from './core'
 
 // Class categories
 export type ClassCategory =
@@ -70,6 +70,7 @@ export interface Story extends BaseEntity {
 
 // MOR section interface
 export interface MORSection extends BaseEntity {
+	title: string
 	subtitle: string
 	icon: string
 	features: string[]

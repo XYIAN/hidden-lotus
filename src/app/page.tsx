@@ -1,11 +1,9 @@
-import { Card } from 'primereact/card'
-import { Button } from 'primereact/button'
-import Link from 'next/link'
-import Image from 'next/image'
-import { ButtonGroup } from '@/components/home/button-group'
+'use client'
+
 import { HeroSection } from '@/components/common/hero-section'
+import { ButtonGroup } from '@/components/home/button-group'
 import { ContactSection } from '@/components/home/contact-section'
-import '@/styles/home-buttons.css'
+import '@/styles/animations.css'
 
 const actionButtons = [
 	{

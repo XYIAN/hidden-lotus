@@ -1,76 +1,38 @@
 'use client'
 
-import { useState } from 'react'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
+import { Tag } from 'primereact/tag'
 import { Carousel } from 'primereact/carousel'
 import { HeroSection } from '@/components/common/hero-section'
 import { morSections } from '@/constants/mor'
-import { CardGrid, DisplayCard } from '@/components/common'
-import { MORSection, CarouselItem } from '@/types'
+import { MORSection } from '@/types'
+import '@/styles/animations.css'
 
-export default function MorPage() {
-	const [activeIndex, setActiveIndex] = useState(0)
-
-	const carouselItems: CarouselItem[] = [
-		{
-			title: 'Mindfulness',
-			description:
-				'Cultivate present-moment awareness and inner peace through guided meditation and mindfulness practices.',
-			icon: '🧘‍♀️',
-			features: [
-				'Daily meditation sessions',
-				'Breathwork techniques',
-				'Mindful movement',
-				'Stress reduction tools',
-			],
-		},
-		{
-			title: 'Optimization',
-			description:
-				'Optimize your physical and mental performance through evidence-based wellness strategies.',
-			icon: '⚡',
-			features: [
-				'Performance coaching',
-				'Energy optimization',
-				'Sleep improvement',
-				'Nutrition guidance',
-			],
-		},
-		{
-			title: 'Recovery',
-			description:
-				"Support your body's natural healing processes and promote sustainable wellness practices.",
-			icon: '🌿',
-			features: [
-				'Recovery protocols',
-				'Healing modalities',
-				'Restorative practices',
-				'Wellness maintenance',
-			],
-		},
-	]
-
-	const itemTemplate = (item: CarouselItem) => (
-		<div className="text-center p-4">
-			<div className="text-6xl mb-4">{item.icon}</div>
-			<h3 className="text-2xl font-bold text-primary-green mb-3">
-				{item.title}
-			</h3>
-			<p className="text-earth-brown text-lg mb-4">{item.description}</p>
-			<ul className="text-left max-w-md mx-auto">
-				{item.features.map((feature: string, index: number) => (
-					<li
-						key={index}
-						className="text-earth-brown mb-2 flex align-items-center"
-					>
-						<i className="pi pi-check-circle text-sage-green-600 mr-2"></i>
-						{feature}
-					</li>
-				))}
-			</ul>
-		</div>
-	)
+export default function MORPage() {
+	const carouselTemplate = (program: MORSection) => {
+		return (
+			<div className="text-center p-4">
+				<div className="mb-4">
+					<i className={`${program.icon} text-6xl text-sage-green-600`}></i>
+				</div>
+				<h3 className="text-2xl font-bold text-primary-green mb-2">
+					{program.title}
+				</h3>
+				<p className="text-lg text-earth-brown mb-4">{program.subtitle}</p>
+				<p className="text-earth-brown mb-4">{program.description}</p>
+				<div className="flex flex-wrap gap-2 justify-content-center">
+					{program.features.map((feature, featureIndex) => (
+						<Tag
+							key={featureIndex}
+							value={feature}
+							className="bg-light-tan border-sage-green-200 text-earth-brown"
+						/>
+					))}
+				</div>
+			</div>
+		)
+	}
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
@@ -93,49 +55,17 @@ export default function MorPage() {
 
 					{/* Carousel */}
 					<Carousel
-						value={carouselItems}
+						value={morSections}
 						numVisible={1}
 						numScroll={1}
 						className="custom-carousel"
-						itemTemplate={itemTemplate}
+						itemTemplate={carouselTemplate}
 						autoplayInterval={5000}
 						circular
 					/>
 				</Card>
 
 				{/* MOR Programs */}
-				<CardGrid columns={{ sm: 1, md: 3, lg: 3, xl: 3 }} gap={6}>
-					{morSections.map((program: MORSection, index: number) => (
-						<DisplayCard
-							key={program.id}
-							data={{
-								id: program.id,
-								name: program.title,
-								description: program.description,
-								image: undefined,
-								category: program.subtitle,
-								fallbackIcon: program.icon,
-							}}
-							showImage={false}
-							showType={false}
-							showSpecialties={false}
-							showCertifications={false}
-							showCredentials={false}
-							showProfession={false}
-							showBio={false}
-							showDescription={true}
-							showPrice={false}
-							showDuration={false}
-							showLevel={false}
-							showCategory={true}
-							showLearnMore={true}
-							learnMoreText="Learn More"
-							className="text-center"
-						/>
-					))}
-				</CardGrid>
-
-				{/* Call to Action */}
 				<Card className="yoga-card p-6 text-center mt-6">
 					<h2 className="text-2xl font-semibold text-primary-green mb-3">
 						Ready to Experience MOR?

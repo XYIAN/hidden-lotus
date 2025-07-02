@@ -1,22 +1,13 @@
 'use client'
 
-import { InputTextarea, InputTextareaProps } from 'primereact/inputtextarea'
-import { ReactNode } from 'react'
-
-interface InputTextareaHLProps extends Omit<InputTextareaProps, 'id'> {
-	label: string
-	id: string
-	error?: string
-	labelWidth?: number // in rem
-	required?: boolean
-	className?: string
-}
+import { InputTextarea } from 'primereact/inputtextarea'
+import { InputTextareaHLProps } from '@/types'
 
 export function InputTextareaHL({
-	label,
 	id,
+	label,
+	labelWidth = '6',
 	error,
-	labelWidth,
 	required = false,
 	className = '',
 	...textareaProps

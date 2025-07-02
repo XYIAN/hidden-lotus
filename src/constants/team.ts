@@ -1,5 +1,7 @@
 import { TeamMember } from '@/types'
 
+export type { TeamMember }
+
 export const teamData: TeamMember[] = [
 	{
 		id: '1',
