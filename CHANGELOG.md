@@ -5,6 +5,106 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2024-12-19
+
+### 🎉 Major Release - Enhanced User Experience & Type Safety
+
+#### Added
+
+- **Enhanced Filter Panel UX**:
+
+  - Entire header is now clickable to open/close filters
+  - Added descriptive text ("Open Filters" / "Close Filters") next to toggle icon
+  - Tooltips provide guidance on hover
+  - Toast notifications for filter state changes
+  - Improved accessibility and user feedback
+
+- **Comprehensive Type Safety Overhaul**:
+
+  - Removed all `any` and `unknown` types throughout the codebase
+  - Created centralized type system in `src/types/` directory
+  - Added proper TypeScript interfaces for all components and data structures
+  - Enhanced type safety for forms, filters, and API responses
+
+- **Additional Story Content**:
+
+  - Added 3 new comprehensive wellness stories
+  - Enhanced story content with detailed personal journeys
+  - Improved story categorization and metadata
+
+- **Enhanced 404 Page**:
+  - Added animations and gradient background
+  - Improved visual design with better typography
+  - Enhanced user guidance with helpful links
+
+#### Changed
+
+- **Filter Panel Layout**:
+
+  - Unified filter styling across Classes, Team, and Stories pages
+  - Full-width filter panels with consistent padding
+  - Improved filter panel responsiveness and accessibility
+
+- **Card Image Sizing**:
+
+  - Fixed oversized images in all card components
+  - Standardized image dimensions for consistent appearance
+  - Added proper loading skeletons for all images
+
+- **Team Member Profiles**:
+
+  - Fixed 404 errors when accessing team member profiles
+  - Enhanced URL handling for both encoded and hyphenated names
+  - Added proper image paths for all team members
+
+- **Component Architecture**:
+  - Reorganized component structure for better maintainability
+  - Enhanced reusability of common components
+  - Improved code organization and modularity
+
+#### Fixed
+
+- **Type Safety Issues**:
+
+  - Resolved all TypeScript compilation errors
+  - Fixed import/export issues with type definitions
+  - Enhanced generic type support for form components
+
+- **UI/UX Issues**:
+
+  - Fixed filter panel styling inconsistencies
+  - Resolved card layout and sizing problems
+  - Corrected team member profile navigation
+  - Fixed image loading and skeleton states
+
+- **Build and Performance**:
+  - Resolved all linting errors and warnings
+  - Fixed client/server component mismatches
+  - Enhanced build stability and performance
+
+#### Technical
+
+- **Type System**: Created comprehensive type definitions in `src/types/`
+
+  - `core.ts`: Core application types
+  - `data.ts`: Data structure types
+  - `components.ts`: Component prop types
+  - `forms.ts`: Form-related types
+  - `utils.ts`: Utility type helpers
+
+- **Component Enhancements**:
+
+  - Enhanced FilterPanel with clickable headers and toast notifications
+  - Improved DisplayCard with consistent image sizing
+  - Fixed team member dynamic routing
+  - Enhanced 404 page with animations
+
+- **Code Quality**:
+  - Removed unused imports and variables
+  - Fixed unescaped characters in strings
+  - Enhanced code consistency and maintainability
+  - Improved error handling and edge cases
+
 ## [1.0.6] - 2024-12-19
 
 ### Added
