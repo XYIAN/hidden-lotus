@@ -60,6 +60,12 @@ body {
 	overflow-x: hidden;
 }
 
+/* Optimize image loading */
+img {
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: crisp-edges;
+}
+
 /* Ensure the main content doesn't override the background */
 main {
 	position: relative;

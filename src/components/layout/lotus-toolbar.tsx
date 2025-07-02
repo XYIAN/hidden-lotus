@@ -5,6 +5,7 @@ import { Button } from 'primereact/button'
 import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
+import { IMAGES } from '@/constants/images'
 
 const navigationItems = [
 	{ label: 'Home', href: '/', icon: 'pi pi-home' },
@@ -30,7 +31,7 @@ export function LotusToolbar() {
 	const startContent = (
 		<Link href="/" className="flex align-items-center gap-3">
 			<Image
-				src="/hl-f-icon2.png"
+				src={IMAGES.LOGO}
 				alt="Hidden Lotus"
 				width={50}
 				height={50}

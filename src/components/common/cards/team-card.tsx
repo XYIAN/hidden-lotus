@@ -7,6 +7,7 @@ import { Button } from 'primereact/button'
 import Image from 'next/image'
 import { LoadingSkeleton } from './loading-skeleton'
 import { TeamMember } from '@/constants/team'
+import { IMAGES } from '@/constants/images'
 
 interface TeamCardProps {
 	member: TeamMember
@@ -30,16 +31,7 @@ export function TeamCard({ member }: TeamCardProps) {
 	}
 
 	const getMemberIcon = (type: string) => {
-		switch (type) {
-			case 'instructor':
-				return '/hl-f-icon2.png'
-			case 'admin':
-				return '/icon-hl-2.png'
-			case 'board':
-				return '/icon-hl-3.png'
-			default:
-				return '/hl-f-icon2.png'
-		}
+		return IMAGES.getIconByType(type)
 	}
 
 	const footer = (
@@ -61,26 +53,26 @@ export function TeamCard({ member }: TeamCardProps) {
 				footer={footer}
 			>
 				<div className="text-center">
-					<div className="flex justify-content-center mb-2">
+					<div className="flex justify-content-center mb-4">
 						<div className="relative">
 							{!imageLoaded && !imageError && (
 								<LoadingSkeleton
 									type="image"
-									className="icon-xl soft-rounded"
+									className="w-48 h-48 rounded-lg"
 								/>
 							)}
 							{imageError && (
-								<div className="icon-xl bg-light-tan soft-rounded flex align-items-center justify-content-center sage-border">
-									<i className="pi pi-user text-4xl text-sage"></i>
+								<div className="w-48 h-48 bg-light-tan rounded-lg flex align-items-center justify-content-center sage-border">
+									<i className="pi pi-user text-6xl text-sage"></i>
 								</div>
 							)}
 							{!imageError && (
 								<Image
-									src={getMemberIcon(member.type)}
+									src={member.image || getMemberIcon(member.type)}
 									alt={`${member.name} avatar`}
-									width={88}
-									height={88}
-									className={`icon-xl object-contain soft-rounded sage-border ${
+									width={200}
+									height={200}
+									className={`w-48 h-48 object-contain rounded-lg sage-border ${
 										imageLoaded ? 'block' : 'hidden'
 									}`}
 									onLoad={() => setImageLoaded(true)}

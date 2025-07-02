@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { Button } from 'primereact/button'
 import Image from 'next/image'
 import type { Metadata } from 'next'
+import { IMAGES } from '@/constants/images'
 
 export const metadata: Metadata = {
 	title: 'Page Not Found | Hidden Lotus',
@@ -20,7 +21,7 @@ export default function NotFound() {
 				{/* Logo with animation */}
 				<div className="mb-8 animate-bounce">
 					<Image
-						src="/hl-f-icon2.png"
+						src={IMAGES.LOGO}
 						alt="Hidden Lotus"
 						width={140}
 						height={140}

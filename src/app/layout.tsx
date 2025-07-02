@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Roboto_Mono } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { Providers } from '@/lib/providers'
 import { Header } from '@/components/layout/header'
@@ -93,6 +94,21 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
+			<head>
+				{/* Google Analytics */}
+				<Script
+					src="https://www.googletagmanager.com/gtag/js?id=G-YH7KD83RSD"
+					strategy="afterInteractive"
+				/>
+				<Script id="google-analytics" strategy="afterInteractive">
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', 'G-YH7KD83RSD');
+					`}
+				</Script>
+			</head>
 			<body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
 				<Providers>
 					<LoadingProvider>

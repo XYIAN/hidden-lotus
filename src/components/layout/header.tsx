@@ -11,6 +11,7 @@ import '@/styles/header.css'
 import { LotusMenuBar } from './lotus-menu-bar'
 import { SidebarHeader } from './sidebar-header'
 import { FaSpa } from 'react-icons/fa'
+import { IMAGES } from '@/constants/images'
 
 const navigationItems = [
 	{ label: 'Home', href: '/' },
@@ -82,7 +83,7 @@ export function Header() {
 						className="flex items-center gap-3 justify-content-center align-items-center"
 					>
 						<Image
-							src="/hl-f-icon2.png"
+							src={IMAGES.LOGO}
 							alt="Hidden Lotus"
 							width={100}
 							height={100}

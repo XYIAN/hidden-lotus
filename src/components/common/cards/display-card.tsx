@@ -108,26 +108,26 @@ export function DisplayCard({
 
 				{/* Image */}
 				{showImage && image && (
-					<div className="mb-3 flex justify-content-center">
+					<div className="mb-4 flex justify-content-center">
 						<div className="relative">
 							{!imageLoaded && !imageError && (
 								<LoadingSkeleton
 									type="image"
-									className="w-24 h-24 rounded-lg"
+									className="w-48 h-48 rounded-lg"
 								/>
 							)}
 							{imageError && (
-								<div className="w-24 h-24 bg-light-tan rounded-lg flex align-items-center justify-content-center sage-border">
-									<i className="pi pi-image text-2xl text-sage"></i>
+								<div className="w-48 h-48 bg-light-tan rounded-lg flex align-items-center justify-content-center sage-border">
+									<i className="pi pi-image text-4xl text-sage"></i>
 								</div>
 							)}
 							{!imageError && (
 								<Image
 									src={image}
 									alt={name || title || 'Card image'}
-									width={120}
-									height={120}
-									className={`w-24 h-24 object-contain rounded-lg ${
+									width={200}
+									height={200}
+									className={`w-48 h-48 object-contain rounded-lg ${
 										imageLoaded ? 'block' : 'hidden'
 									}`}
 									onLoad={() => setImageLoaded(true)}

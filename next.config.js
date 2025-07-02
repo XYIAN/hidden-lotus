@@ -25,6 +25,14 @@ const nextConfig = {
 	assetPrefix: process.env.NODE_ENV === 'production' ? undefined : '',
 	// Add trailing slash for Netlify compatibility
 	trailingSlash: false,
+	// Disable unnecessary preloading to fix warnings
+	experimental: {
+		optimizeCss: false,
+	},
+	// Optimize CSS loading
+	compiler: {
+		removeConsole: process.env.NODE_ENV === 'production',
+	},
 }
 
 module.exports = nextConfig

@@ -1,4 +1,5 @@
 import { Class } from '@/types'
+import { IMAGES } from './images'
 
 export type { Class }
 
@@ -18,7 +19,7 @@ export const classesData: Class[] = [
 		level: 'beginner',
 		maxParticipants: 20,
 		equipment: ['Yoga mat', 'Blocks', 'Strap'],
-		image: '/hl-f-icon2.png',
+		image: IMAGES.ICONS.HL_F_2,
 	},
 	{
 		id: '2',
@@ -34,7 +35,7 @@ export const classesData: Class[] = [
 		categories: ['reiki'],
 		level: 'beginner',
 		maxParticipants: 1,
-		image: '/icon-hl-2.png',
+		image: IMAGES.ICONS.HL_2,
 	},
 	{
 		id: '3',
@@ -50,7 +51,7 @@ export const classesData: Class[] = [
 		categories: ['seminar', 'meditation'],
 		level: 'beginner',
 		maxParticipants: 15,
-		image: '/icon-hl-3.png',
+		image: IMAGES.ICONS.HL_3,
 	},
 	{
 		id: '4',
@@ -66,7 +67,7 @@ export const classesData: Class[] = [
 		categories: ['cupping', 'healing'],
 		level: 'beginner',
 		maxParticipants: 1,
-		image: '/icon-leaf-1.png',
+		image: IMAGES.ICONS.LEAF_1,
 	},
 	{
 		id: '5',
@@ -82,7 +83,7 @@ export const classesData: Class[] = [
 		categories: ['podcast', 'seminar'],
 		level: 'beginner',
 		maxParticipants: 50,
-		image: '/icon-mor-1.png',
+		image: IMAGES.ICONS.MOR_1,
 	},
 	{
 		id: '6',
@@ -99,7 +100,7 @@ export const classesData: Class[] = [
 		level: 'beginner',
 		maxParticipants: 15,
 		equipment: ['Yoga mat', 'Bolster', 'Blanket', 'Blocks'],
-		image: '/icon-hl-1.png',
+		image: IMAGES.ICONS.HL_4,
 	},
 	{
 		id: '7',
@@ -115,7 +116,7 @@ export const classesData: Class[] = [
 		categories: ['reiki', 'healing'],
 		level: 'beginner',
 		maxParticipants: 1,
-		image: '/icon-hl-2.png',
+		image: IMAGES.ICONS.MOR_2,
 	},
 	{
 		id: '8',
@@ -131,7 +132,7 @@ export const classesData: Class[] = [
 		categories: ['seminar'],
 		level: 'beginner',
 		maxParticipants: 25,
-		image: '/icon-hl-3.png',
+		image: IMAGES.ICONS.BG_1,
 	},
 	{
 		id: '9',
@@ -147,7 +148,7 @@ export const classesData: Class[] = [
 		categories: ['cupping', 'healing'],
 		level: 'intermediate',
 		maxParticipants: 1,
-		image: '/icon-leaf-1.png',
+		image: IMAGES.ICONS.HL_F_1,
 	},
 	{
 		id: '10',
@@ -163,6 +164,6 @@ export const classesData: Class[] = [
 		categories: ['breathwork', 'meditation'],
 		level: 'intermediate',
 		maxParticipants: 12,
-		image: '/icon-hl-1.png',
+		image: IMAGES.ICONS.HL_F_3,
 	},
 ]

@@ -4,7 +4,7 @@ export const IMAGES = {
 	LOGO: '/hl-f-icon2.png',
 	LOGO_ALT: '/icon-hl-1.png',
 
-	// Icon variations for cards and components
+	// Icon variations for cards and components - all verified to exist in public folder
 	ICONS: {
 		HL_1: '/icon-hl-1.png',
 		HL_2: '/icon-hl-2.png',
@@ -24,6 +24,7 @@ export const IMAGES = {
 		MAIN: '/bg-main.png',
 		MAIN_DARK: '/bg-main-dark.png',
 		HL_1: '/bg-hl-1.png',
+		TRANSPARENT_1: '/hl-bg-transparent1.png',
 	},
 
 	// Get a random icon for variety in cards

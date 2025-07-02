@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import './lotus-menu-bar.css'
+import { IMAGES } from '@/constants/images'
 
 const infoItems = [
 	{ label: 'Story', href: '/story', icon: 'pi pi-book' },
@@ -59,7 +60,7 @@ export function LotusMenuBar() {
 	const start = (
 		<Link href="/" className="flex items-center gap-3 no-underline">
 			<Image
-				src="/hl-f-icon2.png"
+				src={IMAGES.LOGO}
 				alt="Hidden Lotus"
 				width={56}
 				height={56}

@@ -1,10 +1,11 @@
 import Image from 'next/image'
+import { IMAGES } from '@/constants/images'
 
 export function SidebarHeader() {
 	return (
 		<div className="flex align-items-center gap-3 p-4">
 			<Image
-				src="/hl-f-icon2.png"
+				src={IMAGES.LOGO}
 				alt="Hidden Lotus Logo"
 				width={50}
 				height={50}
