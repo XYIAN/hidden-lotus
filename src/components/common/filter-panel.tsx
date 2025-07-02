@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Panel } from 'primereact/panel'
 import { Button } from 'primereact/button'
 import { ReactNode } from 'react'
+import { PanelTemplateOptions } from '@/types'
 import '@/styles/filter-panel.css'
 
 interface FilterPanelProps {
@@ -27,7 +28,7 @@ export function FilterPanel({
 }: FilterPanelProps) {
 	const [isCollapsed, setIsCollapsed] = useState(collapsed)
 
-	const headerTemplate = (options: any) => {
+	const headerTemplate = (options: PanelTemplateOptions) => {
 		const className = `${options.className} justify-content-space-between`
 
 		return (
@@ -43,7 +44,7 @@ export function FilterPanel({
 		)
 	}
 
-	const footerTemplate = (options: any) => {
+	const footerTemplate = (options: PanelTemplateOptions) => {
 		const className = `${options.className} flex justify-content-end`
 
 		return !isCollapsed && onClear ? (

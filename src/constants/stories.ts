@@ -1,22 +1,23 @@
 export interface Story {
-  id: string;
-  title: string;
-  author: string;
-  date: string;
-  excerpt: string;
-  content: string;
-  category: string;
-  image: string;
+	id: string
+	title: string
+	author: string
+	date: string
+	excerpt: string
+	content: string
+	category: string
+	image: string
 }
 
 export const storiesData: Story[] = [
-  {
-    id: 'wellness-journey-sarah',
-    title: 'My Wellness Journey: From Stress to Serenity',
-    author: 'Sarah Chen',
-    date: 'December 15, 2024',
-    excerpt: 'How I discovered inner peace through mindfulness and yoga practices.',
-    content: `My journey to wellness began during one of the most stressful periods of my life. As a marketing executive working 60+ hours a week, I found myself constantly exhausted, anxious, and disconnected from what truly mattered.
+	{
+		id: 'wellness-journey-sarah',
+		title: 'My Wellness Journey: From Stress to Serenity',
+		author: 'Sarah Chen',
+		date: 'December 15, 2024',
+		excerpt:
+			'How I discovered inner peace through mindfulness and yoga practices.',
+		content: `My journey to wellness began during one of the most stressful periods of my life. As a marketing executive working 60+ hours a week, I found myself constantly exhausted, anxious, and disconnected from what truly mattered.
 
 It all changed when a colleague invited me to a yoga class at Hidden Lotus. I was skeptical at first - I had always thought yoga was just stretching for flexible people. But from the moment I stepped into the studio, I felt something shift.
 
@@ -37,16 +38,17 @@ Hidden Lotus has become my sanctuary, a place where I can reconnect with myself 
 My advice to anyone starting their wellness journey? Start small. You don't need to meditate for hours or become a yoga expert overnight. Just begin with five minutes of conscious breathing each day. Be patient with yourself. And remember that wellness is a journey, not a destination.
 
 Every day, I'm grateful for this path I've chosen. It's led me to a life that's not just productive, but meaningful. A life where I can find peace even in chaos, and joy even in ordinary moments.`,
-    category: 'Wellness',
-    image: '/bg-main.png',
-  },
-  {
-    id: 'yoga-transformation-mike',
-    title: "Yoga Changed My Life: A Beginner's Perspective",
-    author: 'Mike Rodriguez',
-    date: 'December 12, 2024',
-    excerpt: 'A former skeptic shares how yoga transformed his physical and mental health.',
-    content: `I never thought I'd be the type of person to practice yoga. As a former college athlete and current gym enthusiast, I was all about lifting weights and high-intensity workouts. Yoga seemed too slow, too gentle, too... well, not masculine enough.
+		category: 'Wellness',
+		image: '/bg-main.png',
+	},
+	{
+		id: 'yoga-transformation-mike',
+		title: "Yoga Changed My Life: A Beginner's Perspective",
+		author: 'Mike Rodriguez',
+		date: 'December 12, 2024',
+		excerpt:
+			'A former skeptic shares how yoga transformed his physical and mental health.',
+		content: `I never thought I'd be the type of person to practice yoga. As a former college athlete and current gym enthusiast, I was all about lifting weights and high-intensity workouts. Yoga seemed too slow, too gentle, too... well, not masculine enough.
 
 But after a serious back injury left me unable to do my usual workouts, my doctor suggested I try yoga for rehabilitation. Reluctantly, I signed up for a beginner class at Hidden Lotus.
 
@@ -67,16 +69,16 @@ My advice to other beginners? Don't let fear or self-consciousness hold you back
 Yoga has taught me that true strength comes from balance - physical, mental, and emotional. It's not about being the strongest or most flexible person in the room. It's about being the best version of yourself, whatever that looks like today.
 
 I'm grateful for the injury that led me to yoga, and for the community at Hidden Lotus that has supported my journey. What started as physical therapy has become a lifelong practice that continues to enrich every aspect of my life.`,
-    category: 'Yoga',
-    image: '/bg-main-dark.png',
-  },
-  {
-    id: 'meditation-breakthrough-emma',
-    title: 'Finding Peace: My Meditation Breakthrough',
-    author: 'Emma Thompson',
-    date: 'December 10, 2024',
-    excerpt: 'How meditation helped me overcome anxiety and find inner calm.',
-    content: `Anxiety had been my constant companion for as long as I could remember. As a child, I worried about everything - school, friends, whether my parents would be disappointed in me. As an adult, the worries only grew more complex and overwhelming.
+		category: 'Yoga',
+		image: '/bg-main-dark.png',
+	},
+	{
+		id: 'meditation-breakthrough-emma',
+		title: 'Finding Peace: My Meditation Breakthrough',
+		author: 'Emma Thompson',
+		date: 'December 10, 2024',
+		excerpt: 'How meditation helped me overcome anxiety and find inner calm.',
+		content: `Anxiety had been my constant companion for as long as I could remember. As a child, I worried about everything - school, friends, whether my parents would be disappointed in me. As an adult, the worries only grew more complex and overwhelming.
 
 I tried everything to manage my anxiety: therapy, medication, exercise, diet changes. While these helped somewhat, I still felt like I was constantly fighting against my own mind. Then, during a particularly difficult period, a friend suggested I try meditation.
 
@@ -105,7 +107,7 @@ My anxiety hasn't disappeared completely - that's not realistic. But it no longe
 If you're struggling with anxiety or stress, I encourage you to give meditation a try. Start small - even five minutes a day can make a difference. Be patient with yourself, and remember that every moment of practice is valuable, regardless of how "successful" it feels.
 
 Meditation has taught me that peace isn't the absence of problems - it's the ability to remain calm in the midst of them. It's a skill that can be developed with practice, and it's available to everyone, regardless of their circumstances.`,
-    category: 'Meditation',
-    image: '/bg-hl-1.png',
-  },
-];
+		category: 'Meditation',
+		image: '/bg-hl-1.png',
+	},
+]

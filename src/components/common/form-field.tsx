@@ -3,26 +3,7 @@
 import { Control, Controller, FieldValues, Path } from 'react-hook-form'
 import { InputText, InputTextProps } from 'primereact/inputtext'
 import { Dropdown, DropdownProps } from 'primereact/dropdown'
-import { ComponentType } from 'react'
-
-interface BaseFormFieldProps {
-	label: string
-	name: string
-	control: Control<any>
-	className?: string
-}
-
-interface InputFormFieldProps extends BaseFormFieldProps {
-	type: 'input'
-	inputProps?: Omit<InputTextProps, 'id' | 'className'>
-}
-
-interface DropdownFormFieldProps extends BaseFormFieldProps {
-	type: 'dropdown'
-	dropdownProps: Omit<DropdownProps, 'id' | 'className'>
-}
-
-type FormFieldProps = InputFormFieldProps | DropdownFormFieldProps
+import { FormFieldProps } from '@/types'
 
 export function FormField(props: FormFieldProps) {
 	const { label, name, control, className = '' } = props

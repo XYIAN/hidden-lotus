@@ -5,13 +5,14 @@ import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { Carousel } from 'primereact/carousel'
 import { HeroSection } from '@/components/common/hero-section'
-import { morSections, MORSection } from '@/constants/mor'
+import { morSections } from '@/constants/mor'
 import { CardGrid, DisplayCard } from '@/components/common'
+import { MORSection, CarouselItem } from '@/types'
 
 export default function MorPage() {
 	const [activeIndex, setActiveIndex] = useState(0)
 
-	const carouselItems = [
+	const carouselItems: CarouselItem[] = [
 		{
 			title: 'Mindfulness',
 			description:
@@ -50,7 +51,7 @@ export default function MorPage() {
 		},
 	]
 
-	const itemTemplate = (item: any) => (
+	const itemTemplate = (item: CarouselItem) => (
 		<div className="text-center p-4">
 			<div className="text-6xl mb-4">{item.icon}</div>
 			<h3 className="text-2xl font-bold text-primary-green mb-3">

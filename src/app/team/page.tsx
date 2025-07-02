@@ -1,205 +1,165 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
-import { InputText } from 'primereact/inputtext'
-import { Dropdown } from 'primereact/dropdown'
-import { Tag } from 'primereact/tag'
 import { HeroSection } from '@/components/common/hero-section'
-import { CardGrid, DisplayCard } from '@/components/common'
-import { teamData, TeamMember } from '@/constants/team'
+import { CardGrid, DisplayCard, FilterPanel } from '@/components/common'
+import { teamData } from '@/constants/team'
+import { TeamMember, FilterState } from '@/types'
 import '@/styles/animations.css'
 
 export default function TeamPage() {
-	const [filteredTeam, setFilteredTeam] = useState<TeamMember[]>(teamData)
-	const [searchTerm, setSearchTerm] = useState('')
-	const [selectedSpecialty, setSelectedSpecialty] = useState<string>('')
+	const [filters, setFilters] = useState<FilterState>({
+		type: '',
+		profession: '',
+	})
 
-	const specialties = [
-		{ label: 'All Specialties', value: '' },
-		{ label: 'Yoga', value: 'yoga' },
-		{ label: 'Reiki', value: 'reiki' },
-		{ label: 'Meditation', value: 'meditation' },
-		{ label: 'Healing', value: 'healing' },
-		{ label: 'Fitness', value: 'fitness' },
-		{ label: 'Nutrition', value: 'nutrition' },
-		{ label: 'Counseling', value: 'counseling' },
-	]
+	const filteredTeam = useMemo(() => {
+		return teamData.filter((member: TeamMember) => {
+			if (filters.type && member.type !== filters.type) {
+				return false
+			}
+			if (
+				filters.profession &&
+				!member.profession
+					.toLowerCase()
+					.includes(filters.profession.toLowerCase())
+			) {
+				return false
+			}
+			return true
+		})
+	}, [filters])
 
-	useEffect(() => {
-		let filtered = teamData
-
-		// Filter by search term
-		if (searchTerm) {
-			filtered = filtered.filter(
-				(member) =>
-					member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					member.bio.toLowerCase().includes(searchTerm.toLowerCase()) ||
-					member.specialties.some((spec) =>
-						spec.toLowerCase().includes(searchTerm.toLowerCase())
-					)
-			)
-		}
-
-		// Filter by specialty
-		if (selectedSpecialty) {
-			filtered = filtered.filter((member) =>
-				member.specialties.includes(selectedSpecialty as any)
-			)
-		}
-
-		setFilteredTeam(filtered)
-	}, [searchTerm, selectedSpecialty])
-
-	const clearFilters = () => {
-		setSearchTerm('')
-		setSelectedSpecialty('')
+	const handleFilterChange = (newFilters: FilterState) => {
+		setFilters(newFilters)
 	}
 
-	const teamCardElements = useMemo(() => {
-		return filteredTeam.map((member, index) => (
-			<div key={member.id} className={`stagger-${(index % 6) + 1}`}>
-				<DisplayCard
-					data={{
-						id: member.id,
-						name: member.name,
-						profession: member.profession,
-						credentials: member.credentials,
-						bio: member.bio,
-						type: member.type,
-						specialties: member.specialties,
-						certifications: member.certifications,
-						image: member.image,
-						fallbackIcon: 'pi pi-user',
-						href: `/team/${encodeURIComponent(member.name)}`,
-					}}
-					showImage={true}
-					showType={true}
-					showSpecialties={true}
-					showCertifications={true}
-					showCredentials={true}
-					showProfession={true}
-					showBio={true}
-					showLearnMore={true}
-					learnMoreText="Learn More"
-					cardSize="medium"
-				/>
-			</div>
-		))
-	}, [filteredTeam])
+	const handleClearFilters = () => {
+		setFilters({
+			type: '',
+			profession: '',
+		})
+	}
+
+	const types = Array.from(new Set(teamData.map((m) => m.type))).sort()
+	const professions = Array.from(
+		new Set(teamData.map((m) => m.profession))
+	).sort()
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
 			<HeroSection
 				title="Our Team"
-				description="Meet our dedicated wellness practitioners who are committed to supporting your journey to health and inner peace."
+				description="Meet our dedicated team of wellness professionals committed to supporting your health and healing journey."
 			/>
 
-			{/* Filters Section */}
-			<section className="max-w-6xl mx-auto w-full">
-				<Card className="yoga-card p-4 mb-6">
-					<div className="flex flex-column gap-4">
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-							<div className="flex flex-column gap-2">
-								<label
-									htmlFor="search"
-									className="text-sm font-semibold text-primary-green"
-								>
-									Search Team
-								</label>
-								<InputText
-									id="search"
-									value={searchTerm}
-									onChange={(e) => setSearchTerm(e.target.value)}
-									placeholder="Search by name, bio, or specialty..."
-									className="w-full"
-								/>
-							</div>
+			<div className="max-w-7xl mx-auto w-full">
+				<div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+					{/* Filters */}
+					<div className="lg:col-span-1">
+						<FilterPanel
+							title="Filter Team"
+							collapsed={false}
+							onClear={handleClearFilters}
+							clearDisabled={!Object.values(filters).some(Boolean)}
+						>
+							<div className="space-y-4">
+								{/* Type Filter */}
+								<div>
+									<label className="block text-sm font-medium text-sage-green-700 mb-2">
+										Type
+									</label>
+									<select
+										value={filters.type}
+										onChange={(e) =>
+											handleFilterChange({
+												...filters,
+												type: e.target.value,
+											})
+										}
+										className="w-full p-2 border border-sage-green-300 rounded-md focus:ring-2 focus:ring-sage-green-500 focus:border-transparent"
+									>
+										<option value="">All Types</option>
+										{types.map((type) => (
+											<option key={type} value={type}>
+												{type.charAt(0).toUpperCase() + type.slice(1)}
+											</option>
+										))}
+									</select>
+								</div>
 
-							<div className="flex flex-column gap-2">
-								<label
-									htmlFor="specialty"
-									className="text-sm font-semibold text-primary-green"
-								>
-									Specialty
-								</label>
-								<Dropdown
-									id="specialty"
-									value={selectedSpecialty}
-									onChange={(e) => setSelectedSpecialty(e.value)}
-									options={specialties}
-									optionLabel="label"
-									optionValue="value"
-									placeholder="Select Specialty"
-									className="w-full"
-								/>
+								{/* Profession Filter */}
+								<div>
+									<label className="block text-sm font-medium text-sage-green-700 mb-2">
+										Profession
+									</label>
+									<select
+										value={filters.profession}
+										onChange={(e) =>
+											handleFilterChange({
+												...filters,
+												profession: e.target.value,
+											})
+										}
+										className="w-full p-2 border border-sage-green-300 rounded-md focus:ring-2 focus:ring-sage-green-500 focus:border-transparent"
+									>
+										<option value="">All Professions</option>
+										{professions.map((profession) => (
+											<option key={profession} value={profession}>
+												{profession}
+											</option>
+										))}
+									</select>
+								</div>
 							</div>
-						</div>
-
-						<div className="flex justify-content-center">
-							<Button
-								label="Clear Filters"
-								icon="pi pi-refresh"
-								onClick={clearFilters}
-								className="bg-sage-green-600 border-sage-green-600"
-								disabled={!searchTerm && !selectedSpecialty}
-							/>
-						</div>
+						</FilterPanel>
 					</div>
-				</Card>
 
-				{/* Results Count */}
-				<div className="flex justify-content-between align-items-center mb-4">
-					<h2 className="text-xl font-semibold text-primary-green">
-						{filteredTeam.length} Team Member
-						{filteredTeam.length !== 1 ? 's' : ''} Found
-					</h2>
-					{(searchTerm || selectedSpecialty) && (
-						<div className="flex gap-2">
-							{searchTerm && (
-								<Tag
-									value={`Search: ${searchTerm}`}
-									className="bg-pastel-pink"
-								/>
-							)}
-							{selectedSpecialty && (
-								<Tag
-									value={`Specialty: ${
-										specialties.find((s) => s.value === selectedSpecialty)
-											?.label
-									}`}
-									className="bg-sage-green-600"
-								/>
-							)}
+					{/* Team Grid */}
+					<div className="lg:col-span-3">
+						<div className="mb-4">
+							<p className="text-sage-green-600">
+								Showing {filteredTeam.length} of {teamData.length} team members
+							</p>
 						</div>
-					)}
+						<CardGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} gap={6}>
+							{filteredTeam.map((member: TeamMember) => (
+								<DisplayCard
+									key={member.id}
+									data={{
+										id: member.id,
+										name: member.name,
+										description: member.bio,
+										image: member.image,
+										type: member.type,
+										profession: member.profession,
+										credentials: member.credentials,
+										specialties: member.specialties,
+										href: `/team/${encodeURIComponent(member.name)}`,
+									}}
+									showImage={true}
+									showType={true}
+									showSpecialties={true}
+									showCertifications={false}
+									showCredentials={true}
+									showProfession={true}
+									showBio={true}
+									showDescription={true}
+									showPrice={false}
+									showDuration={false}
+									showLevel={false}
+									showCategory={false}
+									showLearnMore={true}
+									learnMoreText="View Profile"
+									className="text-center"
+								/>
+							))}
+						</CardGrid>
+					</div>
 				</div>
-
-				{/* Team Grid */}
-				{filteredTeam.length > 0 ? (
-					<CardGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3 }} gap={6} centerY>
-						{teamCardElements}
-					</CardGrid>
-				) : (
-					<Card className="yoga-card p-8 text-center">
-						<div className="text-6xl mb-4">😔</div>
-						<h3 className="text-xl font-semibold text-primary-green mb-2">
-							No Team Members Found
-						</h3>
-						<p className="text-earth-brown mb-4">
-							Try adjusting your search criteria or filters to find the perfect
-							practitioner for you.
-						</p>
-						<Button
-							label="Clear All Filters"
-							icon="pi pi-refresh"
-							onClick={clearFilters}
-							className="bg-sage-green-600 border-sage-green-600"
-						/>
-					</Card>
-				)}
-			</section>
+			</div>
 		</div>
 	)
 }

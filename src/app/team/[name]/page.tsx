@@ -9,6 +9,7 @@ import { Carousel, CarouselResponsiveOption } from 'primereact/carousel'
 import { teamData } from '@/constants/team'
 import { classesData } from '@/constants/classes'
 import { useState } from 'react'
+import { Class } from '@/types'
 
 export default function TeamMemberPage() {
 	const params = useParams()
@@ -71,7 +72,7 @@ export default function TeamMemberPage() {
 		},
 	]
 
-	const classTemplate = (classItem: any) => {
+	const classTemplate = (classItem: Class) => {
 		return (
 			<div className="p-4">
 				<Card className="bg-white/90 backdrop-blur-sm border-0 shadow-md h-full">
@@ -199,39 +200,34 @@ export default function TeamMemberPage() {
 					<Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
 						<div className="p-6">
 							<h2 className="text-2xl font-bold text-sage-green-800 mb-4">
-								Contact
+								Contact Information
 							</h2>
 
 							<div className="space-y-3">
 								<div>
-									<label className="block text-sm font-medium text-sage-green-700">
+									<h3 className="font-semibold text-sage-green-700 mb-1">
 										Email
-									</label>
+									</h3>
 									<p className="text-sage-green-600">
 										{memberData.contact.email}
 									</p>
 								</div>
 								<div>
-									<label className="block text-sm font-medium text-sage-green-700">
+									<h3 className="font-semibold text-sage-green-700 mb-1">
 										Phone
-									</label>
+									</h3>
 									<p className="text-sage-green-600">
 										{memberData.contact.phone}
 									</p>
 								</div>
 								{memberData.contact.website && (
 									<div>
-										<label className="block text-sm font-medium text-sage-green-700">
+										<h3 className="font-semibold text-sage-green-700 mb-1">
 											Website
-										</label>
-										<a
-											href={`https://${memberData.contact.website}`}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="text-sage-green-600 hover:text-sage-green-800 underline"
-										>
+										</h3>
+										<p className="text-sage-green-600">
 											{memberData.contact.website}
-										</a>
+										</p>
 									</div>
 								)}
 							</div>
@@ -239,22 +235,20 @@ export default function TeamMemberPage() {
 					</Card>
 				</div>
 
-				{/* Classes Carousel */}
+				{/* Classes */}
 				{memberClasses.length > 0 && (
 					<Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg mt-6">
 						<div className="p-6">
-							<h2 className="text-2xl font-bold text-sage-green-800 mb-6">
+							<h2 className="text-2xl font-bold text-sage-green-800 mb-4">
 								Classes by {memberData.name}
 							</h2>
-
 							<Carousel
 								value={memberClasses}
 								numVisible={3}
 								numScroll={1}
+								className="custom-carousel"
 								responsiveOptions={carouselResponsiveOptions}
 								itemTemplate={classTemplate}
-								className="custom-carousel"
-								autoplayInterval={5000}
 								circular
 							/>
 						</div>
