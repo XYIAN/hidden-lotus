@@ -50,7 +50,7 @@ body {
 	color: var(--foreground);
 	font-family: var(--font-sans), "Inter", Arial, Helvetica, sans-serif;
 	min-height: 100vh;
-	background-image: url("/hl-bg-transparent1.png");
+	background-image: url("/bg-main.png");
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
