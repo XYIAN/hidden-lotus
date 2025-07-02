@@ -103,14 +103,16 @@ export function DisplayCard({
 
 				{/* Image */}
 				{showImage && image && (
-					<div className="mb-3">
-						<Image
-							src={image}
-							alt={name || title || 'Card image'}
-							width={400}
-							height={300}
-							className="w-full h-48 object-cover rounded-lg"
-						/>
+					<div className="mb-3 flex justify-content-center">
+						<div className="relative">
+							<Image
+								src={image}
+								alt={name || title || 'Card image'}
+								width={120}
+								height={120}
+								className="w-24 h-24 object-contain rounded-lg"
+							/>
+						</div>
 					</div>
 				)}
 

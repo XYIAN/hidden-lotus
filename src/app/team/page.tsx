@@ -1,51 +1,88 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { HeroSection } from '@/components/common/hero-section'
-import { CardGrid, DisplayCard, FilterPanel } from '@/components/common'
+import { CardGrid, DisplayCard, ResultsCount } from '@/components/common'
 import { teamData } from '@/constants/team'
-import { TeamMember, TeamFilterState } from '@/types'
+import { TeamMember } from '@/types'
+import { FilterPanel } from '@/components/common/filter-panel'
+import { FormField } from '@/components/common/form-field'
+import { useForm } from 'react-hook-form'
 import '@/styles/animations.css'
 
+interface FilterForm {
+	searchTerm: string
+	selectedType: string
+	selectedProfession: string
+}
+
 export default function TeamPage() {
-	const [filters, setFilters] = useState<TeamFilterState>({
-		type: '',
-		profession: '',
+	const { control, watch, reset } = useForm<FilterForm>({
+		defaultValues: {
+			searchTerm: '',
+			selectedType: '',
+			selectedProfession: '',
+		},
 	})
+
+	const filters = watch()
 
 	const filteredTeam = useMemo(() => {
 		return teamData.filter((member: TeamMember) => {
-			if (filters.type && member.type !== filters.type) {
+			// Search filter
+			if (filters.searchTerm) {
+				const searchLower = filters.searchTerm.toLowerCase()
+				const matchesSearch =
+					member.name.toLowerCase().includes(searchLower) ||
+					member.profession.toLowerCase().includes(searchLower) ||
+					member.bio.toLowerCase().includes(searchLower)
+				if (!matchesSearch) return false
+			}
+
+			// Type filter
+			if (filters.selectedType && member.type !== filters.selectedType) {
 				return false
 			}
+
+			// Profession filter
 			if (
-				filters.profession &&
-				typeof filters.profession === 'string' &&
+				filters.selectedProfession &&
 				!member.profession
 					.toLowerCase()
-					.includes(filters.profession.toLowerCase())
+					.includes(filters.selectedProfession.toLowerCase())
 			) {
 				return false
 			}
+
 			return true
 		})
 	}, [filters])
 
-	const handleFilterChange = (newFilters: TeamFilterState) => {
-		setFilters(newFilters)
-	}
-
 	const handleClearFilters = () => {
-		setFilters({
-			type: '',
-			profession: '',
-		})
+		reset()
 	}
 
-	const types = Array.from(new Set(teamData.map((m) => m.type))).sort()
-	const professions = Array.from(
-		new Set(teamData.map((m) => m.profession))
-	).sort()
+	const types = [
+		{ label: 'All Types', value: '' },
+		...Array.from(new Set(teamData.map((m) => m.type)))
+			.sort()
+			.map((type) => ({
+				label: type.charAt(0).toUpperCase() + type.slice(1),
+				value: type,
+			})),
+	]
+
+	const professions = [
+		{ label: 'All Professions', value: '' },
+		...Array.from(new Set(teamData.map((m) => m.profession)))
+			.sort()
+			.map((profession) => ({
+				label: profession,
+				value: profession,
+			})),
+	]
+
+	const hasActiveFilters = Object.values(filters).some(Boolean)
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
@@ -55,109 +92,94 @@ export default function TeamPage() {
 			/>
 
 			<div className="max-w-7xl mx-auto w-full">
-				<div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-					{/* Filters */}
-					<div className="lg:col-span-1">
-						<FilterPanel
-							title="Filter Team"
-							collapsed={false}
-							onClear={handleClearFilters}
-							clearDisabled={!Object.values(filters).some(Boolean)}
-						>
-							<div className="space-y-4">
-								{/* Type Filter */}
-								<div>
-									<label className="block text-sm font-medium text-sage-green-700 mb-2">
-										Type
-									</label>
-									<select
-										value={filters.type}
-										onChange={(e) =>
-											handleFilterChange({
-												...filters,
-												type: e.target.value,
-											})
-										}
-										className="w-full p-2 border border-sage-green-300 rounded-md focus:ring-2 focus:ring-sage-green-500 focus:border-transparent"
-									>
-										<option value="">All Types</option>
-										{types.map((type) => (
-											<option key={type} value={type}>
-												{type.charAt(0).toUpperCase() + type.slice(1)}
-											</option>
-										))}
-									</select>
-								</div>
+				{/* Filters */}
+				<FilterPanel
+					title="Filter Team"
+					collapsed={true}
+					onClear={handleClearFilters}
+					clearDisabled={!hasActiveFilters}
+					className="mb-6"
+				>
+					<div className="flex flex-column gap-4">
+						<FormField
+							type="input"
+							label="Search Team"
+							name="searchTerm"
+							control={control}
+							inputProps={{
+								placeholder: 'Search by name, profession, or bio...',
+							}}
+						/>
 
-								{/* Profession Filter */}
-								<div>
-									<label className="block text-sm font-medium text-sage-green-700 mb-2">
-										Profession
-									</label>
-									<select
-										value={filters.profession}
-										onChange={(e) =>
-											handleFilterChange({
-												...filters,
-												profession: e.target.value,
-											})
-										}
-										className="w-full p-2 border border-sage-green-300 rounded-md focus:ring-2 focus:ring-sage-green-500 focus:border-transparent"
-									>
-										<option value="">All Professions</option>
-										{professions.map((profession) => (
-											<option key={profession} value={profession}>
-												{profession}
-											</option>
-										))}
-									</select>
-								</div>
-							</div>
-						</FilterPanel>
-					</div>
+						<FormField
+							type="dropdown"
+							label="Type"
+							name="selectedType"
+							control={control}
+							dropdownProps={{
+								options: types,
+								optionLabel: 'label',
+								optionValue: 'value',
+								placeholder: 'Select Type',
+							}}
+						/>
 
-					{/* Team Grid */}
-					<div className="lg:col-span-3">
-						<div className="mb-4">
-							<p className="text-sage-green-600">
-								Showing {filteredTeam.length} of {teamData.length} team members
-							</p>
-						</div>
-						<CardGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} gap={6}>
-							{filteredTeam.map((member: TeamMember) => (
-								<DisplayCard
-									key={member.id}
-									data={{
-										id: member.id,
-										name: member.name,
-										description: member.bio,
-										image: member.image,
-										type: member.type,
-										profession: member.profession,
-										credentials: member.credentials,
-										specialties: member.specialties,
-										href: `/team/${encodeURIComponent(member.name)}`,
-									}}
-									showImage={true}
-									showType={true}
-									showSpecialties={true}
-									showCertifications={false}
-									showCredentials={true}
-									showProfession={true}
-									showBio={true}
-									showDescription={true}
-									showPrice={false}
-									showDuration={false}
-									showLevel={false}
-									showCategory={false}
-									showLearnMore={true}
-									learnMoreText="View Profile"
-									className="text-center"
-								/>
-							))}
-						</CardGrid>
+						<FormField
+							type="dropdown"
+							label="Profession"
+							name="selectedProfession"
+							control={control}
+							dropdownProps={{
+								options: professions,
+								optionLabel: 'label',
+								optionValue: 'value',
+								placeholder: 'Select Profession',
+							}}
+						/>
 					</div>
-				</div>
+				</FilterPanel>
+
+				{/* Results Count */}
+				<ResultsCount
+					count={filteredTeam.length}
+					total={teamData.length}
+					className="mb-4"
+				/>
+
+				{/* Team Grid */}
+				<CardGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} gap={6}>
+					{filteredTeam.map((member: TeamMember) => (
+						<DisplayCard
+							key={member.id}
+							data={{
+								id: member.id,
+								name: member.name,
+								description: member.bio,
+								image: member.image,
+								type: member.type,
+								profession: member.profession,
+								credentials: member.credentials,
+								specialties: member.specialties,
+								href: `/team/${encodeURIComponent(member.name)}`,
+							}}
+							showImage={true}
+							showType={true}
+							showSpecialties={true}
+							showCertifications={false}
+							showCredentials={true}
+							showProfession={true}
+							showBio={true}
+							showDescription={true}
+							showPrice={false}
+							showDuration={false}
+							showLevel={false}
+							showCategory={false}
+							showLearnMore={true}
+							learnMoreText="View Profile"
+							className="text-center"
+						/>
+					))}
+				</CardGrid>
 			</div>
 		</div>
 	)

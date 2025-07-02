@@ -9,6 +9,7 @@ export const teamData: TeamMember[] = [
 		profession: 'Yoga Instructor & Wellness Coach',
 		credentials: 'RYT-500, Ayurvedic Wellness Counselor, Mindfulness Teacher',
 		bio: 'Jaideep brings over 15 years of experience in yoga and meditation, specializing in vinyasa flow and mindfulness practices.',
+		image: '/icon-hl-1.png',
 		longBio:
 			'Jaideep Pa is a dedicated yoga instructor and wellness coach with over 15 years of experience in the field of holistic health. His journey began in India, where he studied under renowned yoga masters and learned the ancient wisdom of Ayurveda. Jaideep specializes in vinyasa flow, mindfulness meditation, and stress management techniques. He believes in making yoga accessible to everyone, regardless of their experience level or physical limitations. Through his classes and coaching sessions, Jaideep helps students develop a deeper connection with their bodies, minds, and spirits, guiding them toward greater self-awareness and inner peace.',
 		type: 'instructor',
@@ -39,6 +40,7 @@ export const teamData: TeamMember[] = [
 		credentials:
 			'Reiki Master Teacher, Crystal Healing Practitioner, Energy Medicine Specialist',
 		bio: 'Sarah is a certified Reiki master with expertise in energy healing and spiritual wellness.',
+		image: '/icon-hl-2.png',
 		longBio:
 			'Sarah Chen is a gifted energy healer and Reiki master with a deep understanding of the subtle energy systems of the body. Her journey into energy healing began after experiencing the profound healing effects of Reiki during a difficult period in her life. Since then, she has dedicated herself to helping others find balance and healing through various energy medicine modalities. Sarah combines traditional Reiki techniques with crystal healing, chakra balancing, and intuitive energy work to create personalized healing sessions for each client. Her gentle, compassionate approach helps clients feel safe and supported as they work through emotional blockages and physical imbalances.',
 		type: 'instructor',
@@ -65,6 +67,7 @@ export const teamData: TeamMember[] = [
 		credentials:
 			'PhD in Psychology, Licensed Clinical Psychologist, Certified Wellness Coach',
 		bio: 'Dr. Rodriguez leads our wellness programs and provides expert guidance on mental health and stress management.',
+		image: '/icon-hl-3.png',
 		longBio:
 			'Dr. Michael Rodriguez is a licensed clinical psychologist and wellness director with over 20 years of experience in mental health and wellness. He holds a PhD in Psychology and has specialized training in cognitive behavioral therapy, mindfulness-based stress reduction, and positive psychology. Dr. Rodriguez believes in a holistic approach to mental health that addresses the mind, body, and spirit. He has helped countless individuals overcome anxiety, depression, and stress-related issues through evidence-based therapeutic techniques combined with mindfulness and wellness practices. As our Wellness Director, he oversees all wellness programs and ensures that our services meet the highest standards of care and effectiveness.',
 		type: 'admin',
@@ -90,6 +93,7 @@ export const teamData: TeamMember[] = [
 		credentials:
 			'Licensed Massage Therapist, Cupping Specialist, Myofascial Release Therapist',
 		bio: 'Lisa specializes in therapeutic bodywork and traditional healing modalities.',
+		image: '/icon-hl-4.png',
 		longBio:
 			'Lisa Thompson is a skilled therapeutic specialist with expertise in various bodywork modalities and traditional healing techniques. Her passion for helping others heal through touch began after experiencing the transformative effects of therapeutic massage during her own recovery from a sports injury. Lisa combines traditional cupping therapy with modern myofascial release techniques, deep tissue massage, and energy work to provide comprehensive healing sessions. She has a particular interest in helping athletes, individuals with chronic pain, and those recovering from injuries. Her gentle yet effective approach helps clients release tension, improve circulation, and restore their natural healing abilities.',
 		type: 'instructor',
@@ -115,6 +119,7 @@ export const teamData: TeamMember[] = [
 		credentials:
 			'Full-Stack Developer, Digital Wellness Specialist, Mindfulness Technology Expert',
 		bio: 'Kyle oversees our digital platforms and ensures technology enhances rather than hinders wellness.',
+		image: '/icon-mor-1.png',
 		longBio:
 			"Kyle Johnson is a technology director and digital wellness advocate who believes in harnessing the power of technology to support rather than hinder our wellness journey. With over 10 years of experience in software development and a deep interest in mindfulness and wellness, Kyle has dedicated himself to creating digital solutions that promote mental health and well-being. He oversees all our digital platforms, ensuring they provide seamless, user-friendly experiences that support our community's wellness goals. Kyle is passionate about digital wellness and helps clients develop healthy relationships with technology through mindful usage practices and digital detox strategies.",
 		type: 'board',
@@ -140,6 +145,7 @@ export const teamData: TeamMember[] = [
 		credentials:
 			'Registered Dietitian, Holistic Nutrition Certification, Wellness Coach',
 		bio: 'Emma helps clients achieve optimal health through personalized nutrition and lifestyle guidance.',
+		image: '/icon-mor-2.png',
 		longBio:
 			"Emma Wilson is a registered dietitian and holistic health coach who believes that true wellness comes from nourishing the body, mind, and spirit. With over 8 years of experience in nutrition and wellness, Emma has helped countless clients transform their health through personalized nutrition plans and lifestyle modifications. She specializes in plant-based nutrition, gut health, and sustainable eating habits. Emma's approach combines evidence-based nutrition science with holistic wellness principles, helping clients develop lasting, healthy relationships with food and their bodies.",
 		type: 'instructor',
@@ -168,6 +174,7 @@ export const teamData: TeamMember[] = [
 		profession: 'Tai Chi Instructor & Qigong Master',
 		credentials: 'Tai Chi Master, Qigong Instructor, Energy Arts Specialist',
 		bio: 'David teaches the gentle movements of Tai Chi and Qigong for balance and vitality.',
+		image: '/icon-leaf-1.png',
 		longBio:
 			"David Park is a master Tai Chi and Qigong instructor who has dedicated his life to preserving and sharing these ancient Chinese energy arts. With over 15 years of practice and teaching experience, David has helped students of all ages and abilities discover the profound benefits of these gentle yet powerful movement practices. He specializes in Yang-style Tai Chi, Qigong breathing techniques, and energy cultivation methods. David's patient, methodical approach makes these complex practices accessible to beginners while offering depth and challenge for advanced practitioners.",
 		type: 'instructor',
@@ -192,6 +199,7 @@ export const teamData: TeamMember[] = [
 		credentials:
 			'Sound Healing Certification, Meditation Teacher, Crystal Bowl Specialist',
 		bio: 'Maria creates transformative sound healing experiences using crystal bowls and sacred instruments.',
+		image: '/icon-hl-1.png',
 		longBio:
 			'Maria Garcia is a gifted sound healing practitioner and meditation guide who uses the power of sound and vibration to facilitate deep healing and transformation. Her journey into sound healing began when she experienced the profound effects of crystal bowl therapy during a period of personal healing. Maria combines traditional sound healing techniques with modern therapeutic approaches, using crystal bowls, Tibetan singing bowls, gongs, and other sacred instruments to create immersive healing experiences. Her sessions help clients release emotional blockages, reduce stress, and access deeper states of consciousness.',
 		type: 'instructor',

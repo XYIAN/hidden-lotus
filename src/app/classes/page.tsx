@@ -1,60 +1,107 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useMemo } from 'react'
 import { HeroSection } from '@/components/common/hero-section'
-import {
-	CardGrid,
-	DisplayCard,
-	FilterPanel,
-	ResultsCount,
-} from '@/components/common'
+import { CardGrid, DisplayCard, ResultsCount } from '@/components/common'
 import { classesData } from '@/constants/classes'
-import { Class, ClassFilterState, ClassCategory } from '@/types'
+import { Class, ClassCategory } from '@/types'
+import { FilterPanel } from '@/components/common/filter-panel'
+import { FormField } from '@/components/common/form-field'
+import { useForm } from 'react-hook-form'
+
+interface FilterForm {
+	searchTerm: string
+	selectedCategory: string
+	selectedLevel: string
+	selectedInstructor: string
+}
 
 export default function ClassesPage() {
-	const [filters, setFilters] = useState<ClassFilterState>({
-		category: '',
-		level: '',
-		instructor: '',
+	const { control, watch, reset } = useForm<FilterForm>({
+		defaultValues: {
+			searchTerm: '',
+			selectedCategory: '',
+			selectedLevel: '',
+			selectedInstructor: '',
+		},
 	})
+
+	const filters = watch()
 
 	const filteredClasses = useMemo(() => {
 		return classesData.filter((classItem: Class) => {
+			// Search filter
+			if (filters.searchTerm) {
+				const searchLower = filters.searchTerm.toLowerCase()
+				const matchesSearch =
+					classItem.name.toLowerCase().includes(searchLower) ||
+					(classItem.description?.toLowerCase() || '').includes(searchLower) ||
+					classItem.instructor.toLowerCase().includes(searchLower)
+				if (!matchesSearch) return false
+			}
+
+			// Category filter
 			if (
-				filters.category &&
-				!classItem.categories.includes(filters.category as ClassCategory)
+				filters.selectedCategory &&
+				!classItem.categories.includes(
+					filters.selectedCategory as ClassCategory
+				)
 			) {
 				return false
 			}
-			if (filters.level && classItem.level !== filters.level) {
+
+			// Level filter
+			if (filters.selectedLevel && classItem.level !== filters.selectedLevel) {
 				return false
 			}
-			if (filters.instructor && classItem.instructor !== filters.instructor) {
+
+			// Instructor filter
+			if (
+				filters.selectedInstructor &&
+				classItem.instructor !== filters.selectedInstructor
+			) {
 				return false
 			}
+
 			return true
 		})
 	}, [filters])
 
-	const handleFilterChange = (newFilters: ClassFilterState) => {
-		setFilters(newFilters)
-	}
-
 	const handleClearFilters = () => {
-		setFilters({
-			category: '',
-			level: '',
-			instructor: '',
-		})
+		reset()
 	}
 
-	const categories = Array.from(
-		new Set(classesData.flatMap((c) => c.categories))
-	).sort()
-	const levels = Array.from(new Set(classesData.map((c) => c.level))).sort()
-	const instructors = Array.from(
-		new Set(classesData.map((c) => c.instructor))
-	).sort()
+	const categories = [
+		{ label: 'All Categories', value: '' },
+		...Array.from(new Set(classesData.flatMap((c) => c.categories)))
+			.sort()
+			.map((category) => ({
+				label: category.charAt(0).toUpperCase() + category.slice(1),
+				value: category,
+			})),
+	]
+
+	const levels = [
+		{ label: 'All Levels', value: '' },
+		...Array.from(new Set(classesData.map((c) => c.level)))
+			.sort()
+			.map((level) => ({
+				label: level.charAt(0).toUpperCase() + level.slice(1),
+				value: level,
+			})),
+	]
+
+	const instructors = [
+		{ label: 'All Instructors', value: '' },
+		...Array.from(new Set(classesData.map((c) => c.instructor)))
+			.sort()
+			.map((instructor) => ({
+				label: instructor,
+				value: instructor,
+			})),
+	]
+
+	const hasActiveFilters = Object.values(filters).some(Boolean)
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
@@ -64,132 +111,107 @@ export default function ClassesPage() {
 			/>
 
 			<div className="max-w-7xl mx-auto w-full">
-				<div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-					{/* Filters */}
-					<div className="lg:col-span-1">
-						<FilterPanel
-							title="Filter Classes"
-							collapsed={false}
-							onClear={handleClearFilters}
-							clearDisabled={!Object.values(filters).some(Boolean)}
-						>
-							<div className="space-y-4">
-								{/* Category Filter */}
-								<div>
-									<label className="block text-sm font-medium text-sage-green-700 mb-2">
-										Category
-									</label>
-									<select
-										value={filters.category}
-										onChange={(e) =>
-											handleFilterChange({
-												...filters,
-												category: e.target.value,
-											})
-										}
-										className="w-full p-2 border border-sage-green-300 rounded-md focus:ring-2 focus:ring-sage-green-500 focus:border-transparent"
-									>
-										<option value="">All Categories</option>
-										{categories.map((category) => (
-											<option key={category} value={category}>
-												{category.charAt(0).toUpperCase() + category.slice(1)}
-											</option>
-										))}
-									</select>
-								</div>
-
-								{/* Level Filter */}
-								<div>
-									<label className="block text-sm font-medium text-sage-green-700 mb-2">
-										Level
-									</label>
-									<select
-										value={filters.level}
-										onChange={(e) =>
-											handleFilterChange({
-												...filters,
-												level: e.target.value,
-											})
-										}
-										className="w-full p-2 border border-sage-green-300 rounded-md focus:ring-2 focus:ring-sage-green-500 focus:border-transparent"
-									>
-										<option value="">All Levels</option>
-										{levels.map((level) => (
-											<option key={level} value={level}>
-												{level.charAt(0).toUpperCase() + level.slice(1)}
-											</option>
-										))}
-									</select>
-								</div>
-
-								{/* Instructor Filter */}
-								<div>
-									<label className="block text-sm font-medium text-sage-green-700 mb-2">
-										Instructor
-									</label>
-									<select
-										value={filters.instructor}
-										onChange={(e) =>
-											handleFilterChange({
-												...filters,
-												instructor: e.target.value,
-											})
-										}
-										className="w-full p-2 border border-sage-green-300 rounded-md focus:ring-2 focus:ring-sage-green-500 focus:border-transparent"
-									>
-										<option value="">All Instructors</option>
-										{instructors.map((instructor) => (
-											<option key={instructor} value={instructor}>
-												{instructor}
-											</option>
-										))}
-									</select>
-								</div>
-							</div>
-						</FilterPanel>
-					</div>
-
-					{/* Classes Grid */}
-					<div className="lg:col-span-3">
-						<ResultsCount
-							count={filteredClasses.length}
-							total={classesData.length}
+				{/* Filters */}
+				<FilterPanel
+					title="Filter Classes"
+					collapsed={true}
+					onClear={handleClearFilters}
+					clearDisabled={!hasActiveFilters}
+					className="mb-6"
+				>
+					<div className="flex flex-column gap-4">
+						<FormField
+							type="input"
+							label="Search Classes"
+							name="searchTerm"
+							control={control}
+							inputProps={{
+								placeholder: 'Search by name, description, or instructor...',
+							}}
 						/>
-						<CardGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} gap={6}>
-							{filteredClasses.map((classItem: Class) => (
-								<DisplayCard
-									key={classItem.id}
-									data={{
-										id: classItem.id,
-										name: classItem.name,
-										description: classItem.description,
-										image: classItem.image,
-										category: classItem.categories[0],
-										level: classItem.level,
-										price: classItem.price,
-										duration: classItem.duration,
-										href: `/classes/${classItem.id}`,
-									}}
-									showImage={true}
-									showType={true}
-									showSpecialties={false}
-									showCertifications={false}
-									showCredentials={false}
-									showProfession={false}
-									showBio={false}
-									showDescription={true}
-									showPrice={true}
-									showDuration={true}
-									showLevel={true}
-									showCategory={true}
-									showLearnMore={true}
-									learnMoreText="Book Now"
-									className="text-center"
-								/>
-							))}
-						</CardGrid>
+
+						<FormField
+							type="dropdown"
+							label="Category"
+							name="selectedCategory"
+							control={control}
+							dropdownProps={{
+								options: categories,
+								optionLabel: 'label',
+								optionValue: 'value',
+								placeholder: 'Select Category',
+							}}
+						/>
+
+						<FormField
+							type="dropdown"
+							label="Level"
+							name="selectedLevel"
+							control={control}
+							dropdownProps={{
+								options: levels,
+								optionLabel: 'label',
+								optionValue: 'value',
+								placeholder: 'Select Level',
+							}}
+						/>
+
+						<FormField
+							type="dropdown"
+							label="Instructor"
+							name="selectedInstructor"
+							control={control}
+							dropdownProps={{
+								options: instructors,
+								optionLabel: 'label',
+								optionValue: 'value',
+								placeholder: 'Select Instructor',
+							}}
+						/>
 					</div>
-				</div>
+				</FilterPanel>
+
+				{/* Results Count */}
+				<ResultsCount
+					count={filteredClasses.length}
+					total={classesData.length}
+					className="mb-4"
+				/>
+
+				{/* Classes Grid */}
+				<CardGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} gap={6}>
+					{filteredClasses.map((classItem: Class) => (
+						<DisplayCard
+							key={classItem.id}
+							data={{
+								id: classItem.id,
+								name: classItem.name,
+								description: classItem.description,
+								image: classItem.image,
+								category: classItem.categories[0],
+								level: classItem.level,
+								price: classItem.price,
+								duration: classItem.duration,
+								href: `/classes/${classItem.id}`,
+							}}
+							showImage={true}
+							showType={true}
+							showSpecialties={false}
+							showCertifications={false}
+							showCredentials={false}
+							showProfession={false}
+							showBio={false}
+							showDescription={true}
+							showPrice={true}
+							showDuration={true}
+							showLevel={true}
+							showCategory={true}
+							showLearnMore={true}
+							learnMoreText="Book Now"
+							className="text-center"
+						/>
+					))}
+				</CardGrid>
 			</div>
 		</div>
 	)

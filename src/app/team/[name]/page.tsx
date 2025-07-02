@@ -15,9 +15,13 @@ import '@/styles/animations.css'
 export default function TeamMemberPage() {
 	const params = useParams()
 	const name = params.name as string
-	const member = teamData.find(
-		(m: TeamMember) => m.name.toLowerCase().replace(/\s+/g, '-') === name
-	)
+	const member = teamData.find((m: TeamMember) => {
+		const decodedName = decodeURIComponent(name)
+		return (
+			m.name.toLowerCase().replace(/\s+/g, '-') === name.toLowerCase() ||
+			m.name.toLowerCase() === decodedName.toLowerCase()
+		)
+	})
 
 	if (!member) {
 		notFound()
