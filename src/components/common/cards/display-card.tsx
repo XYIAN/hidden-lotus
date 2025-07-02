@@ -1,9 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
 import Image from 'next/image'
+import { LoadingSkeleton } from './loading-skeleton'
 import { DisplayCardProps } from '@/types'
 
 export function DisplayCard({
@@ -24,6 +26,9 @@ export function DisplayCard({
 	learnMoreText = 'Learn More',
 	cardSize = 'medium',
 }: DisplayCardProps) {
+	const [imageLoaded, setImageLoaded] = useState(false)
+	const [imageError, setImageError] = useState(false)
+
 	const {
 		name,
 		title,
@@ -105,13 +110,30 @@ export function DisplayCard({
 				{showImage && image && (
 					<div className="mb-3 flex justify-content-center">
 						<div className="relative">
-							<Image
-								src={image}
-								alt={name || title || 'Card image'}
-								width={120}
-								height={120}
-								className="w-24 h-24 object-contain rounded-lg"
-							/>
+							{!imageLoaded && !imageError && (
+								<LoadingSkeleton
+									type="image"
+									className="w-24 h-24 rounded-lg"
+								/>
+							)}
+							{imageError && (
+								<div className="w-24 h-24 bg-light-tan rounded-lg flex align-items-center justify-content-center sage-border">
+									<i className="pi pi-image text-2xl text-sage"></i>
+								</div>
+							)}
+							{!imageError && (
+								<Image
+									src={image}
+									alt={name || title || 'Card image'}
+									width={120}
+									height={120}
+									className={`w-24 h-24 object-contain rounded-lg ${
+										imageLoaded ? 'block' : 'hidden'
+									}`}
+									onLoad={() => setImageLoaded(true)}
+									onError={() => setImageError(true)}
+								/>
+							)}
 						</div>
 					</div>
 				)}
