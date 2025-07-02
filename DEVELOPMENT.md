@@ -20,7 +20,7 @@
 - **Minor (0.X.0)**: New features, significant improvements
 - **Major (X.0.0)**: Breaking changes, major releases
 
-### Current Version: 0.9.3
+### Current Version: 1.0.6
 
 ## Code Standards
 

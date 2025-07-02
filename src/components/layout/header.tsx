@@ -6,8 +6,7 @@ import { Button } from 'primereact/button'
 import { Menu } from 'primereact/menu'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Flower2 } from 'lucide-react'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import '@/styles/header.css'
 import { LotusMenuBar } from './lotus-menu-bar'
 import { SidebarHeader } from './sidebar-header'
@@ -26,9 +25,13 @@ const navigationItems = [
 export function Header() {
 	const [sidebarVisible, setSidebarVisible] = useState(false)
 	const pathname = usePathname()
+	const router = useRouter()
 
 	const isActive = (href: string) => {
-		return pathname === href
+		if (href === '/') {
+			return pathname === '/'
+		}
+		return pathname.startsWith(href)
 	}
 
 	const menuItems = navigationItems.map((item) => {
@@ -58,10 +61,10 @@ export function Header() {
 			label: item.label,
 			icon: getIcon(item.href),
 			command: () => {
-				window.location.href = item.href
+				router.push(item.href)
 				setSidebarVisible(false)
 			},
-			className: pathname === item.href ? 'active-menu-item' : '',
+			className: isActive(item.href) ? 'active-menu-item' : '',
 		}
 	})
 
@@ -99,7 +102,7 @@ export function Header() {
 					<Button
 						onClick={() => setSidebarVisible(true)}
 						outlined
-						className=" border-primary-green text-primary-green hover:bg-primary-green hover:text-pink ml-auto p-0 m-0"
+						className="border-primary-green text-primary-green hover:bg-primary-green hover:text-pink ml-auto p-0 m-0"
 						style={{
 							padding: '0',
 							margin: '0',

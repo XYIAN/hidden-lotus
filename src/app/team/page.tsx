@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { InputText } from 'primereact/inputtext'
@@ -56,6 +56,38 @@ export default function TeamPage() {
 		setSearchTerm('')
 		setSelectedSpecialty('')
 	}
+
+	const teamCardElements = useMemo(() => {
+		return filteredTeam.map((member, index) => (
+			<div key={member.id} className={`stagger-${(index % 6) + 1}`}>
+				<DisplayCard
+					data={{
+						id: member.id,
+						name: member.name,
+						profession: member.profession,
+						credentials: member.credentials,
+						bio: member.bio,
+						type: member.type,
+						specialties: member.specialties,
+						certifications: member.certifications,
+						image: member.image,
+						fallbackIcon: 'pi pi-user',
+						href: `/team/${encodeURIComponent(member.name)}`,
+					}}
+					showImage={true}
+					showType={true}
+					showSpecialties={true}
+					showCertifications={true}
+					showCredentials={true}
+					showProfession={true}
+					showBio={true}
+					showLearnMore={true}
+					learnMoreText="Learn More"
+					cardSize="medium"
+				/>
+			</div>
+		))
+	}, [filteredTeam])
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
@@ -146,35 +178,8 @@ export default function TeamPage() {
 
 				{/* Team Grid */}
 				{filteredTeam.length > 0 ? (
-					<CardGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3 }} gap={6}>
-						{filteredTeam.map((member, index) => (
-							<div key={member.id} className={`stagger-${(index % 6) + 1}`}>
-								<DisplayCard
-									data={{
-										id: member.id,
-										name: member.name,
-										profession: member.profession,
-										credentials: member.credentials,
-										bio: member.bio,
-										type: member.type,
-										specialties: member.specialties,
-										certifications: member.certifications,
-										image: member.image,
-										fallbackIcon: 'pi pi-user',
-										href: `/team/${encodeURIComponent(member.name)}`,
-									}}
-									showImage={true}
-									showType={true}
-									showSpecialties={true}
-									showCertifications={true}
-									showCredentials={true}
-									showProfession={true}
-									showBio={true}
-									showLearnMore={true}
-									learnMoreText="Learn More"
-								/>
-							</div>
-						))}
+					<CardGrid columns={{ sm: 1, md: 2, lg: 3, xl: 3 }} gap={6} centerY>
+						{teamCardElements}
 					</CardGrid>
 				) : (
 					<Card className="yoga-card p-8 text-center">

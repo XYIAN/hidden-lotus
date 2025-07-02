@@ -38,6 +38,33 @@
 	box-shadow: 0 4px 16px rgba(107, 142, 90, 0.15) !important;
 }
 
+/* Dropdown menu styling */
+.lotus-menu-bar .p-submenu-list {
+	background: rgba(237, 232, 224, 0.95) !important;
+	backdrop-filter: blur(10px) !important;
+	border: 1px solid rgba(107, 142, 90, 0.2) !important;
+	border-radius: 12px !important;
+	box-shadow: 0 8px 32px rgba(139, 69, 19, 0.15) !important;
+	padding: 0.5rem !important;
+}
+
+.lotus-menu-bar .p-submenu-list .p-menuitem-content {
+	border-radius: 8px !important;
+	padding: 0.75rem 1rem !important;
+	transition: all 0.2s ease !important;
+}
+
+.lotus-menu-bar .p-submenu-list .p-menuitem-content:hover {
+	background: var(--sage-green-200) !important;
+	color: var(--primary-green) !important;
+}
+
+.lotus-menu-bar .p-submenu-list .p-menuitem-content.active-menu-item {
+	background: var(--sage-green-600) !important;
+	color: #fff !important;
+	box-shadow: 0 2px 8px rgba(107, 142, 90, 0.15) !important;
+}
+
 .lotus-menu-bar
 	.p-menubar-root-list
 	> .p-menuitem

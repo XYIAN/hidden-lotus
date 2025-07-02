@@ -2,7 +2,7 @@
 
 import { Toolbar } from 'primereact/toolbar'
 import { Button } from 'primereact/button'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -18,6 +18,14 @@ const navigationItems = [
 
 export function LotusToolbar() {
 	const pathname = usePathname()
+	const router = useRouter()
+
+	const isActive = (href: string) => {
+		if (href === '/') {
+			return pathname === '/'
+		}
+		return pathname.startsWith(href)
+	}
 
 	const startContent = (
 		<Link href="/" className="flex align-items-center gap-3">
@@ -42,10 +50,10 @@ export function LotusToolbar() {
 					icon={item.icon}
 					label={item.label}
 					onClick={() => {
-						window.location.href = item.href
+						router.push(item.href)
 					}}
 					className={`p-button-text ${
-						pathname === item.href
+						isActive(item.href)
 							? 'bg-sage-green-600 text-white active-nav-item'
 							: 'text-earth-brown hover:text-primary-green'
 					} transition-all transition-duration-200`}
@@ -65,7 +73,7 @@ export function LotusToolbar() {
 				className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
 				aria-label="Contact Support"
 				onClick={() => {
-					window.location.href = '/contact'
+					router.push('/contact')
 				}}
 			/>
 		</div>

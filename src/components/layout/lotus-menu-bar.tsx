@@ -2,7 +2,7 @@
 
 import { Menubar } from 'primereact/menubar'
 import { MenuItem } from 'primereact/menuitem'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import './lotus-menu-bar.css'
@@ -25,15 +25,23 @@ const navigationGroups = [
 
 export function LotusMenuBar() {
 	const pathname = usePathname()
+	const router = useRouter()
+
+	const isActive = (href: string) => {
+		if (href === '/') {
+			return pathname === '/'
+		}
+		return pathname.startsWith(href)
+	}
 
 	const items: MenuItem[] = [
 		...navigationGroups.map((item) => ({
 			label: item.label,
 			icon: item.icon,
 			command: () => {
-				window.location.href = item.href
+				router.push(item.href)
 			},
-			className: pathname === item.href ? 'active-menu-item' : '',
+			className: isActive(item.href) ? 'active-menu-item' : '',
 		})),
 		{
 			label: 'Info',
@@ -42,9 +50,9 @@ export function LotusMenuBar() {
 				label: item.label,
 				icon: item.icon,
 				command: () => {
-					window.location.href = item.href
+					router.push(item.href)
 				},
-				className: pathname === item.href ? 'active-menu-item' : '',
+				className: isActive(item.href) ? 'active-menu-item' : '',
 			})),
 		},
 	]

@@ -179,16 +179,21 @@ body {
 /* Card content styling improvements */
 .yoga-card .p-card-body {
 	padding: 1.5rem !important;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
+	flex: 1 !important;
+	display: flex !important;
+	flex-direction: column !important;
 }
 
 .yoga-card .p-card-content {
 	padding: 1.5rem !important;
-	flex: 1;
-	display: flex;
-	flex-direction: column;
+	flex: 1 !important;
+	display: flex !important;
+	flex-direction: column !important;
+}
+
+/* Fix for the specific div under p-card-content causing horizontal layout */
+.yoga-card .p-card-content > div {
+	flex-direction: column !important;
 }
 
 .yoga-card p {

@@ -3,12 +3,14 @@
 import { useState } from 'react'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
-import { InputText } from 'primereact/inputtext'
-import { InputTextarea } from 'primereact/inputtextarea'
-import { Dropdown } from 'primereact/dropdown'
 import { Steps } from 'primereact/steps'
 import { Message } from 'primereact/message'
 import { HeroSection } from '@/components/common/hero-section'
+import {
+	InputTextHL,
+	DropdownHL,
+	InputTextareaHL,
+} from '@/components/common/inputs'
 import '@/styles/stepper.css'
 
 interface FormData {
@@ -163,59 +165,35 @@ export default function ContactPage() {
 								Personal Information
 							</h2>
 							<div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
-								<div className="flex flex-col gap-2 w-full">
-									<label
-										htmlFor="name"
-										className="text-sm font-semibold text-primary-green"
-									>
-										Full Name *
-									</label>
-									<InputText
-										id="name"
-										value={formData.name}
-										onChange={(e) => updateFormData('name', e.target.value)}
-										className={errors.name ? 'p-invalid w-full' : 'w-full'}
-									/>
-									{errors.name && (
-										<small className="p-error">{errors.name}</small>
-									)}
-								</div>
-								<div className="flex flex-col gap-2 w-full">
-									<label
-										htmlFor="email"
-										className="text-sm font-semibold text-primary-green"
-									>
-										Email Address *
-									</label>
-									<InputText
-										id="email"
-										type="email"
-										value={formData.email}
-										onChange={(e) => updateFormData('email', e.target.value)}
-										className={errors.email ? 'p-invalid w-full' : 'w-full'}
-									/>
-									{errors.email && (
-										<small className="p-error">{errors.email}</small>
-									)}
-								</div>
-							</div>
-							<div className="flex flex-col gap-2 w-full">
-								<label
-									htmlFor="phone"
-									className="text-sm font-semibold text-primary-green"
-								>
-									Phone Number *
-								</label>
-								<InputText
-									id="phone"
-									value={formData.phone}
-									onChange={(e) => updateFormData('phone', e.target.value)}
-									className={errors.phone ? 'p-invalid w-full' : 'w-full'}
+								<InputTextHL
+									id="name"
+									label="Full Name"
+									value={formData.name}
+									onChange={(e) => updateFormData('name', e.target.value)}
+									error={errors.name}
+									required={true}
+									labelWidth={6}
 								/>
-								{errors.phone && (
-									<small className="p-error">{errors.phone}</small>
-								)}
+								<InputTextHL
+									id="email"
+									label="Email Address"
+									type="email"
+									value={formData.email}
+									onChange={(e) => updateFormData('email', e.target.value)}
+									error={errors.email}
+									required={true}
+									labelWidth={6}
+								/>
 							</div>
+							<InputTextHL
+								id="phone"
+								label="Phone Number"
+								value={formData.phone}
+								onChange={(e) => updateFormData('phone', e.target.value)}
+								error={errors.phone}
+								required={true}
+								labelWidth={6}
+							/>
 						</div>
 					)}
 
@@ -225,27 +203,19 @@ export default function ContactPage() {
 							<h2 className="text-2xl font-semibold text-primary-green mb-3 text-center">
 								Service Selection
 							</h2>
-							<div className="flex flex-col gap-2 w-full">
-								<label
-									htmlFor="service"
-									className="text-sm font-semibold text-primary-green"
-								>
-									What service are you interested in? *
-								</label>
-								<Dropdown
-									id="service"
-									value={formData.service}
-									onChange={(e) => updateFormData('service', e.value)}
-									options={services}
-									optionLabel="label"
-									optionValue="value"
-									placeholder="Select a service"
-									className={errors.service ? 'p-invalid w-full' : 'w-full'}
-								/>
-								{errors.service && (
-									<small className="p-error">{errors.service}</small>
-								)}
-							</div>
+							<DropdownHL
+								id="service"
+								label="What service are you interested in?"
+								value={formData.service}
+								onChange={(e) => updateFormData('service', e.value)}
+								options={services}
+								optionLabel="label"
+								optionValue="value"
+								placeholder="Select a service"
+								error={errors.service}
+								required={true}
+								labelWidth={6}
+							/>
 						</div>
 					)}
 
@@ -255,24 +225,16 @@ export default function ContactPage() {
 							<h2 className="text-2xl font-semibold text-primary-green mb-3 text-center">
 								Message
 							</h2>
-							<div className="flex flex-col gap-2 w-full">
-								<label
-									htmlFor="message"
-									className="text-sm font-semibold text-primary-green"
-								>
-									Tell us more about your needs *
-								</label>
-								<InputTextarea
-									id="message"
-									value={formData.message}
-									onChange={(e) => updateFormData('message', e.target.value)}
-									rows={5}
-									className={errors.message ? 'p-invalid w-full' : 'w-full'}
-								/>
-								{errors.message && (
-									<small className="p-error">{errors.message}</small>
-								)}
-							</div>
+							<InputTextareaHL
+								id="message"
+								label="Tell us more about your needs"
+								value={formData.message}
+								onChange={(e) => updateFormData('message', e.target.value)}
+								rows={5}
+								error={errors.message}
+								required={true}
+								labelWidth={6}
+							/>
 						</div>
 					)}
 
@@ -327,7 +289,8 @@ export default function ContactPage() {
 							label="Previous"
 							icon="pi pi-arrow-left"
 							onClick={handlePrev}
-							className="p-button-outlined border-sage-green-600 text-sage-green-600"
+							outlined
+							className="border-sage-green-600 text-sage-green-600"
 							disabled={activeStep === 0}
 						/>
 						{activeStep < steps.length - 1 ? (

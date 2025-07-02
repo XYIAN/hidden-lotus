@@ -5,7 +5,115 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [0.9.4] - 2024-12-19
+## [1.0.6] - 2024-12-19
+
+### Added
+
+- **Hidden Lotus Input Components**: Created reusable input components with built-in labels and error handling
+- **InputTextHL**: Wrapper for PrimeReact InputText with customizable label width and error display
+- **DropdownHL**: Wrapper for PrimeReact Dropdown with customizable label width and error display
+- **InputTextareaHL**: Wrapper for PrimeReact InputTextarea with customizable label width and error display
+- **Label Width Customization**: All input components support customizable label widths (in rem)
+
+### Changed
+
+- **Contact Page Refactoring**: Replaced all form inputs with new Hidden Lotus input components
+- **PrimeReact Props Usage**: Updated buttons to use `outlined` prop instead of `className="p-button-outlined"`
+- **Bundle Size Optimization**: Contact page reduced from 4.06 kB to 2.57 kB
+- **Form Consistency**: All form inputs now have consistent styling and behavior
+
+### Fixed
+
+- **Form Accessibility**: Improved form accessibility with proper labels and error handling
+- **Code Reusability**: Created modular input components for use across the entire application
+- **Type Safety**: Enhanced TypeScript interfaces for all input components
+- **Label Styling**: Fixed label width vs font size confusion - now supports label width customization
+
+### Technical
+
+- Created `src/components/common/inputs/` directory for all input components
+- Implemented proper form ID connections for accessibility
+- Added support for required field indicators with red asterisks
+- Enhanced error display with consistent styling
+- Improved component exports through index.ts files
+- Labels use default font size (text-sm) with customizable width
+
+## [1.0.5] - 2024-12-19
+
+### Fixed
+
+- **Class Card Layout**: Fixed specific div under p-card-content causing horizontal layout in class cards
+- **CSS Specificity**: Added targeted CSS rule to force vertical layout for card content divs
+- **PrimeReact Props**: Updated components to use PrimeReact props (e.g., `size="small"`) instead of className where possible
+
+### Changed
+
+- **Code Refactoring**: Broke down large classes page into smaller, reusable components
+- **Component Organization**: Created `src/components/classes/` directory with feature-specific components
+- **Reusable Form Fields**: Created `FormField` component with built-in label and controller wrapper
+- **Bundle Size**: Reduced classes page bundle size from 14.3 kB to 5.28 kB through better code organization
+
+### Added
+
+- **ClassesFilter**: Reusable filter component with search, category, and level filters
+- **ClassesGrid**: Dedicated grid component for displaying filtered classes
+- **ResultsCount**: Component showing result count and active filter tags
+- **FormField**: Reusable form field component supporting input and dropdown types
+
+### Technical
+
+- Added CSS rule `.yoga-card .p-card-content > div { flex-direction: column !important; }` to fix layout
+- Created modular component architecture for better maintainability
+- Implemented proper TypeScript interfaces for all new components
+- Enhanced component reusability across the application
+- Improved code organization with feature-based component structure
+
+## [1.0.4] - 2024-12-19
+
+### Fixed
+
+- **Card Layout Orientation**: Fixed card content displaying horizontally instead of vertically
+- **Content Flow**: Ensured proper vertical flow: image → title → tags → profession → credentials → description
+- **CSS Conflicts**: Resolved conflicting flex styles between yoga-card and generic p-card CSS
+- **Layout Consistency**: All cards now display content in proper vertical column layout
+
+### Technical
+
+- Enhanced yoga-card CSS specificity with `!important` declarations to override generic p-card styles
+- Updated card content div to use `flex flex-col justify-center items-center` for proper vertical alignment
+- Fixed CSS cascade issues that were causing horizontal layout instead of vertical
+- Maintained all existing colors, sizing, and styling while fixing only the layout orientation
+
+## [1.0.3] - 2024-12-19
+
+### Fixed
+
+- **Navigation Performance**: Replaced `window.location.href` with Next.js `router.push()` for faster client-side navigation
+- **Active Item Logic**: Fixed active menu item detection to properly highlight current page
+- **Sidebar Navigation**: Improved mobile sidebar navigation with proper active state styling
+- **Menu Bar Navigation**: Enhanced desktop menu bar with working active item indicators
+
+### Changed
+
+- **Routing Best Practices**: Implemented proper Next.js routing patterns for better performance
+- **Navigation UX**: Added visual feedback for active menu items across all navigation components
+- **Dropdown Styling**: Enhanced Info dropdown menu styling with proper active states
+
+### Technical
+
+- Replaced all `window.location.href` calls with `router.push()` for client-side navigation
+- Added `isActive()` function with proper path matching logic (exact match for home, startsWith for others)
+- Enhanced CSS for active menu items in both desktop and mobile navigation
+- Improved dropdown menu styling with backdrop blur and proper hover states
+- Added `useRouter` hook to all navigation components for consistent routing
+
+## [1.0.2] - 2024-12-19
+
+### Fixed
+
+- **Card Layout**: Fixed card content displaying in row instead of column layout
+- **Flex Layout**: Resolved conflicting flex styles causing layout issues
+- **Content Centering**: Improved card content centering and vertical alignment
 
 ### Changed
 
@@ -17,11 +125,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Technical
 
+- Fixed card content div to use `h-full flex flex-col justify-center` instead of `flex-1 flex flex-col justify-center`
+- Removed conflicting CSS styles from yoga-card body and content selectors
 - Replaced `aspectRatio` prop with `cardSize` prop in DisplayCard component
 - Added `getCardDimensions()` function for consistent sizing logic
 - Updated card container to use fixed Tailwind classes instead of aspect ratios
 - Enhanced card content layout with proper flex centering
 - Improved CSS for consistent card behavior across all screen sizes
+
+## [1.0.1] - 2024-12-19
+
+### Changed
+
+- **Contact Form Stepper**: Replaced Steps component with proper Stepper and StepperPanel components
+- **Vertical Orientation**: Contact form now uses vertical stepper orientation for better mobile experience
+- **Theme Integration**: Added custom CSS styling for stepper to match Hidden Lotus theme colors
+- **Form Structure**: Improved form layout with proper panel-based navigation
+- **Button Styling**: Updated stepper navigation buttons with theme-appropriate colors
+
+### Technical
+
+- Updated contact form to use PrimeReact Stepper component instead of Steps
+- Added custom stepper CSS with sage green, pastel pink, and earth brown color scheme
+- Improved mobile responsiveness for stepper component
+- Enhanced form validation and user experience
 
 ## [0.9.3] - 2024-12-19
 
