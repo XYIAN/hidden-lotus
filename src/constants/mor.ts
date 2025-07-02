@@ -3,6 +3,7 @@ import { MORSection } from '@/types'
 export const morSections: MORSection[] = [
 	{
 		id: 'mindfulness',
+		name: 'Mindfulness',
 		title: 'Mindfulness',
 		subtitle: 'Present Moment Awareness',
 		description:
@@ -17,6 +18,7 @@ export const morSections: MORSection[] = [
 	},
 	{
 		id: 'optimization',
+		name: 'Optimization',
 		title: 'Optimization',
 		subtitle: 'Peak Performance',
 		description:
@@ -31,6 +33,7 @@ export const morSections: MORSection[] = [
 	},
 	{
 		id: 'recovery',
+		name: 'Recovery',
 		title: 'Recovery',
 		subtitle: 'Natural Healing',
 		description:
