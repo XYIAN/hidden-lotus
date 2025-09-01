@@ -135,14 +135,14 @@ export function ClassCard({ classData }: ClassCardProps) {
 					</div>
 				)}
 
-				{/* Book Now Button - Centered with pulsing effect */}
+				{/* Details Button - Centered */}
 				<div className="flex justify-content-center mt-auto">
 					<Link href={`/classes/${classData.id}`}>
 						<Button
-							label="Book Now"
-							icon="pi pi-calendar-plus"
+							label="Details"
+							icon="pi pi-info-circle"
 							iconPos="right"
-							className="bg-pastel-pink border-pastel-pink text-secondary-brown button-pulse"
+							className="bg-sage-green-600 border-sage-green-600 text-white hover:bg-sage-green-700"
 							style={{ minWidth: '120px' }}
 						/>
 					</Link>

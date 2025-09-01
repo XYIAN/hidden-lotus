@@ -16,6 +16,7 @@ import { IMAGES } from '@/constants/images'
 const navigationItems = [
 	{ label: 'Home', href: '/' },
 	{ label: 'Classes', href: '/classes' },
+	{ label: 'Membership', href: '/membership' },
 	{ label: 'Team', href: '/team' },
 	{ label: 'About', href: '/about' },
 	{ label: 'Story', href: '/story' },
@@ -43,6 +44,8 @@ export function Header() {
 					return 'pi pi-home'
 				case '/classes':
 					return 'pi pi-calendar-plus'
+				case '/membership':
+					return 'pi pi-heart'
 				case '/team':
 					return 'pi pi-users'
 				case '/about':
@@ -52,7 +55,7 @@ export function Header() {
 				case '/contact':
 					return 'pi pi-envelope'
 				case '/mor':
-					return 'pi pi-heart'
+					return 'pi pi-star'
 				default:
 					return 'pi pi-home'
 			}

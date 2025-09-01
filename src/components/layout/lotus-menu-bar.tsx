@@ -21,6 +21,7 @@ const infoItems = [
 const navigationGroups = [
 	{ label: 'Home', href: '/', icon: 'pi pi-home' },
 	{ label: 'Classes', href: '/classes', icon: 'pi pi-calendar-plus' },
+	{ label: 'Membership', href: '/membership', icon: 'pi pi-heart' },
 ]
 
 export function LotusMenuBar() {

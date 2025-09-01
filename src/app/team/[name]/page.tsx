@@ -89,8 +89,8 @@ export default function TeamMemberPage() {
 							<span className="font-bold">{classItem.price}</span>
 						</div>
 						<Button
-							label="Book Now"
-							icon="pi pi-calendar-plus"
+							label="Details"
+							icon="pi pi-info-circle"
 							className="w-full mt-3 bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600"
 							onClick={() =>
 								(window.location.href = `/classes/${classItem.id}`)

@@ -10,11 +10,12 @@ import { IMAGES } from '@/constants/images'
 const navigationItems = [
 	{ label: 'Home', href: '/', icon: 'pi pi-home' },
 	{ label: 'Classes', href: '/classes', icon: 'pi pi-calendar-plus' },
+	{ label: 'Membership', href: '/membership', icon: 'pi pi-heart' },
 	{ label: 'Team', href: '/team', icon: 'pi pi-users' },
 	{ label: 'About', href: '/about', icon: 'pi pi-info-circle' },
 	{ label: 'Story', href: '/story', icon: 'pi pi-book' },
 	{ label: 'Contact', href: '/contact', icon: 'pi pi-envelope' },
-	{ label: 'MOR', href: '/mor', icon: 'pi pi-heart' },
+	{ label: 'MOR', href: '/mor', icon: 'pi pi-star' },
 ]
 
 export function LotusToolbar() {

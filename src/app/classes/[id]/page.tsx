@@ -1,16 +1,10 @@
 'use client'
 
-import { useState } from 'react'
 import { useParams } from 'next/navigation'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
-import { Calendar } from 'primereact/calendar'
-import { Dialog } from 'primereact/dialog'
-import { InputText } from 'primereact/inputtext'
-import { Toast } from 'primereact/toast'
 import { Tag } from 'primereact/tag'
 import { classesData } from '@/constants/classes'
-import { useRef } from 'react'
 import Link from 'next/link'
 import '@/styles/animations.css'
 
@@ -18,15 +12,6 @@ export default function ClassDetailPage() {
 	const params = useParams()
 	const classId = params.id as string
 	const classData = classesData.find((c) => c.id === classId)
-	const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-	const [showBookingDialog, setShowBookingDialog] = useState(false)
-	const [bookingForm, setBookingForm] = useState({
-		name: '',
-		email: '',
-		phone: '',
-	})
-	const [showSuccessDialog, setShowSuccessDialog] = useState(false)
-	const toast = useRef<Toast>(null)
 
 	if (!classData) {
 		return (
@@ -65,33 +50,6 @@ export default function ClassDetailPage() {
 		)
 	}
 
-	const handleBooking = () => {
-		if (!selectedDate) {
-			toast.current?.show({
-				severity: 'warn',
-				summary: 'Date Required',
-				detail: 'Please select a date for your booking.',
-				life: 3000,
-			})
-			return
-		}
-
-		if (!bookingForm.name || !bookingForm.email || !bookingForm.phone) {
-			toast.current?.show({
-				severity: 'warn',
-				summary: 'Information Required',
-				detail: 'Please fill in all required fields.',
-				life: 3000,
-			})
-			return
-		}
-
-		setShowBookingDialog(false)
-		setShowSuccessDialog(true)
-		setBookingForm({ name: '', email: '', phone: '' })
-		setSelectedDate(null)
-	}
-
 	const getCategoryColor = (category: string) => {
 		const colors: Record<string, string> = {
 			yoga: 'bg-sage-green-600',
@@ -121,7 +79,6 @@ export default function ClassDetailPage() {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-br from-light-tan to-sage-green-50 p-4 page-transition">
-			<Toast ref={toast} />
 			<div className="max-w-4xl mx-auto">
 				{/* Back Button */}
 				<div className="mb-4">
@@ -284,148 +241,10 @@ export default function ClassDetailPage() {
 									))}
 								</div>
 							</Card>
-
-							{/* Book Now Button */}
-							<div className="flex justify-content-center">
-								<Button
-									label="Book This Class"
-									icon="pi pi-calendar-plus"
-									onClick={() => setShowBookingDialog(true)}
-									className="bg-pastel-pink border-pastel-pink text-secondary-brown button-pulse p-button-lg"
-									style={{ minWidth: '200px' }}
-								/>
-							</div>
 						</div>
 					</div>
 				</Card>
 			</div>
-
-			{/* Booking Dialog */}
-			<Dialog
-				header="Book Your Class"
-				visible={showBookingDialog}
-				onHide={() => setShowBookingDialog(false)}
-				className="w-11 md:w-6 lg:w-4"
-				modal
-			>
-				<div className="flex flex-column gap-4">
-					<div className="flex flex-column gap-2">
-						<label
-							htmlFor="date"
-							className="text-sm font-semibold text-primary-green"
-						>
-							Select Date
-						</label>
-						<Calendar
-							id="date"
-							value={selectedDate}
-							onChange={(e) => setSelectedDate(e.value as Date)}
-							minDate={new Date()}
-							className="w-full"
-						/>
-					</div>
-
-					<div className="flex flex-column gap-2">
-						<label
-							htmlFor="name"
-							className="text-sm font-semibold text-primary-green"
-						>
-							Full Name *
-						</label>
-						<InputText
-							id="name"
-							value={bookingForm.name}
-							onChange={(e) =>
-								setBookingForm({ ...bookingForm, name: e.target.value })
-							}
-							className="w-full"
-						/>
-					</div>
-
-					<div className="flex flex-column gap-2">
-						<label
-							htmlFor="email"
-							className="text-sm font-semibold text-primary-green"
-						>
-							Email *
-						</label>
-						<InputText
-							id="email"
-							type="email"
-							value={bookingForm.email}
-							onChange={(e) =>
-								setBookingForm({ ...bookingForm, email: e.target.value })
-							}
-							className="w-full"
-						/>
-					</div>
-
-					<div className="flex flex-column gap-2">
-						<label
-							htmlFor="phone"
-							className="text-sm font-semibold text-primary-green"
-						>
-							Phone Number *
-						</label>
-						<InputText
-							id="phone"
-							value={bookingForm.phone}
-							onChange={(e) =>
-								setBookingForm({ ...bookingForm, phone: e.target.value })
-							}
-							className="w-full"
-						/>
-					</div>
-
-					<div className="flex gap-3 justify-content-end">
-						<Button
-							label="Cancel"
-							onClick={() => setShowBookingDialog(false)}
-							className="p-button-text"
-						/>
-						<Button
-							label="Confirm Booking"
-							onClick={handleBooking}
-							className="bg-sage-green-600 border-sage-green-600"
-						/>
-					</div>
-				</div>
-			</Dialog>
-
-			{/* Success Dialog */}
-			<Dialog
-				header="Booking Confirmed!"
-				visible={showSuccessDialog}
-				onHide={() => setShowSuccessDialog(false)}
-				className="w-11 md:w-6 lg:w-4"
-				modal
-			>
-				<div className="text-center py-4">
-					<div className="text-6xl mb-4">🎉</div>
-					<h3 className="text-xl font-semibold text-primary-green mb-2">
-						Booking Successful!
-					</h3>
-					<p className="text-earth-brown mb-4">
-						Your class has been booked successfully. You will receive a
-						confirmation email shortly.
-					</p>
-					<div className="flex gap-3 justify-content-center">
-						<Button
-							label="Book Another Class"
-							onClick={() => {
-								setShowSuccessDialog(false)
-								window.location.href = '/classes'
-							}}
-							className="bg-sage-green-600 border-sage-green-600"
-						/>
-						<Button
-							label="Close"
-							onClick={() => setShowSuccessDialog(false)}
-							className="p-button-text"
-						/>
-					</div>
-				</div>
-			</Dialog>
 		</div>
 	)
 }

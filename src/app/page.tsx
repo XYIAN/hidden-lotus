@@ -21,11 +21,11 @@ const actionButtons = [
 		buttonText: 'Meet Team',
 	},
 	{
-		title: 'Book Consultation',
-		description: 'Schedule a personalized wellness consultation',
-		icon: 'pi pi-calendar',
+		title: 'Get in Touch',
+		description: 'Contact us for personalized wellness guidance',
+		icon: 'pi pi-envelope',
 		href: '/contact',
-		buttonText: 'Book Now',
+		buttonText: 'Contact Us',
 	},
 ]
 

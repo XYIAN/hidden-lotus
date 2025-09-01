@@ -5,6 +5,69 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2024-12-19
+
+### 🎉 Booking System Removal & Membership Page Addition
+
+#### Added
+
+- **New Membership Page**:
+
+  - Created comprehensive membership page with PrimeReact TabView
+  - Added three main sections: Membership Details, Features & Programs, and Pricing & Plans
+  - Implemented responsive design with custom CSS styling
+  - Added membership navigation to all menu components
+
+- **Membership Page Features**:
+  - Hero section with compelling membership description
+  - TabView with detailed membership information
+  - Program cards showcasing wellness offerings
+  - Pricing section with transparent membership costs
+  - Responsive design for all screen sizes
+
+#### Changed
+
+- **Booking System Removal**:
+
+  - Commented out booking functionality from all pages
+  - Updated robots.txt to disallow booking-related pages
+  - Removed booking dialogs and forms from class detail pages
+  - Changed "Book Now" buttons to "Details" buttons throughout the site
+
+- **Navigation Updates**:
+
+  - Added Membership page to all navigation menus
+  - Updated menu icons to accommodate new membership link
+  - Changed MOR icon from heart to star to avoid conflicts
+
+- **Button Text Changes**:
+  - Changed "Book Now" to "Details" on class cards and pages
+  - Updated home page "Book Consultation" to "Get in Touch"
+  - Removed booking buttons from class detail pages
+
+#### Removed
+
+- **Booking Functionality**:
+  - Removed booking dialogs and forms from class detail pages
+  - Removed booking-related state management
+  - Removed booking form validation and submission logic
+  - Removed success dialogs for booking confirmations
+
+#### Technical
+
+- **New Files Created**:
+
+  - `src/app/membership/page.tsx`: Main membership page component
+  - Added membership styles to global CSS for proper styling and CSS variable access
+
+- **Updated Files**:
+  - Updated robots.txt to disallow booking pages
+  - Modified navigation components to include membership
+  - Updated class cards and detail pages to remove booking functionality
+  - Enhanced home page with updated contact section
+
+---
+
 ## [2.0.0] - 2024-12-19
 
 ### 🎉 Major Release - Enhanced User Experience & Type Safety

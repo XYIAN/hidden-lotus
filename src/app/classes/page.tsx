@@ -207,7 +207,7 @@ export default function ClassesPage() {
 							showLevel={true}
 							showCategory={true}
 							showLearnMore={true}
-							learnMoreText="Book Now"
+							learnMoreText="Details"
 							className="text-center"
 						/>
 					))}
