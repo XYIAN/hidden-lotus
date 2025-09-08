@@ -20,18 +20,19 @@ const actionButtons = [
 		href: '/team',
 		buttonText: 'Meet Team',
 	},
-	{
-		title: 'Get in Touch',
-		description: 'Contact us for personalized wellness guidance',
-		icon: 'pi pi-envelope',
-		href: '/contact',
-		buttonText: 'Contact Us',
-	},
+	// {
+	// 	title: 'Get in Touch',
+	// 	description: 'Contact us for personalized wellness guidance',
+	// 	icon: 'pi pi-envelope',
+	// 	href: '/contact',
+	// 	buttonText: 'Contact Us',
+	// },
+	// commented out the contact section for now 
 ]
 
 export default function HomePage() {
 	return (
-		<div className="flex flex-column gap-6 p-4">
+		<div className="flex flex-column gap-3 lg:gap-5 p-2 mb-6">
 			<HeroSection
 				title="Welcome to Hidden Lotus"
 				description="Discover your path to wellness and inner peace through our holistic approach to healing and mindfulness."
@@ -39,7 +40,8 @@ export default function HomePage() {
 
 			<ButtonGroup buttons={actionButtons} />
 
-			<ContactSection />
+			{/* <ContactSection /> */} 
+			{/* commented out the contact section  */}
 		</div>
 	)
 }

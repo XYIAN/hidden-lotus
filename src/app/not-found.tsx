@@ -52,6 +52,7 @@ export default function NotFound() {
 								className="p-button-lg bg-sage-green-600 border-sage-green-600"
 							/>
 						</Link>
+						{/**
 						<Link href="/contact">
 							<Button
 								label="Contact Us"
@@ -60,6 +61,7 @@ export default function NotFound() {
 								className="p-button-lg"
 							/>
 						</Link>
+						**/}
 					</div>
 
 					{/* Helpful Links */}

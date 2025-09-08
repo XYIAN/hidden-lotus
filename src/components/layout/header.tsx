@@ -20,8 +20,8 @@ const navigationItems = [
 	{ label: 'Team', href: '/team' },
 	{ label: 'About', href: '/about' },
 	{ label: 'Story', href: '/story' },
-	{ label: 'Contact', href: '/contact' },
-	{ label: 'MOR', href: '/mor' },
+	// { label: 'Contact', href: '/contact' }, // commented out per request
+	// { label: 'MOR', href: '/mor' }, // commented out per request
 ]
 
 export function Header() {
@@ -80,7 +80,7 @@ export function Header() {
 					<LotusMenuBar />
 				</div>
 				{/* Logo and Hamburger for Mobile (show below tablet breakpoint) */}
-				<div className="flex justify-between items-center tablet:hidden w-full px-4 py-3">
+				<div className="flex justify-between items-center tablet:hidden w-full px-3 py-2">
 					<Link
 						href="/"
 						className="flex items-center gap-3 justify-content-center align-items-center"
@@ -88,8 +88,8 @@ export function Header() {
 						<Image
 							src={IMAGES.LOGO}
 							alt="Hidden Lotus"
-							width={100}
-							height={100}
+							width={72}
+							height={72}
 							className="rounded-lg object-contain"
 							style={{ borderRadius: '12px' }}
 							priority
@@ -115,7 +115,7 @@ export function Header() {
 						}}
 						aria-label="Open menu"
 					>
-						<FaSpa className="text-primary-green" size={25} />
+						<FaSpa className="text-primary-green" size={22} />
 					</Button>
 				</div>
 			</header>
@@ -134,7 +134,7 @@ export function Header() {
 					<div className="flex-grow-1">
 						<Menu model={menuItems} className="custom-sidebar-menu" />
 					</div>
-					<div className="p-4 text-center border-top-1 border-gray-600">
+					<div className="p-4 text-center border-top-1 border-gray-600 sidebar-footer">
 						<a
 							href="https://www.linkedin.com/company/xyian"
 							target="_blank"

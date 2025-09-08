@@ -35,6 +35,7 @@ export default function ClassDetailPage() {
 										className="bg-sage-green-600 border-sage-green-600"
 									/>
 								</Link>
+								{/**
 								<Link href="/contact">
 									<Button
 										label="Contact Support"
@@ -42,6 +43,7 @@ export default function ClassDetailPage() {
 										className="bg-pastel-pink border-pastel-pink text-secondary-brown"
 									/>
 								</Link>
+								**/}
 							</div>
 						</div>
 					</Card>
@@ -70,11 +72,11 @@ export default function ClassDetailPage() {
 
 	const getLevelColor = (level: string) => {
 		const colors: Record<string, string> = {
-			beginner: 'bg-green-500',
-			intermediate: 'bg-yellow-500',
-			advanced: 'bg-red-500',
+			beginner: 'bg-pastel-pink',
+			intermediate: 'bg-pastel-pink',
+			advanced: 'bg-pastel-pink',
 		}
-		return colors[level] || 'bg-green-500'
+		return colors[level] || 'bg-pastel-pink'
 	}
 
 	return (
@@ -86,7 +88,7 @@ export default function ClassDetailPage() {
 						<Button
 							label="Back to Classes"
 							icon="pi pi-arrow-left"
-							className="bg-sage-green-600 border-sage-green-600"
+							className="bg-sage-green-600 border-sage-green-600 home-button-icon-gap"
 						/>
 					</Link>
 				</div>
@@ -236,7 +238,7 @@ export default function ClassDetailPage() {
 												month: 'short',
 												day: 'numeric',
 											})}
-											className="bg-white border-sage-green-200 text-earth-brown"
+											className="bg-white border-sage-green-200 text-earth-brown date-tag-tall"
 										/>
 									))}
 								</div>

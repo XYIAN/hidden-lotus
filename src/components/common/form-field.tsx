@@ -37,6 +37,8 @@ export function FormField<T extends FieldValues = FieldValues>(
 								{...field}
 								id={name}
 								className="w-full"
+								appendTo={props.dropdownProps?.appendTo ?? 'self'}
+								panelClassName="hl-dropdown-panel"
 								{...props.dropdownProps}
 							/>
 						)

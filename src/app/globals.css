@@ -46,6 +46,15 @@ body {
 	background-repeat: no-repeat;
 }
 
+/* Footer shadow utility to ensure higher specificity than component inline styles */
+.footer-shadow {
+	/* Stronger upward shadow to accent the top border line */
+	box-shadow: 
+		0 -2px 10px rgba(0, 0, 0, 0.18),
+		0 -8px 24px rgba(107, 142, 90, 0.22),
+		inset 0 1px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
 body {
 	color: var(--foreground);
 	font-family: var(--font-sans), "Inter", Arial, Helvetica, sans-serif;
@@ -112,6 +121,13 @@ body {
 	border-radius: 8px !important;
 	margin: 0 0.25rem !important;
 	transform: translateY(0) !important;
+}
+
+/* Add space between left icon and text in membership tab headers */
+.membership-tabs .p-tabview-nav-link > i.pi,
+.membership-tabs .p-tabview-nav-link > span.pi,
+.membership-tabs .p-tabview-nav-link > .p-tabview-left-icon {
+	margin-right: 0.5rem !important;
 }
 
 .membership-tabs .p-tabview-nav-link:hover {
@@ -499,6 +515,46 @@ body {
 	transition: opacity 0.2s ease, transform 0.2s ease !important;
 }
 
+/* Increase spacing between Button label and right icon on home cards */
+.home-button-icon-gap .p-button-icon-right {
+	margin-left: 0.5rem !important;
+}
+.home-button-icon-gap .p-button-icon-left {
+	margin-right: 0.5rem !important;
+}
+
+/* Ultra-compact button utility for very small width */
+.p-button-ultra-compact {
+	padding: 0.2rem 0.4rem !important;
+	min-width: 0 !important;
+	line-height: 1 !important;
+}
+.p-button.p-button-ultra-compact {
+	padding: 0.15rem 0.35rem !important;
+}
+.p-button-ultra-compact .p-button-label {
+	font-size: 0.7rem !important;
+	line-height: 1 !important;
+}
+.p-button-ultra-compact .p-button-icon-right,
+.p-button-ultra-compact .p-button-icon-left {
+	font-size: 0.8rem !important;
+	margin-left: 0.2rem !important;
+}
+
+/* Extra-small button utility */
+.p-button-xs {
+	padding: 0.35rem 0.8rem !important;
+	font-size: 0.8rem !important;
+}
+.p-button-xs .p-button-label {
+	font-size: 0.8rem !important;
+}
+.p-button-xs .p-button-icon-right,
+.p-button-xs .p-button-icon-left {
+	font-size: 0.9rem !important;
+}
+
 .p-button:hover {
 	opacity: 1 !important;
 	transform: translateY(-1px) !important;
@@ -556,6 +612,23 @@ body {
 .p-tag {
 	border-radius: 12px !important;
 	padding: 0.25rem 0.75rem !important;
+}
+
+/* Larger type badge (team page uses DisplayCard.showType) */
+.type-badge .p-tag, .type-badge .p-tag .p-tag-icon, .type-badge .p-tag .p-tag-value {
+	font-size: 0.95rem !important;
+}
+.type-badge .p-tag .p-tag-icon {
+	margin-right: 0.4rem !important;
+	font-size: 1.1rem !important;
+}
+
+/* Taller date tag for Available Dates */
+.date-tag-tall.p-tag,
+.date-tag-tall {
+	padding-top: 0.45rem !important;
+	padding-bottom: 0.45rem !important;
+	font-size: 0.95rem !important;
 }
 
 /* Card styling improvements */
@@ -640,6 +713,24 @@ body {
 	background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
 	background-size: 200% 100%;
 	animation: loading 1.5s infinite;
+}
+
+/* Disable PrimeReact overlay animations (e.g., Dropdown panels) app-wide */
+.p-connected-overlay-enter,
+.p-connected-overlay-enter-active,
+.p-connected-overlay-leave,
+.p-connected-overlay-leave-active,
+.p-dropdown-panel,
+.p-overlaypanel,
+.p-datepicker,
+.p-autocomplete-panel,
+.p-select-overlay,
+.p-tieredmenu,
+.p-menu,
+.p-contextmenu {
+	animation: none !important;
+	transition: none !important;
+	z-index: 1100 !important;
 }
 
 @keyframes loading {

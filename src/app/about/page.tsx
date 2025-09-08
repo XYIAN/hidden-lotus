@@ -145,6 +145,7 @@ export default function AboutPage() {
                 className="bg-sage-green-600 border-sage-green-600"
               />
             </Link>
+            {/**
             <Link href="/contact">
               <Button
                 label="Contact Us"
@@ -152,6 +153,7 @@ export default function AboutPage() {
                 className="p-button-outlined border-sage-green-600 text-sage-green-600"
               />
             </Link>
+            **/}
           </div>
         </Card>
       </section>

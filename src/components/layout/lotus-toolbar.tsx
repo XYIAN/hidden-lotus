@@ -68,18 +68,7 @@ export function LotusToolbar() {
 		</div>
 	)
 
-	const endContent = (
-		<div className="flex align-items-center gap-2">
-			<Button
-				icon="pi pi-heart"
-				className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
-				aria-label="Contact Support"
-				onClick={() => {
-					router.push('/contact')
-				}}
-			/>
-		</div>
-	)
+	const endContent = <div className="flex align-items-center gap-2" />
 
 	return (
 		<Toolbar

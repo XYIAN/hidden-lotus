@@ -33,11 +33,11 @@ export function ClassCard({ classData }: ClassCardProps) {
 
 	const getLevelColor = (level: string) => {
 		const colors: Record<string, string> = {
-			beginner: 'bg-green-500',
-			intermediate: 'bg-yellow-500',
-			advanced: 'bg-red-500',
+			beginner: 'bg-pastel-pink',
+			intermediate: 'bg-pastel-pink',
+			advanced: 'bg-pastel-pink',
 		}
-		return colors[level] || 'bg-green-500'
+		return colors[level] || 'bg-pastel-pink'
 	}
 
 	return (

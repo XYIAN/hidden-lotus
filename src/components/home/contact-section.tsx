@@ -11,14 +11,16 @@ export function ContactSection() {
 				<p className="text-earth-brown mb-4">
 					Get in touch with us to learn more about our wellness programs.
 				</p>
+				{/**
 				<Link href="/contact">
 					<Button
 						label="Contact Us"
 						icon="pi pi-envelope"
 						iconPos="right"
-						className="p-button-lg bg-pastel-pink border-pastel-pink text-secondary-brown"
+						className="p-button-xs bg-pastel-pink border-pastel-pink text-secondary-brown home-button-icon-gap"
 					/>
 				</Link>
+				**/}
 			</div>
 		</section>
 	)

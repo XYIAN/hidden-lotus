@@ -1,29 +1,22 @@
 import Link from 'next/link'
+import { Button } from 'primereact/button'
 
 export function Footer() {
 	return (
-		<footer className="w-full py-4 px-4 text-center border-t border-sage-green-200/30 bg-light-tan/20 backdrop-blur-sm">
-			<div className="max-w-4xl mx-auto flex flex-column gap-2">
-				<Link
-					href="/story"
-					className="text-earth-brown/80 hover:text-earth-brown transition-colors duration-200 text-sm font-medium"
-				>
-					Learn More
+		<footer
+			className="w-full py-4 px-4 text-center border-t border-sage-green-200/30 bg-light-tan/20 backdrop-blur-sm footer-shadow rounded-t-xl overflow-hidden"
+			style={{ borderTopLeftRadius: '16px', borderTopRightRadius: '16px' }}
+		>
+			<div className="max-w-4xl mx-auto flex justify-center gap-3 flex-wrap">
+				<Link href="/story">
+					<Button label="Learn More" className="p-button-xs bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600" />
 				</Link>
-				<div className="flex justify-center gap-4 text-xs text-earth-brown/60">
-					<Link
-						href="/privacy"
-						className="hover:text-earth-brown/80 transition-colors duration-200"
-					>
-						Privacy
-					</Link>
-					<Link
-						href="/terms"
-						className="hover:text-earth-brown/80 transition-colors duration-200"
-					>
-						Terms
-					</Link>
-				</div>
+				<Link href="/privacy">
+					<Button label="Privacy" className="p-button-xs bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600" />
+				</Link>
+				<Link href="/terms">
+					<Button label="Terms" className="p-button-xs bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600" />
+				</Link>
 			</div>
 		</footer>
 	)

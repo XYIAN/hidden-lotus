@@ -140,7 +140,7 @@ export function DisplayCard({
 
 				{/* Type Badge */}
 				{showType && type && (
-					<div className="mb-3 flex justify-content-center">
+					<div className="mb-3 flex justify-content-center type-badge">
 						<Tag
 							value={type.charAt(0).toUpperCase() + type.slice(1)}
 							icon={getTypeIcon(type)}
@@ -153,37 +153,37 @@ export function DisplayCard({
 				<div className="flex justify-content-center mb-4 flex-grow-1">
 					<div className="flex flex-column gap-2">
 						{showProfession && profession && (
-							<div className="flex align-items-center gap-2">
+							<div className="flex align-items-center gap-3">
 								<i className="pi pi-briefcase text-sage-green-600"></i>
 								<span className="text-sm text-earth-brown">{profession}</span>
 							</div>
 						)}
 						{showCredentials && credentials && (
-							<div className="flex align-items-center gap-2">
+							<div className="flex align-items-center gap-3">
 								<i className="pi pi-certificate text-sage-green-600"></i>
 								<span className="text-sm text-earth-brown">{credentials}</span>
 							</div>
 						)}
 						{showPrice && price && (
-							<div className="flex align-items-center gap-2">
+							<div className="flex align-items-center gap-3">
 								<i className="pi pi-dollar text-sage-green-600"></i>
 								<span className="text-sm text-earth-brown">{price}</span>
 							</div>
 						)}
 						{showDuration && duration && (
-							<div className="flex align-items-center gap-2">
+							<div className="flex align-items-center gap-3">
 								<i className="pi pi-clock text-sage-green-600"></i>
 								<span className="text-sm text-earth-brown">{duration}</span>
 							</div>
 						)}
 						{showLevel && level && (
-							<div className="flex align-items-center gap-2">
+							<div className="flex align-items-center gap-3">
 								<i className="pi pi-star text-sage-green-600"></i>
 								<span className="text-sm text-earth-brown">{level}</span>
 							</div>
 						)}
 						{showCategory && category && (
-							<div className="flex align-items-center gap-2">
+							<div className="flex align-items-center gap-3">
 								<i className="pi pi-tag text-sage-green-600"></i>
 								<span className="text-sm text-earth-brown">{category}</span>
 							</div>
@@ -234,7 +234,7 @@ export function DisplayCard({
 							label={learnMoreText}
 							icon="pi pi-arrow-right"
 							iconPos="right"
-							className="bg-pastel-pink border-pastel-pink text-secondary-brown"
+							className="bg-pastel-pink border-pastel-pink text-secondary-brown home-button-icon-gap"
 							style={{ minWidth: '120px' }}
 						/>
 					</div>

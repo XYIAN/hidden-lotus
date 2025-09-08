@@ -53,7 +53,7 @@ export function FilterPanel({
 	}
 
 	const headerTemplate = (options: PanelTemplateOptions) => {
-		const className = `${options.className} justify-content-space-between cursor-pointer`
+		const className = `${options.className} justify-content-space-between align-items-center cursor-pointer flex-nowrap`
 
 		return (
 			<div
@@ -61,14 +61,14 @@ export function FilterPanel({
 				onClick={() => setIsCollapsed(!isCollapsed)}
 				title={isCollapsed ? 'Click to open filters' : 'Click to close filters'}
 			>
-				<div className="flex align-items-center gap-2">
-					<i className="pi pi-filter text-primary-green text-lg"></i>
-					<span className="text-lg font-semibold text-primary-green">
+				<div className="flex align-items-center gap-1 ml-1 py-0">
+					<i className="pi pi-filter text-primary-green text-xs"></i>
+					<span className="text-xs font-semibold text-primary-green leading-none">
 						{title}
 					</span>
 				</div>
-				<div className="flex align-items-center gap-2">
-					<span className="text-sm text-primary-green">
+				<div className="flex align-items-center gap-1">
+					<span className="text-xs text-primary-green">
 						{isCollapsed ? 'Open Filters' : 'Close Filters'}
 					</span>
 					<div onClick={(e) => e.stopPropagation()}>
@@ -90,7 +90,7 @@ export function FilterPanel({
 					iconPos="right"
 					onClick={onClear}
 					disabled={clearDisabled}
-					className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
+					className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white p-button-xs"
 					size="small"
 				/>
 			</div>

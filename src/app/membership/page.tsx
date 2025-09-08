@@ -42,32 +42,32 @@ export default function MembershipPage() {
 										<h3 className="text-xl font-semibold text-primary-green">
 											What&apos;s Included
 										</h3>
-										<ul className="list-none p-0 m-0 space-y-3">
-											<li className="flex align-items-center gap-3">
+										<ul className="list-none p-0 m-0 space-y-3 ">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-check-circle text-sage-green-600 text-xl"></i>
 												<span className="text-earth-brown">
 													Unlimited access to all yoga and meditation classes
 												</span>
 											</li>
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-check-circle text-sage-green-600 text-xl"></i>
 												<span className="text-earth-brown">
 													Monthly wellness consultations with our experts
 												</span>
 											</li>
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-check-circle text-sage-green-600 text-xl"></i>
 												<span className="text-earth-brown">
 													Exclusive workshops and special events
 												</span>
 											</li>
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-check-circle text-sage-green-600 text-xl"></i>
 												<span className="text-earth-brown">
 													Access to our wellness library and resources
 												</span>
 											</li>
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-check-circle text-sage-green-600 text-xl"></i>
 												<span className="text-earth-brown">
 													Community support and group sessions
@@ -81,31 +81,31 @@ export default function MembershipPage() {
 											Membership Benefits
 										</h3>
 										<ul className="list-none p-0 m-0 space-y-3">
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-star text-pastel-pink text-xl"></i>
 												<span className="text-earth-brown">
 													Priority booking for all classes and events
 												</span>
 											</li>
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-star text-pastel-pink text-xl"></i>
 												<span className="text-earth-brown">
 													Personalized wellness plans and tracking
 												</span>
 											</li>
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-star text-pastel-pink text-xl"></i>
 												<span className="text-earth-brown">
 													Discounts on workshops and retreats
 												</span>
 											</li>
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-star text-pastel-pink text-xl"></i>
 												<span className="text-earth-brown">
 													Monthly wellness challenges and goals
 												</span>
 											</li>
-											<li className="flex align-items-center gap-3">
+											<li className="flex align-items-center gap-3 mb-2">
 												<i className="pi pi-star text-pastel-pink text-xl"></i>
 												<span className="text-earth-brown">
 													Access to exclusive member-only content

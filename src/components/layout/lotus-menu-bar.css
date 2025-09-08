@@ -12,10 +12,10 @@
 }
 
 .lotus-menu-bar .p-menubar-root-list > .p-menuitem > .p-menuitem-content {
-	margin: 0 0.15rem;
-	border-radius: 12px;
+	margin: 0 0.1rem;
+	border-radius: 10px;
 	transition: background 0.2s, box-shadow 0.2s, color 0.2s;
-	padding: 0.25rem 0.85rem;
+	padding: 0.15rem 0.6rem;
 	box-shadow: none;
 }
 
@@ -70,8 +70,8 @@
 	> .p-menuitem
 	> .p-menuitem-content
 	.p-menuitem-icon {
-	margin-right: 0.5rem;
-	font-size: 1.2rem;
+	margin-right: 0.4rem;
+	font-size: 1.05rem;
 }
 
 .lotus-menu-bar
@@ -79,7 +79,7 @@
 	> .p-menuitem
 	> .p-menuitem-content
 	.p-menuitem-text {
-	font-size: 1.1rem;
+	font-size: 1rem;
 	font-weight: 500;
 	letter-spacing: 0.01em;
 }

@@ -37,7 +37,7 @@ export function ButtonGroup({ buttons, className = '' }: ButtonGroupProps) {
 								label={button.buttonText}
 								icon="pi pi-arrow-right"
 								iconPos="right"
-								className="bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600 home-card-button"
+								className="p-button-xs bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600 home-card-button home-button-icon-gap"
 							/>
 						</Link>
 					</div>

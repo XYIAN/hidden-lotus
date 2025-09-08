@@ -11,9 +11,9 @@ import { IMAGES } from '@/constants/images'
 const infoItems = [
 	{ label: 'Story', href: '/story', icon: 'pi pi-book' },
 	{ label: 'About', href: '/about', icon: 'pi pi-info-circle' },
-	{ label: 'MOR', href: '/mor', icon: 'pi pi-heart' },
+	// { label: 'MOR', href: '/mor', icon: 'pi pi-heart' }, // commented out per request
 	{ label: 'Team', href: '/team', icon: 'pi pi-users' },
-	{ label: 'Contact', href: '/contact', icon: 'pi pi-envelope' },
+	// { label: 'Contact', href: '/contact', icon: 'pi pi-envelope' }, // commented out per request
 	{ label: 'Privacy', href: '/privacy', icon: 'pi pi-lock' },
 	{ label: 'Terms', href: '/terms', icon: 'pi pi-file' },
 ]
@@ -63,13 +63,13 @@ export function LotusMenuBar() {
 			<Image
 				src={IMAGES.LOGO}
 				alt="Hidden Lotus"
-				width={56}
-				height={56}
+				width={44}
+				height={44}
 				className="rounded-lg object-contain"
 				style={{ borderRadius: '12px' }}
 				priority
 			/>
-			<span className="text-3xl font-extrabold text-primary-green lotus-title-fancy">
+			<span className="text-2xl font-extrabold text-primary-green lotus-title-fancy">
 				Hidden Lotus
 			</span>
 		</Link>
@@ -82,12 +82,12 @@ export function LotusMenuBar() {
 			className="lotus-menu-bar lotus-menu-bar-no-bg"
 			pt={{
 				root: {
-					className: 'justify-end w-full items-center py-2',
-					style: { minHeight: '60px' },
+					className: 'justify-end w-full items-center py-1',
+					style: { minHeight: '48px' },
 				},
 				menu: {
 					className: 'justify-end w-full items-center',
-					style: { minHeight: '60px' },
+					style: { minHeight: '48px' },
 				},
 			}}
 		/>
