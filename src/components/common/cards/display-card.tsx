@@ -258,7 +258,7 @@ export function DisplayCard({
 							icon="pi pi-arrow-right"
 							iconPos="right"
 							className="bg-pastel-pink border-pastel-pink text-secondary-brown"
-							style={{ minWidth: '120px' }}
+							style={{ minWidth: '120px', padding: '0.75rem 1.5rem' }}
 						/>
 					</div>
 				)}

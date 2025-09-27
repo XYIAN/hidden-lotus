@@ -38,6 +38,7 @@ export function ButtonGroup({ buttons, className = '' }: ButtonGroupProps) {
 								icon="pi pi-arrow-right"
 								iconPos="right"
 								className="bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600 home-card-button"
+								style={{ padding: '0.75rem 1.5rem' }}
 							/>
 						</Link>
 					</div>

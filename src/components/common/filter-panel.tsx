@@ -60,6 +60,7 @@ export function FilterPanel({
 				className={className}
 				onClick={() => setIsCollapsed(!isCollapsed)}
 				title={isCollapsed ? 'Click to open filters' : 'Click to close filters'}
+				style={{ padding: '1rem 1.5rem' }}
 			>
 				<div className="flex align-items-center gap-2">
 					<i className="pi pi-filter text-primary-green text-lg"></i>
@@ -83,7 +84,7 @@ export function FilterPanel({
 		const className = `${options.className} flex justify-content-end`
 
 		return !isCollapsed && onClear ? (
-			<div className={className}>
+			<div className={className} style={{ padding: '1rem 1.5rem' }}>
 				<Button
 					label={clearText}
 					icon="pi pi-refresh"
@@ -108,13 +109,13 @@ export function FilterPanel({
 				onToggle={handleToggle}
 				className={`filter-panel yoga-card border-primary-green ${className}`}
 				style={{
-					borderRadius: '16px',
+					borderRadius: '12px',
 					border: '2px solid var(--primary-green)',
 					background: 'rgba(255, 255, 255, 0.6)',
 					backdropFilter: 'blur(10px)',
 				}}
 			>
-				{children}
+				<div style={{ padding: '1rem 1.5rem' }}>{children}</div>
 			</Panel>
 		</>
 	)

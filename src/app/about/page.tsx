@@ -43,29 +43,65 @@ interface CarouselItem {
 
 export default function AboutPage() {
 	const carouselTemplate = (item: CarouselItem) => (
-		<div className="p-4">
-			<Card className="h-full yoga-card">
-				<div className="text-center">
-					<h3 className="text-2xl font-semibold text-primary-green mb-4">
-						{item.title}
-					</h3>
-					{item.type === 'video' ? (
-						<div className="mb-4">
-							<iframe
-								width="100%"
-								height="300"
-								src={item.videoUrl}
-								title={item.title}
-								frameBorder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-								allowFullScreen
-								className="border-round"
-							></iframe>
+		<div className="p-4 h-full">
+			<Card
+				className="h-full yoga-card"
+				style={{
+					height: '100%',
+					minHeight: '400px',
+					maxHeight: '600px',
+					display: 'flex',
+					flexDirection: 'column',
+				}}
+			>
+				<div
+					className="text-center h-full flex flex-column justify-content-between"
+					style={{
+						height: '100%',
+						display: 'flex',
+						flexDirection: 'column',
+						justifyContent: 'space-between',
+					}}
+				>
+					<div>
+						<h3 className="text-2xl font-semibold text-primary-green mb-4">
+							{item.title}
+						</h3>
+						{item.type === 'video' ? (
+							<div className="mb-4">
+								<iframe
+									width="100%"
+									height="200"
+									src={item.videoUrl}
+									title={item.title}
+									frameBorder="0"
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowFullScreen
+									className="border-round"
+									style={{ maxHeight: '200px' }}
+								></iframe>
+							</div>
+						) : (
+							<div
+								style={{
+									height: '200px',
+									display: 'flex',
+									alignItems: 'center',
+								}}
+							>
+								<p className="text-earth-brown leading-relaxed text-lg">
+									{item.content}
+								</p>
+							</div>
+						)}
+					</div>
+					{item.type === 'video' && (
+						<div className="mt-4">
+							<p className="text-earth-brown leading-relaxed text-lg">
+								{item.content}
+							</p>
 						</div>
-					) : null}
-					<p className="text-earth-brown leading-relaxed text-lg">
-						{item.content}
-					</p>
+					)}
 				</div>
 			</Card>
 		</div>
@@ -201,14 +237,18 @@ export default function AboutPage() {
 							<Button
 								label="Explore Classes"
 								icon="pi pi-heart"
+								iconPos="left"
 								className="bg-sage-green-600 border-sage-green-600"
+								style={{ padding: '0.75rem 1.5rem' }}
 							/>
 						</Link>
 						<Link href="/contact">
 							<Button
 								label="Contact Us"
 								icon="pi pi-envelope"
+								iconPos="left"
 								className="p-button-outlined border-sage-green-600 text-sage-green-600"
+								style={{ padding: '0.75rem 1.5rem' }}
 							/>
 						</Link>
 					</div>
@@ -227,6 +267,11 @@ export default function AboutPage() {
 					circular={true}
 					showNavigators={true}
 					showIndicators={true}
+					style={{
+						height: '500px',
+						minHeight: '400px',
+						maxHeight: '600px',
+					}}
 				/>
 			</section>
 
@@ -257,12 +302,16 @@ export default function AboutPage() {
 							<Button
 								label="Get Directions"
 								icon="pi pi-directions"
+								iconPos="left"
 								className="p-button-outlined border-sage text-sage"
+								style={{ padding: '0.75rem 1.5rem' }}
 							/>
 							<Button
 								label="Schedule Visit"
 								icon="pi pi-calendar"
+								iconPos="left"
 								className="p-button-primary bg-pastel-pink border-pastel-pink text-secondary-brown"
+								style={{ padding: '0.75rem 1.5rem' }}
 							/>
 						</div>
 					</div>
