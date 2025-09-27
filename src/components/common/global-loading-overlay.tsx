@@ -57,20 +57,20 @@ export function GlobalLoadingOverlay() {
 				}}
 			>
 				<ProgressSpinner
-					style={{ 
-						width: '40px', 
+					style={{
+						width: '40px',
 						height: '40px',
-						color: '#4a7c59'
+						color: '#4a7c59',
 					}}
 					strokeWidth="4"
 					fill="transparent"
 					animationDuration="1s"
 				/>
 				<span
-					style={{ 
+					style={{
 						fontSize: '14px',
 						fontWeight: '600',
-						color: '#4a7c59'
+						color: '#4a7c59',
 					}}
 				>
 					Loading...
