@@ -1,6 +1,6 @@
 // Sidebar layout styles
-@use '../base/mixins' as *;
-@use '../base/variables' as *;
+@import "../base/mixins";
+@import "../base/variables";
 
 .sidebar {
 	background: white;

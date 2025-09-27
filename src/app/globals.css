@@ -8,7 +8,6 @@
 @import "primereact/resources/primereact.min.css";
 @import "primeicons/primeicons.css";
 @import "primeflex/primeflex.css";
-@import "../styles/main.scss";
 
 :root {
 	--background: #f6d6a2;

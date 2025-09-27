@@ -1,6 +1,6 @@
 // Form component styles
-@use '../base/mixins' as *;
-@use '../base/variables' as *;
+@import "../base/mixins";
+@import "../base/variables";
 
 .form-group {
 	margin-bottom: var(--spacing-lg);

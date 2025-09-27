@@ -1,6 +1,6 @@
 // Grid layout styles
-@use '../base/mixins' as *;
-@use '../base/variables' as *;
+@import "../base/mixins";
+@import "../base/variables";
 
 .container {
 	max-width: 1200px;

@@ -1,6 +1,6 @@
 // Component styles index
-@forward 'buttons';
-@forward 'cards';
-@forward 'forms';
-@forward 'navigation';
-@forward 'tables';
+@import "buttons";
+@import "cards";
+@import "forms";
+@import "navigation";
+@import "tables";

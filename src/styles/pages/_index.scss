@@ -1,7 +1,7 @@
 // Page-specific styles index
-@forward 'home';
-@forward 'about';
-@forward 'classes';
-@forward 'team';
-@forward 'contact';
-@forward 'stories';
+@import "home";
+@import "about";
+@import "classes";
+@import "team";
+@import "contact";
+@import "stories";

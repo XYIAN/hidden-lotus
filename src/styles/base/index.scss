@@ -1,5 +1,5 @@
-// Base styles index - forwards all base styles
-@forward 'variables';
-@forward 'mixins';
-@forward 'reset';
-@forward 'typography';
+// Base styles index - imports all base styles
+@import "variables";
+@import "mixins";
+@import "reset";
+@import "typography";

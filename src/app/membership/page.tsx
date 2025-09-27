@@ -1,11 +1,5 @@
-'use client'
-
-import { TabView, TabPanel } from 'primereact/tabview'
-import { Card } from 'primereact/card'
-import { Button } from 'primereact/button'
-import { Tag } from 'primereact/tag'
-import { HeroSection } from '@/components/common/hero-section'
-import '@/styles/animations.css'
+// Optimized Membership Page - now using styled-components
+import MembershipPage from '@/components/pages/MembershipPage'
 
 export default function MembershipPage() {
 	// Structured data for SEO

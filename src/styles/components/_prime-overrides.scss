@@ -1,0 +1,204 @@
+// PrimeReact component overrides
+@use '../base/variables' as *;
+@use '../base/mixins' as *;
+
+// Button styling improvements
+.p-button {
+	border-radius: 12px;
+	padding: 0.75rem 1.5rem;
+	font-weight: 600;
+	opacity: 0.9;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+
+	&:hover {
+		opacity: 1;
+		transform: translateY(-1px);
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+
+	&.p-button-sm {
+		padding: 0.5rem 1rem;
+	}
+
+	&.p-button-lg {
+		padding: 1rem 2rem;
+	}
+}
+
+// Input styling improvements
+.p-inputtext {
+	border-radius: 12px;
+	padding: 0.75rem 1rem;
+	border-color: var(--earth-brown);
+	background-color: var(--light-tan);
+	color: var(--earth-brown);
+	width: 100%;
+
+	&:focus {
+		border-color: var(--sage-green-600);
+		box-shadow: 0 0 0 0.2rem rgba(107, 142, 90, 0.2);
+	}
+}
+
+// Dropdown styling
+.p-dropdown {
+	border-radius: 12px;
+	border-color: var(--earth-brown);
+	background-color: var(--light-tan);
+	width: 100%;
+
+	&:focus {
+		border-color: var(--sage-green-600);
+		box-shadow: 0 0 0 0.2rem rgba(107, 142, 90, 0.2);
+	}
+
+	.p-dropdown-trigger {
+		border-radius: 0 12px 12px 0;
+		background-color: var(--sage-green-200);
+	}
+
+	.p-dropdown-label {
+		color: var(--earth-brown);
+	}
+}
+
+// Tag styling improvements
+.p-tag {
+	border-radius: 12px;
+	padding: 0.25rem 0.75rem;
+}
+
+// Card styling improvements
+.p-card {
+	border-radius: 20px;
+	overflow: hidden;
+
+	.p-card-body {
+		padding: 1.5rem;
+	}
+
+	.p-card-content {
+		padding: 1.5rem;
+	}
+
+	.p-card-footer {
+		padding: 1rem 1.5rem;
+		border-radius: 0 0 20px 20px;
+	}
+}
+
+// Custom steps styling
+.custom-steps {
+	.p-steps {
+		.p-steps-item {
+			.p-menuitem-link {
+				background: transparent;
+				border: none;
+				padding: 0.5rem 0;
+
+				.p-steps-number {
+					background: var(--sage-green-600);
+					border: 2px solid var(--sage-green-600);
+					color: white;
+					font-weight: 600;
+					width: 2.5rem;
+					height: 2.5rem;
+					border-radius: 50%;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
+
+				.p-steps-title {
+					color: var(--earth-brown);
+					font-weight: 600;
+					font-size: 1.1rem;
+				}
+
+				&:focus {
+					box-shadow: 0 0 0 0.2rem rgba(139, 69, 19, 0.2);
+				}
+			}
+
+			&.p-highlight {
+				.p-menuitem-link {
+					.p-steps-number {
+						background: var(--pastel-pink);
+						border-color: var(--pastel-pink);
+						color: var(--secondary-brown);
+					}
+
+					.p-steps-title {
+						color: var(--primary-green);
+					}
+				}
+			}
+
+			&.p-disabled {
+				.p-menuitem-link {
+					.p-steps-number {
+						background: var(--sage-green-200);
+						border-color: var(--sage-green-200);
+						color: var(--sage-green-400);
+					}
+				}
+			}
+		}
+	}
+}
+
+// Mobile steps adjustments
+.mobile-steps {
+	.custom-steps {
+		.p-steps {
+			flex-direction: column;
+			gap: 1rem;
+
+			.p-steps-item {
+				width: 100%;
+
+				.p-menuitem-link {
+					flex-direction: row;
+					justify-content: flex-start;
+					gap: 1rem;
+					padding: 0.75rem;
+
+					.p-steps-number {
+						width: 2rem;
+						height: 2rem;
+						font-size: 0.9rem;
+					}
+
+					.p-steps-title {
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Mobile vertical steps
+@include mobile {
+	.mobile-vertical-steps {
+		.p-steps {
+			flex-direction: column;
+
+			.p-steps-item {
+				width: 100%;
+			}
+
+			.p-steps-number {
+				width: 2rem;
+				height: 2rem;
+			}
+
+			.p-steps-title {
+				font-size: 1rem;
+			}
+		}
+	}
+}

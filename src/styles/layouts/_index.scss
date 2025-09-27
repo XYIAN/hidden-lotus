@@ -1,5 +1,5 @@
 // Layout styles index
-@forward 'header';
-@forward 'footer';
-@forward 'sidebar';
-@forward 'grid';
+@import "header";
+@import "footer";
+@import "sidebar";
+@import "grid";

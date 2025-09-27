@@ -1,6 +1,6 @@
 // Table component styles
-@use '../base/mixins' as *;
-@use '../base/variables' as *;
+@import "../base/mixins";
+@import "../base/variables";
 
 // Base table styles
 .table {
@@ -15,7 +15,11 @@
 
 	// Table header
 	thead {
-		background: linear-gradient(135deg, var(--sage-green-600) 0%, var(--sage-green-400) 100%);
+		background: linear-gradient(
+			135deg,
+			var(--sage-green-600) 0%,
+			var(--sage-green-400) 100%
+		);
 		color: white;
 
 		th {

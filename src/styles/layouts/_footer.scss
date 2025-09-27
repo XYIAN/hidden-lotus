@@ -1,9 +1,13 @@
 // Footer layout styles
-@use '../base/mixins' as *;
-@use '../base/variables' as *;
+@import "../base/mixins";
+@import "../base/variables";
 
 .footer {
-	background: linear-gradient(135deg, var(--sage-green-600) 0%, var(--sage-green-400) 100%);
+	background: linear-gradient(
+		135deg,
+		var(--sage-green-600) 0%,
+		var(--sage-green-400) 100%
+	);
 	color: white;
 	padding: var(--spacing-2xl) 0 var(--spacing-lg);
 	margin-top: var(--spacing-2xl);
@@ -33,7 +37,8 @@
 			font-size: 1.125rem;
 		}
 
-		p, li {
+		p,
+		li {
 			color: rgba(255, 255, 255, 0.8);
 			line-height: 1.6;
 		}
