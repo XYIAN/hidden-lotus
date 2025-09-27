@@ -33,23 +33,7 @@ export function FilterPanel({
 
 	const handleToggle = (e: { value: boolean }) => {
 		setIsCollapsed(e.value)
-
-		// Show toast notification
-		if (e.value) {
-			toast.current?.show({
-				severity: 'info',
-				summary: 'Filters Closed',
-				detail: 'Filter panel has been closed',
-				life: 2000,
-			})
-		} else {
-			toast.current?.show({
-				severity: 'success',
-				summary: 'Filters Open',
-				detail: 'Filter panel is now open',
-				life: 2000,
-			})
-		}
+		// Removed unnecessary toast notifications for open/close
 	}
 
 	const headerTemplate = (options: PanelTemplateOptions) => {
@@ -83,13 +67,24 @@ export function FilterPanel({
 	const footerTemplate = (options: PanelTemplateOptions) => {
 		const className = `${options.className} flex justify-content-end`
 
+		const handleClear = () => {
+			onClear?.()
+			// Show toast notification when filters are cleared
+			toast.current?.show({
+				severity: 'success',
+				summary: 'Filters Cleared',
+				detail: 'All filters have been reset',
+				life: 2000,
+			})
+		}
+
 		return !isCollapsed && onClear ? (
 			<div className={className} style={{ padding: '1rem 1.5rem' }}>
 				<Button
 					label={clearText}
 					icon="pi pi-refresh"
 					iconPos="right"
-					onClick={onClear}
+					onClick={handleClear}
 					disabled={clearDisabled}
 					className="p-button-outlined border-primary-green text-primary-green hover:bg-primary-green hover:text-white"
 					size="small"
@@ -100,7 +95,56 @@ export function FilterPanel({
 
 	return (
 		<>
-			<Toast ref={toast} position="top-right" />
+			<Toast 
+				ref={toast} 
+				position="top-right" 
+				style={{
+					zIndex: 9999,
+				}}
+				pt={{
+					root: {
+						style: {
+							background: 'rgba(139, 115, 85, 0.95)',
+							backdropFilter: 'blur(10px)',
+							border: '2px solid #8baa7a',
+							borderRadius: '12px',
+							boxShadow: '0 8px 32px rgba(139, 69, 19, 0.3)',
+						}
+					},
+					content: {
+						style: {
+							background: 'transparent',
+							padding: '1rem',
+						}
+					},
+					message: {
+						style: {
+							color: '#4a7c59',
+							fontWeight: '600',
+						}
+					},
+					summary: {
+						style: {
+							color: '#4a7c59',
+							fontWeight: '700',
+							fontSize: '1rem',
+						}
+					},
+					detail: {
+						style: {
+							color: '#4a7c59',
+							fontSize: '0.9rem',
+							marginTop: '0.25rem',
+						}
+					},
+					icon: {
+						style: {
+							color: '#4a7c59',
+							fontSize: '1.2rem',
+						}
+					}
+				}}
+			/>
 			<Panel
 				headerTemplate={headerTemplate}
 				footerTemplate={footerTemplate}

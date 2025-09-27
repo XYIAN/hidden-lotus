@@ -238,23 +238,23 @@ export default function AboutPage() {
 							icon="pi pi-heart"
 							iconPos="left"
 							className="bg-sage-green-600 border-sage-green-600 text-white"
-							style={{ 
+							style={{
 								padding: '0.75rem 1.5rem',
 								color: 'white !important',
-								textDecoration: 'none !important'
+								textDecoration: 'none !important',
 							}}
-							onClick={() => window.location.href = '/classes'}
+							onClick={() => (window.location.href = '/classes')}
 						/>
 						<Button
 							label="Contact Us"
 							icon="pi pi-envelope"
 							iconPos="left"
 							className="p-button-outlined border-sage-green-600 text-sage-green-600"
-							style={{ 
+							style={{
 								padding: '0.75rem 1.5rem',
-								textDecoration: 'none !important'
+								textDecoration: 'none !important',
 							}}
-							onClick={() => window.location.href = '/contact'}
+							onClick={() => (window.location.href = '/contact')}
 						/>
 					</div>
 				</Card>

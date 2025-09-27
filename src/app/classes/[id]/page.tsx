@@ -38,20 +38,20 @@ export default async function ClassDetailPage({ params }: PageProps) {
 									label="Back to Classes"
 									icon="pi pi-arrow-left"
 									className="bg-sage-green-600 border-sage-green-600 text-white"
-									style={{ 
+									style={{
 										color: 'white !important',
-										textDecoration: 'none !important'
+										textDecoration: 'none !important',
 									}}
-									onClick={() => window.location.href = '/classes'}
+									onClick={() => (window.location.href = '/classes')}
 								/>
 								<Button
 									label="Contact Support"
 									icon="pi pi-envelope"
 									className="bg-pastel-pink border-pastel-pink text-secondary-brown"
-									style={{ 
-										textDecoration: 'none !important'
+									style={{
+										textDecoration: 'none !important',
 									}}
-									onClick={() => window.location.href = '/contact'}
+									onClick={() => (window.location.href = '/contact')}
 								/>
 							</div>
 						</div>
@@ -97,11 +97,11 @@ export default async function ClassDetailPage({ params }: PageProps) {
 						label="Back to Classes"
 						icon="pi pi-arrow-left"
 						className="bg-sage-green-600 border-sage-green-600 text-white"
-						style={{ 
+						style={{
 							color: 'white !important',
-							textDecoration: 'none !important'
+							textDecoration: 'none !important',
 						}}
-						onClick={() => window.location.href = '/classes'}
+						onClick={() => (window.location.href = '/classes')}
 					/>
 				</div>
 

@@ -5,6 +5,44 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.2] - 2025-01-15
+
+### 🍞 Toast Notifications & Filter UX Improvements
+
+#### Fixed
+
+- **Toast Styling Issues**:
+  - Fixed toasts appearing with no background and black text
+  - Added proper earthy theme styling with semi-transparent background
+  - Implemented custom PrimeReact passthrough (pt) styling for consistent theming
+  - Enhanced toast appearance with backdrop blur and earthy color scheme
+
+- **Unnecessary Toast Notifications**:
+  - Removed toast notifications for opening/closing filter panels
+  - Kept only meaningful toasts (like when filters are cleared)
+  - Improved user experience by reducing notification noise
+
+#### Enhanced
+
+- **Toast Theme Integration**:
+  - Applied earthy color palette (#4a7c59 for text, #8baa7a for borders)
+  - Added backdrop blur and semi-transparent background
+  - Enhanced visual consistency with site's design language
+  - Improved readability with proper contrast and typography
+
+- **Filter Panel UX**:
+  - Added toast notification when filters are successfully cleared
+  - Maintained clean, non-intrusive user feedback
+  - Enhanced visual feedback for important actions
+
+#### Technical
+
+- **Toast Component Styling**:
+  - Custom PrimeReact passthrough styling for root, content, message, summary, detail, and icon
+  - Consistent earthy theme colors and typography
+  - Proper z-index and positioning for overlay display
+  - Enhanced visual hierarchy with appropriate font weights and sizes
+
 ## [2.7.1] - 2025-01-15
 
 ### 🎨 Button Styling & Navigation Fixes
@@ -12,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 
 - **Button Text Color Issues**:
+
   - Fixed home page buttons appearing as blue links instead of white text
   - Removed Link wrapper from Button components causing styling conflicts
   - Added explicit white text color and text-decoration: none to all buttons
@@ -24,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Technical
 
 - **Button Component Updates**:
+
   - Replaced Link-wrapped Button components with direct Button onClick handlers
   - Added consistent styling with color: 'white !important' and textDecoration: 'none !important'
   - Updated home page ButtonGroup, about page buttons, class/story detail pages

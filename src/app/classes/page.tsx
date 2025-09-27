@@ -70,6 +70,7 @@ export default function ClassesPage() {
 
 	const handleClearFilters = () => {
 		reset()
+		// Toast notification will be handled by FilterPanel component
 	}
 
 	const categories = [

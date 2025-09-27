@@ -55,11 +55,11 @@ export default async function StoryDetailPage({ params }: PageProps) {
 								label="Back to Stories"
 								icon="pi pi-arrow-left"
 								className="bg-sage-green-600 border-sage-green-600 text-white"
-								style={{ 
+								style={{
 									color: 'white !important',
-									textDecoration: 'none !important'
+									textDecoration: 'none !important',
 								}}
-								onClick={() => window.location.href = '/story'}
+								onClick={() => (window.location.href = '/story')}
 							/>
 						</div>
 
@@ -88,10 +88,10 @@ export default async function StoryDetailPage({ params }: PageProps) {
 								label="More Stories"
 								icon="pi pi-book"
 								className="bg-pastel-pink border-pastel-pink text-secondary-brown"
-								style={{ 
-									textDecoration: 'none !important'
+								style={{
+									textDecoration: 'none !important',
 								}}
-								onClick={() => window.location.href = '/story'}
+								onClick={() => (window.location.href = '/story')}
 							/>
 						</div>
 					</div>

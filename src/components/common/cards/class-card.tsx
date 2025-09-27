@@ -192,9 +192,9 @@ export function ClassCard({ classData }: ClassCardProps) {
 							borderRadius: '8px',
 							padding: '8px 16px',
 							fontWeight: '500',
-							textDecoration: 'none !important'
+							textDecoration: 'none !important',
 						}}
-						onClick={() => window.location.href = `/classes/${classData.id}`}
+						onClick={() => (window.location.href = `/classes/${classData.id}`)}
 						onMouseEnter={(e) => {
 							e.currentTarget.style.background = '#3d6b4a'
 							e.currentTarget.style.borderColor = '#3d6b4a'
