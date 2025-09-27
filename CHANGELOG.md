@@ -58,6 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **New Files Created**:
 
   - `src/app/membership/page.tsx`: Main membership page component
+  - `src/app/membership/layout.tsx`: SEO metadata and structured data for membership page
   - Added membership styles to global CSS for proper styling and CSS variable access
 
 - **Updated Files**:
@@ -65,6 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Modified navigation components to include membership
   - Updated class cards and detail pages to remove booking functionality
   - Enhanced home page with updated contact section
+  - Added comprehensive SEO metadata and structured data for membership page
 
 ---
 
