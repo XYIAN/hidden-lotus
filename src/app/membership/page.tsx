@@ -128,8 +128,8 @@ export default function MembershipPage() {
 									Advanced Membership Coming Soon
 								</h2>
 								<p className="text-lg text-earth-brown mb-6">
-									We're developing an advanced membership program for those who
-									want deeper access and exclusive benefits.
+									We&apos;re developing an advanced membership program for those
+									who want deeper access and exclusive benefits.
 								</p>
 
 								<div
@@ -150,7 +150,7 @@ export default function MembershipPage() {
 											Stay Tuned
 										</h3>
 										<p className="text-earth-brown mb-6">
-											We're working on creating an exclusive membership
+											We&apos;re working on creating an exclusive membership
 											experience with additional benefits and personalized
 											wellness programs.
 										</p>

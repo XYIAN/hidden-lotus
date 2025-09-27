@@ -1,5 +1,4 @@
 import { TeamMember } from '@/types'
-import { IMAGES } from './images'
 
 export type { TeamMember }
 

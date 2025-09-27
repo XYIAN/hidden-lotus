@@ -2,7 +2,7 @@
 
 import { useMemo } from 'react'
 import { HeroSection } from '@/components/common/hero-section'
-import { CardGrid, ResultsCount } from '@/components/common'
+import { ResultsCount } from '@/components/common'
 import { ClassCard } from '@/components/common/cards/class-card'
 import { classesData } from '@/constants/classes'
 import { Class, ClassCategory } from '@/types'

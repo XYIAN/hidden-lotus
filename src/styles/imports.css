@@ -11,6 +11,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Production CSS - Critical styles for Netlify */
+@import "./production.css";
+
 /* Our custom SCSS */
 @import "./main.scss";
 

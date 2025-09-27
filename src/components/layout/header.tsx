@@ -68,6 +68,7 @@ export function Header() {
 				setSidebarVisible(false)
 			},
 			className: isActive(item.href) ? 'active-menu-item' : '',
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
 			template: (item: any, options: any) => {
 				return (
 					<div className="flex align-items-center justify-content-center gap-3 p-3">

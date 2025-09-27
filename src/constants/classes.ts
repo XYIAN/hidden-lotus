@@ -1,5 +1,4 @@
 import { Class } from '@/types'
-import { IMAGES } from './images'
 
 export type { Class }
 
