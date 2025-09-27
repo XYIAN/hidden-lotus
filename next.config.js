@@ -21,17 +21,13 @@ const nextConfig = {
 			{ module: /node_modules\/punycode/ },
 			/.*punycode.*/,
 		]
-		
+
 		// Ensure SCSS files are properly handled
 		config.module.rules.push({
 			test: /\.scss$/,
-			use: [
-				'style-loader',
-				'css-loader',
-				'sass-loader'
-			]
+			use: ['style-loader', 'css-loader', 'sass-loader'],
 		})
-		
+
 		return config
 	},
 	// Ensure static assets are properly handled
