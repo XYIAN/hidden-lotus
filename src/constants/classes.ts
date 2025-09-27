@@ -19,7 +19,7 @@ export const classesData: Class[] = [
 		level: 'beginner',
 		maxParticipants: 20,
 		equipment: ['Yoga mat', 'Blocks', 'Strap'],
-		image: '/team/jaideep.png',
+		image: '/class/Classes Page HL Essential Yoga.jpg',
 	},
 	{
 		id: '2',
@@ -37,7 +37,7 @@ export const classesData: Class[] = [
 		level: 'beginner',
 		maxParticipants: 15,
 		equipment: ['Yoga mat', 'Bolster', 'Blanket'],
-		image: '/team/vuong.png',
+		image: '/class/Classes Page Yoga Flow and Sound Bath.jpg',
 	},
 	{
 		id: '3',
@@ -55,7 +55,7 @@ export const classesData: Class[] = [
 		level: 'beginner',
 		maxParticipants: 20,
 		equipment: ['Yoga mat', 'Bolster', 'Blanket'],
-		image: '/team/vuong.png',
+		image: '/class/Classes Page Sound Bath.jpg',
 	},
 	{
 		id: '4',
@@ -73,6 +73,6 @@ export const classesData: Class[] = [
 		level: 'beginner',
 		maxParticipants: 12,
 		equipment: ['Yoga mat', 'Journal', 'Open heart'],
-		image: '/team/jaideep.png',
+		image: '/class/Classes Page HL Essential Yoga.jpg',
 	},
 ]
