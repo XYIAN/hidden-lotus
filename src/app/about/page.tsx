@@ -4,7 +4,6 @@ import { Carousel } from 'primereact/carousel'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { HeroSection } from '@/components/common/hero-section'
-import Link from 'next/link'
 
 const carouselItems = [
 	{

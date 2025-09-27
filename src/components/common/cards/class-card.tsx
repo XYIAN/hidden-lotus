@@ -3,7 +3,6 @@
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
 import { Class } from '@/constants/classes'
-import Link from 'next/link'
 import '@/styles/animations.css'
 
 interface ClassCardProps {

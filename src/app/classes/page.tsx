@@ -1,14 +1,15 @@
 'use client'
 
-import { useMemo } from 'react'
-import { HeroSection } from '@/components/common/hero-section'
+import { useMemo, useState } from 'react'
 import { ResultsCount } from '@/components/common'
 import { ClassCard } from '@/components/common/cards/class-card'
+import { ClassesCalendar } from '@/components/monday/classes-calendar'
 import { classesData } from '@/constants/classes'
 import { Class, ClassCategory } from '@/types'
 import { FilterPanel } from '@/components/common/filter-panel'
 import { FormField } from '@/components/common/form-field'
 import { useForm } from 'react-hook-form'
+import { MondayClass } from '@/lib/monday-api'
 
 interface FilterForm {
 	searchTerm: string
@@ -27,6 +28,7 @@ export default function ClassesPage() {
 		},
 	})
 
+	const [selectedClass, setSelectedClass] = useState<MondayClass | null>(null)
 	const filters = watch()
 
 	const filteredClasses = useMemo(() => {
@@ -106,13 +108,17 @@ export default function ClassesPage() {
 	const hasActiveFilters = Object.values(filters).some(Boolean)
 
 	return (
-		<div className="flex flex-column gap-6 p-4 page-transition">
-			<HeroSection
-				title="Our Classes"
-				description="We cultivate freedom and creativity in teaching by holding space for authentic expression and interdisciplinary practices for wellness practitioners, facilitators, and students to explore what wellness means beyond form, and to co-create healing through movement, sound, and art."
-			/>
-
+		<div className="flex flex-column gap-2 p-2 page-transition">
 			<div className="max-w-7xl mx-auto w-full">
+				{/* Calendar View */}
+				<div className="mb-4">
+					<ClassesCalendar
+						className="mb-6"
+						onClassClick={(classItem) => {
+							setSelectedClass(classItem)
+						}}
+					/>
+				</div>
 				{/* Filters */}
 				<FilterPanel
 					title="Filter Classes"
@@ -217,6 +223,150 @@ export default function ClassesPage() {
 					</p>
 				</div>
 			</div>
+
+			{/* Class Detail Modal */}
+			{selectedClass && (
+				<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+					<div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+						<div className="bg-gradient-to-r from-sage-green-600 to-sage-green-700 px-6 py-6 rounded-t-2xl">
+							<div className="flex justify-between items-start">
+								<div>
+									<h3 className="text-2xl font-bold text-white mb-2">
+										{selectedClass.name}
+									</h3>
+									<p className="text-sage-green-100 text-lg">
+										with {selectedClass.instructor}
+									</p>
+								</div>
+								<button
+									onClick={() => setSelectedClass(null)}
+									className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
+								>
+									<svg
+										className="w-6 h-6"
+										fill="none"
+										stroke="currentColor"
+										viewBox="0 0 24 24"
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											strokeWidth={2}
+											d="M6 18L18 6M6 6l12 12"
+										/>
+									</svg>
+								</button>
+							</div>
+						</div>
+
+						<div className="p-6">
+							<div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+								<div className="space-y-4">
+									<div>
+										<span className="font-semibold text-gray-700">
+											Date & Time:
+										</span>
+										<p className="text-gray-900">
+											{new Date(selectedClass.classDate).toLocaleDateString(
+												'en-US',
+												{
+													weekday: 'long',
+													year: 'numeric',
+													month: 'long',
+													day: 'numeric',
+												}
+											)}{' '}
+											at {selectedClass.time}
+										</p>
+									</div>
+									<div>
+										<span className="font-semibold text-gray-700">
+											Duration:
+										</span>
+										<p className="text-gray-900">{selectedClass.duration}</p>
+									</div>
+									<div>
+										<span className="font-semibold text-gray-700">Price:</span>
+										<p className="text-gray-900">{selectedClass.price}</p>
+									</div>
+									<div>
+										<span className="font-semibold text-gray-700">Level:</span>
+										<p className="text-gray-900">{selectedClass.level}</p>
+									</div>
+								</div>
+
+								<div className="space-y-4">
+									<div>
+										<span className="font-semibold text-gray-700">
+											Category:
+										</span>
+										<p className="text-gray-900">{selectedClass.category}</p>
+									</div>
+									<div>
+										<span className="font-semibold text-gray-700">
+											Max Participants:
+										</span>
+										<p className="text-gray-900">
+											{selectedClass.maxParticipants}
+										</p>
+									</div>
+									{selectedClass.equipment && (
+										<div>
+											<span className="font-semibold text-gray-700">
+												Equipment:
+											</span>
+											<p className="text-gray-900">{selectedClass.equipment}</p>
+										</div>
+									)}
+									<div>
+										<span className="font-semibold text-gray-700">Status:</span>
+										<span
+											className={`ml-2 px-3 py-1 rounded-full text-sm ${
+												selectedClass.status === 'Scheduled'
+													? 'bg-green-100 text-green-800'
+													: selectedClass.status === 'Completed'
+													? 'bg-blue-100 text-blue-800'
+													: selectedClass.status === 'Cancelled'
+													? 'bg-red-100 text-red-800'
+													: 'bg-yellow-100 text-yellow-800'
+											}`}
+										>
+											{selectedClass.status}
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<div className="mb-6">
+								<span className="font-semibold text-gray-700">
+									Description:
+								</span>
+								<p className="text-gray-900 mt-2 leading-relaxed">
+									{selectedClass.description}
+								</p>
+							</div>
+
+							<div className="flex justify-end space-x-3">
+								<button
+									onClick={() => setSelectedClass(null)}
+									className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+								>
+									Close
+								</button>
+								<button
+									onClick={() => {
+										// Here you could add booking functionality
+										console.log('Book class:', selectedClass.name)
+									}}
+									className="px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors font-medium"
+								>
+									Book This Class
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	)
 }

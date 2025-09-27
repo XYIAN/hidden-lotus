@@ -5,7 +5,7 @@
 [build.environment]
   NODE_VERSION = "18"
   NPM_VERSION = "9"
-  NEXT_PUBLIC_SITE_URL = "https://hidden-lotus.netlify.app"
+  NEXT_PUBLIC_SITE_URL = "https://hiddenlotusmor.com"
 
 [dev]
   command = "npm run dev"

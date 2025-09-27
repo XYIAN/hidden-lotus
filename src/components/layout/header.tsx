@@ -109,7 +109,7 @@ export function Header() {
 							width={60}
 							height={60}
 							className="rounded-lg object-contain"
-							style={{ borderRadius: '12px' }}
+							style={{ width: 'auto', height: 'auto' }}
 							priority
 						/>
 						<span className="text-xl font-bold text-primary-green">

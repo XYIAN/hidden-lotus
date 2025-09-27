@@ -95,9 +95,9 @@ export function FilterPanel({
 
 	return (
 		<>
-			<Toast 
-				ref={toast} 
-				position="top-right" 
+			<Toast
+				ref={toast}
+				position="top-right"
 				style={{
 					zIndex: 9999,
 				}}
@@ -109,40 +109,40 @@ export function FilterPanel({
 							border: '2px solid #8baa7a',
 							borderRadius: '12px',
 							boxShadow: '0 8px 32px rgba(139, 69, 19, 0.3)',
-						}
+						},
 					},
 					content: {
 						style: {
 							background: 'transparent',
 							padding: '1rem',
-						}
+						},
 					},
 					message: {
 						style: {
 							color: '#4a7c59',
 							fontWeight: '600',
-						}
+						},
 					},
 					summary: {
 						style: {
 							color: '#4a7c59',
 							fontWeight: '700',
 							fontSize: '1rem',
-						}
+						},
 					},
 					detail: {
 						style: {
 							color: '#4a7c59',
 							fontSize: '0.9rem',
 							marginTop: '0.25rem',
-						}
+						},
 					},
 					icon: {
 						style: {
 							color: '#4a7c59',
 							fontSize: '1.2rem',
-						}
-					}
+						},
+					},
 				}}
 			/>
 			<Panel

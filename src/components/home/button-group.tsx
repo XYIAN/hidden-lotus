@@ -1,5 +1,4 @@
 import { Button } from 'primereact/button'
-import Link from 'next/link'
 
 interface ActionButton {
 	title: string

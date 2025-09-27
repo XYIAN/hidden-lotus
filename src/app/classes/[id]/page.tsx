@@ -1,5 +1,4 @@
 import { Card } from 'primereact/card'
-import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
 import { classesData } from '@/constants/classes'
 import Link from 'next/link'
@@ -34,25 +33,20 @@ export default async function ClassDetailPage({ params }: PageProps) {
 								try again later or pick a different class.
 							</p>
 							<div className="flex flex-column md:flex-row gap-4 justify-content-center">
-								<Button
-									label="Back to Classes"
-									icon="pi pi-arrow-left"
-									className="bg-sage-green-600 border-sage-green-600 text-white"
-									style={{
-										color: 'white !important',
-										textDecoration: 'none !important',
-									}}
-									onClick={() => (window.location.href = '/classes')}
-								/>
-								<Button
-									label="Contact Support"
-									icon="pi pi-envelope"
-									className="bg-pastel-pink border-pastel-pink text-secondary-brown"
-									style={{
-										textDecoration: 'none !important',
-									}}
-									onClick={() => (window.location.href = '/contact')}
-								/>
+								<Link
+									href="/classes"
+									className="inline-flex items-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors"
+								>
+									<i className="pi pi-arrow-left mr-2"></i>
+									Back to Classes
+								</Link>
+								<Link
+									href="/contact"
+									className="inline-flex items-center px-6 py-3 bg-pastel-pink text-secondary-brown rounded-lg hover:bg-pastel-pink/80 transition-colors"
+								>
+									<i className="pi pi-envelope mr-2"></i>
+									Contact Support
+								</Link>
 							</div>
 						</div>
 					</Card>
@@ -93,16 +87,13 @@ export default async function ClassDetailPage({ params }: PageProps) {
 			<div className="max-w-4xl mx-auto">
 				{/* Back Button */}
 				<div className="mb-4">
-					<Button
-						label="Back to Classes"
-						icon="pi pi-arrow-left"
-						className="bg-sage-green-600 border-sage-green-600 text-white"
-						style={{
-							color: 'white !important',
-							textDecoration: 'none !important',
-						}}
-						onClick={() => (window.location.href = '/classes')}
-					/>
+					<Link
+						href="/classes"
+						className="inline-flex items-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors"
+					>
+						<i className="pi pi-arrow-left mr-2"></i>
+						Back to Classes
+					</Link>
 				</div>
 
 				{/* Class Details */}

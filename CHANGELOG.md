@@ -5,6 +5,141 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.1] - 2025-01-27
+
+### 🌐 Domain Transfer from Squarespace to Netlify
+
+#### Added
+
+- **Custom Domain Configuration**:
+  - Successfully transferred `hiddenlotusmor.com` from Squarespace to Netlify
+  - Configured DNS records for both root domain and www subdomain
+  - Set up primary domain as `www.hiddenlotusmor.com` for optimal CDN performance
+  - Updated `netlify.toml` with correct domain configuration
+
+#### Changed
+
+- **DNS Configuration**:
+  - Updated A record for root domain (`@`) to point to Netlify's IP `75.2.60.5`
+  - Configured CNAME record for www subdomain to point to root domain
+  - Removed Squarespace-specific DNS records
+  - Set www as primary domain for better CDN benefits
+
+#### Technical
+
+- **Domain Management**:
+  - DNS propagation verified and working correctly
+  - Site accessible via both `hiddenlotusmor.com` and `www.hiddenlotusmor.com`
+  - SSL certificate provisioning in progress (automatic via Netlify)
+  - Updated `NEXT_PUBLIC_SITE_URL` environment variable
+
+#### Status
+
+- ✅ **DNS Configuration**: Complete and verified
+- ✅ **Domain Accessibility**: Working via HTTP
+- ⏳ **SSL Certificate**: Being provisioned automatically by Netlify
+- ✅ **Primary Domain**: Set to www.hiddenlotusmor.com for optimal performance
+
+## [2.8.0] - 2025-01-27
+
+### 🚀 Complete Monday.com CRM Integration with Google Calendar & Gmail
+
+#### Added
+
+- **Monday.com CRM Integration**:
+
+  - Real-time class data synchronization from Monday.com API
+  - Beautiful PrimeReact calendar component displaying live class schedules
+  - Class details modal with comprehensive information display
+  - Password-protected admin management panel at `/admin/monday`
+  - Full CRUD operations for class management via Monday.com API
+
+- **Google Calendar Integration**:
+
+  - Automatic synchronization of Monday.com classes to Google Calendar
+  - Service account authentication for secure calendar access
+  - Event creation, updating, and deletion with proper timezone handling
+  - Class reminders and notifications via Google Calendar
+  - Comprehensive setup guide and helper scripts
+
+- **Gmail Email Notifications**:
+
+  - Booking confirmation emails with beautiful HTML templates
+  - Class reminder emails (day before, hour before)
+  - Class cancellation notifications with reason support
+  - Professional email templates with Hidden Lotus branding
+  - Gmail app password authentication for reliable delivery
+
+- **Environment Configuration**:
+
+  - Complete `.env.local` setup with all required credentials
+  - Netlify environment variable configuration
+  - Google Cloud Service Account setup instructions
+  - Comprehensive environment setup documentation
+
+- **Admin Management Interface**:
+  - Integration management tab with calendar sync controls
+  - Email testing interface for all notification types
+  - Real-time status monitoring for all integrations
+  - One-click sync operations with progress tracking
+
+#### Enhanced
+
+- **Calendar Component**:
+
+  - Custom PrimeReact Calendar with date templates
+  - Class indicators on calendar days with category color coding
+  - Responsive design with mobile-optimized layout
+  - Interactive class selection with detailed modals
+  - Empty state handling with helpful messaging
+
+- **Data Flow Architecture**:
+
+  - Client-side API proxy to avoid CORS issues
+  - Real-time data fetching with loading states
+  - Error handling and fallback mechanisms
+  - Optimized data mapping between Monday.com and local formats
+
+- **Security & Access Control**:
+  - Password-protected admin pages with session management
+  - Robots.txt exclusion for sensitive admin areas
+  - Secure API key management with environment variables
+  - Service account authentication for Google services
+
+#### Technical
+
+- **New Dependencies**:
+
+  - `googleapis`: Google Calendar API integration
+  - `nodemailer`: Gmail email sending functionality
+
+- **API Routes**:
+
+  - `/api/monday/classes`: Proxy for Monday.com class data
+  - `/api/sync-calendar`: Google Calendar synchronization
+  - `/api/send-email`: Gmail notification sending
+
+- **Service Classes**:
+
+  - `GoogleCalendarService`: Calendar event management
+  - `GmailService`: Email notification handling
+  - `MondayApiClient`: Monday.com API integration
+
+- **Helper Scripts**:
+  - `setup-google-calendar.js`: Google Calendar setup guide
+  - `populate-monday.js`: Monday.com data population
+  - `clear-board.js`: Monday.com board management
+
+#### Features Enabled
+
+- ✅ **Monday.com Integration**: Real-time class data from CRM
+- ✅ **Gmail Notifications**: Professional email templates
+- ✅ **Google Calendar Sync**: Automatic calendar events
+- ✅ **Admin Management**: Hidden password-protected panel
+- ✅ **Environment Variables**: Production-ready configuration
+- ✅ **Error Handling**: Comprehensive error management
+- ✅ **Mobile Responsive**: Optimized for all devices
+
 ## [2.7.2] - 2025-01-15
 
 ### 🍞 Toast Notifications & Filter UX Improvements
@@ -12,6 +147,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 
 - **Toast Styling Issues**:
+
   - Fixed toasts appearing with no background and black text
   - Added proper earthy theme styling with semi-transparent background
   - Implemented custom PrimeReact passthrough (pt) styling for consistent theming
@@ -25,6 +161,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Enhanced
 
 - **Toast Theme Integration**:
+
   - Applied earthy color palette (#4a7c59 for text, #8baa7a for borders)
   - Added backdrop blur and semi-transparent background
   - Enhanced visual consistency with site's design language

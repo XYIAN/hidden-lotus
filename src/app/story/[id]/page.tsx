@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import { Card } from 'primereact/card'
 import { Tag } from 'primereact/tag'
-import { Button } from 'primereact/button'
 import { HeroSection } from '@/components/common/hero-section'
 import { storiesData } from '@/constants/stories'
 import Link from 'next/link'
@@ -51,16 +50,13 @@ export default async function StoryDetailPage({ params }: PageProps) {
 									/>
 								</div>
 							</div>
-							<Button
-								label="Back to Stories"
-								icon="pi pi-arrow-left"
-								className="bg-sage-green-600 border-sage-green-600 text-white"
-								style={{
-									color: 'white !important',
-									textDecoration: 'none !important',
-								}}
-								onClick={() => (window.location.href = '/story')}
-							/>
+							<Link
+								href="/story"
+								className="inline-flex items-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors"
+							>
+								<i className="pi pi-arrow-left mr-2"></i>
+								Back to Stories
+							</Link>
 						</div>
 
 						{/* Excerpt */}
@@ -84,15 +80,13 @@ export default async function StoryDetailPage({ params }: PageProps) {
 							<div className="text-earth-brown/70 text-sm">
 								Thank you for reading {story.author}&apos;s story
 							</div>
-							<Button
-								label="More Stories"
-								icon="pi pi-book"
-								className="bg-pastel-pink border-pastel-pink text-secondary-brown"
-								style={{
-									textDecoration: 'none !important',
-								}}
-								onClick={() => (window.location.href = '/story')}
-							/>
+							<Link
+								href="/story"
+								className="inline-flex items-center px-6 py-3 bg-pastel-pink text-secondary-brown rounded-lg hover:bg-pastel-pink/80 transition-colors"
+							>
+								<i className="pi pi-book mr-2"></i>
+								More Stories
+							</Link>
 						</div>
 					</div>
 				</Card>
