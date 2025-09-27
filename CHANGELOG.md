@@ -5,6 +5,34 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.1] - 2025-01-15
+
+### 🎨 Button Styling & Navigation Fixes
+
+#### Fixed
+
+- **Button Text Color Issues**:
+  - Fixed home page buttons appearing as blue links instead of white text
+  - Removed Link wrapper from Button components causing styling conflicts
+  - Added explicit white text color and text-decoration: none to all buttons
+  - Fixed button styling across home page, about page, and detail pages
+
+- **Sidebar Navigation**:
+  - Added cursor-pointer to sidebar menu items for better UX
+  - Enhanced clickable area visual feedback
+
+#### Technical
+
+- **Button Component Updates**:
+  - Replaced Link-wrapped Button components with direct Button onClick handlers
+  - Added consistent styling with color: 'white !important' and textDecoration: 'none !important'
+  - Updated home page ButtonGroup, about page buttons, class/story detail pages
+  - Fixed ClassCard component button styling
+
+- **Navigation Improvements**:
+  - Enhanced sidebar menu item template with cursor-pointer class
+  - Improved visual feedback for interactive elements
+
 ## [2.7.0] - 2025-01-15
 
 ### 🚀 Netlify Deployment & Static Export Configuration
@@ -12,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Added
 
 - **Static Export Configuration**:
+
   - Configured Next.js for static export with `output: 'export'`
   - Added `generateStaticParams` to all dynamic routes (classes/[id], story/[id], team/[name])
   - Updated dynamic route components to use async params for Next.js 15 compatibility
@@ -26,6 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Fixed
 
 - **Static Export Issues**:
+
   - Fixed missing `generateStaticParams` for dynamic routes causing build failures
   - Resolved Next.js 15 async params compatibility issues
   - Fixed TypeScript errors in dynamic route components
@@ -40,12 +70,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Technical
 
 - **File Structure**:
+
   - Updated `next.config.js` with static export configuration
   - Modified `netlify.toml` for proper static site deployment
   - Created `src/styles/production.css` with critical styles
   - Added `netlify-build.sh` script for reliable builds
 
 - **Dynamic Routes**:
+
   - Added `generateStaticParams` to `/classes/[id]`, `/story/[id]`, `/team/[name]`
   - Updated components to use async params pattern for Next.js 15
   - Fixed TypeScript interfaces for proper type safety

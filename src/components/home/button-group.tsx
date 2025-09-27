@@ -32,15 +32,18 @@ export function ButtonGroup({ buttons, className = '' }: ButtonGroupProps) {
 							{button.title}
 						</h3>
 						<p className="text-sage-green-600 mb-6">{button.description}</p>
-						<Link href={button.href}>
-							<Button
-								label={button.buttonText}
-								icon="pi pi-arrow-right"
-								iconPos="right"
-								className="bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600 home-card-button"
-								style={{ padding: '0.75rem 1.5rem' }}
-							/>
-						</Link>
+						<Button
+							label={button.buttonText}
+							icon="pi pi-arrow-right"
+							iconPos="right"
+							className="bg-sage-green-600 hover:bg-sage-green-700 border-sage-green-600 home-card-button text-white"
+							style={{ 
+								padding: '0.75rem 1.5rem',
+								color: 'white !important',
+								textDecoration: 'none !important'
+							}}
+							onClick={() => window.location.href = button.href}
+						/>
 					</div>
 				</div>
 			))}

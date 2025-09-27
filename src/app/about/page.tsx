@@ -233,24 +233,29 @@ export default function AboutPage() {
 						wellness.
 					</p>
 					<div className="flex gap-3 justify-content-center">
-						<Link href="/classes">
-							<Button
-								label="Explore Classes"
-								icon="pi pi-heart"
-								iconPos="left"
-								className="bg-sage-green-600 border-sage-green-600"
-								style={{ padding: '0.75rem 1.5rem' }}
-							/>
-						</Link>
-						<Link href="/contact">
-							<Button
-								label="Contact Us"
-								icon="pi pi-envelope"
-								iconPos="left"
-								className="p-button-outlined border-sage-green-600 text-sage-green-600"
-								style={{ padding: '0.75rem 1.5rem' }}
-							/>
-						</Link>
+						<Button
+							label="Explore Classes"
+							icon="pi pi-heart"
+							iconPos="left"
+							className="bg-sage-green-600 border-sage-green-600 text-white"
+							style={{ 
+								padding: '0.75rem 1.5rem',
+								color: 'white !important',
+								textDecoration: 'none !important'
+							}}
+							onClick={() => window.location.href = '/classes'}
+						/>
+						<Button
+							label="Contact Us"
+							icon="pi pi-envelope"
+							iconPos="left"
+							className="p-button-outlined border-sage-green-600 text-sage-green-600"
+							style={{ 
+								padding: '0.75rem 1.5rem',
+								textDecoration: 'none !important'
+							}}
+							onClick={() => window.location.href = '/contact'}
+						/>
 					</div>
 				</Card>
 			</section>

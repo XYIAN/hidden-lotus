@@ -71,7 +71,7 @@ export function Header() {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
 			template: (item: any, options: any) => {
 				return (
-					<div className="flex align-items-center justify-content-center gap-3 p-3">
+					<div className="flex align-items-center justify-content-center gap-3 p-3 cursor-pointer">
 						<i className={`${item.icon} text-white text-xl`}></i>
 						<span className="text-white font-medium">{item.label}</span>
 					</div>

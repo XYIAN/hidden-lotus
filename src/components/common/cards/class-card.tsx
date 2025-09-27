@@ -180,30 +180,30 @@ export function ClassCard({ classData }: ClassCardProps) {
 
 				{/* Details Button - Centered */}
 				<div className="flex justify-content-center mt-auto">
-					<Link href={`/classes/${classData.id}`}>
-						<Button
-							label="Details"
-							icon="pi pi-info-circle"
-							iconPos="right"
-							style={{
-								minWidth: '120px',
-								background: '#4a7c59',
-								border: '1px solid #4a7c59',
-								color: 'white',
-								borderRadius: '8px',
-								padding: '8px 16px',
-								fontWeight: '500',
-							}}
-							onMouseEnter={(e) => {
-								e.currentTarget.style.background = '#3d6b4a'
-								e.currentTarget.style.borderColor = '#3d6b4a'
-							}}
-							onMouseLeave={(e) => {
-								e.currentTarget.style.background = '#4a7c59'
-								e.currentTarget.style.borderColor = '#4a7c59'
-							}}
-						/>
-					</Link>
+					<Button
+						label="Details"
+						icon="pi pi-info-circle"
+						iconPos="right"
+						style={{
+							minWidth: '120px',
+							background: '#4a7c59',
+							border: '1px solid #4a7c59',
+							color: 'white',
+							borderRadius: '8px',
+							padding: '8px 16px',
+							fontWeight: '500',
+							textDecoration: 'none !important'
+						}}
+						onClick={() => window.location.href = `/classes/${classData.id}`}
+						onMouseEnter={(e) => {
+							e.currentTarget.style.background = '#3d6b4a'
+							e.currentTarget.style.borderColor = '#3d6b4a'
+						}}
+						onMouseLeave={(e) => {
+							e.currentTarget.style.background = '#4a7c59'
+							e.currentTarget.style.borderColor = '#4a7c59'
+						}}
+					/>
 				</div>
 			</div>
 		</div>

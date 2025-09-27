@@ -51,13 +51,16 @@ export default async function StoryDetailPage({ params }: PageProps) {
 									/>
 								</div>
 							</div>
-							<Link href="/story">
-								<Button
-									label="Back to Stories"
-									icon="pi pi-arrow-left"
-									className="bg-sage-green-600 border-sage-green-600"
-								/>
-							</Link>
+							<Button
+								label="Back to Stories"
+								icon="pi pi-arrow-left"
+								className="bg-sage-green-600 border-sage-green-600 text-white"
+								style={{ 
+									color: 'white !important',
+									textDecoration: 'none !important'
+								}}
+								onClick={() => window.location.href = '/story'}
+							/>
 						</div>
 
 						{/* Excerpt */}
@@ -81,13 +84,15 @@ export default async function StoryDetailPage({ params }: PageProps) {
 							<div className="text-earth-brown/70 text-sm">
 								Thank you for reading {story.author}&apos;s story
 							</div>
-							<Link href="/story">
-								<Button
-									label="More Stories"
-									icon="pi pi-book"
-									className="bg-pastel-pink border-pastel-pink text-secondary-brown"
-								/>
-							</Link>
+							<Button
+								label="More Stories"
+								icon="pi pi-book"
+								className="bg-pastel-pink border-pastel-pink text-secondary-brown"
+								style={{ 
+									textDecoration: 'none !important'
+								}}
+								onClick={() => window.location.href = '/story'}
+							/>
 						</div>
 					</div>
 				</Card>
