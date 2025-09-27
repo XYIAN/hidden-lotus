@@ -1,6 +1,6 @@
 // PrimeReact component overrides
-@use '../base/variables' as *;
-@use '../base/mixins' as *;
+@import "../base/variables";
+@import "../base/mixins";
 
 // Button styling improvements
 .p-button {

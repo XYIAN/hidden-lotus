@@ -28,7 +28,12 @@ export function CardGrid({
 
 	return (
 		<div
-			className={`grid ${gridCols} ${gridGap} justify-items-center ${centerYClass} max-w-7xl mx-auto ${className}`}
+			className={`grid ${gridCols} ${gridGap} justify-items-center ${centerYClass} max-w-7xl mx-auto w-full ${className}`}
+			style={{
+				display: 'grid',
+				justifyContent: 'center',
+				alignItems: 'start',
+			}}
 		>
 			{children}
 		</div>

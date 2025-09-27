@@ -1,29 +1,29 @@
 // Main SCSS entry point
 // Import all base styles
-@use "base/variables" as *;
-@use "base/mixins" as *;
-@use "base/reset";
-@use "base/typography";
+@import "base/variables";
+@import "base/mixins";
+@import "base/reset";
+@import "base/typography";
 
 // Import component styles
-@use "components/buttons";
-@use "components/cards";
-@use "components/forms";
-@use "components/navigation";
-@use "components/tables";
-@use "components/prime-overrides";
+@import "components/buttons";
+@import "components/cards";
+@import "components/forms";
+@import "components/navigation";
+@import "components/tables";
+@import "components/prime-overrides";
 
 // Import layout styles
-@use "layouts/header";
-@use "layouts/footer";
-@use "layouts/sidebar";
-@use "layouts/grid";
+@import "layouts/header";
+@import "layouts/footer";
+@import "layouts/sidebar";
+@import "layouts/grid";
 
 // Import page styles
-@use "pages/membership";
+@import "pages/membership";
 
 // Import utility styles
-@use "utilities/spacing";
-@use "utilities/colors";
-@use "utilities/animations";
-@use "utilities/helpers";
+@import "utilities/spacing";
+@import "utilities/colors";
+@import "utilities/animations";
+@import "utilities/helpers";

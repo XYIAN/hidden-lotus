@@ -2,8 +2,14 @@
 import { createGlobalStyle, css } from 'styled-components'
 import { Theme } from './theme'
 
+// Extend styled-components DefaultTheme
+declare module 'styled-components' {
+	// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+	export interface DefaultTheme extends Theme {}
+}
+
 // Global styles for styled-components
-export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
+export const GlobalStyle = createGlobalStyle`
   /* CSS Reset and base styles */
   *,
   *::before,
@@ -26,7 +32,8 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: ${({ theme }) => theme.typography.fontFamily.sans.join(', ')};
-    background: linear-gradient(135deg, ${({ theme }) => theme.colors.lightTan} 0%, #f1e6cd 100%);
+    background: linear-gradient(135deg, ${({ theme }) =>
+			theme.colors.lightTan} 0%, #f1e6cd 100%);
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
@@ -125,175 +132,181 @@ export const GlobalStyle = createGlobalStyle<{ theme: Theme }>`
 
 // Common styled-component utilities
 export const commonStyles = {
-  // Flexbox utilities
-  flexCenter: css`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  `,
-  
-  flexBetween: css`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  `,
-  
-  flexColumn: css`
-    display: flex;
-    flex-direction: column;
-  `,
+	// Flexbox utilities
+	flexCenter: css`
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	`,
 
-  // Card styles
-  cardBase: css<{ theme: Theme }>`
-    background: linear-gradient(135deg, ${({ theme }) => theme.colors.lightTan} 0%, #f0ede4 100%);
-    border: 1px solid ${({ theme }) => theme.colors.softSage};
-    border-radius: ${({ theme }) => theme.borderRadius.xl};
-    transition: all ${({ theme }) => theme.transitions.normal};
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    min-height: 0;
+	flexBetween: css`
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	`,
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: ${({ theme }) => theme.shadows.lg};
-    }
-  `,
+	flexColumn: css`
+		display: flex;
+		flex-direction: column;
+	`,
 
-  // Button styles
-  buttonBase: css<{ theme: Theme }>`
-    background-color: ${({ theme }) => theme.colors.sageGreen600};
-    border: 1px solid ${({ theme }) => theme.colors.sageGreen600};
-    color: white;
-    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.lg};
-    border-radius: ${({ theme }) => theme.borderRadius.md};
-    font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
-    transition: all ${({ theme }) => theme.transitions.normal};
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: ${({ theme }) => theme.spacing.xs};
-    text-decoration: none;
-    font-family: ${({ theme }) => theme.typography.fontFamily.sans.join(', ')};
-    user-select: none;
-    white-space: nowrap;
+	// Card styles
+	cardBase: css<{ theme: Theme }>`
+		background: linear-gradient(
+			135deg,
+			${({ theme }) => theme.colors.lightTan} 0%,
+			#f0ede4 100%
+		);
+		border: 1px solid ${({ theme }) => theme.colors.softSage};
+		border-radius: ${({ theme }) => theme.borderRadius.xl};
+		transition: all ${({ theme }) => theme.transitions.normal};
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		min-height: 0;
 
-    &:hover {
-      background-color: ${({ theme }) => theme.colors.sageGreen400};
-      border-color: ${({ theme }) => theme.colors.sageGreen400};
-      transform: translateY(-1px);
-    }
+		&:hover {
+			transform: translateY(-2px);
+			box-shadow: ${({ theme }) => theme.shadows.lg};
+		}
+	`,
 
-    &:active {
-      transform: translateY(0);
-    }
+	// Button styles
+	buttonBase: css<{ theme: Theme }>`
+		background-color: ${({ theme }) => theme.colors.sageGreen600};
+		border: 1px solid ${({ theme }) => theme.colors.sageGreen600};
+		color: white;
+		padding: ${({ theme }) => theme.spacing.sm}
+			${({ theme }) => theme.spacing.lg};
+		border-radius: ${({ theme }) => theme.borderRadius.md};
+		font-weight: ${({ theme }) => theme.typography.fontWeight.semibold};
+		transition: all ${({ theme }) => theme.transitions.normal};
+		cursor: pointer;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: ${({ theme }) => theme.spacing.xs};
+		text-decoration: none;
+		font-family: ${({ theme }) => theme.typography.fontFamily.sans.join(', ')};
+		user-select: none;
+		white-space: nowrap;
 
-    &:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-  `,
+		&:hover {
+			background-color: ${({ theme }) => theme.colors.sageGreen400};
+			border-color: ${({ theme }) => theme.colors.sageGreen400};
+			transform: translateY(-1px);
+		}
 
-  // Input styles
-  inputBase: css<{ theme: Theme }>`
-    width: 100%;
-    padding: ${({ theme }) => theme.spacing.sm} ${({ theme }) => theme.spacing.md};
-    border: 1px solid ${({ theme }) => theme.colors.sageGreen200};
-    border-radius: ${({ theme }) => theme.borderRadius.md};
-    background-color: white;
-    color: ${({ theme }) => theme.colors.foreground};
-    font-family: ${({ theme }) => theme.typography.fontFamily.sans.join(', ')};
-    transition: border-color ${({ theme }) => theme.transitions.normal};
+		&:active {
+			transform: translateY(0);
+		}
 
-    &:focus {
-      outline: none;
-      border-color: ${({ theme }) => theme.colors.primaryGreen};
-      box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
-    }
-  `,
+		&:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
+			transform: none;
+		}
+	`,
 
-  // Animation utilities
-  fadeIn: css`
-    animation: fadeIn 0.3s ease-in-out;
-  `,
+	// Input styles
+	inputBase: css<{ theme: Theme }>`
+		width: 100%;
+		padding: ${({ theme }) => theme.spacing.sm}
+			${({ theme }) => theme.spacing.md};
+		border: 1px solid ${({ theme }) => theme.colors.sageGreen200};
+		border-radius: ${({ theme }) => theme.borderRadius.md};
+		background-color: white;
+		color: ${({ theme }) => theme.colors.foreground};
+		font-family: ${({ theme }) => theme.typography.fontFamily.sans.join(', ')};
+		transition: border-color ${({ theme }) => theme.transitions.normal};
 
-  slideUp: css`
-    animation: slideUp 0.3s ease-out;
-  `,
+		&:focus {
+			outline: none;
+			border-color: ${({ theme }) => theme.colors.primaryGreen};
+			box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
+		}
+	`,
 
-  // Responsive utilities
-  mobile: css`
-    @media (max-width: 767px) {
-      /* Mobile styles */
-    }
-  `,
+	// Animation utilities
+	fadeIn: css`
+		animation: fadeIn 0.3s ease-in-out;
+	`,
 
-  tablet: css`
-    @media (min-width: 768px) and (max-width: 1023px) {
-      /* Tablet styles */
-    }
-  `,
+	slideUp: css`
+		animation: slideUp 0.3s ease-out;
+	`,
 
-  desktop: css`
-    @media (min-width: 1024px) {
-      /* Desktop styles */
-    }
-  `,
+	// Responsive utilities
+	mobile: css`
+		@media (max-width: 767px) {
+			/* Mobile styles */
+		}
+	`,
+
+	tablet: css`
+		@media (min-width: 768px) and (max-width: 1023px) {
+			/* Tablet styles */
+		}
+	`,
+
+	desktop: css`
+		@media (min-width: 1024px) {
+			/* Desktop styles */
+		}
+	`,
 }
 
 // Keyframe animations
 export const keyframes = {
-  fadeIn: css`
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-  `,
+	fadeIn: css`
+		@keyframes fadeIn {
+			from {
+				opacity: 0;
+			}
+			to {
+				opacity: 1;
+			}
+		}
+	`,
 
-  slideUp: css`
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  `,
+	slideUp: css`
+		@keyframes slideUp {
+			from {
+				opacity: 0;
+				transform: translateY(20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	`,
 
-  slideDown: css`
-    @keyframes slideDown {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  `,
+	slideDown: css`
+		@keyframes slideDown {
+			from {
+				opacity: 0;
+				transform: translateY(-20px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+	`,
 
-  scaleIn: css`
-    @keyframes scaleIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-  `,
+	scaleIn: css`
+		@keyframes scaleIn {
+			from {
+				opacity: 0;
+				transform: scale(0.9);
+			}
+			to {
+				opacity: 1;
+				transform: scale(1);
+			}
+		}
+	`,
 }

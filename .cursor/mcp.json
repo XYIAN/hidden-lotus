@@ -1,0 +1,11 @@
+{
+	"mcpServers": {
+		"hidden-lotus-rules": {
+			"command": "node",
+			"args": [".cursor/mcp-server.js"],
+			"env": {
+				"NODE_ENV": "development"
+			}
+		}
+	}
+}

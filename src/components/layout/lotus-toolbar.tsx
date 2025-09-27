@@ -14,8 +14,8 @@ const navigationItems = [
 	{ label: 'Team', href: '/team', icon: 'pi pi-users' },
 	{ label: 'About', href: '/about', icon: 'pi pi-info-circle' },
 	{ label: 'Story', href: '/story', icon: 'pi pi-book' },
-	{ label: 'Contact', href: '/contact', icon: 'pi pi-envelope' },
-	{ label: 'MOR', href: '/mor', icon: 'pi pi-star' },
+	// { label: 'Contact', href: '/contact', icon: 'pi pi-envelope' }, // Commented out for future use
+	// { label: 'MOR', href: '/mor', icon: 'pi pi-star' }, // Commented out for future use
 ]
 
 export function LotusToolbar() {

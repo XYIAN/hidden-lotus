@@ -3,5 +3,7 @@ Disallow: /privacy
 Disallow: /terms
 Disallow: /booking
 Disallow: /classes/*/booking
+Disallow: /mor
+Disallow: /contact
 Allow: /
 Sitemap: https://hidden-lotus.netlify.app/sitemap.xml 

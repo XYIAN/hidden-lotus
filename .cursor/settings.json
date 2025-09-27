@@ -1,0 +1,61 @@
+{
+	"typescript.preferences.importModuleSpecifier": "relative",
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true,
+		"source.organizeImports": true
+	},
+	"emmet.includeLanguages": {
+		"typescript": "html",
+		"typescriptreact": "html"
+	},
+	"files.associations": {
+		"*.scss": "scss",
+		"*.sass": "sass"
+	},
+	"scss.lint.unknownAtRules": "ignore",
+	"css.lint.unknownAtRules": "ignore",
+	"tailwindCSS.includeLanguages": {
+		"typescript": "html",
+		"typescriptreact": "html"
+	},
+	"tailwindCSS.experimental.classRegex": [
+		["styled\\.(\\w+)`([^`]*)", "`([^`]*)`"],
+		["styled\\.(\\w+)\\([^)]+\\)`([^`]*)", "`([^`]*)`"]
+	],
+	"typescript.suggest.autoImports": true,
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"search.exclude": {
+		"**/node_modules": true,
+		"**/dist": true,
+		"**/.next": true,
+		"**/coverage": true,
+		"**/.git": true
+	},
+	"files.exclude": {
+		"**/.git": true,
+		"**/.DS_Store": true,
+		"**/node_modules": true,
+		"**/.next": true,
+		"**/dist": true
+	},
+	"editor.rulers": [80, 120],
+	"editor.wordWrap": "on",
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+	"prettier.tabWidth": 2,
+	"prettier.useTabs": true,
+	"prettier.semi": true,
+	"prettier.singleQuote": true,
+	"prettier.trailingComma": "es5",
+	"prettier.printWidth": 80,
+	"eslint.workingDirectories": ["."],
+	"eslint.validate": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact"
+	]
+}

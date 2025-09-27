@@ -1,6 +1,5 @@
 'use client'
 
-import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
 import { Class } from '@/constants/classes'
@@ -41,26 +40,58 @@ export function ClassCard({ classData }: ClassCardProps) {
 	}
 
 	return (
-		<Card
-			className="yoga-card hover-lift w-full h-full flex flex-column"
-			style={{ minHeight: '320px' }}
+		<div
+			className="w-full h-full flex flex-column"
+			style={{
+				background: 'linear-gradient(135deg, #f0ede4 0%, #f5f1e8 100%)',
+				border: '1px solid #8baa7a',
+				borderRadius: '16px',
+				boxShadow: '0 4px 12px rgba(139, 69, 19, 0.1)',
+				transition: 'all 0.3s ease',
+				height: '100%',
+				width: '100%',
+				display: 'flex',
+				flexDirection: 'column',
+				textAlign: 'center',
+				minHeight: '0',
+			}}
+			onMouseEnter={(e) => {
+				e.currentTarget.style.transform = 'translateY(-2px)'
+				e.currentTarget.style.boxShadow = '0 8px 20px rgba(139, 69, 19, 0.15)'
+			}}
+			onMouseLeave={(e) => {
+				e.currentTarget.style.transform = 'translateY(0)'
+				e.currentTarget.style.boxShadow = '0 4px 12px rgba(139, 69, 19, 0.1)'
+			}}
 		>
 			<div
-				className="flex flex-column h-full div-check"
-				style={{ display: 'flex', flexDirection: 'column' }}
+				className="flex flex-column h-full p-6"
+				style={{
+					display: 'flex',
+					flexDirection: 'column',
+					height: '100%',
+					justifyContent: 'space-between',
+					textAlign: 'center',
+				}}
 			>
 				{/* Header */}
-				<div className="mb-3">
-					<h3 className="text-xl font-semibold text-primary-green mb-2">
+				<div className="mb-4">
+					<h3
+						className="text-xl font-semibold text-primary-green mb-3"
+						style={{ textAlign: 'center' }}
+					>
 						{classData.name}
 					</h3>
-					<p className="text-earth-brown text-sm mb-3">
+					<p
+						className="text-earth-brown text-sm mb-4"
+						style={{ textAlign: 'center' }}
+					>
 						{classData.description}
 					</p>
 				</div>
 
 				{/* Categories */}
-				<div className="flex flex-wrap gap-2 mb-3 justify-content-center">
+				<div className="flex flex-wrap gap-2 mb-4 justify-content-center">
 					{classData.categories.map((category: string, index: number) => (
 						<Tag
 							key={index}
@@ -74,7 +105,7 @@ export function ClassCard({ classData }: ClassCardProps) {
 				</div>
 
 				{/* Level */}
-				<div className="mb-3 flex justify-content-center">
+				<div className="mb-4 flex justify-content-center">
 					<Tag
 						value={
 							classData.level.charAt(0).toUpperCase() + classData.level.slice(1)
@@ -84,31 +115,34 @@ export function ClassCard({ classData }: ClassCardProps) {
 				</div>
 
 				{/* Details */}
-				<div className="flex justify-content-center mb-4 flex-grow-1">
-					<div className="flex flex-column gap-2">
-						<div className="flex align-items-center gap-2">
+				<div className="mb-4 flex-grow-1 flex justify-content-center">
+					<div
+						className="flex flex-column gap-2 text-center"
+						style={{ width: '100%', maxWidth: '300px' }}
+					>
+						<div className="flex align-items-center gap-2 justify-content-center">
 							<i className="pi pi-user text-sage-green-600"></i>
 							<span className="text-sm text-earth-brown">
 								{classData.instructor}
 							</span>
 						</div>
-						<div className="flex align-items-center gap-2">
+						<div className="flex align-items-center gap-2 justify-content-center">
 							<i className="pi pi-clock text-sage-green-600"></i>
 							<span className="text-sm text-earth-brown">{classData.time}</span>
 						</div>
-						<div className="flex align-items-center gap-2">
+						<div className="flex align-items-center gap-2 justify-content-center">
 							<i className="pi pi-calendar text-sage-green-600"></i>
 							<span className="text-sm text-earth-brown">
 								{classData.duration}
 							</span>
 						</div>
-						<div className="flex align-items-center gap-2">
+						<div className="flex align-items-center gap-2 justify-content-center">
 							<i className="pi pi-dollar text-sage-green-600"></i>
 							<span className="text-sm text-earth-brown">
 								{classData.price}
 							</span>
 						</div>
-						<div className="flex align-items-center gap-2">
+						<div className="flex align-items-center gap-2 justify-content-center">
 							<i className="pi pi-users text-sage-green-600"></i>
 							<span className="text-sm text-earth-brown">
 								Max {classData.maxParticipants} participants
@@ -119,16 +153,25 @@ export function ClassCard({ classData }: ClassCardProps) {
 
 				{/* Equipment */}
 				{classData.equipment && classData.equipment.length > 0 && (
-					<div className="mb-4">
-						<h4 className="text-sm font-semibold text-primary-green mb-2">
+					<div className="mb-4" style={{ textAlign: 'center' }}>
+						<h4
+							className="text-sm font-semibold text-primary-green mb-3"
+							style={{ textAlign: 'center' }}
+						>
 							Equipment Needed:
 						</h4>
-						<div className="flex flex-wrap gap-1 justify-content-center">
+						<div className="flex flex-wrap gap-2 justify-content-center">
 							{classData.equipment.map((item: string, index: number) => (
 								<Tag
 									key={index}
 									value={item}
 									className="text-xs bg-light-tan border-sage-green-200 text-earth-brown"
+									style={{
+										background: '#f0ede4',
+										border: '1px solid #8baa7a',
+										borderRadius: '12px',
+										padding: '4px 8px',
+									}}
 								/>
 							))}
 						</div>
@@ -142,12 +185,27 @@ export function ClassCard({ classData }: ClassCardProps) {
 							label="Details"
 							icon="pi pi-info-circle"
 							iconPos="right"
-							className="bg-sage-green-600 border-sage-green-600 text-white hover:bg-sage-green-700"
-							style={{ minWidth: '120px' }}
+							style={{
+								minWidth: '120px',
+								background: '#4a7c59',
+								border: '1px solid #4a7c59',
+								color: 'white',
+								borderRadius: '8px',
+								padding: '8px 16px',
+								fontWeight: '500',
+							}}
+							onMouseEnter={(e) => {
+								e.currentTarget.style.background = '#3d6b4a'
+								e.currentTarget.style.borderColor = '#3d6b4a'
+							}}
+							onMouseLeave={(e) => {
+								e.currentTarget.style.background = '#4a7c59'
+								e.currentTarget.style.borderColor = '#4a7c59'
+							}}
 						/>
 					</Link>
 				</div>
 			</div>
-		</Card>
+		</div>
 	)
 }

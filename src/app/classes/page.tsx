@@ -2,7 +2,8 @@
 
 import { useMemo } from 'react'
 import { HeroSection } from '@/components/common/hero-section'
-import { CardGrid, DisplayCard, ResultsCount } from '@/components/common'
+import { CardGrid, ResultsCount } from '@/components/common'
+import { ClassCard } from '@/components/common/cards/class-card'
 import { classesData } from '@/constants/classes'
 import { Class, ClassCategory } from '@/types'
 import { FilterPanel } from '@/components/common/filter-panel'
@@ -179,39 +180,34 @@ export default function ClassesPage() {
 				/>
 
 				{/* Classes Grid */}
-				<CardGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} gap={6}>
-					{filteredClasses.map((classItem: Class) => (
-						<DisplayCard
-							key={classItem.id}
-							data={{
-								id: classItem.id,
-								name: classItem.name,
-								description: classItem.description,
-								image: classItem.image,
-								category: classItem.categories[0],
-								level: classItem.level,
-								price: classItem.price,
-								duration: classItem.duration,
-								href: `/classes/${classItem.id}`,
-							}}
-							showImage={true}
-							showType={true}
-							showSpecialties={false}
-							showCertifications={false}
-							showCredentials={false}
-							showProfession={false}
-							showBio={false}
-							showDescription={true}
-							showPrice={true}
-							showDuration={true}
-							showLevel={true}
-							showCategory={true}
-							showLearnMore={true}
-							learnMoreText="Details"
-							className="text-center"
-						/>
-					))}
-				</CardGrid>
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center',
+						width: '100%',
+						minHeight: '400px',
+					}}
+				>
+					<div
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							alignItems: 'center',
+							gap: '2rem',
+							width: '100%',
+							maxWidth: '400px',
+						}}
+					>
+						{filteredClasses.map((classItem: Class) => (
+							<ClassCard
+								key={classItem.id}
+								classData={classItem}
+								className="text-center"
+							/>
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	)

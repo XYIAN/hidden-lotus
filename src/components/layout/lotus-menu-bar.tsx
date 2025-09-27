@@ -11,9 +11,9 @@ import { IMAGES } from '@/constants/images'
 const infoItems = [
 	{ label: 'Story', href: '/story', icon: 'pi pi-book' },
 	{ label: 'About', href: '/about', icon: 'pi pi-info-circle' },
-	{ label: 'MOR', href: '/mor', icon: 'pi pi-heart' },
+	// { label: 'MOR', href: '/mor', icon: 'pi pi-heart' }, // Commented out for future use
 	{ label: 'Team', href: '/team', icon: 'pi pi-users' },
-	{ label: 'Contact', href: '/contact', icon: 'pi pi-envelope' },
+	// { label: 'Contact', href: '/contact', icon: 'pi pi-envelope' }, // Commented out for future use
 	{ label: 'Privacy', href: '/privacy', icon: 'pi pi-lock' },
 	{ label: 'Terms', href: '/terms', icon: 'pi pi-file' },
 ]
@@ -76,20 +76,27 @@ export function LotusMenuBar() {
 	)
 
 	return (
-		<Menubar
-			model={items}
-			start={start}
-			className="lotus-menu-bar lotus-menu-bar-no-bg"
-			pt={{
-				root: {
-					className: 'justify-end w-full items-center py-2',
-					style: { minHeight: '60px' },
-				},
-				menu: {
-					className: 'justify-end w-full items-center',
-					style: { minHeight: '60px' },
-				},
-			}}
-		/>
+		<div className="w-full flex justify-content-center">
+			<div className="w-full max-w-7xl px-4">
+				<Menubar
+					model={items}
+					start={start}
+					className="lotus-menu-bar lotus-menu-bar-no-bg"
+					pt={{
+						root: {
+							className: 'w-full items-center py-3 px-4',
+							style: { minHeight: '70px' },
+						},
+						menu: {
+							className: 'w-full items-center justify-content-end',
+							style: { minHeight: '70px' },
+						},
+						start: {
+							className: 'flex align-items-center gap-3',
+						},
+					}}
+				/>
+			</div>
+		</div>
 	)
 }

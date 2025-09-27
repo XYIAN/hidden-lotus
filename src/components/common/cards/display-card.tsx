@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
 import Image from 'next/image'
@@ -88,11 +87,35 @@ export function DisplayCard({
 	}
 
 	return (
-		<Card
-			className={`yoga-card hover-lift ${getCardSizeClasses()} h-full flex flex-column cursor-pointer`}
+		<div
+			className={`${getCardSizeClasses()} h-full flex flex-column cursor-pointer`}
 			onClick={handleClick}
+			style={{
+				background: 'linear-gradient(135deg, #f0ede4 0%, #f5f1e8 100%)',
+				border: '1px solid #8baa7a',
+				borderRadius: '16px',
+				boxShadow: '0 4px 12px rgba(139, 69, 19, 0.1)',
+				transition: 'all 0.3s ease',
+				height: '100%',
+				width: '100%',
+				display: 'flex',
+				flexDirection: 'column',
+				textAlign: 'center',
+				minHeight: '0',
+			}}
+			onMouseEnter={(e) => {
+				e.currentTarget.style.transform = 'translateY(-2px)'
+				e.currentTarget.style.boxShadow = '0 8px 20px rgba(139, 69, 19, 0.15)'
+			}}
+			onMouseLeave={(e) => {
+				e.currentTarget.style.transform = 'translateY(0)'
+				e.currentTarget.style.boxShadow = '0 4px 12px rgba(139, 69, 19, 0.1)'
+			}}
 		>
-			<div className="flex flex-column h-full">
+			<div
+				className="flex flex-column h-full p-4"
+				style={{ justifyContent: 'space-between' }}
+			>
 				{/* Header */}
 				<div className="mb-3">
 					<h3 className="text-xl font-semibold text-primary-green mb-2">
@@ -240,6 +263,6 @@ export function DisplayCard({
 					</div>
 				)}
 			</div>
-		</Card>
+		</div>
 	)
 }

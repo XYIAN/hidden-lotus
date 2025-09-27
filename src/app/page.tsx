@@ -2,7 +2,7 @@
 
 import { HeroSection } from '@/components/common/hero-section'
 import { ButtonGroup } from '@/components/home/button-group'
-import { ContactSection } from '@/components/home/contact-section'
+// import { ContactSection } from '@/components/home/contact-section' // Commented out for future use
 import '@/styles/animations.css'
 
 const actionButtons = [
@@ -20,13 +20,13 @@ const actionButtons = [
 		href: '/team',
 		buttonText: 'Meet Team',
 	},
-	{
-		title: 'Get in Touch',
-		description: 'Contact us for personalized wellness guidance',
-		icon: 'pi pi-envelope',
-		href: '/contact',
-		buttonText: 'Contact Us',
-	},
+	// {
+	// 	title: 'Get in Touch',
+	// 	description: 'Contact us for personalized wellness guidance',
+	// 	icon: 'pi pi-envelope',
+	// 	href: '/contact',
+	// 	buttonText: 'Contact Us',
+	// }, // Commented out for future use
 ]
 
 export default function HomePage() {
@@ -36,10 +36,8 @@ export default function HomePage() {
 				title="Welcome to Hidden Lotus"
 				description="Discover your path to wellness and inner peace through our holistic approach to healing and mindfulness."
 			/>
-
 			<ButtonGroup buttons={actionButtons} />
-
-			<ContactSection />
+			{/* <ContactSection /> */} {/* Commented out for future use */}
 		</div>
 	)
 }

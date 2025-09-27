@@ -8,7 +8,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import '@/styles/header.css'
-import { LotusMenuBar } from './lotus-menu-bar'
 import { SidebarHeader } from './sidebar-header'
 import { FaSpa } from 'react-icons/fa'
 import { IMAGES } from '@/constants/images'
@@ -20,8 +19,8 @@ const navigationItems = [
 	{ label: 'Team', href: '/team' },
 	{ label: 'About', href: '/about' },
 	{ label: 'Story', href: '/story' },
-	{ label: 'Contact', href: '/contact' },
-	{ label: 'MOR', href: '/mor' },
+	// { label: 'Contact', href: '/contact' }, // Commented out for future use
+	// { label: 'MOR', href: '/mor' }, // Commented out for future use
 ]
 
 export function Header() {
@@ -52,10 +51,10 @@ export function Header() {
 					return 'pi pi-info-circle'
 				case '/story':
 					return 'pi pi-book'
-				case '/contact':
-					return 'pi pi-envelope'
-				case '/mor':
-					return 'pi pi-star'
+				// case '/contact':
+				//	return 'pi pi-envelope'
+				// case '/mor':
+				//	return 'pi pi-star'
 				default:
 					return 'pi pi-home'
 			}
@@ -69,58 +68,75 @@ export function Header() {
 				setSidebarVisible(false)
 			},
 			className: isActive(item.href) ? 'active-menu-item' : '',
+			template: (item: any, options: any) => {
+				return (
+					<div className="flex align-items-center justify-content-center gap-3 p-3">
+						<i className={`${item.icon} text-white text-xl`}></i>
+						<span className="text-white font-medium">{item.label}</span>
+					</div>
+				)
+			},
 		}
 	})
 
 	return (
 		<>
+			{/* Single Header for all screen sizes */}
 			<header className="sticky top-0 z-50 w-full header-blur">
-				{/* Desktop Navigation: Show LotusMenuBar on tablet+ screens */}
-				<div className="hidden tablet:block w-full">
-					<LotusMenuBar />
-				</div>
-				{/* Logo and Hamburger for Mobile (show below tablet breakpoint) */}
-				<div className="flex justify-between items-center tablet:hidden w-full px-4 py-3">
+				<div
+					className="w-full py-3 px-4"
+					style={{
+						display: 'flex',
+						justifyContent: 'space-between',
+						alignItems: 'center',
+						height: '80px',
+						width: '100%',
+					}}
+				>
+					{/* Logo and Title - Left side */}
 					<Link
 						href="/"
-						className="flex items-center gap-3 justify-content-center align-items-center"
+						style={{
+							display: 'flex',
+							alignItems: 'center',
+							gap: '12px',
+						}}
 					>
 						<Image
 							src={IMAGES.LOGO}
 							alt="Hidden Lotus"
-							width={100}
-							height={100}
+							width={60}
+							height={60}
 							className="rounded-lg object-contain"
 							style={{ borderRadius: '12px' }}
 							priority
 						/>
-						{/*
-						<span
-							className="text-xl font-bold text-primary-green"
-							style={{
-								width: '16rem !important',
-							}}
-						>
+						<span className="text-xl font-bold text-primary-green">
 							Hidden Lotus
 						</span>
-						*/}
 					</Link>
+
+					{/* Hamburger Menu - Far right */}
 					<Button
 						onClick={() => setSidebarVisible(true)}
 						outlined
-						className="border-primary-green text-primary-green hover:bg-primary-green hover:text-pink ml-auto p-0 m-0"
+						className="border-primary-green text-primary-green hover:bg-primary-green hover:text-pink"
 						style={{
-							padding: '0',
-							margin: '0',
+							padding: '0.5rem',
+							width: '4rem',
+							height: '4rem',
+							display: 'flex',
+							alignItems: 'center',
+							justifyContent: 'center',
 						}}
 						aria-label="Open menu"
 					>
-						<FaSpa className="text-primary-green" size={25} />
+						<FaSpa className="text-primary-green" size={28} />
 					</Button>
 				</div>
 			</header>
 
-			{/* Mobile Sidebar */}
+			{/* Sidebar for all screen sizes */}
 			<Sidebar
 				visible={sidebarVisible}
 				onHide={() => setSidebarVisible(false)}
