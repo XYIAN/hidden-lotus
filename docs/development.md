@@ -3,11 +3,13 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - **Node.js**: Version 18.0 or higher
 - **npm**: Version 8.0 or higher (or yarn/pnpm)
 - **Git**: For version control
 
 ### Installation
+
 ```bash
 # Clone the repository
 git clone <repository-url>
@@ -21,19 +23,22 @@ npm run dev
 ```
 
 ### Available Scripts
+
 ```json
 {
-  "dev": "next dev",           // Start development server
-  "build": "next build",       // Build for production
-  "start": "next start",       // Start production server
-  "lint": "next lint"          // Run ESLint
+	"dev": "next dev", // Start development server
+	"build": "next build", // Build for production
+	"start": "next start", // Start production server
+	"lint": "next lint" // Run ESLint
 }
 ```
 
 ## 🏗️ Development Environment
 
 ### IDE Setup
+
 **Recommended**: Visual Studio Code with extensions:
+
 - **ES7+ React/Redux/React-Native snippets**
 - **TypeScript Importer**
 - **Tailwind CSS IntelliSense**
@@ -41,14 +46,15 @@ npm run dev
 - **ESLint**
 
 ### VS Code Settings
+
 ```json
 {
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "typescript.preferences.importModuleSpecifier": "relative"
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
+	},
+	"typescript.preferences.importModuleSpecifier": "relative"
 }
 ```
 
@@ -83,58 +89,68 @@ hidden-lotus/
 ## 🎯 Coding Standards
 
 ### TypeScript Guidelines
+
 ```typescript
 // ✅ Good: Explicit types
 interface UserProps {
-  name: string
-  email: string
-  age?: number
+	name: string
+	email: string
+	age?: number
 }
 
 // ✅ Good: Generic components
 function FormField<T extends FieldValues>(props: FormFieldProps<T>) {
-  // Implementation
+	// Implementation
 }
 
 // ❌ Avoid: Any types
 function processData(data: any) {
-  // Implementation
+	// Implementation
 }
 ```
 
 ### Component Guidelines
+
 ```typescript
 // ✅ Good: Functional components with TypeScript
 interface ButtonProps {
-  children: React.ReactNode
-  onClick: () => void
-  variant?: 'primary' | 'secondary'
-  disabled?: boolean
+	children: React.ReactNode
+	onClick: () => void
+	variant?: 'primary' | 'secondary'
+	disabled?: boolean
 }
 
-export function Button({ children, onClick, variant = 'primary', disabled = false }: ButtonProps) {
-  return (
-    <button
-      onClick={onClick}
-      disabled={disabled}
-      className={`btn btn-${variant}`}
-    >
-      {children}
-    </button>
-  )
+export function Button({
+	children,
+	onClick,
+	variant = 'primary',
+	disabled = false,
+}: ButtonProps) {
+	return (
+		<button
+			onClick={onClick}
+			disabled={disabled}
+			className={`btn btn-${variant}`}
+		>
+			{children}
+		</button>
+	)
 }
 
 // ✅ Good: Memoization for performance
-export const ExpensiveComponent = memo(function ExpensiveComponent({ data }: Props) {
-  const processedData = useMemo(() => {
-    return data.map(item => processItem(item))
-  }, [data])
-  
-  return <div>{/* Render processed data */}</div>
+export const ExpensiveComponent = memo(function ExpensiveComponent({
+	data,
+}: Props) {
+	const processedData = useMemo(() => {
+		return data.map((item) => processItem(item))
+	}, [data])
+
+	return <div>{/* Render processed data */}</div>
 })
 ```
 
 ### Styling Guidelines
+
 ```css
 /* ✅ Good: Use CSS custom properties */
 .yoga-card {
@@ -162,6 +178,7 @@ export const ExpensiveComponent = memo(function ExpensiveComponent({ data }: Pro
 ```
 
 ### File Naming Conventions
+
 ```
 components/
 ├── common/
@@ -188,6 +205,7 @@ types/
 ## 🔧 Development Workflow
 
 ### 1. Feature Development
+
 ```bash
 # Create feature branch
 git checkout -b feature/new-component
@@ -207,6 +225,7 @@ git push origin feature/new-component
 ```
 
 ### 2. Component Development Process
+
 1. **Plan**: Define component interface and props
 2. **Type**: Create TypeScript interfaces
 3. **Implement**: Build component with proper styling
@@ -215,6 +234,7 @@ git push origin feature/new-component
 6. **Review**: Code review and feedback
 
 ### 3. Code Review Checklist
+
 - [ ] TypeScript types are properly defined
 - [ ] Component follows naming conventions
 - [ ] Props are properly typed and documented
@@ -227,77 +247,86 @@ git push origin feature/new-component
 ## 🧪 Testing Strategy
 
 ### Unit Testing
+
 ```typescript
 // Component testing example
 import { render, screen, fireEvent } from '@testing-library/react'
 import { DisplayCard } from '@/components/common/cards/display-card'
 
 describe('DisplayCard', () => {
-  it('renders card with correct data', () => {
-    const mockData = {
-      name: 'Test Class',
-      description: 'Test Description',
-      price: '$25'
-    }
-    
-    render(<DisplayCard data={mockData} showPrice={true} />)
-    
-    expect(screen.getByText('Test Class')).toBeInTheDocument()
-    expect(screen.getByText('Test Description')).toBeInTheDocument()
-    expect(screen.getByText('$25')).toBeInTheDocument()
-  })
-  
-  it('handles click events', () => {
-    const mockOnClick = jest.fn()
-    const mockData = { name: 'Test Class' }
-    
-    render(<DisplayCard data={mockData} onClick={mockOnClick} />)
-    
-    fireEvent.click(screen.getByText('Test Class'))
-    expect(mockOnClick).toHaveBeenCalledTimes(1)
-  })
+	it('renders card with correct data', () => {
+		const mockData = {
+			name: 'Test Class',
+			description: 'Test Description',
+			price: '$25',
+		}
+
+		render(<DisplayCard data={mockData} showPrice={true} />)
+
+		expect(screen.getByText('Test Class')).toBeInTheDocument()
+		expect(screen.getByText('Test Description')).toBeInTheDocument()
+		expect(screen.getByText('$25')).toBeInTheDocument()
+	})
+
+	it('handles click events', () => {
+		const mockOnClick = jest.fn()
+		const mockData = { name: 'Test Class' }
+
+		render(<DisplayCard data={mockData} onClick={mockOnClick} />)
+
+		fireEvent.click(screen.getByText('Test Class'))
+		expect(mockOnClick).toHaveBeenCalledTimes(1)
+	})
 })
 ```
 
 ### Integration Testing
+
 ```typescript
 // Page integration testing
 import { render, screen } from '@testing-library/react'
 import ClassesPage from '@/app/classes/page'
 
 describe('ClassesPage', () => {
-  it('filters classes based on search input', () => {
-    render(<ClassesPage />)
-    
-    const searchInput = screen.getByPlaceholderText('Search classes...')
-    fireEvent.change(searchInput, { target: { value: 'yoga' } })
-    
-    expect(screen.getByText('Morning Vinyasa Flow')).toBeInTheDocument()
-    expect(screen.queryByText('Reiki Healing')).not.toBeInTheDocument()
-  })
+	it('filters classes based on search input', () => {
+		render(<ClassesPage />)
+
+		const searchInput = screen.getByPlaceholderText('Search classes...')
+		fireEvent.change(searchInput, { target: { value: 'yoga' } })
+
+		expect(screen.getByText('Morning Vinyasa Flow')).toBeInTheDocument()
+		expect(screen.queryByText('Reiki Healing')).not.toBeInTheDocument()
+	})
 })
 ```
 
 ## 🚀 Performance Guidelines
 
 ### 1. Component Optimization
+
 ```typescript
 // ✅ Good: Memoize expensive components
-export const ExpensiveComponent = memo(function ExpensiveComponent({ data }: Props) {
-  const processedData = useMemo(() => {
-    return data.map(item => expensiveOperation(item))
-  }, [data])
-  
-  return <div>{/* Render */}</div>
+export const ExpensiveComponent = memo(function ExpensiveComponent({
+	data,
+}: Props) {
+	const processedData = useMemo(() => {
+		return data.map((item) => expensiveOperation(item))
+	}, [data])
+
+	return <div>{/* Render */}</div>
 })
 
 // ✅ Good: Memoize callbacks
-const handleClick = useCallback((id: string) => {
-  onItemClick(id)
-}, [onItemClick])
+const handleClick = useCallback(
+	(id: string) => {
+		onItemClick(id)
+	},
+	[onItemClick]
+)
 ```
 
 ### 2. Bundle Optimization
+
 ```typescript
 // ✅ Good: Dynamic imports for code splitting
 const LazyComponent = lazy(() => import('./LazyComponent'))
@@ -309,25 +338,27 @@ import * as library from 'library'
 ```
 
 ### 3. Image Optimization
+
 ```typescript
 // ✅ Good: Next.js Image component
 import Image from 'next/image'
 
-<Image
-  src="/yoga-class.jpg"
-  alt="Yoga class"
-  width={300}
-  height={200}
-  priority={false}
-  loading="lazy"
-  placeholder="blur"
-  blurDataURL="data:image/jpeg;base64,..."
+;<Image
+	src="/yoga-class.jpg"
+	alt="Yoga class"
+	width={300}
+	height={200}
+	priority={false}
+	loading="lazy"
+	placeholder="blur"
+	blurDataURL="data:image/jpeg;base64,..."
 />
 ```
 
 ## ♿ Accessibility Guidelines
 
 ### 1. Semantic HTML
+
 ```typescript
 // ✅ Good: Semantic structure
 <main>
@@ -351,6 +382,7 @@ import Image from 'next/image'
 ```
 
 ### 2. ARIA Attributes
+
 ```typescript
 // ✅ Good: Proper ARIA usage
 <button
@@ -371,27 +403,25 @@ import Image from 'next/image'
 ```
 
 ### 3. Keyboard Navigation
+
 ```typescript
 // ✅ Good: Keyboard event handling
 const handleKeyDown = (event: KeyboardEvent) => {
-  if (event.key === 'Enter' || event.key === ' ') {
-    event.preventDefault()
-    onClick()
-  }
+	if (event.key === 'Enter' || event.key === ' ') {
+		event.preventDefault()
+		onClick()
+	}
 }
 
-<button
-  onClick={onClick}
-  onKeyDown={handleKeyDown}
-  tabIndex={0}
->
-  Click me
+;<button onClick={onClick} onKeyDown={handleKeyDown} tabIndex={0}>
+	Click me
 </button>
 ```
 
 ## 🔍 Debugging
 
 ### 1. Development Tools
+
 ```typescript
 // React Developer Tools
 // - Component tree inspection
@@ -405,6 +435,7 @@ const handleKeyDown = (event: KeyboardEvent) => {
 ```
 
 ### 2. Console Debugging
+
 ```typescript
 // ✅ Good: Structured logging
 console.group('Component Debug')
@@ -418,35 +449,37 @@ console.log('Debug info') // Remove before commit
 ```
 
 ### 3. Error Boundaries
+
 ```typescript
 // Error boundary for graceful error handling
 class ErrorBoundary extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { hasError: false }
-  }
-  
-  static getDerivedStateFromError(error) {
-    return { hasError: true }
-  }
-  
-  componentDidCatch(error, errorInfo) {
-    console.error('Error caught by boundary:', error, errorInfo)
-  }
-  
-  render() {
-    if (this.state.hasError) {
-      return <h1>Something went wrong.</h1>
-    }
-    
-    return this.props.children
-  }
+	constructor(props) {
+		super(props)
+		this.state = { hasError: false }
+	}
+
+	static getDerivedStateFromError(error) {
+		return { hasError: true }
+	}
+
+	componentDidCatch(error, errorInfo) {
+		console.error('Error caught by boundary:', error, errorInfo)
+	}
+
+	render() {
+		if (this.state.hasError) {
+			return <h1>Something went wrong.</h1>
+		}
+
+		return this.props.children
+	}
 }
 ```
 
 ## 📦 Build and Deployment
 
 ### 1. Build Process
+
 ```bash
 # Development build
 npm run dev
@@ -459,6 +492,7 @@ npm run start
 ```
 
 ### 2. Environment Variables
+
 ```bash
 # .env.local
 NEXT_PUBLIC_SITE_URL=https://hidden-lotus.netlify.app
@@ -466,6 +500,7 @@ NEXT_PUBLIC_GA_ID=G-YH7KD83RSD
 ```
 
 ### 3. Deployment
+
 ```bash
 # Netlify deployment
 # - Automatic deployment on push to main
@@ -478,6 +513,7 @@ NEXT_PUBLIC_GA_ID=G-YH7KD83RSD
 ### Common Issues
 
 #### 1. TypeScript Errors
+
 ```bash
 # Clear TypeScript cache
 rm -rf .next
@@ -486,6 +522,7 @@ npm run build
 ```
 
 #### 2. Styling Issues
+
 ```bash
 # Clear Tailwind cache
 rm -rf .next
@@ -493,6 +530,7 @@ npm run build
 ```
 
 #### 3. Build Failures
+
 ```bash
 # Check for TypeScript errors
 npm run lint
@@ -502,6 +540,7 @@ npm run build
 ```
 
 ### Performance Issues
+
 1. **Bundle Size**: Use `npm run build` and check bundle analyzer
 2. **Runtime Performance**: Use React DevTools Profiler
 3. **Memory Leaks**: Check for uncleaned event listeners and timers
@@ -509,6 +548,7 @@ npm run build
 ## 📚 Resources
 
 ### Documentation
+
 - [Next.js Documentation](https://nextjs.org/docs)
 - [React Documentation](https://react.dev)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs)
@@ -516,6 +556,7 @@ npm run build
 - [PrimeReact Documentation](https://primereact.org)
 
 ### Tools
+
 - [React DevTools](https://react.dev/learn/react-developer-tools)
 - [TypeScript Playground](https://www.typescriptlang.org/play)
 - [Tailwind Playground](https://play.tailwindcss.com)
@@ -523,4 +564,4 @@ npm run build
 
 ---
 
-*This development guide provides comprehensive instructions for contributing to the Hidden Lotus project while maintaining high code quality and consistency.*
+_This development guide provides comprehensive instructions for contributing to the Hidden Lotus project while maintaining high code quality and consistency._

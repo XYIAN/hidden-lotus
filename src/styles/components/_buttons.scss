@@ -1,0 +1,67 @@
+// Button component styles
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.btn {
+	@include primary-button;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--spacing-xs);
+	text-decoration: none;
+	font-family: var(--font-family-sans);
+	cursor: pointer;
+	user-select: none;
+	white-space: nowrap;
+
+	&:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+		transform: none;
+	}
+
+	// Button sizes
+	&.btn-sm {
+		padding: var(--spacing-xs) var(--spacing-md);
+		font-size: 0.875rem;
+	}
+
+	&.btn-lg {
+		padding: var(--spacing-md) var(--spacing-xl);
+		font-size: 1.125rem;
+	}
+
+	// Button variants
+	&.btn-outline {
+		background-color: transparent;
+		border: 2px solid var(--sage-green-600);
+		color: var(--sage-green-600);
+
+		&:hover {
+			background-color: var(--sage-green-600);
+			color: white;
+		}
+	}
+
+	&.btn-ghost {
+		background-color: transparent;
+		border: 1px solid transparent;
+		color: var(--primary-green);
+
+		&:hover {
+			background-color: rgba(74, 124, 89, 0.1);
+			border-color: var(--sage-green-200);
+		}
+	}
+
+	&.btn-secondary {
+		background-color: var(--earth-brown);
+		border-color: var(--earth-brown);
+		color: white;
+
+		&:hover {
+			background-color: var(--secondary-brown);
+			border-color: var(--secondary-brown);
+		}
+	}
+}

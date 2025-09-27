@@ -1,0 +1,238 @@
+// Table component styles
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+// Base table styles
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin-bottom: var(--spacing-lg);
+	background: white;
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-sm);
+
+	// Table header
+	thead {
+		background: linear-gradient(135deg, var(--sage-green-600) 0%, var(--sage-green-400) 100%);
+		color: white;
+
+		th {
+			padding: var(--spacing-md);
+			text-align: left;
+			font-weight: 600;
+			font-size: 0.875rem;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			border-bottom: 2px solid var(--sage-green-400);
+
+			&:first-child {
+				border-top-left-radius: var(--radius-lg);
+			}
+
+			&:last-child {
+				border-top-right-radius: var(--radius-lg);
+			}
+		}
+	}
+
+	// Table body
+	tbody {
+		tr {
+			transition: background-color var(--transition-fast);
+
+			&:hover {
+				background-color: var(--light-tan);
+			}
+
+			&:nth-child(even) {
+				background-color: rgba(241, 226, 187, 0.3);
+			}
+
+			&:last-child {
+				td {
+					&:first-child {
+						border-bottom-left-radius: var(--radius-lg);
+					}
+
+					&:last-child {
+						border-bottom-right-radius: var(--radius-lg);
+					}
+				}
+			}
+		}
+
+		td {
+			padding: var(--spacing-md);
+			border-bottom: 1px solid var(--sage-green-200);
+			color: var(--earth-brown);
+			font-size: 0.875rem;
+			line-height: 1.5;
+
+			&:last-child {
+				text-align: right;
+			}
+		}
+	}
+
+	// Table footer
+	tfoot {
+		background-color: var(--light-tan);
+		font-weight: 600;
+
+		td {
+			padding: var(--spacing-md);
+			border-top: 2px solid var(--sage-green-200);
+			color: var(--primary-green);
+		}
+	}
+}
+
+// Responsive table wrapper
+.table-responsive {
+	overflow-x: auto;
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+	margin-bottom: var(--spacing-lg);
+
+	// Custom scrollbar for webkit browsers
+	&::-webkit-scrollbar {
+		height: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: var(--light-tan);
+		border-radius: var(--radius-sm);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: var(--sage-green-400);
+		border-radius: var(--radius-sm);
+
+		&:hover {
+			background: var(--sage-green-600);
+		}
+	}
+}
+
+// Compact table variant
+.table-compact {
+	.table {
+		thead th,
+		tbody td {
+			padding: var(--spacing-sm) var(--spacing-md);
+			font-size: 0.8rem;
+		}
+	}
+}
+
+// Striped table variant
+.table-striped {
+	tbody tr:nth-child(odd) {
+		background-color: rgba(241, 226, 187, 0.1);
+	}
+
+	tbody tr:nth-child(even) {
+		background-color: rgba(241, 226, 187, 0.3);
+	}
+}
+
+// Bordered table variant
+.table-bordered {
+	.table {
+		border: 1px solid var(--sage-green-200);
+
+		thead th,
+		tbody td {
+			border: 1px solid var(--sage-green-200);
+		}
+	}
+}
+
+// Hover table variant
+.table-hover {
+	tbody tr:hover {
+		background-color: var(--light-tan);
+		transform: translateY(-1px);
+		box-shadow: var(--shadow-sm);
+	}
+}
+
+// Mobile responsive table
+@include mobile {
+	.table-responsive {
+		.table {
+			// Stack table cells on mobile
+			thead {
+				display: none;
+			}
+
+			tbody {
+				tr {
+					display: block;
+					margin-bottom: var(--spacing-md);
+					border: 1px solid var(--sage-green-200);
+					border-radius: var(--radius-md);
+					padding: var(--spacing-md);
+					background: white;
+					box-shadow: var(--shadow-sm);
+
+					&:hover {
+						background-color: var(--light-tan);
+					}
+				}
+
+				td {
+					display: block;
+					text-align: left;
+					padding: var(--spacing-xs) 0;
+					border: none;
+					position: relative;
+					padding-left: 50%;
+
+					&::before {
+						content: attr(data-label);
+						position: absolute;
+						left: 0;
+						width: 45%;
+						padding-right: var(--spacing-sm);
+						font-weight: 600;
+						color: var(--primary-green);
+						font-size: 0.8rem;
+						text-transform: uppercase;
+						letter-spacing: 0.05em;
+					}
+
+					&:last-child {
+						text-align: left;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Tablet responsive table
+@include tablet {
+	.table-responsive {
+		.table {
+			thead th,
+			tbody td {
+				padding: var(--spacing-sm) var(--spacing-md);
+				font-size: 0.9rem;
+			}
+		}
+	}
+}
+
+// Desktop table enhancements
+@include desktop {
+	.table {
+		thead th,
+		tbody td {
+			padding: var(--spacing-md) var(--spacing-lg);
+			font-size: 1rem;
+		}
+	}
+}

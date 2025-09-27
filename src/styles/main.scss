@@ -1,0 +1,16 @@
+// Main SCSS entry point
+// Import all base styles
+@use 'base';
+
+// Import component styles
+@use 'components';
+
+// Import layout styles
+@use 'layouts';
+
+// Import page-specific styles
+@use 'pages';
+
+// Import theme and utility styles
+@use 'themes';
+@use 'utilities';

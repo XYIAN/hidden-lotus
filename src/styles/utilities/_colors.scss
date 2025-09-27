@@ -1,0 +1,24 @@
+// Color utilities
+@use '../base/variables' as *;
+
+// Background colors
+.bg-primary { background-color: var(--primary-green); }
+.bg-secondary { background-color: var(--secondary-brown); }
+.bg-sage { background-color: var(--sage-green); }
+.bg-soft-sage { background-color: var(--soft-sage); }
+.bg-brown-gold { background-color: var(--brown-gold); }
+.bg-pastel-pink { background-color: var(--pastel-pink); }
+.bg-light-tan { background-color: var(--light-tan); }
+.bg-earth-brown { background-color: var(--earth-brown); }
+
+// Text colors
+.text-primary { color: var(--primary-green); }
+.text-secondary { color: var(--secondary-brown); }
+.text-sage { color: var(--sage-green); }
+.text-soft-sage { color: var(--soft-sage); }
+.text-brown-gold { color: var(--brown-gold); }
+.text-pastel-pink { color: var(--pastel-pink); }
+.text-light-tan { color: var(--light-tan); }
+.text-earth-brown { color: var(--earth-brown); }
+.text-white { color: white; }
+.text-muted { color: var(--earth-brown); }

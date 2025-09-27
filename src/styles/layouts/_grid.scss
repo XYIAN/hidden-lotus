@@ -1,0 +1,81 @@
+// Grid layout styles
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 var(--spacing-lg);
+
+	@include mobile {
+		padding: 0 var(--spacing-md);
+	}
+}
+
+.grid {
+	display: grid;
+	gap: var(--spacing-lg);
+
+	&.grid-2 {
+		grid-template-columns: repeat(2, 1fr);
+
+		@include mobile {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&.grid-3 {
+		grid-template-columns: repeat(3, 1fr);
+
+		@include tablet {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include mobile {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&.grid-4 {
+		grid-template-columns: repeat(4, 1fr);
+
+		@include desktop {
+			grid-template-columns: repeat(3, 1fr);
+		}
+
+		@include tablet {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		@include mobile {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+.flex {
+	display: flex;
+	gap: var(--spacing-md);
+
+	&.flex-center {
+		@include flex-center;
+	}
+
+	&.flex-between {
+		@include flex-between;
+	}
+
+	&.flex-column {
+		@include flex-column;
+	}
+
+	&.flex-wrap {
+		flex-wrap: wrap;
+	}
+
+	@include mobile {
+		&.flex-mobile-column {
+			flex-direction: column;
+		}
+	}
+}

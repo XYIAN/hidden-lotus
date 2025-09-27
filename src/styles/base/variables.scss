@@ -1,0 +1,59 @@
+// CSS Custom Properties (CSS Variables)
+:root {
+	// Color palette
+	--background: #f6d6a2;
+	--foreground: #2d3748;
+	--sage-green: #6b8e5a;
+	--brown-gold: #d69e2e;
+	--pastel-pink: #fbb6ce;
+	--light-tan: #f1e2bb;
+	--primary-green: #4a7c59;
+	--secondary-brown: #a95a35;
+	--earth-brown: #8b7355;
+	--soft-sage: #8baa7a;
+	--olive-green: #9caa7a;
+	--sage-green-200: #c8d5b9;
+	--sage-green-300: #a8c095;
+	--sage-green-400: #8baa7a;
+	--sage-green-600: #6b8e5a;
+	--tan: #d2b48c;
+	--brown: #904b19;
+	--yellow-gold: #ffd700;
+
+	// Typography
+	--font-family-sans: 'Inter', Arial, Helvetica, sans-serif;
+	--font-family-mono: 'Roboto Mono', monospace;
+	
+	// Spacing
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 1.5rem;
+	--spacing-xl: 2rem;
+	--spacing-2xl: 3rem;
+	
+	// Border radius
+	--radius-sm: 0.25rem;
+	--radius-md: 0.5rem;
+	--radius-lg: 1rem;
+	--radius-xl: 1.5rem;
+	
+	// Shadows
+	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+	
+	// Transitions
+	--transition-fast: 150ms ease-in-out;
+	--transition-normal: 300ms ease-in-out;
+	--transition-slow: 500ms ease-in-out;
+	
+	// Z-index scale
+	--z-dropdown: 1000;
+	--z-sticky: 1020;
+	--z-fixed: 1030;
+	--z-modal-backdrop: 1040;
+	--z-modal: 1050;
+	--z-popover: 1060;
+	--z-tooltip: 1070;
+}

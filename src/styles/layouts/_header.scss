@@ -1,0 +1,37 @@
+// Header layout styles
+@use '../base/mixins' as *;
+@use '../base/variables' as *;
+
+.header {
+	background: linear-gradient(135deg, var(--light-tan) 0%, #f0ede4 100%);
+	border-bottom: 1px solid var(--sage-green-200);
+	padding: var(--spacing-md) 0;
+	position: sticky;
+	top: 0;
+	z-index: var(--z-sticky);
+	backdrop-filter: blur(10px);
+
+	.header-container {
+		@include flex-between;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 var(--spacing-lg);
+	}
+
+	.header-logo {
+		width: 100px;
+		height: 100px;
+		border-radius: 50%;
+		object-fit: cover;
+	}
+
+	.header-nav {
+		@extend .nav;
+	}
+
+	@include mobile {
+		.header-nav {
+			display: none;
+		}
+	}
+}
