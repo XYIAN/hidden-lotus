@@ -41,23 +41,21 @@ export const metadata: Metadata = {
 		address: false,
 		telephone: false,
 	},
-	metadataBase: new URL(
-		process.env.NEXT_PUBLIC_SITE_URL || 'https://hidden-lotus.netlify.app'
-	),
+	metadataBase: new URL('https://hiddenlotusmor.com'),
 	alternates: {
 		canonical: '/',
 	},
 	openGraph: {
 		type: 'website',
 		locale: 'en_US',
-		url: process.env.NEXT_PUBLIC_SITE_URL || 'https://hidden-lotus.netlify.app',
+		url: 'https://hiddenlotusmor.com',
 		siteName: 'Hidden Lotus',
 		title: 'Hidden Lotus - Wellness & Healing Center',
 		description:
 			'Discover authentic wellness experiences at Hidden Lotus. From yoga and meditation to reiki healing, we provide holistic approaches to your well-being journey.',
 		images: [
 			{
-				url: '/og-image.png',
+				url: '/og-image.svg',
 				width: 1200,
 				height: 630,
 				alt: 'Hidden Lotus - Wellness & Healing Center',
@@ -69,7 +67,7 @@ export const metadata: Metadata = {
 		title: 'Hidden Lotus - Wellness & Healing Center',
 		description:
 			'Discover authentic wellness experiences at Hidden Lotus. From yoga and meditation to reiki healing, we provide holistic approaches to your well-being journey.',
-		images: ['/og-image.png'],
+		images: ['/og-image.svg'],
 		creator: '@hiddenlotus',
 	},
 	robots: {
@@ -88,6 +86,14 @@ export const metadata: Metadata = {
 	},
 	category: 'wellness',
 	classification: 'Health & Wellness',
+	other: {
+		'og:image:width': '1200',
+		'og:image:height': '630',
+		'og:image:type': 'image/svg+xml',
+		'twitter:image:alt': 'Hidden Lotus - Wellness & Healing Center',
+		'twitter:site': '@hiddenlotus',
+		'twitter:domain': 'hiddenlotusmor.com',
+	},
 }
 
 export default function RootLayout({
@@ -98,6 +104,14 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<head>
+				{/* Additional Meta Tags for Social Media */}
+				<meta property="og:image:width" content="1200" />
+				<meta property="og:image:height" content="630" />
+				<meta property="og:image:type" content="image/svg+xml" />
+				<meta name="twitter:image:alt" content="Hidden Lotus - Wellness & Healing Center" />
+				<meta name="twitter:site" content="@hiddenlotus" />
+				<meta name="twitter:domain" content="hiddenlotusmor.com" />
+				
 				{/* Google Analytics */}
 				<Script
 					src="https://www.googletagmanager.com/gtag/js?id=G-YH7KD83RSD"
