@@ -5,6 +5,64 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.7.0] - 2025-01-15
+
+### 🚀 Netlify Deployment & Static Export Configuration
+
+#### Added
+
+- **Static Export Configuration**:
+  - Configured Next.js for static export with `output: 'export'`
+  - Added `generateStaticParams` to all dynamic routes (classes/[id], story/[id], team/[name])
+  - Updated dynamic route components to use async params for Next.js 15 compatibility
+  - Created production CSS file with critical styles for Netlify deployment
+
+- **Netlify Build Optimization**:
+  - Updated netlify.toml to publish from `out` directory instead of `.next`
+  - Created custom build script (netlify-build.sh) for reliable deployment
+  - Added proper CSS import structure for production builds
+  - Implemented fallback styles to ensure consistent rendering
+
+#### Fixed
+
+- **Static Export Issues**:
+  - Fixed missing `generateStaticParams` for dynamic routes causing build failures
+  - Resolved Next.js 15 async params compatibility issues
+  - Fixed TypeScript errors in dynamic route components
+  - Corrected invalid ClassCategory types in constants
+
+- **Build Configuration**:
+  - Simplified Next.js config to remove experimental features causing conflicts
+  - Fixed SCSS compilation issues with proper webpack configuration
+  - Resolved CSS import order and dependency issues
+  - Fixed linting errors preventing successful builds
+
+#### Technical
+
+- **File Structure**:
+  - Updated `next.config.js` with static export configuration
+  - Modified `netlify.toml` for proper static site deployment
+  - Created `src/styles/production.css` with critical styles
+  - Added `netlify-build.sh` script for reliable builds
+
+- **Dynamic Routes**:
+  - Added `generateStaticParams` to `/classes/[id]`, `/story/[id]`, `/team/[name]`
+  - Updated components to use async params pattern for Next.js 15
+  - Fixed TypeScript interfaces for proper type safety
+
+- **CSS Architecture**:
+  - Consolidated CSS imports in `src/styles/imports.css`
+  - Added production-specific styles for Netlify compatibility
+  - Ensured proper CSS loading order for static export
+
+#### Build Results
+
+- ✅ **Successful Static Export**: All 26 pages generated successfully
+- ✅ **Dynamic Routes**: 3 classes, 3 stories, 3 team members pre-rendered
+- ✅ **CSS Loading**: All styles properly compiled and included
+- ✅ **TypeScript**: All type errors resolved
+- ✅ **Linting**: All ESLint errors fixed
+
 ## [2.6.0] - 2025-01-15
 
 ### 🎯 Major UI/UX Improvements & Content Updates
