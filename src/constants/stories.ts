@@ -11,103 +11,112 @@ export interface Story {
 
 export const storiesData: Story[] = [
 	{
-		id: 'wellness-journey-sarah',
-		title: 'My Wellness Journey: From Stress to Serenity',
-		author: 'Sarah Chen',
-		date: 'December 15, 2024',
+		id: 'recovery-journey-jaideep',
+		title: 'From Darkness to Light: My Recovery Journey Through Yoga',
+		author: 'Jaideep',
+		date: 'January 15, 2025',
 		excerpt:
-			'How I discovered inner peace through mindfulness and yoga practices.',
-		content: `My journey to wellness began during one of the most stressful periods of my life. As a marketing executive working 60+ hours a week, I found myself constantly exhausted, anxious, and disconnected from what truly mattered.
+			'How yoga and community helped me rebuild my life after addiction and find my purpose.',
+		content: `My journey to wellness began in the darkest place I've ever known. After years of struggling with opioid addiction, I found myself at rock bottom - jobless, homeless, and completely disconnected from who I truly was. The person I had become was unrecognizable to me.
 
-It all changed when a colleague invited me to a yoga class at Hidden Lotus. I was skeptical at first - I had always thought yoga was just stretching for flexible people. But from the moment I stepped into the studio, I felt something shift.
+The turning point came during a particularly low moment when I realized I had two choices: continue down the path of destruction or find a way to rebuild my life from the ground up. That's when I discovered yoga.
 
-The instructor, Maya, began the class by asking us to simply breathe. "Notice your breath," she said softly. "Without trying to change it, just observe." For the first time in months, I actually felt present in my body.
+At first, I was skeptical. How could something as simple as breathing and moving help with the deep pain and trauma I was carrying? But I was desperate enough to try anything. I walked into a yoga studio, feeling completely out of place among the peaceful practitioners.
 
-Over the next few weeks, I started attending classes regularly. Each session taught me something new about myself. I learned that I was holding tension in my shoulders from hours at the computer. I discovered that my mind was constantly racing, planning the next task before finishing the current one.
+The instructor welcomed me with such compassion and non-judgment that I felt safe for the first time in years. She didn't ask about my past or my struggles - she simply invited me to breathe and be present with whatever I was feeling.
 
-The mindfulness practices we learned in class began to seep into my daily life. I started taking short breathing breaks during work. I learned to pause before responding to stressful emails. I began to notice the beauty in small moments - the way sunlight filtered through my office window, the taste of my morning tea.
+That first class was transformative. For 75 minutes, I wasn't thinking about my addiction, my failures, or my fears. I was simply present in my body, moving and breathing. It was the first time in years I felt connected to something greater than myself.
 
-Six months into my practice, I realized I was sleeping better, feeling less anxious, and actually enjoying my work more. My relationships improved because I was more present when spending time with loved ones.
+As I continued practicing, yoga became my anchor. The physical practice helped me reconnect with my body, which I had been numbing for so long. The breathing exercises taught me how to sit with difficult emotions instead of running from them. The meditation practices showed me that I wasn't my thoughts or my past - I was something deeper and more essential.
 
-The most profound change came when I learned to meditate. Sitting quietly for just 10 minutes each morning transformed my entire day. I became more patient, more compassionate, and more aware of my own needs.
+But perhaps most importantly, yoga introduced me to a community of people who were also on a journey of healing and growth. For the first time in years, I felt like I belonged somewhere. These weren't people who were trying to fix me or save me - they were simply walking alongside me on my path.
 
-Today, wellness isn't just something I do - it's who I am. I've learned that taking care of myself isn't selfish; it's essential. When I'm well, I can better serve others, be more creative at work, and show up fully in my relationships.
+The decision to become a yoga teacher came from a deep desire to give back what had been given to me. I wanted to create spaces where others who were struggling could find the same healing and community that I had found. That's how Hidden Lotus was born.
 
-Hidden Lotus has become my sanctuary, a place where I can reconnect with myself and remember what truly matters. The community here has supported me through difficult times and celebrated my victories.
+Teaching yoga has taught me that healing is not a linear process. Some days are easier than others, and that's okay. What matters is showing up with an open heart and a willingness to learn. Every student who walks into my class teaches me something new about resilience, courage, and the human spirit.
 
-My advice to anyone starting their wellness journey? Start small. You don't need to meditate for hours or become a yoga expert overnight. Just begin with five minutes of conscious breathing each day. Be patient with yourself. And remember that wellness is a journey, not a destination.
+The Sacred Men's Group I lead is particularly close to my heart. I know how difficult it can be for men to be vulnerable and ask for help. Creating a safe space where men can explore their emotions, share their struggles, and support each other has been one of the most rewarding aspects of my work.
 
-Every day, I'm grateful for this path I've chosen. It's led me to a life that's not just productive, but meaningful. A life where I can find peace even in chaos, and joy even in ordinary moments.`,
-		category: 'Wellness',
-		image: '/bg-main.png',
+Today, I'm grateful for every challenge I've faced because they led me to this path. My recovery journey continues every day, and yoga remains my foundation. It's not about being perfect or never struggling - it's about having tools and community to help you through the difficult times.
+
+To anyone who is struggling with addiction, trauma, or any kind of pain: know that you are not alone. There is a path forward, and it begins with a single breath. You don't have to have it all figured out - you just have to be willing to take the first step.
+
+The yoga community is here for you, and so am I. Together, we can heal, grow, and create something beautiful from our struggles.`,
+		category: 'Recovery',
+		image: '/team/jaideep.png',
 	},
 	{
-		id: 'yoga-transformation-mike',
-		title: "Yoga Changed My Life: A Beginner's Perspective",
-		author: 'Mike Rodriguez',
-		date: 'December 12, 2024',
+		id: 'community-healing-nicky',
+		title: 'Building Bridges: How Community Heals Us All',
+		author: 'Nicky',
+		date: 'January 12, 2025',
 		excerpt:
-			'A former skeptic shares how yoga transformed his physical and mental health.',
-		content: `I never thought I'd be the type of person to practice yoga. As a former college athlete and current gym enthusiast, I was all about lifting weights and high-intensity workouts. Yoga seemed too slow, too gentle, too... well, not masculine enough.
+			'My journey from individual success to collective healing and community empowerment.',
+		content: `Growing up, I was taught that success meant individual achievement - getting ahead, climbing the ladder, accumulating more. I built a successful career in real estate, helping people buy and sell homes, but something always felt missing. I was successful, but I wasn't fulfilled.
 
-But after a serious back injury left me unable to do my usual workouts, my doctor suggested I try yoga for rehabilitation. Reluctantly, I signed up for a beginner class at Hidden Lotus.
+The shift began when I started volunteering at a local community center. I saw firsthand how much people were struggling - not just financially, but emotionally and spiritually. I realized that my individual success meant nothing if I wasn't using it to lift others up.
 
-The first class was humbling. I couldn't touch my toes, I wobbled in every balance pose, and I felt completely out of place among the more experienced practitioners. But the instructor, David, was incredibly patient and encouraging.
+My mother's wisdom became my guiding light: "Value people and use material things, not use people and value material things." This simple but profound teaching completely changed how I approached my work and my life.
 
-"Yoga isn't about being perfect," he told me. "It's about showing up and doing what you can with what you have today." This simple philosophy began to change my perspective on fitness and life in general.
+I began to see real estate not just as transactions, but as opportunities to help people create homes and build communities. Every client became a person with dreams, struggles, and hopes. I started listening more deeply, understanding that behind every property decision was a human story.
 
-As I continued practicing, I noticed changes I never expected. My back pain decreased significantly. I became more flexible, which improved my performance in other sports. But the most surprising change was mental.
+But I wanted to do more. I wanted to create spaces where people could come together to heal, grow, and support each other. That's when I became involved with Hidden Lotus. I saw how this community was creating something special - a place where people could be authentic, vulnerable, and supported.
 
-I discovered that yoga wasn't just physical exercise - it was a moving meditation. The focus required to hold poses and coordinate breath with movement quieted my racing mind. I started sleeping better and feeling less stressed throughout the day.
+The work I do now extends far beyond real estate. I spend my time connecting people, creating opportunities for healing, and building bridges between different communities. I've learned that true wealth isn't measured in dollars, but in the relationships we build and the lives we touch.
 
-The community at Hidden Lotus also surprised me. I had expected judgment from more experienced yogis, but instead found support and encouragement. People of all ages, body types, and fitness levels practiced together, each on their own journey.
+One of the most powerful experiences I've had was organizing a community healing circle after a local tragedy. Seeing people from different backgrounds, ages, and experiences come together to support each other reminded me of the incredible power of community.
 
-Six months into my practice, I can honestly say that yoga has transformed my life. I'm stronger, more flexible, and more mentally resilient than I've ever been. I've learned to appreciate the journey rather than just focusing on results.
+At Hidden Lotus, I've witnessed countless transformations. People who came in feeling isolated and broken leave feeling connected and hopeful. The magic isn't in any single practice or technique - it's in the space we create for authentic connection and mutual support.
 
-My advice to other beginners? Don't let fear or self-consciousness hold you back. Everyone starts somewhere, and the yoga community is incredibly welcoming. Focus on your own practice, not how you compare to others. And be patient - the benefits come with consistent practice over time.
+I've learned that healing is not an individual process. We heal in relationship with others. When we create safe spaces for people to be vulnerable, to share their struggles, and to support each other, incredible things happen.
 
-Yoga has taught me that true strength comes from balance - physical, mental, and emotional. It's not about being the strongest or most flexible person in the room. It's about being the best version of yourself, whatever that looks like today.
+The real estate work I do now is infused with this same spirit. I'm not just helping people buy houses - I'm helping them create homes where they can thrive. I'm building communities, not just selling properties.
 
-I'm grateful for the injury that led me to yoga, and for the community at Hidden Lotus that has supported my journey. What started as physical therapy has become a lifelong practice that continues to enrich every aspect of my life.`,
-		category: 'Yoga',
-		image: '/bg-main-dark.png',
+My advice to anyone who feels called to serve others: start where you are, with what you have. You don't need to quit your job or completely change your life. You can begin by bringing more compassion, more listening, and more care to whatever you're already doing.
+
+Look for opportunities to connect people, to create spaces for healing, to be a bridge between different communities. The world needs more people who are willing to show up with open hearts and helping hands.
+
+Together, we can create a world where no one has to heal alone, where everyone has access to the support and community they need to thrive. This is the work that truly matters, and it's available to all of us, right where we are.`,
+		category: 'Community',
+		image: '/team/nicky.png',
 	},
 	{
-		id: 'meditation-breakthrough-emma',
-		title: 'Finding Peace: My Meditation Breakthrough',
-		author: 'Emma Thompson',
-		date: 'December 10, 2024',
-		excerpt: 'How meditation helped me overcome anxiety and find inner calm.',
-		content: `Anxiety had been my constant companion for as long as I could remember. As a child, I worried about everything - school, friends, whether my parents would be disappointed in me. As an adult, the worries only grew more complex and overwhelming.
+		id: 'sound-healing-vuong',
+		title: 'Finding My Voice: A Journey Through Sound and Movement',
+		author: 'Vuong',
+		date: 'January 10, 2025',
+		excerpt:
+			'How discovering my authentic self through dance and sound healing led me to create inclusive spaces for others.',
+		content: `As a queer Vietnamese American growing up in a traditional household, I spent years trying to fit into boxes that never quite felt right. I was expected to follow a certain path, to be a certain way, but my heart was calling me toward something different.
 
-I tried everything to manage my anxiety: therapy, medication, exercise, diet changes. While these helped somewhat, I still felt like I was constantly fighting against my own mind. Then, during a particularly difficult period, a friend suggested I try meditation.
+Dance became my first language of authentic expression. When I moved my body, I could be completely myself without words. The rhythm, the flow, the connection between music and movement - it all felt like coming home to who I truly was.
 
-I was skeptical. How could sitting quietly and doing nothing possibly help with my racing thoughts? But I was desperate enough to try anything. I signed up for a meditation workshop at Hidden Lotus, not expecting much.
+But even in dance, I struggled with feeling like I belonged. The dance world could be competitive and judgmental, and I often felt like I had to prove myself or hide parts of who I was. It wasn't until I discovered yoga and sound healing that I found a space where I could be fully authentic.
 
-The first few sessions were frustrating. My mind wouldn't stop racing. I'd sit there trying to focus on my breath, but within seconds, I'd be thinking about work, relationships, or random worries. I felt like I was failing at meditation.
+Yoga taught me that movement doesn't have to be about performance or perfection - it can be about presence, about listening to what your body needs in each moment. This was revolutionary for me. For the first time, I felt like I could move without judgment, without trying to be someone I wasn't.
 
-But the instructor, Lisa, reassured me that this was completely normal. "The goal isn't to stop thinking," she explained. "It's to become aware of your thoughts without getting caught up in them. Every time you notice your mind has wandered and bring it back to your breath, that's a successful meditation."
+Sound healing opened up an entirely new dimension of healing and expression. When I first experienced a sound bath, I was transported to a place of deep peace and connection. The vibrations of the crystal bowls, the resonance of the gong, the gentle waves of the ocean drum - they all spoke to something ancient and wise within me.
 
-This perspective shift was revolutionary. Instead of fighting my thoughts, I learned to observe them with curiosity and compassion. I began to understand that thoughts are just thoughts - they don't define me, and I don't have to believe or act on every one.
+I knew I had to learn this practice. Under the guidance of master teacher Kyle Lam, I became certified in sound healing. The more I learned, the more I realized that sound has the power to bypass the mind and speak directly to the soul.
 
-As I continued practicing, I noticed subtle but profound changes. I became more aware of when anxiety was building up, and I learned to pause and breathe before reacting. I started to recognize patterns in my thinking that contributed to my anxiety.
+Creating Hidden Lotus with Jaideep was about creating the kind of space I wish I had found earlier in my journey. A place where people of all backgrounds, identities, and experiences could come to heal, grow, and be authentically themselves.
 
-The most significant breakthrough came during a particularly stressful week at work. Instead of spiraling into panic, I was able to step back and observe my thoughts. I realized that many of my worries were about things that hadn't happened yet and might never happen.
+The classes I teach - Yoga Flow & Sound and Sound Bath - are designed to help people connect with their bodies and their inner wisdom. I believe that everyone has the capacity for healing and transformation, and my role is simply to hold space for that process to unfold.
 
-This awareness gave me a sense of control I had never experienced before. I could choose how to respond to situations rather than being overwhelmed by them. I began to feel more grounded and present in my daily life.
+One of the most beautiful aspects of sound healing is its inclusivity. You don't need to be flexible, strong, or experienced. You just need to be willing to rest and receive. The sound does the work - it helps release tension, clear energetic blockages, and restore balance to the body and mind.
 
-Meditation has also deepened my relationships. I'm more patient with others because I'm more patient with myself. I listen better because I'm not constantly planning what to say next. I'm more compassionate because I understand that everyone is dealing with their own struggles.
+I've witnessed incredible transformations in my classes. People who came in feeling disconnected from their bodies leave feeling deeply embodied. Those who were carrying heavy emotional burdens find release and lightness. The sound creates a safe container for whatever needs to arise.
 
-Today, meditation is a non-negotiable part of my daily routine. Even on busy days, I make time for at least 10 minutes of practice. It's not always easy, and some days my mind is still restless, but I've learned to approach it with kindness rather than judgment.
+The Sacred Men's Group that Jaideep leads is particularly important to me because I know how difficult it can be for men, especially men from traditional cultures, to explore their emotions and vulnerability. Creating spaces where men can be authentic and supportive of each other is crucial for healing.
 
-The community at Hidden Lotus has been instrumental in my journey. The group meditation sessions provide accountability and connection. Sharing experiences with others who are on similar paths has been incredibly validating and inspiring.
+My journey has taught me that healing is not about fixing what's broken - it's about remembering who we truly are. We all have an inner wisdom, an inner light, that knows how to heal. Sometimes we just need the right tools and the right environment to access it.
 
-My anxiety hasn't disappeared completely - that's not realistic. But it no longer controls my life. I have tools to manage it, and I understand that difficult emotions are temporary. I've learned to find peace even in the midst of chaos.
+To anyone who feels like they don't belong, who feels like they have to hide parts of themselves to be accepted: know that you are perfect exactly as you are. Your uniqueness is not a flaw - it's a gift. The world needs your authentic voice, your unique perspective, your particular way of being.
 
-If you're struggling with anxiety or stress, I encourage you to give meditation a try. Start small - even five minutes a day can make a difference. Be patient with yourself, and remember that every moment of practice is valuable, regardless of how "successful" it feels.
+Find the practices and communities that allow you to be fully yourself. Whether it's yoga, dance, sound healing, or something else entirely, trust what resonates with your soul. Your healing journey is yours alone, but you don't have to walk it alone.
 
-Meditation has taught me that peace isn't the absence of problems - it's the ability to remain calm in the midst of them. It's a skill that can be developed with practice, and it's available to everyone, regardless of their circumstances.`,
-		category: 'Meditation',
-		image: '/bg-hl-1.png',
+Together, we can create a world where everyone feels safe to be authentically themselves, where healing is accessible to all, and where our differences are celebrated as the beautiful diversity of human experience.`,
+		category: 'Healing',
+		image: '/team/vuong.png',
 	},
 ]

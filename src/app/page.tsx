@@ -34,7 +34,7 @@ export default function HomePage() {
 		<div className="flex flex-column gap-6 p-4">
 			<HeroSection
 				title="Welcome to Hidden Lotus"
-				description="Discover your path to wellness and inner peace through our holistic approach to healing and mindfulness."
+				description="Discover your path to wellness and inner peace."
 			/>
 			<ButtonGroup buttons={actionButtons} />
 			{/* <ContactSection /> */} {/* Commented out for future use */}

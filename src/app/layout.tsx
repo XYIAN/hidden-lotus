@@ -112,7 +112,17 @@ export default function RootLayout({
 					`}
 				</Script>
 			</head>
-			<body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
+			<body
+				className={`${inter.variable} ${robotoMono.variable} antialiased`}
+				style={{
+					backgroundColor: '#dbcbb1',
+					backgroundImage: 'url("/bg-main.png")',
+					backgroundSize: 'cover',
+					backgroundPosition: 'center center',
+					backgroundRepeat: 'no-repeat',
+					backgroundAttachment: 'fixed',
+				}}
+			>
 				<Providers>
 					<LoadingProvider>
 						<div className="min-h-screen flex flex-column">

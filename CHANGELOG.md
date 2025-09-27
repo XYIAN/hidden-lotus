@@ -5,6 +5,155 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.6.0] - 2025-01-15
+
+### 🎯 Major UI/UX Improvements & Content Updates
+
+#### Added
+
+- **PrimeFlex CSS Integration**:
+
+  - Properly imported PrimeFlex CSS library for consistent utility classes
+  - Fixed all PrimeFlex classes (`flex`, `justify-content-center`, `align-items-center`, etc.)
+  - Enhanced component styling with working utility classes
+
+- **About Page Content Update**:
+
+  - Updated mission statement with new content focusing on SELF-LOVE, LOVE, PEACE, ABUNDANCE, and JOY
+  - Enhanced typography hierarchy with emphasized key values
+  - Improved content flow and readability with structured sections
+
+- **Team Profile Page Redesign**:
+  - Completely redesigned team member profile pages with clean, centered layout
+  - Replaced complex multi-card layout with single, beautiful card design
+  - Added proper content hierarchy matching reference design
+  - Implemented consistent styling with other pages
+
+#### Fixed
+
+- **Background Image & Styling**:
+
+  - Fixed missing background image (`bg-main.png`) display
+  - Resolved white flash on page load by adding immediate background color
+  - Added `!important` declarations to ensure background styles override conflicts
+  - Implemented proper light brown background color (`#dbcbb1`) as fallback
+
+- **Loading Overlay Improvements**:
+
+  - Replaced custom CSS spinner with PrimeReact ProgressSpinner component
+  - Enhanced styling with clean white card design and backdrop blur
+  - Improved visual consistency with site's design language
+
+- **Footer Centering**:
+
+  - Fixed privacy and terms links centering using inline styles
+  - Ensured all footer content is properly aligned
+
+- **Sidebar Menu Centering**:
+
+  - Fixed sidebar navigation links centering with `justify-content-center`
+  - Enhanced menu item template with proper alignment
+
+- **Membership Page Simplification**:
+  - Replaced complex styled-components with PrimeFlex classes
+  - Simplified layout while maintaining functionality
+  - Fixed tab navigation and content display
+
+#### Technical
+
+- **CSS Architecture**:
+
+  - Added PrimeFlex CSS import to layout.tsx
+  - Enhanced global CSS with `!important` declarations for background
+  - Improved inline styling for critical layout components
+
+- **Component Refactoring**:
+
+  - Simplified team profile page from complex grid to single card layout
+  - Updated about page with new content structure and typography
+  - Enhanced loading overlay with PrimeReact components
+
+- **Layout Improvements**:
+  - Fixed header, footer, and sidebar centering issues
+  - Improved card component styling across all pages
+  - Enhanced background image loading and display
+
+## [2.5.4] - 2025-01-15
+
+### 🌟 Major Content Update - New Team & Classes with MOR Philosophy
+
+#### Added
+
+- **New Team Members**:
+
+  - **Jaideep**: 200 RYT CorePower Yoga instructor and co-creator with recovery story
+  - **Nicky**: Community advocate and real estate broker focused on collective empowerment
+  - **Vuong**: Co-founder, movement practitioner, and sound healing specialist with dance background
+
+- **Updated Class Offerings**:
+
+  - **Essential Vinyasa Yoga**: Accessible practice emphasizing open-heartedness
+  - **Yoga Flow & Sound**: Grounding experience combining yoga with healing vibrations
+  - **Sound Bath**: Immersive sound journey with crystal bowls, gongs, and ocean drums
+  - **Sacred Men's Group**: Supportive space for men's wellness and community
+
+- **MOR Philosophy Integration**:
+  - All class descriptions now incorporate Motion, OpenHeart, and Revival pillars
+  - Classes emphasize authentic expression and interdisciplinary practices
+  - Focus on community healing and collective empowerment
+
+#### Changed
+
+- **Pricing Model**:
+
+  - All classes now donation-based instead of fixed pricing
+  - Membership page updated to reflect current donation-based approach
+  - Future advanced membership program in development
+
+- **Content Updates**:
+
+  - Home page hero description simplified to "Discover your path to wellness and inner peace"
+  - About page already contained updated mission and values content
+  - Team images updated to use `/team/[name].png` format
+
+- **Class Structure**:
+  - Reduced from 10 classes to 4 focused offerings
+  - All classes taught by actual team members (Jaideep, Vuong)
+  - Equipment lists updated to match new class types
+
+#### Technical
+
+- **Constants Updates**:
+
+  - `src/constants/classes.ts`: Complete overhaul with new MOR-integrated descriptions
+  - `src/constants/team.ts`: Replaced all team members with Jaideep, Nicky, and Vuong
+  - Updated image paths to use `/team/[name].png` format
+  - All classes now show "Donation Based" pricing
+
+- **Page Updates**:
+  - `src/app/page.tsx`: Updated hero description
+  - `src/app/membership/page.tsx`: Complete redesign for donation-based model
+  - About page already contained updated content
+
+#### Additional Updates
+
+- **Sacred Men's Group**: Created comprehensive description based on MOR philosophy and Jaideep's background
+- **Classes Page**: Added header text about cultivating freedom and creativity in teaching
+- **Classes Page**: Added "All of our classes are unheated" bottom line
+- **Stories Content**: Created three powerful stories based on team members' real journeys:
+  - Jaideep's recovery journey through yoga
+  - Nicky's community healing and empowerment story
+  - Vuong's authentic self-discovery through sound and movement
+
+#### Notes
+
+- **Image Requirements**: Team images need to be added to `/public/team/` folder:
+  - `jaideep.png`
+  - `nicky.png`
+  - `vuong.png`
+- **Social Links**: Facebook, Instagram, LinkedIn links need to be added
+- **Home Page Logo**: Main logo replacement for hero section pending
+
 ## [2.5.3] - 2025-01-15
 
 ### 🚫 Contact Page Removal & Navigation Updates

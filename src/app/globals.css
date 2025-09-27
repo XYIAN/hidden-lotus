@@ -41,23 +41,24 @@ html,
 body {
 	max-width: 100vw;
 	overflow-x: hidden;
-	background: linear-gradient(135deg, var(--light-tan) 0%, #f1e6cd 100%);
-	background-attachment: fixed;
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	background-color: #dbcbb1 !important;
+	background-image: url("/bg-main.png") !important;
+	background-size: cover !important;
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+	background-attachment: fixed !important;
 }
 
 body {
 	color: var(--foreground);
 	font-family: var(--font-sans), "Inter", Arial, Helvetica, sans-serif;
 	min-height: 100vh;
-	background-image: url("/bg-main.png");
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-color: #dbcbb1;
+	background-color: #dbcbb1 !important;
+	background-image: url("/bg-main.png") !important;
+	background-size: cover !important;
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+	background-attachment: fixed !important;
 	position: relative;
 	overflow-x: hidden;
 }

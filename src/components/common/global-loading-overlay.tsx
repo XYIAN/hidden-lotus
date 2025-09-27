@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { usePathname } from 'next/navigation'
+import { ProgressSpinner } from 'primereact/progressspinner'
 
 export function GlobalLoadingOverlay() {
 	const [loading, setLoading] = useState(false)
@@ -25,29 +26,56 @@ export function GlobalLoadingOverlay() {
 	if (!loading) return null
 
 	return (
-		<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 transition-opacity duration-300">
-			<div className="bg-white rounded-full p-6 shadow-lg flex flex-col items-center">
-				<span className="loader mb-2"></span>
-				<span className="text-primary-green font-semibold">Loading...</span>
+		<div
+			style={{
+				position: 'fixed',
+				top: 0,
+				left: 0,
+				right: 0,
+				bottom: 0,
+				width: '100vw',
+				height: '100vh',
+				zIndex: 9999,
+				backgroundColor: 'rgba(139, 115, 85, 0.6)',
+				backdropFilter: 'blur(4px)',
+				display: 'flex',
+				alignItems: 'center',
+				justifyContent: 'center',
+			}}
+		>
+			<div
+				className="flex flex-column gap-3 p-6"
+				style={{
+					background: 'linear-gradient(135deg, #f0ede4 0%, #f5f1e8 100%)',
+					borderRadius: '16px',
+					boxShadow: '0 8px 32px rgba(139, 69, 19, 0.3)',
+					border: '2px solid #8baa7a',
+					display: 'flex',
+					flexDirection: 'column',
+					alignItems: 'center',
+					justifyContent: 'center',
+				}}
+			>
+				<ProgressSpinner
+					style={{ 
+						width: '40px', 
+						height: '40px',
+						color: '#4a7c59'
+					}}
+					strokeWidth="4"
+					fill="transparent"
+					animationDuration="1s"
+				/>
+				<span
+					style={{ 
+						fontSize: '14px',
+						fontWeight: '600',
+						color: '#4a7c59'
+					}}
+				>
+					Loading...
+				</span>
 			</div>
-			<style jsx>{`
-				.loader {
-					border: 4px solid #e0e0e0;
-					border-top: 4px solid #7e9c6f;
-					border-radius: 50%;
-					width: 36px;
-					height: 36px;
-					animation: spin 1s linear infinite;
-				}
-				@keyframes spin {
-					0% {
-						transform: rotate(0deg);
-					}
-					100% {
-						transform: rotate(360deg);
-					}
-				}
-			`}</style>
 		</div>
 	)
 }

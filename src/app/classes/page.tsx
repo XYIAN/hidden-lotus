@@ -108,7 +108,7 @@ export default function ClassesPage() {
 		<div className="flex flex-column gap-6 p-4 page-transition">
 			<HeroSection
 				title="Our Classes"
-				description="Discover our diverse range of wellness classes designed to support your journey to health and well-being."
+				description="We cultivate freedom and creativity in teaching by holding space for authentic expression and interdisciplinary practices for wellness practitioners, facilitators, and students to explore what wellness means beyond form, and to co-create healing through movement, sound, and art."
 			/>
 
 			<div className="max-w-7xl mx-auto w-full">
@@ -207,6 +207,13 @@ export default function ClassesPage() {
 							/>
 						))}
 					</div>
+				</div>
+
+				{/* Bottom Line */}
+				<div className="text-center mt-6">
+					<p className="text-lg text-sage-green-600 font-medium">
+						All of our classes are unheated.
+					</p>
 				</div>
 			</div>
 		</div>
