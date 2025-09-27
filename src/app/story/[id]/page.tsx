@@ -1,6 +1,3 @@
-'use client'
-
-import { useParams } from 'next/navigation'
 import { notFound } from 'next/navigation'
 import { Card } from 'primereact/card'
 import { Tag } from 'primereact/tag'
@@ -9,9 +6,18 @@ import { HeroSection } from '@/components/common/hero-section'
 import { storiesData } from '@/constants/stories'
 import Link from 'next/link'
 
-export default function StoryDetailPage() {
-	const params = useParams()
-	const id = params.id as string
+export async function generateStaticParams() {
+	return storiesData.map((story) => ({
+		id: story.id,
+	}))
+}
+
+interface PageProps {
+	params: Promise<{ id: string }>
+}
+
+export default async function StoryDetailPage({ params }: PageProps) {
+	const { id } = await params
 	const story = storiesData.find((s) => s.id === id)
 
 	if (!story) {

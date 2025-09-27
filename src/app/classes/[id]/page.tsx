@@ -1,6 +1,3 @@
-'use client'
-
-import { useParams } from 'next/navigation'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
@@ -8,9 +5,18 @@ import { classesData } from '@/constants/classes'
 import Link from 'next/link'
 import '@/styles/animations.css'
 
-export default function ClassDetailPage() {
-	const params = useParams()
-	const classId = params.id as string
+export async function generateStaticParams() {
+	return classesData.map((classItem) => ({
+		id: classItem.id,
+	}))
+}
+
+interface PageProps {
+	params: Promise<{ id: string }>
+}
+
+export default async function ClassDetailPage({ params }: PageProps) {
+	const { id: classId } = await params
 	const classData = classesData.find((c) => c.id === classId)
 
 	if (!classData) {

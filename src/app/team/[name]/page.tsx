@@ -1,14 +1,20 @@
-'use client'
-
-import { useParams } from 'next/navigation'
 import { Tag } from 'primereact/tag'
 import { teamData } from '@/constants/team'
 import { TeamMember } from '@/types'
 import { notFound } from 'next/navigation'
 
-export default function TeamMemberPage() {
-	const params = useParams()
-	const name = params.name as string
+export async function generateStaticParams() {
+	return teamData.map((member) => ({
+		name: member.name.toLowerCase().replace(/\s+/g, '-'),
+	}))
+}
+
+interface PageProps {
+	params: Promise<{ name: string }>
+}
+
+export default async function TeamMemberPage({ params }: PageProps) {
+	const { name } = await params
 	const member = teamData.find((m: TeamMember) => {
 		const decodedName = decodeURIComponent(name)
 		return (
