@@ -1,0 +1,18 @@
+/* Import all CSS and SCSS files in the correct order */
+
+/* PrimeReact CSS */
+@import 'primereact/resources/themes/lara-light-green/theme.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Our custom SCSS */
+@import './main.scss';
+
+/* Global styles */
+@import '../app/globals.css';

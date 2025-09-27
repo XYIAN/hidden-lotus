@@ -5,8 +5,10 @@
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",
+		"export": "next build && next export",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"postbuild": "next-sitemap"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^3.3.2",
