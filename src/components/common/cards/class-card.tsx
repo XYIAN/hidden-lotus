@@ -139,15 +139,11 @@ export function ClassCard({ classData }: ClassCardProps) {
 				</div>
 
 				{/* Details */}
-				<div className="mb-4 flex-grow-1 flex justify-content-center">
+				<div className="mb-2 flex-grow-1 flex justify-content-center">
 					<div
 						className="flex flex-column gap-2 text-center"
 						style={{ width: '100%', maxWidth: '300px' }}
 					>
-						<div className="flex align-items-center gap-2 justify-content-center">
-							<i className="pi pi-clock text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">{classData.time}</span>
-						</div>
 						<div className="flex align-items-center gap-2 justify-content-center">
 							<i className="pi pi-calendar text-sage-green-600"></i>
 							<span className="text-sm text-earth-brown">

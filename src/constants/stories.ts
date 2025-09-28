@@ -16,13 +16,9 @@ export const storiesData: Story[] = [
 		author: 'Hidden Lotus Community',
 		date: 'January 2025',
 		excerpt:
-			'An adventure tale that began with a willingness to go into the unknown and continues to thrive on that basis.',
-		content: `The Hidden Lotus story is an adventure tale. It began with a willingness to go into the unknown. It continues to thrive on that basis.
-
-We are a completely grass-roots venture with no investors. We have enjoyed the support of many talented, loving, giving individuals, and we commit to building upon what we have been blessed with.
-
-We invite you to join the adventure. Follow the story as it unfolds on Instagram @hiddenlotus.mor`,
+			'We are a completely grass-roots venture with no investors. We have enjoyed the support of many talented, loving, giving individuals, and we commit to building upon what we have been blessed with.',
+		content: `The Hidden Lotus story is an adventure tale. It began with a willingness to go into the unknown It continues to thrive on that basis. We are a completely grass-roots venture with no investors. We have enjoyed the support of many talented, loving, giving individuals, and we commit to building upon what we have been blessed with. We invite you to join the adventure. Follow the story as it unfolds on Instagram @hiddenlotus.mor`,
 		category: 'Community',
-		image: '/team/hidden-lotus-story.png',
+		image: '/story-1.JPG',
 	},
 ]

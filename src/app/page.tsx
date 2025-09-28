@@ -2,6 +2,7 @@
 
 import { HeroSection } from '@/components/common/hero-section'
 import { ButtonGroup } from '@/components/home/button-group'
+import { Button } from 'primereact/button'
 // import { ContactSection } from '@/components/home/contact-section' // Commented out for future use
 import '@/styles/animations.css'
 
@@ -36,8 +37,46 @@ export default function HomePage() {
 				title="Welcome to Hidden Lotus"
 				description="Discover your path to wellness and inner peace."
 			/>
-			<div className="text-center -mt-2">
-				<p className="text-base text-sage-green-700 font-semibold italic">
+			{/* Contact Information */}
+			<div className="text-center mb-4">
+				<div className="mb-3">
+					<p className="text-lg text-sage-green-700 font-semibold mb-3">
+						11770 Warner Avenue, Ste 126 Fountain Valley, CA 92708
+					</p>
+				</div>
+				<div className="flex justify-content-center gap-4">
+					<Button
+						label="Email"
+						icon="pi pi-envelope"
+						className="bg-sage-green-600 border-sage-green-600 hover:bg-sage-green-700 text-white"
+						onClick={() =>
+							window.open('mailto:hiddenlotusjvn@gmail.com', '_blank')
+						}
+						style={{
+							padding: '8px 16px',
+							fontSize: '14px',
+							fontWeight: '500',
+							color: 'white',
+							gap: '8px',
+						}}
+					/>
+					<Button
+						label="Phone"
+						icon="pi pi-phone"
+						className="bg-sage-green-600 border-sage-green-600 hover:bg-sage-green-700 text-white"
+						onClick={() => window.open('tel:714-794-9405', '_blank')}
+						style={{
+							padding: '8px 16px',
+							fontSize: '14px',
+							fontWeight: '500',
+							color: 'white',
+							gap: '8px',
+						}}
+					/>
+				</div>
+			</div>
+			<div className="text-center -mt-4">
+				<p className="text-lg text-sage-green-700 font-bold italic">
 					All classes donation-based through October. Come visit!
 				</p>
 			</div>

@@ -105,41 +105,6 @@ export default async function TeamMemberPage({ params }: PageProps) {
 							</div>
 						</div>
 					)}
-
-					{/* Contact Information */}
-					<div className="text-center">
-						<div className="flex flex-column gap-2">
-							{member.contact.email && (
-								<div className="flex align-items-center justify-content-center gap-2">
-									<i className="pi pi-envelope text-sage-green-600"></i>
-									<span className="text-earth-brown">
-										{member.contact.email}
-									</span>
-								</div>
-							)}
-							{member.contact.phone && (
-								<div className="flex align-items-center justify-content-center gap-2">
-									<i className="pi pi-phone text-sage-green-600"></i>
-									<span className="text-earth-brown">
-										{member.contact.phone}
-									</span>
-								</div>
-							)}
-							{member.contact.website && (
-								<div className="flex align-items-center justify-content-center gap-2">
-									<i className="pi pi-globe text-sage-green-600"></i>
-									<a
-										href={member.contact.website}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="text-earth-brown hover:text-primary-green"
-									>
-										{member.contact.website}
-									</a>
-								</div>
-							)}
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

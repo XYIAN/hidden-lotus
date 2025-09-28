@@ -98,41 +98,40 @@ export default async function ClassDetailPage({ params }: PageProps) {
 
 				{/* Class Details */}
 				<Card className="yoga-card p-6 mb-6">
-					<div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-						{/* Left Column */}
-						<div className="flex flex-column gap-4">
-							<div>
-								<h1 className="text-3xl font-bold text-primary-green mb-3">
-									{classData.name}
-								</h1>
-								<p className="text-earth-brown text-lg mb-4">
-									{classData.longDescription}
-								</p>
-							</div>
+					<div className="flex flex-column gap-6 text-center">
+						<div>
+							<h1 className="text-3xl font-bold text-primary-green mb-3">
+								{classData.name}
+							</h1>
+							<p className="text-earth-brown text-lg mb-4">
+								{classData.longDescription}
+							</p>
+						</div>
 
-							{/* Categories */}
-							<div>
-								<h3 className="text-lg font-semibold text-primary-green mb-2">
-									Categories
-								</h3>
-								<div className="flex flex-wrap gap-2">
-									{classData.categories.map((category, index) => (
-										<Tag
-											key={index}
-											value={category
-												.replace('-', ' ')
-												.replace(/\b\w/g, (l) => l.toUpperCase())}
-											className={`${getCategoryColor(category)} border-0`}
-										/>
-									))}
-								</div>
+						{/* Categories */}
+						<div>
+							<h3 className="text-lg font-semibold text-primary-green mb-2">
+								Categories
+							</h3>
+							<div className="flex flex-wrap gap-2 justify-center">
+								{classData.categories.map((category, index) => (
+									<Tag
+										key={index}
+										value={category
+											.replace('-', ' ')
+											.replace(/\b\w/g, (l) => l.toUpperCase())}
+										className={`${getCategoryColor(category)} border-0`}
+									/>
+								))}
 							</div>
+						</div>
 
-							{/* Level */}
-							<div>
-								<h3 className="text-lg font-semibold text-primary-green mb-2">
-									Level
-								</h3>
+						{/* Level */}
+						<div>
+							<h3 className="text-lg font-semibold text-primary-green mb-2">
+								Level
+							</h3>
+							<div className="flex justify-content-center">
 								<Tag
 									value={
 										classData.level.charAt(0).toUpperCase() +
@@ -141,112 +140,25 @@ export default async function ClassDetailPage({ params }: PageProps) {
 									className={`${getLevelColor(classData.level)} border-0`}
 								/>
 							</div>
-
-							{/* Equipment */}
-							{classData.equipment && classData.equipment.length > 0 && (
-								<div>
-									<h3 className="text-lg font-semibold text-primary-green mb-2">
-										Equipment Needed
-									</h3>
-									<div className="flex flex-wrap gap-2">
-										{classData.equipment.map((item, index) => (
-											<Tag
-												key={index}
-												value={item}
-												className="bg-light-tan border-sage-green-200 text-earth-brown"
-											/>
-										))}
-									</div>
-								</div>
-							)}
 						</div>
 
-						{/* Right Column */}
-						<div className="flex flex-column gap-4">
-							{/* Class Info */}
-							<Card
-								className="bg-light-tan/50 p-4"
-								style={{ border: '1px solid var(--sage-green-200)' }}
-							>
-								<h3 className="text-lg font-semibold text-primary-green mb-3">
-									Class Information
+						{/* Equipment */}
+						{classData.equipment && classData.equipment.length > 0 && (
+							<div>
+								<h3 className="text-lg font-semibold text-primary-green mb-2">
+									Equipment Needed
 								</h3>
-								<div className="flex flex-column gap-3">
-									<div className="flex align-items-center gap-3">
-										<i className="pi pi-user text-sage-green-600 text-xl"></i>
-										<div>
-											<span className="text-sm text-earth-brown">
-												Instructor
-											</span>
-											<p className="font-semibold text-primary-green m-0">
-												{classData.instructor}
-											</p>
-										</div>
-									</div>
-									<div className="flex align-items-center gap-3">
-										<i className="pi pi-clock text-sage-green-600 text-xl"></i>
-										<div>
-											<span className="text-sm text-earth-brown">Time</span>
-											<p className="font-semibold text-primary-green m-0">
-												{classData.time}
-											</p>
-										</div>
-									</div>
-									<div className="flex align-items-center gap-3">
-										<i className="pi pi-calendar text-sage-green-600 text-xl"></i>
-										<div>
-											<span className="text-sm text-earth-brown">Duration</span>
-											<p className="font-semibold text-primary-green m-0">
-												{classData.duration}
-											</p>
-										</div>
-									</div>
-									<div className="flex align-items-center gap-3">
-										<i className="pi pi-dollar text-sage-green-600 text-xl"></i>
-										<div>
-											<span className="text-sm text-earth-brown">Price</span>
-											<p className="font-semibold text-primary-green m-0">
-												{classData.price}
-											</p>
-										</div>
-									</div>
-									<div className="flex align-items-center gap-3">
-										<i className="pi pi-users text-sage-green-600 text-xl"></i>
-										<div>
-											<span className="text-sm text-earth-brown">
-												Max Participants
-											</span>
-											<p className="font-semibold text-primary-green m-0">
-												{classData.maxParticipants}
-											</p>
-										</div>
-									</div>
-								</div>
-							</Card>
-
-							{/* Available Dates */}
-							<Card
-								className="bg-light-tan/50 p-4"
-								style={{ border: '1px solid var(--sage-green-200)' }}
-							>
-								<h3 className="text-lg font-semibold text-primary-green mb-3">
-									Available Dates
-								</h3>
-								<div className="flex flex-wrap gap-2">
-									{classData.dates.map((date, index) => (
+								<div className="flex flex-wrap gap-2 justify-center">
+									{classData.equipment.map((item, index) => (
 										<Tag
 											key={index}
-											value={new Date(date).toLocaleDateString('en-US', {
-												weekday: 'short',
-												month: 'short',
-												day: 'numeric',
-											})}
-											className="bg-white border-sage-green-200 text-earth-brown"
+											value={item}
+											className="bg-light-tan border-sage-green-200 text-earth-brown"
 										/>
 									))}
 								</div>
-							</Card>
-						</div>
+							</div>
+						)}
 					</div>
 				</Card>
 			</div>

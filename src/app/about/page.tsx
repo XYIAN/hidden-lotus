@@ -295,31 +295,21 @@ export default function AboutPage() {
 							Hidden Lotus Wellness Center
 						</h3>
 						<p className="text-earth-brown mb-3">
-							123 Wellness Way
+							11770 Warner Avenue, Ste 126
 							<br />
-							Irvine, CA 92614
+							Fountain Valley, CA 92708
 						</p>
 						<p className="text-sm text-earth-brown mb-4">
-							Nestled in the heart of Irvine, our center provides a peaceful
-							retreat from the busy world, surrounded by nature and designed for
+							Nestled in Fountain Valley, our center provides a peaceful retreat
+							from the busy world, surrounded by nature and designed for
 							healing.
 						</p>
-						<div className="flex flex-column sm:flex-row gap-3 justify-content-center">
+						<div className="flex justify-content-center">
 							<Button
 								label="Get Directions"
 								icon="pi pi-directions"
 								iconPos="left"
 								className="p-button-outlined border-sage text-sage"
-								style={{
-									padding: '0.75rem 1.5rem',
-									gap: '0.5rem',
-								}}
-							/>
-							<Button
-								label="Schedule Visit"
-								icon="pi pi-calendar"
-								iconPos="left"
-								className="p-button-primary bg-pastel-pink border-pastel-pink text-secondary-brown"
 								style={{
 									padding: '0.75rem 1.5rem',
 									gap: '0.5rem',
