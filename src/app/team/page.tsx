@@ -41,8 +41,13 @@ export default function TeamPage() {
 			}
 
 			// Type filter
-			if (filters.selectedType && member.type !== filters.selectedType) {
-				return false
+			if (filters.selectedType) {
+				const memberTypes = Array.isArray(member.type)
+					? member.type
+					: [member.type]
+				if (!memberTypes.includes(filters.selectedType)) {
+					return false
+				}
 			}
 
 			// Profession filter
@@ -65,7 +70,11 @@ export default function TeamPage() {
 
 	const types = [
 		{ label: 'All Types', value: '' },
-		...Array.from(new Set(teamData.map((m) => m.type)))
+		...Array.from(
+			new Set(
+				teamData.flatMap((m) => (Array.isArray(m.type) ? m.type : [m.type]))
+			)
+		)
 			.sort()
 			.map((type) => ({
 				label: type.charAt(0).toUpperCase() + type.slice(1),
@@ -106,8 +115,8 @@ export default function TeamPage() {
 			</div>
 
 			<div className="max-w-7xl mx-auto w-full">
-				{/* Filters */}
-				<FilterPanel
+				{/* Filters - Commented out for now */}
+				{/* <FilterPanel
 					title="Filter Team"
 					collapsed={true}
 					onClear={handleClearFilters}
@@ -151,14 +160,14 @@ export default function TeamPage() {
 							}}
 						/>
 					</div>
-				</FilterPanel>
+				</FilterPanel> */}
 
-				{/* Results Count */}
-				<ResultsCount
+				{/* Results Count - Commented out for now */}
+				{/* <ResultsCount
 					count={filteredTeam.length}
 					total={teamData.length}
 					className="mb-4"
-				/>
+				/> */}
 
 				{/* Team Grid */}
 				<CardGrid columns={{ sm: 1, md: 2, lg: 2, xl: 3 }} gap={6}>

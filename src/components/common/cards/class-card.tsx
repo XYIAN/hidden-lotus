@@ -111,7 +111,7 @@ export function ClassCard({ classData }: ClassCardProps) {
 				)}
 
 				{/* Categories */}
-				<div className="flex flex-wrap gap-2 mb-4 justify-content-center">
+				<div className="flex flex-wrap gap-2 mb-2 justify-content-center">
 					{classData.categories.map((category: string, index: number) => (
 						<Tag
 							key={index}
@@ -125,7 +125,7 @@ export function ClassCard({ classData }: ClassCardProps) {
 				</div>
 
 				{/* Level */}
-				<div className="mb-2 flex justify-content-center">
+				<div className="mb-1 flex justify-content-center">
 					<Tag
 						value={
 							classData.level.charAt(0).toUpperCase() + classData.level.slice(1)
@@ -139,7 +139,7 @@ export function ClassCard({ classData }: ClassCardProps) {
 				</div>
 
 				{/* Details */}
-				<div className="mb-2 flex-grow-1 flex justify-content-center">
+				<div className="mb-1 flex-grow-1 flex justify-content-center">
 					<div
 						className="flex flex-column gap-2 text-center"
 						style={{ width: '100%', maxWidth: '300px' }}
@@ -155,7 +155,7 @@ export function ClassCard({ classData }: ClassCardProps) {
 
 				{/* Equipment */}
 				{classData.equipment && classData.equipment.length > 0 && (
-					<div className="mb-4" style={{ textAlign: 'center' }}>
+					<div className="mb-2" style={{ textAlign: 'center' }}>
 						<h4
 							className="text-sm font-semibold text-primary-green mb-3"
 							style={{ textAlign: 'center' }}

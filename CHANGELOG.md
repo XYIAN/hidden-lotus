@@ -5,6 +5,33 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.7] - 2025-01-27
+
+### 🏷️ Team Type Badge Updates
+
+#### Added
+
+- **Multiple Type Badge Support**: Updated DisplayCard component to support multiple type badges per team member
+- **TypeScript Type Updates**: Modified TeamMember interface to allow `type` to be either string or array of strings
+
+#### Fixed
+
+- **Team Page Filtering**: Fixed type filtering logic to handle both single types and arrays of types
+- **Type Array Generation**: Updated team page to properly extract and display all unique types from team members
+
+#### Changed
+
+- **Team Member Type Badges**: Updated team members with multiple type badges:
+  - Jaideep: "Instructor" + "Co-Creator" (salmon pastel + earth-brown backgrounds with white text)
+  - Nicky: "Admin" + "Co-Creator" (sage-green-600 + earth-brown backgrounds with white text)
+  - Vuong: "Instructor" + "Co-Creator" (salmon pastel + earth-brown backgrounds with white text)
+- **Badge Styling**: Added white text to all type badges for better visibility
+- **Color Scheme**: Used different theme colors for type badges:
+  - Co-Creator: earth-brown background with white text
+  - Admin: sage-green-600 background with white text
+  - Instructor: salmon pastel background with white text
+- **Specialties Cleanup**: Removed "Co-Creator" from specialties arrays since it's now displayed as the type badge
+
 ## [2.8.6] - 2025-01-27
 
 ### 🎨 Production Styling Fixes & Header Improvements

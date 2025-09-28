@@ -68,10 +68,13 @@ export function DisplayCard({
 
 	const getTypeColor = (type: string) => {
 		const colors: Record<string, string> = {
-			class: 'bg-sage-green-600',
-			team: 'bg-pastel-pink',
-			story: 'bg-yellow-gold',
-			default: 'bg-sage-green-600',
+			class: 'bg-sage-green-600 text-white',
+			team: 'bg-pastel-pink text-white',
+			story: 'bg-yellow-gold text-white',
+			instructor: 'bg-pastel-pink text-white',
+			admin: 'bg-sage-green-600 text-white',
+			'co-creator': 'bg-earth-brown text-white',
+			default: 'bg-sage-green-600 text-white',
 		}
 		return colors[type] || colors.default
 	}
@@ -147,14 +150,27 @@ export function DisplayCard({
 					</div>
 				)}
 
-				{/* Type Badge */}
+				{/* Type Badges */}
 				{showType && type && (
-					<div className="mb-3 flex justify-content-center">
-						<Tag
-							value={type.charAt(0).toUpperCase() + type.slice(1)}
-							icon={getTypeIcon(type)}
-							className={`text-xs ${getTypeColor(type)} border-0`}
-						/>
+					<div className="mb-3 flex justify-content-center gap-2 flex-wrap">
+						{Array.isArray(type) ? (
+							type.map((t, index) => (
+								<Tag
+									key={index}
+									value={t.charAt(0).toUpperCase() + t.slice(1)}
+									icon={getTypeIcon(t)}
+									className={`text-sm px-3 py-2 ${getTypeColor(t)} border-0`}
+									style={{ gap: '6px' }}
+								/>
+							))
+						) : (
+							<Tag
+								value={type.charAt(0).toUpperCase() + type.slice(1)}
+								icon={getTypeIcon(type)}
+								className={`text-sm px-3 py-2 ${getTypeColor(type)} border-0`}
+								style={{ gap: '6px' }}
+							/>
+						)}
 					</div>
 				)}
 

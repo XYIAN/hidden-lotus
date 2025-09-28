@@ -89,7 +89,7 @@ export default async function StoryDetailPage({ params }: PageProps) {
 						</div>
 
 						{/* Instagram Button */}
-						<div className="flex justify-content-center mb-2">
+						<div className="flex justify-content-center mb-1">
 							<a
 								href="https://instagram.com/hiddenlotus.mor"
 								target="_blank"
@@ -121,8 +121,8 @@ export default async function StoryDetailPage({ params }: PageProps) {
 								className="inline-flex items-center px-6 py-3 bg-pastel-pink text-secondary-brown hover:bg-pastel-pink/80 transition-colors gap-2"
 								style={{ borderRadius: '20px' }}
 							>
-								<i className="pi pi-book"></i>
-								More Stories
+								<i className="pi pi-arrow-left"></i>
+								Back to Stories
 							</Link>
 						</div>
 					</div>

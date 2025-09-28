@@ -19,7 +19,7 @@ export type ClassCategory =
 export type ClassLevel = 'beginner' | 'intermediate' | 'advanced'
 
 // Team member types
-export type TeamMemberType = 'instructor' | 'admin' | 'board'
+export type TeamMemberType = 'instructor' | 'admin' | 'board' | 'co-creator'
 
 // Story categories
 export type StoryCategory =
@@ -50,7 +50,7 @@ export interface TeamMember extends BaseEntity {
 	credentials: string
 	bio: string
 	longBio: string
-	type: TeamMemberType
+	type: TeamMemberType | TeamMemberType[]
 	classes: string[]
 	specialties: string[]
 	certifications?: string[]
