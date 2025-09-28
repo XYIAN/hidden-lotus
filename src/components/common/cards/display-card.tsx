@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
 import { Image } from 'primereact/image'
-import { LoadingSkeleton } from './loading-skeleton'
 import { DisplayCardProps } from '@/types'
 
 export function DisplayCard({
@@ -25,8 +24,8 @@ export function DisplayCard({
 	learnMoreText = 'Learn More',
 	cardSize = 'medium',
 }: DisplayCardProps) {
-	const [imageLoaded, setImageLoaded] = useState(false)
-	const [imageError, setImageError] = useState(false)
+	const [, setImageLoaded] = useState(false)
+	const [, setImageError] = useState(false)
 
 	// Debug: Log the image path
 	console.log('DisplayCard image path:', data.image)

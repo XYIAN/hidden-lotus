@@ -13,8 +13,8 @@ interface ClassCardProps {
 }
 
 export function ClassCard({ classData }: ClassCardProps) {
-	const [imageLoaded, setImageLoaded] = useState(false)
-	const [imageError, setImageError] = useState(false)
+	const [, setImageLoaded] = useState(false)
+	const [, setImageError] = useState(false)
 
 	// Debug: Log the image path
 	console.log('ClassCard image path:', classData.image)
