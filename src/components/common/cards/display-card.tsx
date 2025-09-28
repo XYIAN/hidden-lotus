@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
-import Image from 'next/image'
+import { Image } from 'primereact/image'
 import { LoadingSkeleton } from './loading-skeleton'
 import { DisplayCardProps } from '@/types'
 
@@ -27,6 +27,9 @@ export function DisplayCard({
 }: DisplayCardProps) {
 	const [imageLoaded, setImageLoaded] = useState(false)
 	const [imageError, setImageError] = useState(false)
+
+	// Debug: Log the image path
+	console.log('DisplayCard image path:', data.image)
 
 	const {
 		name,
@@ -132,32 +135,21 @@ export function DisplayCard({
 				{/* Image */}
 				{showImage && image && (
 					<div className="mb-4 flex justify-content-center">
-						<div className="relative">
-							{!imageLoaded && !imageError && (
-								<LoadingSkeleton
-									type="image"
-									className="w-48 h-48 rounded-lg"
-								/>
-							)}
-							{imageError && (
-								<div className="w-48 h-48 bg-light-tan rounded-lg flex align-items-center justify-content-center sage-border">
-									<i className="pi pi-image text-4xl text-sage"></i>
-								</div>
-							)}
-							{!imageError && (
-								<Image
-									src={image}
-									alt={name || title || 'Card image'}
-									width={200}
-									height={200}
-									className={`w-48 h-48 object-contain rounded-lg ${
-										imageLoaded ? 'block' : 'hidden'
-									}`}
-									onLoad={() => setImageLoaded(true)}
-									onError={() => setImageError(true)}
-								/>
-							)}
-						</div>
+						<Image
+							src={image}
+							alt={name || title || 'Card image'}
+							width="200"
+							height="200"
+							className="w-48 h-48 object-cover rounded-lg"
+							onLoad={() => {
+								console.log('✅ Team image loaded successfully:', image)
+								setImageLoaded(true)
+							}}
+							onError={(e) => {
+								console.log('❌ Team image error:', image, e)
+								setImageError(true)
+							}}
+						/>
 					</div>
 				)}
 

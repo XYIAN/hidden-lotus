@@ -5,7 +5,7 @@ export type { TeamMember }
 export const teamData: TeamMember[] = [
 	{
 		id: '1',
-		name: 'Jaideep',
+		name: 'Jaideep Patel',
 		profession: 'Yoga Instructor & Co-Creator',
 		credentials: '200 RYT, CorePower Yoga Huntington Beach',
 		bio: 'Jaideep is a 200 RYT trained at Corepower Yoga in Huntington Beach California with over four years of teaching as a profession.',
@@ -31,7 +31,7 @@ export const teamData: TeamMember[] = [
 	},
 	{
 		id: '2',
-		name: 'Nicky',
+		name: 'Nicky Pham',
 		profession: 'Community Advocate & Real Estate Broker',
 		credentials: 'Affiliate Broker, Real Estate Broker since 2012',
 		bio: 'Nicky is a passionate advocate of community, healing, and collective empowerment.',
@@ -55,7 +55,7 @@ export const teamData: TeamMember[] = [
 	},
 	{
 		id: '3',
-		name: 'Vuong',
+		name: 'Vuong Nguyen',
 		profession: 'Movement & Wellness Practitioner & Co-Founder',
 		credentials:
 			'200 RYT CorePower Yoga, Level 1 Sound Bath Certified, BA Dance CSU Sacramento',

@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
-import Image from 'next/image'
+import { Image } from 'primereact/image'
 import { Class } from '@/constants/classes'
 import '@/styles/animations.css'
 
@@ -15,6 +15,9 @@ interface ClassCardProps {
 export function ClassCard({ classData }: ClassCardProps) {
 	const [imageLoaded, setImageLoaded] = useState(false)
 	const [imageError, setImageError] = useState(false)
+
+	// Debug: Log the image path
+	console.log('ClassCard image path:', classData.image)
 
 	const getCategoryColor = (category: string) => {
 		const colors: Record<string, string> = {
@@ -91,31 +94,24 @@ export function ClassCard({ classData }: ClassCardProps) {
 				{/* Image */}
 				{classData.image && (
 					<div className="mb-4 flex justify-content-center">
-						<div className="relative">
-							{!imageLoaded && !imageError && (
-								<div className="w-48 h-32 bg-light-tan rounded-lg flex align-items-center justify-content-center">
-									<i className="pi pi-spin pi-spinner text-2xl text-sage-green-600"></i>
-								</div>
-							)}
-							{imageError && (
-								<div className="w-48 h-32 bg-light-tan rounded-lg flex align-items-center justify-content-center">
-									<i className="pi pi-image text-2xl text-sage-green-600"></i>
-								</div>
-							)}
-							{!imageError && (
-								<Image
-									src={classData.image}
-									alt={classData.name}
-									width={200}
-									height={128}
-									className={`w-48 h-32 object-cover rounded-lg ${
-										imageLoaded ? 'block' : 'hidden'
-									}`}
-									onLoad={() => setImageLoaded(true)}
-									onError={() => setImageError(true)}
-								/>
-							)}
-						</div>
+						<Image
+							src={classData.image}
+							alt={classData.name}
+							width="200"
+							height="128"
+							className="w-48 h-32 object-cover rounded-lg"
+							onLoad={() => {
+								console.log(
+									'✅ Class image loaded successfully:',
+									classData.image
+								)
+								setImageLoaded(true)
+							}}
+							onError={(e) => {
+								console.log('❌ Class image error:', classData.image, e)
+								setImageError(true)
+							}}
+						/>
 					</div>
 				)}
 
@@ -134,12 +130,16 @@ export function ClassCard({ classData }: ClassCardProps) {
 				</div>
 
 				{/* Level */}
-				<div className="mb-4 flex justify-content-center">
+				<div className="mb-2 flex justify-content-center">
 					<Tag
 						value={
 							classData.level.charAt(0).toUpperCase() + classData.level.slice(1)
 						}
 						className={`text-xs ${getLevelColor(classData.level)} border-0`}
+						style={{
+							padding: '4px 8px',
+							margin: '0',
+						}}
 					/>
 				</div>
 

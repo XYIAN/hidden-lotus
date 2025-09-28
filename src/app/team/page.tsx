@@ -87,27 +87,23 @@ export default function TeamPage() {
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
+			<HeroSection title="Our Team" />
+
 			{/* Hero Image */}
 			<div className="flex justify-content-center mb-4">
 				<Image
 					src="/team/Team Page Hero.jpg"
 					alt="Hidden Lotus Team"
-					width={800}
-					height={300}
-					className="w-full max-w-4xl rounded-lg shadow-lg"
+					width={600} // Reduced width
+					height={400} // Increased height for better aspect ratio
+					className="max-w-2xl rounded-lg shadow-lg"
 					style={{
-						maxHeight: '300px',
-						objectFit: 'cover',
+						objectFit: 'contain', // Changed from cover to contain to maintain aspect ratio
 						objectPosition: 'center',
 					}}
 					priority
 				/>
 			</div>
-
-			<HeroSection
-				title="Our Team"
-				description="Meet our dedicated team of wellness professionals committed to supporting your health and healing journey."
-			/>
 
 			<div className="max-w-7xl mx-auto w-full">
 				{/* Filters */}
