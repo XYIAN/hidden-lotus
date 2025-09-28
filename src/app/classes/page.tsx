@@ -3,13 +3,11 @@
 import { useMemo } from 'react'
 import { ResultsCount } from '@/components/common'
 import { ClassCard } from '@/components/common/cards/class-card'
-// import { ClassesCalendar } from '@/components/monday/classes-calendar'
 import { classesData } from '@/constants/classes'
 import { Class, ClassCategory } from '@/types'
 import { FilterPanel } from '@/components/common/filter-panel'
 import { FormField } from '@/components/common/form-field'
 import { useForm } from 'react-hook-form'
-// import { MondayClass } from '@/lib/monday-api'
 
 interface FilterForm {
 	searchTerm: string
@@ -28,7 +26,6 @@ export default function ClassesPage() {
 		},
 	})
 
-	// const [selectedClass, setSelectedClass] = useState<MondayClass | null>(null)
 	const filters = watch()
 
 	const filteredClasses = useMemo(() => {

@@ -20,7 +20,7 @@ const navigationItems = [
 	{ label: 'Team', href: '/team' },
 	{ label: 'About', href: '/about' },
 	{ label: 'Story', href: '/story' },
-	// { label: 'Contact', href: '/contact' }, // Commented out for future use
+	{ label: 'Contact', href: '/contact' },
 	// { label: 'MOR', href: '/mor' }, // Commented out for future use
 ]
 
@@ -52,8 +52,8 @@ export function Header() {
 					return 'pi pi-info-circle'
 				case '/story':
 					return 'pi pi-book'
-				// case '/contact':
-				//	return 'pi pi-envelope'
+				case '/contact':
+					return 'pi pi-envelope'
 				// case '/mor':
 				//	return 'pi pi-star'
 				default:

@@ -86,6 +86,20 @@ export default function TeamPage() {
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
+			{/* Hero Image */}
+			<div className="flex justify-content-center mb-4">
+				<img
+					src="/team/Team Page Hero.jpg"
+					alt="Hidden Lotus Team"
+					className="w-full max-w-4xl rounded-lg shadow-lg"
+					style={{
+						maxHeight: '300px',
+						objectFit: 'cover',
+						objectPosition: 'center'
+					}}
+				/>
+			</div>
+			
 			<HeroSection
 				title="Our Team"
 				description="Meet our dedicated team of wellness professionals committed to supporting your health and healing journey."

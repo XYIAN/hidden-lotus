@@ -31,11 +31,16 @@ const actionButtons = [
 
 export default function HomePage() {
 	return (
-		<div className="flex flex-column gap-6 p-4">
+		<div className="flex flex-column gap-4 p-4">
 			<HeroSection
 				title="Welcome to Hidden Lotus"
 				description="Discover your path to wellness and inner peace."
 			/>
+			<div className="text-center -mt-2">
+				<p className="text-base text-sage-green-700 font-semibold italic">
+					All classes donation-based through October. Come visit!
+				</p>
+			</div>
 			<ButtonGroup buttons={actionButtons} />
 			{/* <ContactSection /> */} {/* Commented out for future use */}
 		</div>

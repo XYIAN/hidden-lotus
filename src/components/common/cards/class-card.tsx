@@ -81,12 +81,6 @@ export function ClassCard({ classData }: ClassCardProps) {
 					>
 						{classData.name}
 					</h3>
-					<p
-						className="text-earth-brown text-sm mb-4"
-						style={{ textAlign: 'center' }}
-					>
-						{classData.description}
-					</p>
 				</div>
 
 				{/* Categories */}
@@ -120,12 +114,6 @@ export function ClassCard({ classData }: ClassCardProps) {
 						style={{ width: '100%', maxWidth: '300px' }}
 					>
 						<div className="flex align-items-center gap-2 justify-content-center">
-							<i className="pi pi-user text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">
-								{classData.instructor}
-							</span>
-						</div>
-						<div className="flex align-items-center gap-2 justify-content-center">
 							<i className="pi pi-clock text-sage-green-600"></i>
 							<span className="text-sm text-earth-brown">{classData.time}</span>
 						</div>
@@ -133,18 +121,6 @@ export function ClassCard({ classData }: ClassCardProps) {
 							<i className="pi pi-calendar text-sage-green-600"></i>
 							<span className="text-sm text-earth-brown">
 								{classData.duration}
-							</span>
-						</div>
-						<div className="flex align-items-center gap-2 justify-content-center">
-							<i className="pi pi-dollar text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">
-								{classData.price}
-							</span>
-						</div>
-						<div className="flex align-items-center gap-2 justify-content-center">
-							<i className="pi pi-users text-sage-green-600"></i>
-							<span className="text-sm text-earth-brown">
-								Max {classData.maxParticipants} participants
 							</span>
 						</div>
 					</div>
