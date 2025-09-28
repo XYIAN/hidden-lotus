@@ -13,7 +13,14 @@ module.exports = {
 			colors: {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',
-				'sage-green': 'var(--sage-green)',
+				'sage-green': {
+					DEFAULT: 'var(--sage-green)',
+					200: 'var(--sage-green-200)',
+					300: 'var(--sage-green-300)',
+					400: 'var(--sage-green-400)',
+					600: 'var(--sage-green-600)',
+					700: 'var(--sage-green-700)',
+				},
 				'brown-gold': 'var(--brown-gold)',
 				'pastel-pink': 'var(--pastel-pink)',
 				'light-tan': 'var(--light-tan)',

@@ -12,6 +12,22 @@
 	right: 0 !important;
 }
 
+/* Header Logo Styling */
+.header-blur .header-logo {
+	width: 60px !important;
+	height: 60px !important;
+	max-width: 60px !important;
+	max-height: 60px !important;
+	object-fit: contain !important;
+}
+
+/* Header Text Styling */
+.header-blur .text-primary-green {
+	color: #4a7c59 !important;
+	font-size: 1.25rem !important;
+	font-weight: 700 !important;
+}
+
 /* Active navigation item with yellow pulsing glow */
 .active-nav-item {
 	animation: activeNavPulse 2s infinite;
