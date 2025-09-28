@@ -68,7 +68,12 @@ export function TeamCard({ member }: TeamCardProps) {
 							)}
 							{!imageError && (
 								<Image
-									src={member.image || getMemberIcon(member.type)}
+									src={
+										member.image ||
+										getMemberIcon(
+											Array.isArray(member.type) ? member.type[0] : member.type
+										)
+									}
 									alt={`${member.name} avatar`}
 									width={200}
 									height={200}
@@ -86,12 +91,23 @@ export function TeamCard({ member }: TeamCardProps) {
 						{member.name}
 					</h3>
 
-					<div className="flex justify-center mb-1">
-						<Tag
-							value={member.type}
-							severity={getTypeColor(member.type)}
-							className="capitalize"
-						/>
+					<div className="flex justify-center mb-1 gap-1 flex-wrap">
+						{Array.isArray(member.type) ? (
+							member.type.map((type, index) => (
+								<Tag
+									key={index}
+									value={type}
+									severity={getTypeColor(type)}
+									className="capitalize"
+								/>
+							))
+						) : (
+							<Tag
+								value={member.type}
+								severity={getTypeColor(member.type)}
+								className="capitalize"
+							/>
+						)}
 					</div>
 
 					<p className="text-sm font-medium text-secondary-brown mb-1">

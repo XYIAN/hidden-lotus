@@ -289,15 +289,31 @@ export const DisplayCard = memo<DisplayCardProps>(function DisplayCard({
 
 				{/* Type Badge */}
 				{showType && type && (
-					<TypeBadge type={type}>
-						<span className="p-tag">
-							<i
-								className={getTypeIcon(type)}
-								style={{ marginRight: '0.5rem' }}
-							/>
-							{type.charAt(0).toUpperCase() + type.slice(1)}
-						</span>
-					</TypeBadge>
+					<div className="flex justify-content-center gap-2 flex-wrap">
+						{Array.isArray(type) ? (
+							type.map((t, index) => (
+								<TypeBadge key={index} type={t}>
+									<span className="p-tag">
+										<i
+											className={getTypeIcon(t)}
+											style={{ marginRight: '0.5rem' }}
+										/>
+										{t.charAt(0).toUpperCase() + t.slice(1)}
+									</span>
+								</TypeBadge>
+							))
+						) : (
+							<TypeBadge type={type}>
+								<span className="p-tag">
+									<i
+										className={getTypeIcon(type)}
+										style={{ marginRight: '0.5rem' }}
+									/>
+									{type.charAt(0).toUpperCase() + type.slice(1)}
+								</span>
+							</TypeBadge>
+						)}
+					</div>
 				)}
 
 				{/* Details */}

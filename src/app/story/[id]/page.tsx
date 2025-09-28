@@ -4,6 +4,7 @@ import { Tag } from 'primereact/tag'
 import { HeroSection } from '@/components/common/hero-section'
 import { storiesData } from '@/constants/stories'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export async function generateStaticParams() {
 	return storiesData.map((story) => ({
@@ -67,9 +68,11 @@ export default async function StoryDetailPage({ params }: PageProps) {
 						{/* Story Image */}
 						{story.image && (
 							<div className="flex justify-content-center align-items-center mb-6 w-full">
-								<img
+								<Image
 									src={story.image}
 									alt={story.title}
+									width={600}
+									height={400}
 									style={{
 										width: '100%',
 										maxWidth: '600px',

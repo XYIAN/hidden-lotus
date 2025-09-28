@@ -1,98 +1,98 @@
 'use client'
 
-import { useMemo } from 'react'
 import Image from 'next/image'
 import { HeroSection } from '@/components/common/hero-section'
-import { CardGrid, DisplayCard, ResultsCount } from '@/components/common'
+import { CardGrid, DisplayCard } from '@/components/common'
 import { teamData } from '@/constants/team'
 import { TeamMember } from '@/types'
-import { FilterPanel } from '@/components/common/filter-panel'
-import { FormField } from '@/components/common/form-field'
-import { useForm } from 'react-hook-form'
 import '@/styles/animations.css'
 
-interface FilterForm {
-	searchTerm: string
-	selectedType: string
-	selectedProfession: string
-}
+// interface FilterForm {
+// 	searchTerm: string
+// 	selectedType: string
+// 	selectedProfession: string
+// }
 
 export default function TeamPage() {
-	const { control, watch, reset } = useForm<FilterForm>({
-		defaultValues: {
-			searchTerm: '',
-			selectedType: '',
-			selectedProfession: '',
-		},
-	})
+	// Filter logic is commented out but kept for future use
+	// const { control, watch, reset } = useForm<FilterForm>({
+	// 	defaultValues: {
+	// 		searchTerm: '',
+	// 		selectedType: '',
+	// 		selectedProfession: '',
+	// 	},
+	// })
 
-	const filters = watch()
+	// const filters = watch()
 
-	const filteredTeam = useMemo(() => {
-		return teamData.filter((member: TeamMember) => {
-			// Search filter
-			if (filters.searchTerm) {
-				const searchLower = filters.searchTerm.toLowerCase()
-				const matchesSearch =
-					member.name.toLowerCase().includes(searchLower) ||
-					member.profession.toLowerCase().includes(searchLower) ||
-					member.bio.toLowerCase().includes(searchLower)
-				if (!matchesSearch) return false
-			}
+	// const filteredTeam = useMemo(() => {
+	// 	return teamData.filter((member: TeamMember) => {
+	// 		// Search filter
+	// 		if (filters.searchTerm) {
+	// 			const searchLower = filters.searchTerm.toLowerCase()
+	// 			const matchesSearch =
+	// 				member.name.toLowerCase().includes(searchLower) ||
+	// 				member.profession.toLowerCase().includes(searchLower) ||
+	// 				member.bio.toLowerCase().includes(searchLower)
+	// 			if (!matchesSearch) return false
+	// 		}
 
-			// Type filter
-			if (filters.selectedType) {
-				const memberTypes = Array.isArray(member.type)
-					? member.type
-					: [member.type]
-				if (!memberTypes.includes(filters.selectedType)) {
-					return false
-				}
-			}
+	// 		// Type filter
+	// 		if (filters.selectedType) {
+	// 			const memberTypes = Array.isArray(member.type)
+	// 				? member.type
+	// 				: [member.type]
+	// 			if (!memberTypes.includes(filters.selectedType as any)) {
+	// 				return false
+	// 			}
+	// 		}
 
-			// Profession filter
-			if (
-				filters.selectedProfession &&
-				!member.profession
-					.toLowerCase()
-					.includes(filters.selectedProfession.toLowerCase())
-			) {
-				return false
-			}
+	// 		// Profession filter
+	// 		if (
+	// 			filters.selectedProfession &&
+	// 			!member.profession
+	// 				.toLowerCase()
+	// 				.includes(filters.selectedProfession.toLowerCase())
+	// 		) {
+	// 			return false
+	// 		}
 
-			return true
-		})
-	}, [filters])
+	// 		return true
+	// 	})
+	// }, [filters])
 
-	const handleClearFilters = () => {
-		reset()
-	}
+	// const types = [
+	// 	{ label: 'All Types', value: '' },
+	// 	...Array.from(
+	// 		new Set(
+	// 			teamData.flatMap((m) => (Array.isArray(m.type) ? m.type : [m.type]))
+	// 		)
+	// 	)
+	// 		.sort()
+	// 		.map((type) => ({
+	// 			label: type.charAt(0).toUpperCase() + type.slice(1),
+	// 			value: type,
+	// 		})),
+	// ]
 
-	const types = [
-		{ label: 'All Types', value: '' },
-		...Array.from(
-			new Set(
-				teamData.flatMap((m) => (Array.isArray(m.type) ? m.type : [m.type]))
-			)
-		)
-			.sort()
-			.map((type) => ({
-				label: type.charAt(0).toUpperCase() + type.slice(1),
-				value: type,
-			})),
-	]
+	// const professions = [
+	// 	{ label: 'All Professions', value: '' },
+	// 	...Array.from(new Set(teamData.map((m) => m.profession)))
+	// 		.sort()
+	// 		.map((profession) => ({
+	// 			label: profession,
+	// 			value: profession,
+	// 		})),
+	// ]
 
-	const professions = [
-		{ label: 'All Professions', value: '' },
-		...Array.from(new Set(teamData.map((m) => m.profession)))
-			.sort()
-			.map((profession) => ({
-				label: profession,
-				value: profession,
-			})),
-	]
+	// const hasActiveFilters = Object.values(filters).some(Boolean)
 
-	const hasActiveFilters = Object.values(filters).some(Boolean)
+	// const handleClearFilters = () => {
+	// 	reset()
+	// }
+
+	// For now, show all team members
+	const filteredTeam = teamData
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
@@ -103,11 +103,11 @@ export default function TeamPage() {
 				<Image
 					src="/team/Team Page Hero.jpg"
 					alt="Hidden Lotus Team"
-					width={600} // Reduced width
-					height={400} // Increased height for better aspect ratio
+					width={600}
+					height={400}
 					className="max-w-2xl rounded-lg shadow-lg"
 					style={{
-						objectFit: 'contain', // Changed from cover to contain to maintain aspect ratio
+						objectFit: 'contain',
 						objectPosition: 'center',
 					}}
 					priority
@@ -175,31 +175,14 @@ export default function TeamPage() {
 						<DisplayCard
 							key={member.id}
 							data={{
-								id: member.id,
-								name: member.name,
-								description: member.bio,
-								image: member.image,
-								type: member.type,
-								profession: member.profession,
-								credentials: member.credentials,
-								specialties: member.specialties,
+								...member,
 								href: `/team/${member.name.toLowerCase().replace(/\s+/g, '-')}`,
 							}}
-							showImage={true}
 							showType={true}
-							showSpecialties={true}
-							showCertifications={false}
-							showCredentials={true}
 							showProfession={true}
 							showBio={true}
-							showDescription={true}
-							showPrice={false}
-							showDuration={false}
-							showLevel={false}
-							showCategory={false}
-							showLearnMore={true}
-							learnMoreText="View Profile"
-							className="text-center"
+							showSpecialties={true}
+							showCredentials={true}
 						/>
 					))}
 				</CardGrid>

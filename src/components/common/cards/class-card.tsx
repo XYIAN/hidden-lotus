@@ -53,6 +53,8 @@ export function ClassCard({ classData }: ClassCardProps) {
 				transition: 'all 0.3s ease',
 				height: '100%',
 				width: '100%',
+				minWidth: '450px',
+				maxWidth: '700px',
 				display: 'flex',
 				flexDirection: 'column',
 				textAlign: 'center',
@@ -93,9 +95,9 @@ export function ClassCard({ classData }: ClassCardProps) {
 						<Image
 							src={classData.image}
 							alt={classData.name}
-							width="200"
-							height="128"
-							className="w-48 h-32 object-cover rounded-lg"
+							width="300"
+							height="200"
+							className="w-72 h-48 object-cover rounded-lg"
 							preview
 							onLoad={() => {
 								console.log(

@@ -1,110 +1,11 @@
 'use client'
 
-import { Carousel } from 'primereact/carousel'
 import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { HeroSection } from '@/components/common/hero-section'
 
-const carouselItems = [
-	{
-		type: 'video',
-		title: 'Welcome to Hidden Lotus',
-		content:
-			'Experience our peaceful sanctuary and discover the transformative power of holistic wellness.',
-		videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder video
-	},
-	{
-		type: 'text',
-		title: 'Our Philosophy',
-		content:
-			'We believe in the power of authentic wellness experiences that honor the mind, body, and spirit. Our approach combines traditional wisdom with modern understanding to create lasting transformation.',
-	},
-	{
-		type: 'text',
-		title: 'Community & Connection',
-		content:
-			'Hidden Lotus is more than a wellness center—it&apos;s a community of individuals committed to growth, healing, and supporting each other on their wellness journeys.',
-	},
-	{
-		type: 'text',
-		title: 'Holistic Approach',
-		content:
-			'From yoga and meditation to reiki healing and therapeutic bodywork, we offer a comprehensive range of services designed to address your unique wellness needs.',
-	},
-]
-
-interface CarouselItem {
-	type: 'video' | 'text'
-	title: string
-	content: string
-	videoUrl?: string
-}
 
 export default function AboutPage() {
-	const carouselTemplate = (item: CarouselItem) => (
-		<div className="p-4 h-full">
-			<Card
-				className="h-full yoga-card"
-				style={{
-					height: '100%',
-					minHeight: '400px',
-					maxHeight: '600px',
-					display: 'flex',
-					flexDirection: 'column',
-				}}
-			>
-				<div
-					className="text-center h-full flex flex-column justify-content-between"
-					style={{
-						height: '100%',
-						display: 'flex',
-						flexDirection: 'column',
-						justifyContent: 'space-between',
-					}}
-				>
-					<div>
-						<h3 className="text-2xl font-semibold text-primary-green mb-4">
-							{item.title}
-						</h3>
-						{item.type === 'video' ? (
-							<div className="mb-4">
-								<iframe
-									width="100%"
-									height="200"
-									src={item.videoUrl}
-									title={item.title}
-									frameBorder="0"
-									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-									allowFullScreen
-									className="border-round"
-									style={{ maxHeight: '200px' }}
-								></iframe>
-							</div>
-						) : (
-							<div
-								style={{
-									height: '200px',
-									display: 'flex',
-									alignItems: 'center',
-								}}
-							>
-								<p className="text-earth-brown leading-relaxed text-lg">
-									{item.content}
-								</p>
-							</div>
-						)}
-					</div>
-					{item.type === 'video' && (
-						<div className="mt-4">
-							<p className="text-earth-brown leading-relaxed text-lg">
-								{item.content}
-							</p>
-						</div>
-					)}
-				</div>
-			</Card>
-		</div>
-	)
 
 	return (
 		<div className="flex flex-column gap-6 p-4 page-transition">
@@ -261,25 +162,6 @@ export default function AboutPage() {
 				</Card>
 			</section>
 
-			{/* Carousel Section - Commented out */}
-			{/* <section className="max-w-4xl mx-auto w-full">
-				<Carousel
-					value={carouselItems}
-					numVisible={1}
-					numScroll={1}
-					className="custom-carousel"
-					itemTemplate={carouselTemplate}
-					autoplayInterval={8000}
-					circular={true}
-					showNavigators={true}
-					showIndicators={true}
-					style={{
-						height: '500px',
-						minHeight: '400px',
-						maxHeight: '600px',
-					}}
-				/>
-			</section> */}
 
 			{/* Location Section */}
 			<section className="max-w-4xl mx-auto w-full">

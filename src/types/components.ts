@@ -21,7 +21,7 @@ export interface CardData {
 	bio?: string
 	image?: string
 	fallbackIcon?: string
-	type?: string
+	type?: string | string[]
 	profession?: string
 	credentials?: string
 	specialties?: string[]
@@ -32,6 +32,14 @@ export interface CardData {
 	category?: string
 	href?: string
 	onClick?: () => void
+	experience?: string
+	education?: string
+	longBio?: string
+	classes?: string[]
+	contact?: {
+		email?: string
+		phone?: string
+	}
 }
 
 export interface DisplayCardProps
