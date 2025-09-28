@@ -69,6 +69,26 @@ img {
 	image-rendering: crisp-edges;
 }
 
+/* Force specific styling for production */
+.header-logo {
+	width: 60px !important;
+	height: 60px !important;
+	max-width: 60px !important;
+	max-height: 60px !important;
+}
+
+.text-sage-green-700 {
+	color: #4a7c59 !important;
+}
+
+.font-semibold {
+	font-weight: 600 !important;
+}
+
+.italic {
+	font-style: italic !important;
+}
+
 /* Layout positioning */
 main {
 	position: relative;

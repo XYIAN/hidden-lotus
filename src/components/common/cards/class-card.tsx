@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
 import { Image } from 'primereact/image'
@@ -13,9 +12,6 @@ interface ClassCardProps {
 }
 
 export function ClassCard({ classData }: ClassCardProps) {
-	const [, setImageLoaded] = useState(false)
-	const [, setImageError] = useState(false)
-
 	// Debug: Log the image path
 	console.log('ClassCard image path:', classData.image)
 
@@ -105,11 +101,9 @@ export function ClassCard({ classData }: ClassCardProps) {
 									'✅ Class image loaded successfully:',
 									classData.image
 								)
-								setImageLoaded(true)
 							}}
 							onError={(e) => {
 								console.log('❌ Class image error:', classData.image, e)
-								setImageError(true)
 							}}
 						/>
 					</div>

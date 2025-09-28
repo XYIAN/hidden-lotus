@@ -1,6 +1,5 @@
 'use client'
 
-import { useState } from 'react'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
 import { Image } from 'primereact/image'
@@ -24,9 +23,6 @@ export function DisplayCard({
 	learnMoreText = 'Learn More',
 	cardSize = 'medium',
 }: DisplayCardProps) {
-	const [, setImageLoaded] = useState(false)
-	const [, setImageError] = useState(false)
-
 	// Debug: Log the image path
 	console.log('DisplayCard image path:', data.image)
 
@@ -142,11 +138,9 @@ export function DisplayCard({
 							className="w-48 h-48 object-cover rounded-lg"
 							onLoad={() => {
 								console.log('✅ Team image loaded successfully:', image)
-								setImageLoaded(true)
 							}}
 							onError={(e) => {
 								console.log('❌ Team image error:', image, e)
-								setImageError(true)
 							}}
 						/>
 					</div>

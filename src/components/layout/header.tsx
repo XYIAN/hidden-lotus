@@ -108,8 +108,7 @@ export function Header() {
 							alt="Hidden Lotus"
 							width={60}
 							height={60}
-							className="rounded-lg object-contain"
-							style={{ width: 'auto', height: 'auto' }}
+							className="rounded-lg object-contain header-logo"
 							priority
 						/>
 						<span className="text-xl font-bold text-primary-green">
