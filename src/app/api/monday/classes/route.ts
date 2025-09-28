@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 
 const MONDAY_API_URL = 'https://api.monday.com/v2'
 const MONDAY_API_TOKEN =
@@ -64,9 +64,9 @@ export async function GET() {
 		}
 
 		// Map items to our Class interface
-		const mappedClasses = board.items_page.items.map((item: any) => {
-			const columnValues = item.column_values.reduce((acc: any, col: any) => {
-				acc[col.id] = col.text || col.value
+		const mappedClasses = board.items_page.items.map((item: Record<string, unknown>) => {
+			const columnValues = (item.column_values as Record<string, unknown>[]).reduce((acc: Record<string, unknown>, col: Record<string, unknown>) => {
+				acc[col.id as string] = col.text || col.value
 				return acc
 			}, {})
 
