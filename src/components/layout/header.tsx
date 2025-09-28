@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Sidebar } from 'primereact/sidebar'
 import { Button } from 'primereact/button'
 import { Menu } from 'primereact/menu'
+import type { MenuItem } from 'primereact/menuitem'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
@@ -68,8 +69,7 @@ export function Header() {
 				setSidebarVisible(false)
 			},
 			className: isActive(item.href) ? 'active-menu-item' : '',
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars
-			template: (item: any, options: any) => {
+			template: (item: MenuItem) => {
 				return (
 					<div className="flex align-items-center justify-content-center gap-3 p-3 cursor-pointer">
 						<i className={`${item.icon} text-white text-xl`}></i>
