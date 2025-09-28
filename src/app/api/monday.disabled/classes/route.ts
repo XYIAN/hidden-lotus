@@ -88,7 +88,9 @@ export async function GET() {
 					price: columnValues['text_mkw6gn54'] || '',
 					category: columnValues['text_mkw6ybjy'] || '',
 					level: columnValues['text_mkw6c4rm'] || '',
-					maxParticipants: parseInt((columnValues['text_mkw6p1q4'] as string) || '0'),
+					maxParticipants: parseInt(
+						(columnValues['text_mkw6p1q4'] as string) || '0'
+					),
 					equipment: columnValues['text_mkw6mjvm'] || '',
 					description: columnValues['text_mkw6dc8p'] || '',
 					status: columnValues['text_mkw66znw'] || 'Scheduled',

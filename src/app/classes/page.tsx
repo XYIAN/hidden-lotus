@@ -1,15 +1,15 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { ResultsCount } from '@/components/common'
 import { ClassCard } from '@/components/common/cards/class-card'
-import { ClassesCalendar } from '@/components/monday/classes-calendar'
+// import { ClassesCalendar } from '@/components/monday/classes-calendar'
 import { classesData } from '@/constants/classes'
 import { Class, ClassCategory } from '@/types'
 import { FilterPanel } from '@/components/common/filter-panel'
 import { FormField } from '@/components/common/form-field'
 import { useForm } from 'react-hook-form'
-import { MondayClass } from '@/lib/monday-api'
+// import { MondayClass } from '@/lib/monday-api'
 
 interface FilterForm {
 	searchTerm: string
@@ -28,7 +28,7 @@ export default function ClassesPage() {
 		},
 	})
 
-	const [selectedClass, setSelectedClass] = useState<MondayClass | null>(null)
+	// const [selectedClass, setSelectedClass] = useState<MondayClass | null>(null)
 	const filters = watch()
 
 	const filteredClasses = useMemo(() => {
@@ -110,15 +110,15 @@ export default function ClassesPage() {
 	return (
 		<div className="flex flex-column gap-2 p-2 page-transition">
 			<div className="max-w-7xl mx-auto w-full">
-				{/* Calendar View */}
-				<div className="mb-4">
+				{/* Calendar View - Temporarily disabled */}
+				{/* <div className="mb-4">
 					<ClassesCalendar
 						className="mb-6"
 						onClassClick={(classItem) => {
 							setSelectedClass(classItem)
 						}}
 					/>
-				</div>
+				</div> */}
 				{/* Filters */}
 				<FilterPanel
 					title="Filter Classes"
@@ -224,8 +224,8 @@ export default function ClassesPage() {
 				</div>
 			</div>
 
-			{/* Class Detail Modal */}
-			{selectedClass && (
+			{/* Class Detail Modal - Temporarily disabled */}
+			{/* {selectedClass && (
 				<div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
 					<div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
 						<div className="bg-gradient-to-r from-sage-green-600 to-sage-green-700 px-6 py-6 rounded-t-2xl">
@@ -366,7 +366,7 @@ export default function ClassesPage() {
 						</div>
 					</div>
 				</div>
-			)}
+			)} */}
 		</div>
 	)
 }
