@@ -1,7 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import { Button } from 'primereact/button'
 import { Tag } from 'primereact/tag'
+import Image from 'next/image'
 import { Class } from '@/constants/classes'
 import '@/styles/animations.css'
 
@@ -11,6 +13,9 @@ interface ClassCardProps {
 }
 
 export function ClassCard({ classData }: ClassCardProps) {
+	const [imageLoaded, setImageLoaded] = useState(false)
+	const [imageError, setImageError] = useState(false)
+
 	const getCategoryColor = (category: string) => {
 		const colors: Record<string, string> = {
 			yoga: 'bg-sage-green-600',
@@ -82,6 +87,37 @@ export function ClassCard({ classData }: ClassCardProps) {
 						{classData.name}
 					</h3>
 				</div>
+
+				{/* Image */}
+				{classData.image && (
+					<div className="mb-4 flex justify-content-center">
+						<div className="relative">
+							{!imageLoaded && !imageError && (
+								<div className="w-48 h-32 bg-light-tan rounded-lg flex align-items-center justify-content-center">
+									<i className="pi pi-spin pi-spinner text-2xl text-sage-green-600"></i>
+								</div>
+							)}
+							{imageError && (
+								<div className="w-48 h-32 bg-light-tan rounded-lg flex align-items-center justify-content-center">
+									<i className="pi pi-image text-2xl text-sage-green-600"></i>
+								</div>
+							)}
+							{!imageError && (
+								<Image
+									src={classData.image}
+									alt={classData.name}
+									width={200}
+									height={128}
+									className={`w-48 h-32 object-cover rounded-lg ${
+										imageLoaded ? 'block' : 'hidden'
+									}`}
+									onLoad={() => setImageLoaded(true)}
+									onError={() => setImageError(true)}
+								/>
+							)}
+						</div>
+					</div>
+				)}
 
 				{/* Categories */}
 				<div className="flex flex-wrap gap-2 mb-4 justify-content-center">

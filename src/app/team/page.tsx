@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo } from 'react'
+import Image from 'next/image'
 import { HeroSection } from '@/components/common/hero-section'
 import { CardGrid, DisplayCard, ResultsCount } from '@/components/common'
 import { teamData } from '@/constants/team'
@@ -88,18 +89,21 @@ export default function TeamPage() {
 		<div className="flex flex-column gap-6 p-4 page-transition">
 			{/* Hero Image */}
 			<div className="flex justify-content-center mb-4">
-				<img
+				<Image
 					src="/team/Team Page Hero.jpg"
 					alt="Hidden Lotus Team"
+					width={800}
+					height={300}
 					className="w-full max-w-4xl rounded-lg shadow-lg"
 					style={{
 						maxHeight: '300px',
 						objectFit: 'cover',
-						objectPosition: 'center'
+						objectPosition: 'center',
 					}}
+					priority
 				/>
 			</div>
-			
+
 			<HeroSection
 				title="Our Team"
 				description="Meet our dedicated team of wellness professionals committed to supporting your health and healing journey."
