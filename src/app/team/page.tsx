@@ -174,7 +174,7 @@ export default function TeamPage() {
 								profession: member.profession,
 								credentials: member.credentials,
 								specialties: member.specialties,
-								href: `/team/${encodeURIComponent(member.name)}`,
+								href: `/team/${member.name.toLowerCase().replace(/\s+/g, '-')}`,
 							}}
 							showImage={true}
 							showType={true}

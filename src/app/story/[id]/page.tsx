@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { Card } from 'primereact/card'
 import { Tag } from 'primereact/tag'
+import { Image } from 'primereact/image'
 import { HeroSection } from '@/components/common/hero-section'
 import { storiesData } from '@/constants/stories'
 import Link from 'next/link'
@@ -52,12 +53,26 @@ export default async function StoryDetailPage({ params }: PageProps) {
 							</div>
 							<Link
 								href="/story"
-								className="inline-flex items-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors"
+								className="inline-flex items-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors gap-2"
 							>
-								<i className="pi pi-arrow-left mr-2"></i>
+								<i className="pi pi-arrow-left"></i>
 								Back to Stories
 							</Link>
 						</div>
+
+						{/* Story Image */}
+						{story.image && (
+							<div className="flex justify-content-center mb-6">
+								<Image
+									src={story.image}
+									alt={story.title}
+									width="400"
+									height="300"
+									className="w-full max-w-2xl object-cover rounded-lg"
+									preview
+								/>
+							</div>
+						)}
 
 						{/* Excerpt */}
 						<div className="bg-light-tan/50 p-4 border-round">
@@ -82,9 +97,9 @@ export default async function StoryDetailPage({ params }: PageProps) {
 							</div>
 							<Link
 								href="/story"
-								className="inline-flex items-center px-6 py-3 bg-pastel-pink text-secondary-brown rounded-lg hover:bg-pastel-pink/80 transition-colors"
+								className="inline-flex items-center px-6 py-3 bg-pastel-pink text-secondary-brown rounded-lg hover:bg-pastel-pink/80 transition-colors gap-2"
 							>
-								<i className="pi pi-book mr-2"></i>
+								<i className="pi pi-book"></i>
 								More Stories
 							</Link>
 						</div>

@@ -241,6 +241,7 @@ export default function AboutPage() {
 								padding: '0.75rem 1.5rem',
 								color: 'white !important',
 								textDecoration: 'none !important',
+								gap: '0.5rem',
 							}}
 							onClick={() => (window.location.href = '/classes')}
 						/>
@@ -252,6 +253,7 @@ export default function AboutPage() {
 							style={{
 								padding: '0.75rem 1.5rem',
 								textDecoration: 'none !important',
+								gap: '0.5rem',
 							}}
 							onClick={() => (window.location.href = '/contact')}
 						/>
@@ -259,8 +261,8 @@ export default function AboutPage() {
 				</Card>
 			</section>
 
-			{/* Carousel Section */}
-			<section className="max-w-4xl mx-auto w-full">
+			{/* Carousel Section - Commented out */}
+			{/* <section className="max-w-4xl mx-auto w-full">
 				<Carousel
 					value={carouselItems}
 					numVisible={1}
@@ -277,7 +279,7 @@ export default function AboutPage() {
 						maxHeight: '600px',
 					}}
 				/>
-			</section>
+			</section> */}
 
 			{/* Location Section */}
 			<section className="max-w-4xl mx-auto w-full">
@@ -308,14 +310,20 @@ export default function AboutPage() {
 								icon="pi pi-directions"
 								iconPos="left"
 								className="p-button-outlined border-sage text-sage"
-								style={{ padding: '0.75rem 1.5rem' }}
+								style={{
+									padding: '0.75rem 1.5rem',
+									gap: '0.5rem',
+								}}
 							/>
 							<Button
 								label="Schedule Visit"
 								icon="pi pi-calendar"
 								iconPos="left"
 								className="p-button-primary bg-pastel-pink border-pastel-pink text-secondary-brown"
-								style={{ padding: '0.75rem 1.5rem' }}
+								style={{
+									padding: '0.75rem 1.5rem',
+									gap: '0.5rem',
+								}}
 							/>
 						</div>
 					</div>

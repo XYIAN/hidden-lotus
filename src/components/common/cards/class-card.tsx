@@ -96,6 +96,7 @@ export function ClassCard({ classData }: ClassCardProps) {
 							width="200"
 							height="128"
 							className="w-48 h-32 object-cover rounded-lg"
+							preview
 							onLoad={() => {
 								console.log(
 									'✅ Class image loaded successfully:',

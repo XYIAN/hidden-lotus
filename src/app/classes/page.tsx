@@ -8,6 +8,7 @@ import { Class, ClassCategory } from '@/types'
 import { FilterPanel } from '@/components/common/filter-panel'
 import { FormField } from '@/components/common/form-field'
 import { useForm } from 'react-hook-form'
+import { HeroSection } from '@/components/common/hero-section'
 
 interface FilterForm {
 	searchTerm: string

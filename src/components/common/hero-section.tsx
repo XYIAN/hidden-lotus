@@ -16,7 +16,7 @@ export function HeroSection({
 	actionButtonHref = '/contact',
 }: HeroSectionProps) {
 	return (
-		<section className="text-center py-4 lg:py-6">
+		<section className="text-center pt-4 lg:pt-6">
 			<div className="max-w-4xl mx-auto px-4">
 				{subtitle && (
 					<p className="text-lg text-sage-green-600 mb-4 font-medium">

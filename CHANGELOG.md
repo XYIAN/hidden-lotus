@@ -5,6 +5,46 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.6] - 2025-01-27
+
+### 🎨 Production Styling Fixes & Header Improvements
+
+#### Added
+
+- **Comprehensive Header Styling**: Added specific CSS rules in `header.css` for production consistency
+- **Missing Tailwind Color Variants**: Added sage-green color variants (200, 300, 400, 600, 700) to `tailwind.config.js`
+- **CSS Variable Support**: Added `--sage-green-700` CSS variable to `globals.css`
+- **Enhanced CSS Specificity**: Used `.header-blur` parent selectors to ensure proper style application
+
+#### Changed
+
+- **Header Logo Sizing**: Fixed oversized logo on production by removing conflicting inline styles
+- **Text Styling**: Ensured proper color and font weight application for header text
+- **Tailwind Configuration**: Updated to include all sage-green color variants for consistent theming
+- **Image Components**: Switched to PrimeReact Image components for better styling control
+
+#### Fixed
+
+- **🚨 Critical Production Issue**: Resolved major styling differences between local and production environments
+- **Header Logo**: Fixed logo appearing too large on production (was 60px, now properly constrained)
+- **Text Styling**: Fixed header text reverting to default browser styles on production
+- **Color Classes**: Resolved undefined Tailwind color class issues (text-sage-green-700, etc.)
+- **CSS Specificity**: Fixed styles being overridden by default browser styles
+
+#### Technical Details
+
+- **Root Cause**: Production build was not applying custom styles due to CSS specificity issues
+- **Solution**: Added targeted CSS rules with `!important` declarations and proper parent selectors
+- **Files Modified**: `src/styles/header.css`, `tailwind.config.js`, `src/app/globals.css`, `src/components/layout/header.tsx`
+- **Impact**: Ensures consistent styling across all deployment environments
+
+#### Status
+
+- ✅ **Production Styling**: Fixed and verified
+- ✅ **Header Logo**: Properly sized on all environments
+- ✅ **Text Styling**: Consistent color and font weight application
+- ✅ **Tailwind Colors**: All color variants properly defined and working
+
 ## [2.8.1] - 2025-01-27
 
 ### 🌐 Domain Transfer from Squarespace to Netlify

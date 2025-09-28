@@ -35,16 +35,16 @@ export default async function ClassDetailPage({ params }: PageProps) {
 							<div className="flex flex-column md:flex-row gap-4 justify-content-center">
 								<Link
 									href="/classes"
-									className="inline-flex items-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors"
+									className="inline-flex items-center justify-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors gap-2"
 								>
-									<i className="pi pi-arrow-left mr-2"></i>
+									<i className="pi pi-arrow-left"></i>
 									Back to Classes
 								</Link>
 								<Link
 									href="/contact"
-									className="inline-flex items-center px-6 py-3 bg-pastel-pink text-secondary-brown rounded-lg hover:bg-pastel-pink/80 transition-colors"
+									className="inline-flex items-center justify-center px-6 py-3 bg-pastel-pink text-secondary-brown rounded-lg hover:bg-pastel-pink/80 transition-colors gap-2"
 								>
-									<i className="pi pi-envelope mr-2"></i>
+									<i className="pi pi-envelope"></i>
 									Contact Support
 								</Link>
 							</div>
@@ -89,9 +89,9 @@ export default async function ClassDetailPage({ params }: PageProps) {
 				<div className="mb-4">
 					<Link
 						href="/classes"
-						className="inline-flex items-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors"
+						className="inline-flex items-center justify-center px-6 py-3 bg-sage-green-600 text-white rounded-lg hover:bg-sage-green-700 transition-colors gap-2"
 					>
-						<i className="pi pi-arrow-left mr-2"></i>
+						<i className="pi pi-arrow-left"></i>
 						Back to Classes
 					</Link>
 				</div>

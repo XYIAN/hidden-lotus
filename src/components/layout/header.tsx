@@ -10,7 +10,6 @@ import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import '@/styles/header.css'
 import { SidebarHeader } from './sidebar-header'
-import { FaSpa } from 'react-icons/fa'
 import { IMAGES } from '@/constants/images'
 
 const navigationItems = [
@@ -131,7 +130,13 @@ export function Header() {
 						}}
 						aria-label="Open menu"
 					>
-						<FaSpa className="text-primary-green" size={28} />
+						<Image
+							src="/Logo Files/Hidden Lotus MOR 01l BW Logo.svg"
+							alt="Menu"
+							width={48}
+							height={48}
+							className="object-contain"
+						/>
 					</Button>
 				</div>
 			</header>

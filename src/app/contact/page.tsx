@@ -28,14 +28,15 @@ export default function ContactPage() {
 							Get in Touch
 						</h2>
 						<p className="text-lg text-earth-brown mb-6">
-							Ready to start your wellness journey? We&apos;d love to hear from you!
+							Ready to start your wellness journey? We&apos;d love to hear from
+							you!
 						</p>
 
 						<div className="flex flex-column align-items-center gap-3">
 							<Button
-								label="Email: hiddenlotusjvn@gmail.com"
+								label="hiddenlotusjvn@gmail.com"
 								icon="pi pi-envelope"
-								className="bg-sage-green-600 border-sage-green-600 hover:bg-sage-green-700"
+								className="bg-sage-green-600 border-sage-green-600 hover:bg-sage-green-700 text-white"
 								onClick={() =>
 									window.open('mailto:hiddenlotusjvn@gmail.com', '_blank')
 								}
@@ -44,19 +45,21 @@ export default function ContactPage() {
 									padding: '12px 24px',
 									fontSize: '16px',
 									fontWeight: '500',
+									color: 'white',
 								}}
 							/>
 
 							<Button
-								label="Phone: 714-794-9405"
+								label="714-794-9405"
 								icon="pi pi-phone"
-								className="bg-sage-green-600 border-sage-green-600 hover:bg-sage-green-700"
+								className="bg-sage-green-600 border-sage-green-600 hover:bg-sage-green-700 text-white"
 								onClick={() => window.open('tel:714-794-9405', '_blank')}
 								style={{
 									minWidth: '300px',
 									padding: '12px 24px',
 									fontSize: '16px',
 									fontWeight: '500',
+									color: 'white',
 								}}
 							/>
 						</div>

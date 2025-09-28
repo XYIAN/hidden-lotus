@@ -136,6 +136,7 @@ export function DisplayCard({
 							width="200"
 							height="200"
 							className="w-48 h-48 object-cover rounded-lg"
+							preview
 							onLoad={() => {
 								console.log('✅ Team image loaded successfully:', image)
 							}}
