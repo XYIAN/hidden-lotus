@@ -2,6 +2,7 @@ import { Tag } from 'primereact/tag'
 import { teamData } from '@/constants/team'
 import { TeamMember } from '@/types'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
 
 export async function generateStaticParams() {
 	return teamData.map((member) => ({
@@ -32,14 +33,14 @@ export default async function TeamMemberPage({ params }: PageProps) {
 			<div className="max-w-4xl mx-auto">
 				{/* Back to Team */}
 				<div className="mb-4 flex justify-content-start">
-					<a
+					<Link
 						href="/team"
 						className="inline-flex align-items-center gap-2 text-sage-green-700"
 						style={{ textDecoration: 'none' }}
 					>
 						<i className="pi pi-arrow-left"></i>
 						<span>Back to Team</span>
-					</a>
+					</Link>
 				</div>
 				{/* Main Profile Card */}
 				<div

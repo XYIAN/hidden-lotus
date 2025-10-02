@@ -5,6 +5,22 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.8] - 2025-01-27
+
+### 🚨 Build Fix
+
+#### Fixed
+
+- **ESLint Error**: Fixed build failure caused by using `<a>` element instead of Next.js `<Link>` component in team member profile page
+- **Navigation**: Replaced anchor tag with proper Next.js Link component for "Back to Team" navigation
+- **Build Process**: Resolved build failure that was preventing successful deployment
+
+#### Technical
+
+- Updated `/src/app/team/[name]/page.tsx` to import and use `Link` from `next/link`
+- Replaced `<a href="/team">` with `<Link href="/team">` for proper Next.js routing
+- Build now passes successfully with no ESLint errors
+
 ## [2.8.7] - 2025-01-27
 
 ### 🏷️ Team Type Badge Updates
