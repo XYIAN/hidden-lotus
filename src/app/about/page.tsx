@@ -4,11 +4,9 @@ import { Card } from 'primereact/card'
 import { Button } from 'primereact/button'
 import { HeroSection } from '@/components/common/hero-section'
 
-
 export default function AboutPage() {
-
 	return (
-		<div className="flex flex-column gap-6 p-4 page-transition">
+		<div className="flex flex-column gap-6 px-2 sm:px-3 md:px-4 py-4 page-transition">
 			<HeroSection
 				title="About Hidden Lotus"
 				description="Discover our mission to promote wellness, mindfulness, and holistic healing in our community."
@@ -17,7 +15,7 @@ export default function AboutPage() {
 			{/* Mission Section */}
 			<section className="max-w-4xl mx-auto w-full">
 				<Card
-					className="p-8 mb-6"
+					className="mb-6 p-3 sm:p-4 md:p-6 lg:p-8"
 					style={{
 						background: 'linear-gradient(135deg, #f0ede4 0%, #f5f1e8 100%)',
 						border: '1px solid #8baa7a',
@@ -75,7 +73,7 @@ export default function AboutPage() {
 				</Card>
 
 				{/* Values Section */}
-				<Card className="yoga-card p-6 mb-6">
+				<Card className="yoga-card mb-6 p-3 sm:p-4 md:p-6">
 					<h2 className="text-3xl font-bold text-primary-green mb-4 text-center">
 						Our Values
 					</h2>
@@ -124,7 +122,7 @@ export default function AboutPage() {
 				</Card>
 
 				{/* Call to Action */}
-				<Card className="yoga-card p-6 text-center">
+				<Card className="yoga-card text-center p-3 sm:p-4 md:p-6">
 					<h2 className="text-2xl font-semibold text-primary-green mb-3">
 						Ready to Begin Your Journey?
 					</h2>
@@ -162,10 +160,9 @@ export default function AboutPage() {
 				</Card>
 			</section>
 
-
 			{/* Location Section */}
 			<section className="max-w-4xl mx-auto w-full">
-				<Card className="bg-light-tan sage-border">
+				<Card className="bg-light-tan sage-border p-3 sm:p-4 md:p-6">
 					<div className="text-center">
 						<h2 className="text-2xl font-semibold text-primary-green mb-4">
 							Visit Our Sanctuary

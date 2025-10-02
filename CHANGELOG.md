@@ -32,6 +32,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Instructor: salmon pastel background with white text
 - **Specialties Cleanup**: Removed "Co-Creator" from specialties arrays since it's now displayed as the type badge
 
+### 📱 About Page Mobile Padding
+
+#### Changed
+
+- Reduced side padding on `about` page for small screens: outer container now uses `px-2 sm:px-3 md:px-4` with responsive `Card` paddings (`p-3 sm:p-4 md:p-6 lg:p-8`) so text stretches closer to the container edges on mobile while keeping comfortable spacing on larger breakpoints.
+
 ## [2.8.6] - 2025-01-27
 
 ### 🎨 Production Styling Fixes & Header Improvements

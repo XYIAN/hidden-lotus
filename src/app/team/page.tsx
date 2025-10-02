@@ -183,6 +183,8 @@ export default function TeamPage() {
 							showBio={true}
 							showSpecialties={true}
 							showCredentials={true}
+							showLearnMore={true}
+							learnMoreText="View Profile"
 						/>
 					))}
 				</CardGrid>

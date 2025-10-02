@@ -30,6 +30,17 @@ export default async function TeamMemberPage({ params }: PageProps) {
 	return (
 		<div className="min-h-screen bg-light-tan p-4">
 			<div className="max-w-4xl mx-auto">
+				{/* Back to Team */}
+				<div className="mb-4 flex justify-content-start">
+					<a
+						href="/team"
+						className="inline-flex align-items-center gap-2 text-sage-green-700"
+						style={{ textDecoration: 'none' }}
+					>
+						<i className="pi pi-arrow-left"></i>
+						<span>Back to Team</span>
+					</a>
+				</div>
 				{/* Main Profile Card */}
 				<div
 					className="card p-8"
