@@ -15,7 +15,7 @@ export default function AboutPage() {
 			{/* Mission Section */}
 			<section className="max-w-4xl mx-auto w-full">
 				<Card
-					className="mb-6 p-3 sm:p-4 md:p-6 lg:p-8"
+					className="mb-6 p-1 sm:p-4 md:p-3 lg:p-8"
 					style={{
 						background: 'linear-gradient(135deg, #f0ede4 0%, #f5f1e8 100%)',
 						border: '1px solid #8baa7a',

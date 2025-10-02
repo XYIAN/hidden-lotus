@@ -16,18 +16,18 @@ export function HeroSection({
 	actionButtonHref = '/contact',
 }: HeroSectionProps) {
 	return (
-		<section className="text-center pt-4 lg:pt-6">
-			<div className="max-w-4xl mx-auto px-4">
+		<section className="text-center pt-2 sm:pt-4 lg:pt-6">
+			<div className="max-w-4xl mx-auto px-3 sm:px-4">
 				{subtitle && (
 					<p className="text-lg text-sage-green-600 mb-4 font-medium">
 						{subtitle}
 					</p>
 				)}
-				<h1 className="text-3xl lg:text-4xl font-bold text-sage-green-800 mb-3 leading-tight">
+				<h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-sage-green-800 mb-2 sm:mb-3 leading-tight">
 					{title}
 				</h1>
 				{description && (
-					<p className="text-lg text-sage-green-600 mb-4 leading-relaxed max-w-2xl mx-auto font-semibold">
+					<p className="text-base sm:text-lg text-sage-green-600 mb-3 sm:mb-4 leading-relaxed max-w-2xl mx-auto font-semibold">
 						{description}
 					</p>
 				)}

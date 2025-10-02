@@ -127,7 +127,7 @@ export default function RootLayout({
 				</Script>
 			</head>
 			<body
-				className={`${inter.variable} ${robotoMono.variable} antialiased`}
+				className={`${inter.variable} ${robotoMono.variable} antialiased overflow-x-hidden`}
 				style={{
 					backgroundColor: '#dbcbb1',
 					backgroundImage: 'url("/bg-main.png")',
