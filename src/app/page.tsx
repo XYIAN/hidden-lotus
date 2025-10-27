@@ -32,7 +32,7 @@ const actionButtons = [
 
 export default function HomePage() {
 	return (
-		<div className="flex flex-column gap-4 p-4">
+		<div className="flex flex-column gap-4 pt-4">
 			<HeroSection
 				title="Welcome to Hidden Lotus"
 				description="Discover your path to wellness and inner peace."
@@ -40,7 +40,7 @@ export default function HomePage() {
 			{/* Contact Information */}
 			<div className="text-center mb-4">
 				<div className="mb-3">
-					<p className="text-lg text-sage-green-700 font-semibold mb-3">
+					<p className="text-lg text-sage-green-700 font-semibold mb-4 px-2">
 						11770 Warner Avenue, Ste 126 Fountain Valley, CA 92708
 					</p>
 				</div>
@@ -74,11 +74,6 @@ export default function HomePage() {
 						}}
 					/>
 				</div>
-			</div>
-			<div className="text-center -mt-4">
-				<p className="text-lg text-sage-green-700 font-bold italic">
-					All classes donation-based through October. Come visit!
-				</p>
 			</div>
 			<ButtonGroup buttons={actionButtons} />
 			{/* <ContactSection /> */} {/* Commented out for future use */}

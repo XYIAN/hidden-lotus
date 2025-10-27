@@ -27,7 +27,7 @@ export function HeroSection({
 					{title}
 				</h1>
 				{description && (
-					<p className="text-base sm:text-lg text-sage-green-600 mb-3 sm:mb-4 leading-relaxed max-w-2xl mx-auto font-semibold">
+					<p className="text-base sm:text-lg text-sage-green-600 m-0 leading-relaxed max-w-2xl mx-auto font-semibold">
 						{description}
 					</p>
 				)}
