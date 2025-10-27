@@ -15,6 +15,12 @@ export default function ClassesPage() {
 					Discover our range of wellness classes designed to nurture your mind,
 					body, and spirit.
 				</p>
+				<small>
+					<i>
+						All hidden lotus classes are $20 dorp in please inquire about
+						<a href="mailto:hiddenlotusjvn@gmail.com">membership options</a>.
+					</i>
+				</small>
 			</div>
 
 			{/* Classes Grid */}
