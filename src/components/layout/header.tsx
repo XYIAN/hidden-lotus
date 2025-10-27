@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Sidebar } from 'primereact/sidebar'
 import { Button } from 'primereact/button'
 import { Menu } from 'primereact/menu'
@@ -8,25 +8,9 @@ import type { MenuItem } from 'primereact/menuitem'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
-import Script from 'next/script'
 import '@/styles/header.css'
 import { SidebarHeader } from './sidebar-header'
 import { IMAGES } from '@/constants/images'
-
-// Extend Window interface for Calendly
-declare global {
-	interface Window {
-		Calendly?: {
-			initBadgeWidget: (config: {
-				url: string
-				text: string
-				color: string
-				textColor: string
-				branding: boolean
-			}) => void
-		}
-	}
-}
 
 const navigationItems = [
 	{ label: 'Home', href: '/' },
@@ -43,33 +27,6 @@ export function Header() {
 	const [sidebarVisible, setSidebarVisible] = useState(false)
 	const pathname = usePathname()
 	const router = useRouter()
-
-	// Initialize Calendly widget
-	useEffect(() => {
-		const initializeCalendly = () => {
-			if (typeof window !== 'undefined' && window.Calendly) {
-				try {
-					window.Calendly.initBadgeWidget({
-						url: 'https://calendly.com/hiddenlotusjvn?background_color=ede8e0&text_color=5d4e37&primary_color=6b8e5a',
-						text: 'Book Your Class Now!',
-						color: '#6b8e5a',
-						textColor: '#ffffff',
-						branding: false,
-					})
-				} catch {
-					// Calendly not ready yet
-				}
-			}
-		}
-
-		// Try to initialize immediately
-		initializeCalendly()
-
-		// Also try after a short delay to ensure the script is loaded
-		const timer = setTimeout(initializeCalendly, 100)
-
-		return () => clearTimeout(timer)
-	}, [pathname]) // Reinitialize on route change
 
 	const isActive = (href: string) => {
 		if (href === '/') {
@@ -211,16 +168,23 @@ export function Header() {
 				</div>
 			</Sidebar>
 
-			{/* Calendly Badge Widget */}
+			{/* Calendly badge widget begin */}
 			<link
 				href="https://assets.calendly.com/assets/external/widget.css"
 				rel="stylesheet"
 			/>
-			<Script
+			<script
 				src="https://assets.calendly.com/assets/external/widget.js"
 				type="text/javascript"
-				strategy="afterInteractive"
-			/>
+				async
+			></script>
+			<script
+				type="text/javascript"
+				dangerouslySetInnerHTML={{
+					__html: `window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/hiddenlotusjvn?background_color=ede8e0&text_color=5d4e37&primary_color=6b8e5a', text: 'Book Your Class Now!', color: '#6b8e5a', textColor: '#ffffff', branding: false }); }`,
+				}}
+			></script>
+			{/* Calendly badge widget end */}
 		</>
 	)
 }
