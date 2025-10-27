@@ -11,21 +11,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 #### Added
 
-- **Calendly Badge Widget**: Added Calendly booking badge to all pages via root layout
+- **Calendly Badge Widget**: Added Calendly booking badge to all pages via header component
 - **Theme Integration**: Customized Calendly badge with sage green color (`#6b8e5a`) and white text to match Hidden Lotus theme
 - **Global Integration**: Badge appears on all pages throughout the site for easy class booking
+- **Route-Aware Initialization**: Widget reinitializes properly on client-side navigation
 
 #### Changed
 
 - **Branding Disabled**: Set Calendly badge `branding` property to `false` for cleaner, unbranded appearance
+- **Lighter Background**: Updated background to lighter beige (#ede8e0) for better visual match
+- **Darker Text**: Adjusted text color to darker earth brown (#5d4e37) for improved readability
+- **Moved to Header**: Relocated Calendly widget from layout to header component for better client-side handling
 
 #### Technical
 
-- Added Calendly CSS stylesheet link to `src/app/layout.tsx` head section
-- Integrated Calendly widget script with `afterInteractive` strategy for performance
+- Added Calendly widget to `src/components/layout/header.tsx` for proper client-side initialization
+- Implemented `useEffect` hook to reinitialize widget on route changes
+- Removed Calendly scripts from `src/app/layout.tsx` head section
 - Configured badge with URL parameters for theme colors:
-  - `background_color=f6d6a2` (light tan background for calendar popup)
-  - `text_color=8b7355` (earth brown text)
+  - `background_color=ede8e0` (light beige background for calendar popup)
+  - `text_color=5d4e37` (dark earth brown text for better contrast)
   - `primary_color=6b8e5a` (sage green primary)
 - Badge button: sage green (#6b8e5a) background with white text
 - Disabled Calendly branding for cleaner widget appearance
