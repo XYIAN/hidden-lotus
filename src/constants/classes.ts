@@ -23,7 +23,7 @@ export const classesData: Class[] = [
 	},
 	{
 		id: '2',
-		name: 'Yoga Flow & Sound',
+		name: 'Gentle Yoga & Sound Bath',
 		description:
 			'A grounding and rejuvenating experience combining gentle yoga with the healing vibrations of sound. Guided through mindful Motion, each posture is designed to open and align your energy centers, inviting balance to the chakras. Flow at your own pace while cultivating an OpenHeart toward yourself and your practice. The class concludes in stillness where the deep resonance of the gong, the soothing tones of singing bowls, the calming rhythm of the ocean drum, and the fluid movement of the wave plate tool invite a full-body sense of Revival in mind, body, and spirit.',
 		longDescription:
@@ -31,7 +31,7 @@ export const classesData: Class[] = [
 		instructor: 'Vuong',
 		dates: ['2024-01-16', '2024-01-23', '2024-01-30'],
 		time: 'Afternoon Session',
-		duration: '75 min',
+		duration: '60 min',
 		price: '$25, members no additional charge',
 		categories: ['yoga', 'sound-healing'],
 		level: 'beginner',
@@ -49,7 +49,7 @@ export const classesData: Class[] = [
 		instructor: 'Vuong',
 		dates: ['2024-01-17', '2024-01-24', '2024-01-31'],
 		time: 'Evening Session',
-		duration: '75 min',
+		duration: '60 min',
 		price: '$25, members no additional charge',
 		categories: ['sound-healing', 'meditation'],
 		level: 'beginner',
@@ -67,7 +67,7 @@ export const classesData: Class[] = [
 		instructor: 'Rob Castle',
 		dates: ['2024-01-18', '2024-01-25', '2024-02-01'],
 		time: 'Evening Session',
-		duration: '75 min',
+		duration: '60 min',
 		price: 'Donation',
 		categories: ['yoga', 'healing'],
 		level: 'beginner',
