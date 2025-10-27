@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Sidebar } from 'primereact/sidebar'
 import { Button } from 'primereact/button'
 import { Menu } from 'primereact/menu'
@@ -27,6 +27,18 @@ export function Header() {
 	const [sidebarVisible, setSidebarVisible] = useState(false)
 	const pathname = usePathname()
 	const router = useRouter()
+
+	// Add/remove body class when sidebar opens/closes
+	useEffect(() => {
+		if (sidebarVisible) {
+			document.body.classList.add('hl-sidebar-open')
+		} else {
+			document.body.classList.remove('hl-sidebar-open')
+		}
+		return () => {
+			document.body.classList.remove('hl-sidebar-open')
+		}
+	}, [sidebarVisible])
 
 	const isActive = (href: string) => {
 		if (href === '/') {
@@ -169,23 +181,21 @@ export function Header() {
 			</Sidebar>
 
 			{/* Calendly badge widget begin */}
-			<div className={sidebarVisible ? 'calendly-hidden' : 'calendly-visible'}>
-				<link
-					href="https://assets.calendly.com/assets/external/widget.css"
-					rel="stylesheet"
-				/>
-				<script
-					src="https://assets.calendly.com/assets/external/widget.js"
-					type="text/javascript"
-					async
-				></script>
-				<script
-					type="text/javascript"
-					dangerouslySetInnerHTML={{
-						__html: `window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/hiddenlotusjvn?background_color=ede8e0&text_color=5d4e37&primary_color=6b8e5a', text: 'Book Your Class Now!', color: '#6b8e5a', textColor: '#ffffff', branding: false }); }`,
-					}}
-				></script>
-			</div>
+			<link
+				href="https://assets.calendly.com/assets/external/widget.css"
+				rel="stylesheet"
+			/>
+			<script
+				src="https://assets.calendly.com/assets/external/widget.js"
+				type="text/javascript"
+				async
+			></script>
+			<script
+				type="text/javascript"
+				dangerouslySetInnerHTML={{
+					__html: `window.onload = function() { Calendly.initBadgeWidget({ url: 'https://calendly.com/hiddenlotusjvn?background_color=ede8e0&text_color=5d4e37&primary_color=6b8e5a', text: 'Book Your Class Now!', color: '#6b8e5a', textColor: '#ffffff', branding: false }); }`,
+				}}
+			></script>
 			{/* Calendly badge widget end */}
 		</>
 	)
