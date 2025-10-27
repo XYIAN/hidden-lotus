@@ -150,6 +150,25 @@
 	text-decoration: none !important;
 }
 
+/* Calendly Widget Hide/Show with Fade */
+.calendly-hidden iframe[src*="calendly"],
+.calendly-hidden [id*="calendly-badge"],
+.calendly-hidden .calendly-badge-wrapper {
+	opacity: 0 !important;
+	visibility: hidden !important;
+	pointer-events: none !important;
+	transition: opacity 0.3s ease-in-out !important;
+}
+
+.calendly-visible iframe[src*="calendly"],
+.calendly-visible [id*="calendly-badge"],
+.calendly-visible .calendly-badge-wrapper {
+	opacity: 1 !important;
+	visibility: visible !important;
+	pointer-events: auto !important;
+	transition: opacity 0.3s ease-in-out !important;
+}
+
 /* Logo Glow Border */
 .logo-glow-border {
 	box-shadow: 0 0 8px rgba(255, 255, 200, 0.3),
