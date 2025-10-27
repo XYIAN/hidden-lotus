@@ -14,7 +14,7 @@ export function BackToTop() {
 				zIndex: 9999,
 				position: 'fixed',
 				bottom: '2rem',
-				right: '2rem',
+				left: '2rem',
 				width: '3.5rem',
 				height: '3.5rem',
 				background: 'linear-gradient(135deg, #6b8e5a, #4a7c59)',

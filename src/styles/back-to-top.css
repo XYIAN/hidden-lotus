@@ -2,7 +2,7 @@
 .custom-back-to-top {
 	position: fixed !important;
 	bottom: 2rem !important;
-	right: 2rem !important;
+	left: 2rem !important;
 	width: 3.5rem !important;
 	height: 3.5rem !important;
 	background: linear-gradient(
@@ -74,7 +74,7 @@
 	z-index: 9999 !important;
 	position: fixed !important;
 	bottom: 2rem !important;
-	right: 2rem !important;
+	left: 2rem !important;
 }
 
 .custom-scroll-top:hover {

@@ -5,6 +5,42 @@ All notable changes to the Hidden Lotus project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.8.10] - 2025-01-27
+
+### 📅 Calendly Badge Widget Integration
+
+#### Added
+
+- **Calendly Badge Widget**: Added Calendly booking badge to all pages via root layout
+- **Theme Integration**: Customized Calendly badge with sage green color (`#6b8e5a`) and white text to match Hidden Lotus theme
+- **Global Integration**: Badge appears on all pages throughout the site for easy class booking
+
+#### Changed
+
+- **Branding Disabled**: Set Calendly badge `branding` property to `false` for cleaner, unbranded appearance
+
+#### Technical
+
+- Added Calendly CSS stylesheet link to `src/app/layout.tsx` head section
+- Integrated Calendly widget script with `afterInteractive` strategy for performance
+- Configured badge with URL `https://calendly.com/hiddenlotusjvn` and text "Book Your Class Now!"
+- Applied theme colors: sage green background with white text
+- Disabled Calendly branding for cleaner widget appearance
+
+## [2.8.9] - 2025-01-27
+
+### 🎨 Scroll to Top Button Position Update
+
+#### Changed
+
+- **Scroll to Top Button Position**: Moved scroll-to-top button from right side to left side of the screen
+- **CSS Updates**: Updated positioning styles in both component inline styles and CSS file
+
+#### Technical
+
+- Modified `src/components/layout/back-to-top.tsx` to change `right: '2rem'` to `left: '2rem'`
+- Updated `src/styles/back-to-top.css` to change positioning for both `.custom-back-to-top` and `.custom-scroll-top` classes
+
 ## [2.8.8] - 2025-01-27
 
 ### 🚨 Build Fix

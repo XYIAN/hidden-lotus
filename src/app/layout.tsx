@@ -108,10 +108,19 @@ export default function RootLayout({
 				<meta property="og:image:width" content="1200" />
 				<meta property="og:image:height" content="630" />
 				<meta property="og:image:type" content="image/svg+xml" />
-				<meta name="twitter:image:alt" content="Hidden Lotus - Wellness & Healing Center" />
+				<meta
+					name="twitter:image:alt"
+					content="Hidden Lotus - Wellness & Healing Center"
+				/>
 				<meta name="twitter:site" content="@hiddenlotus" />
 				<meta name="twitter:domain" content="hiddenlotusmor.com" />
-				
+
+				{/* Calendly CSS */}
+				<link
+					href="https://assets.calendly.com/assets/external/widget.css"
+					rel="stylesheet"
+				/>
+
 				{/* Google Analytics */}
 				<Script
 					src="https://www.googletagmanager.com/gtag/js?id=G-YH7KD83RSD"
@@ -123,6 +132,26 @@ export default function RootLayout({
 						function gtag(){dataLayer.push(arguments);}
 						gtag('js', new Date());
 						gtag('config', 'G-YH7KD83RSD');
+					`}
+				</Script>
+
+				{/* Calendly Badge Widget */}
+				<Script
+					src="https://assets.calendly.com/assets/external/widget.js"
+					type="text/javascript"
+					strategy="afterInteractive"
+				/>
+				<Script id="calendly-badge" strategy="afterInteractive">
+					{`
+						window.onload = function() { 
+							Calendly.initBadgeWidget({ 
+								url: 'https://calendly.com/hiddenlotusjvn', 
+								text: 'Book Your Class Now!', 
+								color: '#6b8e5a', 
+								textColor: '#ffffff', 
+								branding: false 
+							}); 
+						}
 					`}
 				</Script>
 			</head>
