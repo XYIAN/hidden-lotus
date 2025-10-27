@@ -162,7 +162,7 @@ export function ClassCard({ classData }: ClassCardProps) {
 							className="text-sm font-semibold text-primary-green mb-3"
 							style={{ textAlign: 'center' }}
 						>
-							Equipment Needed:
+							Suggested Equipment:
 						</h4>
 						<div className="flex flex-wrap gap-2 justify-content-center">
 							{classData.equipment.map((item: string, index: number) => (
