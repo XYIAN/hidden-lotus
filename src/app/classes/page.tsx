@@ -17,7 +17,7 @@ export default function ClassesPage() {
 				</p>
 				<small>
 					<i>
-						All hidden lotus classes are $20 dorp in please inquire about
+						All Hidden Lotus classes are $20 drop in. Please inquire about&nbsp;
 						<a href="mailto:hiddenlotusjvn@gmail.com">membership options</a>.
 					</i>
 				</small>
