@@ -113,7 +113,7 @@ export default async function ClassDetailPage({ params }: PageProps) {
 							<h3 className="text-lg font-semibold text-primary-green mb-2">
 								Categories
 							</h3>
-							<div className="flex flex-wrap gap-2 justify-center">
+							<div className="flex flex-wrap gap-2 justify-content-center align-items-center">
 								{classData.categories.map((category, index) => (
 									<Tag
 										key={index}
@@ -131,7 +131,7 @@ export default async function ClassDetailPage({ params }: PageProps) {
 							<h3 className="text-lg font-semibold text-primary-green mb-2">
 								Level
 							</h3>
-							<div className="flex justify-content-center">
+							<div className="flex justify-content-center align-items-center">
 								<Tag
 									value={
 										classData.level.charAt(0).toUpperCase() +
@@ -148,7 +148,7 @@ export default async function ClassDetailPage({ params }: PageProps) {
 								<h3 className="text-lg font-semibold text-primary-green mb-2">
 									Equipment Needed
 								</h3>
-								<div className="flex flex-wrap gap-2 justify-center">
+								<div className="flex flex-wrap gap-2 justify-content-center align-items-center">
 									{classData.equipment.map((item, index) => (
 										<Tag
 											key={index}
