@@ -148,7 +148,7 @@ export function Header() {
 				position="right"
 				header={<SidebarHeader />}
 				className="custom-sidebar"
-				style={{ zIndex: 1000 }}
+				style={{ zIndex: 11000 }}
 				closeIcon="pi pi-arrow-right"
 			>
 				<div className="flex flex-column h-full">
