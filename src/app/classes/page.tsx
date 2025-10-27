@@ -18,7 +18,13 @@ export default function ClassesPage() {
 				<small>
 					<i>
 						All Hidden Lotus classes are $20 drop in. Please inquire about&nbsp;
-						<a href="mailto:hiddenlotusjvn@gmail.com">membership options</a>.
+						<a
+							style={{ textDecoration: 'underline !important' }}
+							href="mailto:hiddenlotusjvn@gmail.com"
+						>
+							<strong>membership options</strong>
+						</a>
+						.
 					</i>
 				</small>
 			</div>
