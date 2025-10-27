@@ -145,7 +145,7 @@ export default function RootLayout({
 					{`
 						window.onload = function() { 
 							Calendly.initBadgeWidget({ 
-								url: 'https://calendly.com/hiddenlotusjvn', 
+								url: 'https://calendly.com/hiddenlotusjvn?background_color=ede8e0&text_color=5d4e37&primary_color=6b8e5a', 
 								text: 'Book Your Class Now!', 
 								color: '#6b8e5a', 
 								textColor: '#ffffff', 

@@ -23,8 +23,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added Calendly CSS stylesheet link to `src/app/layout.tsx` head section
 - Integrated Calendly widget script with `afterInteractive` strategy for performance
-- Configured badge with URL `https://calendly.com/hiddenlotusjvn` and text "Book Your Class Now!"
-- Applied theme colors: sage green background with white text
+- Configured badge with URL parameters for theme colors:
+  - `background_color=f6d6a2` (light tan background for calendar popup)
+  - `text_color=8b7355` (earth brown text)
+  - `primary_color=6b8e5a` (sage green primary)
+- Badge button: sage green (#6b8e5a) background with white text
 - Disabled Calendly branding for cleaner widget appearance
 
 ## [2.8.9] - 2025-01-27
