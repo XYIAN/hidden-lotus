@@ -13,8 +13,8 @@ export function BackToTop() {
 			style={{
 				zIndex: 9999,
 				position: 'fixed',
-				bottom: '2rem',
-				left: '2rem',
+				bottom: '.65rem !important',
+				left: '1rem !important',
 				width: '3.5rem',
 				height: '3.5rem',
 				background: 'linear-gradient(135deg, #6b8e5a, #4a7c59)',

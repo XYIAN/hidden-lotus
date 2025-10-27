@@ -1,8 +1,8 @@
 /* Back to Top Component Styles */
 .custom-back-to-top {
 	position: fixed !important;
-	bottom: 2rem !important;
-	left: 2rem !important;
+	bottom: 0.65rem !important;
+	left: 1rem !important;
 	width: 3.5rem !important;
 	height: 3.5rem !important;
 	background: linear-gradient(
@@ -73,8 +73,8 @@
 	transition: all 0.3s ease !important;
 	z-index: 9999 !important;
 	position: fixed !important;
-	bottom: 2rem !important;
-	left: 2rem !important;
+	bottom: 0.65rem !important;
+	left: 1rem !important;
 }
 
 .custom-scroll-top:hover {
